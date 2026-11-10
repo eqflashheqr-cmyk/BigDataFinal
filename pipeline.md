@@ -791,11 +791,19 @@ unchanged either way.
 ---
 
 ## 10 — Phase 10: Report, figures & repository
-
 ### 10.1 Deliverable structure vs. the assignment's recommended structure
 
 The assignment (§6.2) recommends a 12-section report. `src/report.py`
-generates `results/report.md` in exactly that structure:
+generates `results/report.md` in exactly that structure, and
+`src/export_pdf.py` renders it to **`report.pdf`** at the repository root
+(9 pages) using ReportLab — handling headings, paragraphs, lists, fenced code
+blocks, pipe tables, blockquotes and the figure images. The PDF export is
+scripted, so the report can be regenerated after any change:
+
+```bash
+python src/report.py     # -> results/report.md
+python src/export_pdf.py # -> report.pdf
+```
 
 | § | Report section | Content |
 |---|---|---|
@@ -832,20 +840,81 @@ figures"*; each of the six earns its place by answering a stated question.
 ### 10.3 Repository hygiene
 
 `.gitignore` excludes the raw data, the intermediate Parquet, the environment,
-and the Python cache. What *is* committed:
+the Python cache, and the instructor-provided course material. What *is*
+committed:
 
 ```
 README.md                  reproduction instructions, method, findings
 requirements.txt           pinned versions
 pipeline.md                this document
+report.pdf                 the technical report (9 pages)
 docs/                      schema + data dictionary
-src/                       12 modules
+src/                       13 modules
 results/                   all CSV + JSON outputs, report.md
 figures/                   6 PNGs
+Tài Liệu Được Cấp và Proposal/HMDA_Proposal_Overleaf (1).pdf   the team's proposal (Deliverable 1)
 ```
+
+**Two exclusions worth justifying:**
+
+* **The raw dataset.** 9.9 GB of public data. The assignment (§6.3) forbids
+  duplicating large public datasets and requires download instructions
+  instead — `README.md` §2 has the exact FFIEC URL and the expected directory
+  layout.
+* **The instructor's material.** The assignment PDF and the two lecture-note
+  PDFs are the instructor's course content, not this project's deliverable.
+  The team's own proposal **is** kept, because it is Deliverable 1.
 
 The repository is a clone-and-run artifact: a reviewer who downloads the data
 per `README.md` reproduces every number and every figure.
+
+### 10.4 Publishing to GitHub
+
+The repository was created with the GitHub CLI and pushed to a public
+`main` branch:
+
+> <https://github.com/eqflashheqr-cmyk/BigDataFinal>
+
+The commit message states the three findings, the dual-implementation
+approach, and the three bugs that the equivalence check caught — because a
+reviewer reading the repository list should learn what the project concluded
+before opening a single file.
+
+**One commit, then a second one for the re-benchmarked timings.** The
+benchmark takes ~1.8 h, so it runs in the background while the repository is
+assembled; its refreshed numbers are committed separately rather than
+blocking the first publish.
+
+**The re-benchmark caught a fourth engine bug.** The first re-run of the
+benchmark reported **3,367,139** rows for Pandas against **3,367,092** for
+Spark at the 25 % level — a 47-row discrepancy, even though the two engines
+agreed exactly on the full dataset.
+
+The cause was in `bench_pandas`: it called `clean_pandas(chunk)` on each
+500,000-row chunk *without* carrying the row hashes of the previously
+cleaned chunks. A duplicate whose two copies landed in different chunks
+therefore survived in Pandas, while Spark's global `dropDuplicates` removed
+it. The full-dataset pipelines were unaffected — `pandas_pipeline.py` already
+carried `seen_hashes` across chunks — which is why the equivalence check
+still reported 8 of 8.
+
+**This is the second time a chunk-boundary bug has appeared**, and both times
+it was invisible to code review and to the equivalence check. The fix was to
+pass `seen_hashes` through the benchmark exactly as the production pipeline
+does; the benchmark now reports **3,367,092** in both engines.
+
+The general lesson, worth stating because it will apply to the team's own
+extensions: *in a chunked implementation, any stateful operation must carry
+its state across chunk boundaries, and the only way to catch that is to run
+the chunked path and the non-chunked path against each other.* The
+benchmark is precisely that check, and it earned its keep.
+
+**One detail that cost time:** the `.gitignore` patterns for the instructor's
+PDFs did not match. The path contains Vietnamese diacritics
+(`Tài Liệu Được Cấp và Proposal`), and the wildcard `*Big_Data_Analysis_*`
+matched nothing because git was matching against the quoted, escaped path.
+Fixed by switching to a filename-only wildcard (`*Big_Data_Analysis_Final_Project*.pdf`),
+which matches on the basename and is immune to the directory's encoding.
 
 ---
 
@@ -894,11 +963,11 @@ interpretation 10 ✅ · presentation and defence 15 ⬜ (team).
 | # | Task | Who | Notes |
 |---|---|---|---|
 | 1 | **Optional predictive extension** | Team | Up to 10 bonus points, capped at 100. A logistic regression predicting `action_taken == 3` from borrower characteristics, trained on 2024 data with a proper temporal split if a second year is added. §4 of the assignment gives the exact requirements. Not started. |
-| 2 | **`report.pdf`** | Team | `results/report.md` is complete and structured; it needs to be rendered to PDF and reviewed against the ~8-page target. The PDF export step is not scripted. |
+| 2 | **Trim `report.pdf` to the ~8-page target** | Team | The report renders to **9 pages**, which is already close to the ~8-page target. It reads well; a light trim of §2 would land it inside the limit. |
 | 3 | **Presentation + defence** | Team | Six slides minimum: problem & RQs, dataset & preparation, key findings, the two implementations, equivalence result, performance, interpretation & limitations. §6.4 lists the required coverage. |
 | 4 | **Re-run the benchmark** | Optional | Spark's figures are from before the `clean_spark` refactor (§9.5). The published numbers are already the optimistic end, so this is optional. |
 | 5 | **Verify the proposal matches this implementation** | Team | The proposal PDF was written before the analysis. The RQs match, but the proposal's expected findings should be reconciled with the actual results — particularly the *widening* gap at higher incomes, which was not the original hypothesis. |
-| 6 | **Confirm the repository is public and the link works** | Team | §10.3 describes the repository; the final push and link check happen last. |
+| 6 | **Confirm the repository is public and the link works** | ✅ | Published at <https://github.com/eqflashheqr-cmyk/BigDataFinal> — public, `main` branch pushed, contents verified. |
 
 ---
 
@@ -922,6 +991,7 @@ didn't.
 | 11 | Pin the income quartile boundaries | Let each engine compute its own | `qcut` and `ntile` disagree at boundaries | Stratified results would not be comparable |
 | 12 | Compare in 3 separate processes | One process | Pandas + cached Spark together OOM the JVM | The comparison cannot complete |
 | 13 | Gitignore the raw data | Commit it | The assignment forbids duplicating large public datasets | A 10 GB repository that cannot be cloned |
+| 14 | Carry row hashes across chunks in the benchmark | Clean each chunk independently | A duplicate spanning two chunks survives in Pandas but not in Spark | The two engines process 47 different rows at 25 % — the benchmark is invalid |
 
 ---
 
@@ -933,8 +1003,9 @@ didn't.
 | The finding is **associational** | Medium | Stated explicitly in the report's limitations; no causal language is used |
 | Interest rate missing for 36.8 % of records, non-randomly | Medium | Disclosed in report §7; the RQ2 interest-rate comparison is explicitly flagged as resting on a biased subset |
 | The 12 M × 99 string frame cannot be held in Pandas | Low | Chunked pipeline; documented as a limitation per §3.4A |
+| **Chunk-boundary bugs** in stateful operations | Medium | Found twice (§7.5, §10.4) — both invisible to code review. Mitigated by running the chunked and non-chunked paths against each other; the benchmark now verifies row-count parity between engines |
 | Benchmark timings vary with background load | Low | 3 repeats, median reported; one repeat drifted to 1001 s and is visible in `results/benchmark_results.json` |
-| Report may exceed the ~8-page target | Low | `results/report.md` is 256 lines of dense prose; will need trimming when rendered |
+| Report may exceed the ~8-page target | Low | `report.pdf` renders to 9 pages — already close; a light trim of §2 lands it inside the limit |
 | Team members may not be able to explain every module | Medium | Each module has a docstring stating its purpose; the decisions log (§13) is the defence narrative |
 
 ---
@@ -959,7 +1030,9 @@ didn't.
 | `src/benchmark.py` | performance and scalability experiment |
 | `src/figures.py` | chart generation |
 | `src/report.py` | assembles `results/report.md` |
+| `src/export_pdf.py` | renders `results/report.md` → `report.pdf` |
 | `src/run_analysis.py` | orchestration |
+| `report.pdf` | the technical report, rendered (9 pages) |
 | `results/report.md` | the technical report |
 | `results/rq1..rq4.csv` | the four research questions |
 | `results/equivalence_report.json` | cell-by-cell Pandas vs Spark comparison |

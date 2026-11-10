@@ -46,6 +46,7 @@ import sys
 import time
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -132,6 +133,9 @@ def bench_pandas(fraction: float) -> dict:
     t_clean = 0.0
     n_raw = 0
     parts = []
+    # Row hashes of the records already cleaned, so that duplicates spanning
+    # a chunk boundary are removed consistently with the Spark run.
+    seen_hashes = None
 
     reader = pd.read_csv(
         C.RAW_FILE,
@@ -156,7 +160,15 @@ def bench_pandas(fraction: float) -> dict:
             continue
 
         t0 = time.perf_counter()
-        cleaned = clean_pandas(chunk)
+        chunk_report: dict = {}
+        cleaned = clean_pandas(chunk, report=chunk_report, seen_hashes=seen_hashes)
+        # Carry the hashes of the rows kept so far across chunk boundaries,
+        # exactly as `pandas_pipeline.py` does. Without this, a duplicate
+        # whose two copies fall in different chunks would survive, while
+        # Spark's global `dropDuplicates` would remove it — and the two
+        # engines would process different numbers of records.
+        kept = chunk_report.pop("_kept_hashes", None)
+        seen_hashes = kept if seen_hashes is None else np.concatenate([seen_hashes, kept])
         parts.append(cleaned[ANALYSIS_COLUMNS])
         t_clean += time.perf_counter() - t0
 
