@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------------
+# Large public datasets — do NOT commit (assignment §6.3 explicitly forbids
+# duplicating large public datasets in the repository).
+# These are downloaded via the instructions in README.md.
+# ---------------------------------------------------------------------------
+data/
+*.parquet
+*.zip
+
+# ---------------------------------------------------------------------------
+# Instructor-provided course material.
+# The assignment PDF and the lecture notes are the instructor's material and
+# are not part of this project's deliverable; they are excluded from the
+# repository. The team's own proposal IS kept (it is Deliverable 1).
+# The path contains Vietnamese diacritics, so a wildcard is used rather than
+# an exact match.
+# ---------------------------------------------------------------------------
+*Big_Data_Analysis_Final_Project*.pdf
+*Big_Data_Analysis_Lecture_Notes*.pdf
+*Big_Data_Analysis_lecture_notes*.pdf
+
+# ---------------------------------------------------------------------------
+# Environment
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+env/
+envs/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+*.egg
+
+# ---------------------------------------------------------------------------
+# Jupyter
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints/
+profile_default/
+*.nbconvert.ipynb
+
+# ---------------------------------------------------------------------------
+# IDE / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Credentials — never commit these
+# ---------------------------------------------------------------------------
+.env
+.env.*
+*.pem
+*.key
+secrets/
+credentials*.json
+token*.json
+.netrc

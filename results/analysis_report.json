@@ -1,0 +1,29 @@
+{
+  "dataset": {
+    "source": "FFIEC 2024 Public One-Year National Loan-Level Dataset",
+    "raw_file": "E:\\Projects\\BigDataFinal\\data\\pipe_file\\2024_public_lar_one_year_pipe.txt",
+    "records_raw": 12259199,
+    "records_after_cleaning": 12251439,
+    "records_with_lender_decision": 8654559,
+    "records_joint_flag_known": 11093946,
+    "records_indeterminate_joint": 1157493,
+    "indeterminate_rate_pct": 9.45
+  },
+  "denial_rate_formula": "D / (O + A + D) with O=action_taken 1, A=2, D=3",
+  "rq1_headline": [
+    {
+      "joint_label": "Joint",
+      "n_decisions": 3519683,
+      "n_denied": 667288,
+      "denial_rate": 0.1895875281950107,
+      "gap_vs_single_pp": -0.0911917805906331
+    },
+    {
+      "joint_label": "Single",
+      "n_decisions": 5038003,
+      "n_denied": 1414567,
+      "denial_rate": 0.2807793087856438,
+      "gap_vs_single_pp": 0.0
+    }
+  ]
+}

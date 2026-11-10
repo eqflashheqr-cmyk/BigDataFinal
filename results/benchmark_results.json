@@ -1,0 +1,275 @@
+{
+  "config": {
+    "repeats": 3,
+    "fractions": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "sample_rule": "SHA-256(lei)[0:8] as int, mod 1000, < fraction * 1000",
+    "pandas_chunk_size": 500000,
+    "spark_driver_memory": "8g",
+    "spark_shuffle_partitions": 16,
+    "pandas_version": "2.3.3"
+  },
+  "results": [
+    {
+      "engine": "pandas",
+      "fraction": 0.25,
+      "rows_raw": 3376848,
+      "rows_cleaned": 3374950,
+      "seconds_ingest": 15.452,
+      "seconds_clean": 196.18,
+      "seconds_analyze": 13.055,
+      "seconds_total": 224.557,
+      "repeats": 3,
+      "all_runs": [
+        {
+          "engine": "pandas",
+          "fraction": 0.25,
+          "rows_raw": 3376848,
+          "rows_cleaned": 3374950,
+          "seconds_ingest": 16.395,
+          "seconds_clean": 200.398,
+          "seconds_analyze": 13.055,
+          "seconds_total": 229.847
+        },
+        {
+          "engine": "pandas",
+          "fraction": 0.25,
+          "rows_raw": 3376848,
+          "rows_cleaned": 3374950,
+          "seconds_ingest": 15.452,
+          "seconds_clean": 196.18,
+          "seconds_analyze": 12.926,
+          "seconds_total": 224.557
+        },
+        {
+          "engine": "pandas",
+          "fraction": 0.25,
+          "rows_raw": 3376848,
+          "rows_cleaned": 3374950,
+          "seconds_ingest": 15.196,
+          "seconds_clean": 196.067,
+          "seconds_analyze": 13.072,
+          "seconds_total": 224.335
+        }
+      ]
+    },
+    {
+      "engine": "pyspark",
+      "fraction": 0.25,
+      "rows_raw": 3376848,
+      "rows_cleaned": 3374950,
+      "seconds_ingest": 41.403,
+      "seconds_clean": 37.023,
+      "seconds_analyze": 11.295,
+      "seconds_total": 89.923,
+      "repeats": 3,
+      "all_runs": [
+        {
+          "engine": "pyspark",
+          "fraction": 0.25,
+          "rows_raw": 3376848,
+          "rows_cleaned": 3374950,
+          "seconds_ingest": 39.629,
+          "seconds_clean": 38.696,
+          "seconds_analyze": 14.935,
+          "seconds_total": 93.26
+        },
+        {
+          "engine": "pyspark",
+          "fraction": 0.25,
+          "rows_raw": 3376848,
+          "rows_cleaned": 3374950,
+          "seconds_ingest": 41.403,
+          "seconds_clean": 34.571,
+          "seconds_analyze": 11.017,
+          "seconds_total": 86.991
+        },
+        {
+          "engine": "pyspark",
+          "fraction": 0.25,
+          "rows_raw": 3376848,
+          "rows_cleaned": 3374950,
+          "seconds_ingest": 41.604,
+          "seconds_clean": 37.023,
+          "seconds_analyze": 11.295,
+          "seconds_total": 89.923
+        }
+      ]
+    },
+    {
+      "engine": "pandas",
+      "fraction": 0.5,
+      "rows_raw": 5753536,
+      "rows_cleaned": 5750421,
+      "seconds_ingest": 16.381,
+      "seconds_clean": 333.756,
+      "seconds_analyze": 22.497,
+      "seconds_total": 372.801,
+      "repeats": 3,
+      "all_runs": [
+        {
+          "engine": "pandas",
+          "fraction": 0.5,
+          "rows_raw": 5753536,
+          "rows_cleaned": 5750421,
+          "seconds_ingest": 16.975,
+          "seconds_clean": 333.756,
+          "seconds_analyze": 22.568,
+          "seconds_total": 373.299
+        },
+        {
+          "engine": "pandas",
+          "fraction": 0.5,
+          "rows_raw": 5753536,
+          "rows_cleaned": 5750421,
+          "seconds_ingest": 16.233,
+          "seconds_clean": 333.585,
+          "seconds_analyze": 22.458,
+          "seconds_total": 372.276
+        },
+        {
+          "engine": "pandas",
+          "fraction": 0.5,
+          "rows_raw": 5753536,
+          "rows_cleaned": 5750421,
+          "seconds_ingest": 16.381,
+          "seconds_clean": 333.923,
+          "seconds_analyze": 22.497,
+          "seconds_total": 372.801
+        }
+      ]
+    },
+    {
+      "engine": "pyspark",
+      "fraction": 0.5,
+      "rows_raw": 5753536,
+      "rows_cleaned": 5750421,
+      "seconds_ingest": 55.151,
+      "seconds_clean": 58.341,
+      "seconds_analyze": 16.177,
+      "seconds_total": 129.354,
+      "repeats": 3,
+      "all_runs": [
+        {
+          "engine": "pyspark",
+          "fraction": 0.5,
+          "rows_raw": 5753536,
+          "rows_cleaned": 5750421,
+          "seconds_ingest": 53.476,
+          "seconds_clean": 51.618,
+          "seconds_analyze": 16.821,
+          "seconds_total": 121.915
+        },
+        {
+          "engine": "pyspark",
+          "fraction": 0.5,
+          "rows_raw": 5753536,
+          "rows_cleaned": 5750421,
+          "seconds_ingest": 55.151,
+          "seconds_clean": 58.341,
+          "seconds_analyze": 16.177,
+          "seconds_total": 129.669
+        },
+        {
+          "engine": "pyspark",
+          "fraction": 0.5,
+          "rows_raw": 5753536,
+          "rows_cleaned": 5750421,
+          "seconds_ingest": 55.371,
+          "seconds_clean": 58.355,
+          "seconds_analyze": 15.629,
+          "seconds_total": 129.354
+        }
+      ]
+    },
+    {
+      "engine": "pandas",
+      "fraction": 1.0,
+      "rows_raw": 12259199,
+      "rows_cleaned": 12251439,
+      "seconds_ingest": 18.933,
+      "seconds_clean": 732.75,
+      "seconds_analyze": 54.155,
+      "seconds_total": 805.205,
+      "repeats": 3,
+      "all_runs": [
+        {
+          "engine": "pandas",
+          "fraction": 1.0,
+          "rows_raw": 12259199,
+          "rows_cleaned": 12251439,
+          "seconds_ingest": 18.933,
+          "seconds_clean": 710.321,
+          "seconds_analyze": 58.039,
+          "seconds_total": 787.293
+        },
+        {
+          "engine": "pandas",
+          "fraction": 1.0,
+          "rows_raw": 12259199,
+          "rows_cleaned": 12251439,
+          "seconds_ingest": 25.909,
+          "seconds_clean": 921.219,
+          "seconds_analyze": 54.155,
+          "seconds_total": 1001.283
+        },
+        {
+          "engine": "pandas",
+          "fraction": 1.0,
+          "rows_raw": 12259199,
+          "rows_cleaned": 12251439,
+          "seconds_ingest": 18.891,
+          "seconds_clean": 732.75,
+          "seconds_analyze": 53.564,
+          "seconds_total": 805.205
+        }
+      ]
+    },
+    {
+      "engine": "pyspark",
+      "fraction": 1.0,
+      "rows_raw": 12259199,
+      "rows_cleaned": 12251439,
+      "seconds_ingest": 104.289,
+      "seconds_clean": 108.867,
+      "seconds_analyze": 28.369,
+      "seconds_total": 241.526,
+      "repeats": 3,
+      "all_runs": [
+        {
+          "engine": "pyspark",
+          "fraction": 1.0,
+          "rows_raw": 12259199,
+          "rows_cleaned": 12251439,
+          "seconds_ingest": 108.817,
+          "seconds_clean": 109.031,
+          "seconds_analyze": 32.55,
+          "seconds_total": 250.398
+        },
+        {
+          "engine": "pyspark",
+          "fraction": 1.0,
+          "rows_raw": 12259199,
+          "rows_cleaned": 12251439,
+          "seconds_ingest": 104.289,
+          "seconds_clean": 108.867,
+          "seconds_analyze": 28.369,
+          "seconds_total": 241.526
+        },
+        {
+          "engine": "pyspark",
+          "fraction": 1.0,
+          "rows_raw": 12259199,
+          "rows_cleaned": 12251439,
+          "seconds_ingest": 88.508,
+          "seconds_clean": 98.825,
+          "seconds_analyze": 27.95,
+          "seconds_total": 215.283
+        }
+      ]
+    }
+  ]
+}

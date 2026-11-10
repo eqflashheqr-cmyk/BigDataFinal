@@ -1,0 +1,19 @@
+{
+  "duplicates": {
+    "records": 12224691,
+    "exact_duplicates": {
+      "definition": "all 99 raw fields identical",
+      "rows_involved": 4,
+      "redundant_rows": 2,
+      "pct_of_dataset": 0.0
+    },
+    "business_key_duplicates": {
+      "definition": "identical on the application-identifying fields: lei, state_code, county_code, census_tract, action_taken, loan_amount, loan_type, loan_purpose, lien_status, applicant_ethnicity_1, applicant_race_1, applicant_sex, applicant_age, income, debt_to_income_ratio, interest_rate, property_value, activity_year",
+      "rows_involved": 37960,
+      "redundant_rows": 19831,
+      "pct_of_dataset": 0.1622
+    }
+  },
+  "correlation_matrix_file": "results/correlation_matrix.csv",
+  "correlation_method": "Spearman rank correlation (robust to the extreme outliers in HMDA)"
+}

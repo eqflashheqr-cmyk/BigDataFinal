@@ -1,0 +1,18 @@
+{
+  "engine": "pyspark",
+  "spark_version": "4.0.1",
+  "raw_file": "E:\\Projects\\BigDataFinal\\data\\pipe_file\\2024_public_lar_one_year_pipe.txt",
+  "raw_file_bytes": 4636628799,
+  "delimiter": "|",
+  "n_columns_raw": 99,
+  "spark_driver_memory": "8g",
+  "spark_shuffle_partitions": 16,
+  "elapsed_seconds": 462.12,
+  "records_raw": 12259199,
+  "removed_negative_amounts_raw_frame": 7760,
+  "records_before_implausible": 12232444,
+  "removed_negative_amounts": 7753,
+  "removed_zero_loan_amount": 0,
+  "records_after_cleaning": 12224691,
+  "records_indeterminate_joint": 1150697
+}

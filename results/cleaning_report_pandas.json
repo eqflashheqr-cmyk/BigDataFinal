@@ -1,0 +1,16 @@
+{
+  "engine": "pandas",
+  "pandas_version": "2.3.3",
+  "raw_file": "E:\\Projects\\BigDataFinal\\data\\pipe_file\\2024_public_lar_one_year_pipe.txt",
+  "raw_file_bytes": 4636628799,
+  "delimiter": "|",
+  "n_columns_raw": 99,
+  "chunk_size": 500000,
+  "elapsed_seconds": 912.18,
+  "records_raw": 12259199,
+  "removed_exact_duplicates": 26755,
+  "removed_negative_amounts": 7753,
+  "removed_zero_loan_amount": 0,
+  "records_after_cleaning": 12224691,
+  "records_indeterminate_joint": 1150697
+}

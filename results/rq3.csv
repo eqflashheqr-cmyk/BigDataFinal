@@ -1,0 +1,1731 @@
+income_quartile,dti_band,loan_type_label,loan_purpose_label,denial_rate_joint,denial_rate_single,n_decisions_joint,n_decisions_single,n_denied_joint,n_denied_single,gap_pp,joint_lower,n_decisions_total,suppressed_small_cell
+Not reported,20%-<30%,Conventional,Cash-out refinancing,0.0747126436781609,0.1368078175895765,348,307,26,42,-6.209517391141563,True,655,False
+Not reported,20%-<30%,Conventional,Home improvement,0.0663983903420523,0.101063829787234,994,376,66,38,-3.466543944518172,True,1370,False
+Not reported,20%-<30%,Conventional,Home purchase,0.0255544840887174,0.0307101727447216,2074,1042,53,32,-0.5155688656004233,True,3116,False
+Not reported,20%-<30%,Conventional,Not applicable,,1.0,0,1,0,1,,,1,True
+Not reported,20%-<30%,Conventional,Other purpose,0.0703125,0.1170886075949367,768,316,54,37,-4.677610759493671,True,1084,False
+Not reported,20%-<30%,Conventional,Refinancing,0.0289687137891077,0.0544959128065395,863,367,25,20,-2.5527199017431745,True,1230,False
+Not reported,20%-<30%,FHA,Cash-out refinancing,0.25,0.5833333333333334,12,12,3,7,-33.333333333333336,True,24,True
+Not reported,20%-<30%,FHA,Home improvement,0.0,0.0,1,2,0,0,0.0,False,3,True
+Not reported,20%-<30%,FHA,Home purchase,0.1269841269841269,0.1020408163265306,63,49,8,5,2.4943310657596363,False,112,False
+Not reported,20%-<30%,FHA,Other purpose,1.0,0.5,1,2,1,1,50.0,False,3,True
+Not reported,20%-<30%,FHA,Refinancing,0.25,0.6666666666666666,8,9,2,6,-41.66666666666666,True,17,True
+Not reported,20%-<30%,RHS/FSA,Home purchase,0.1052631578947368,0.125,19,8,2,1,-1.9736842105263164,True,27,True
+Not reported,20%-<30%,VA,Cash-out refinancing,0.2,0.0,5,2,1,0,20.0,False,7,True
+Not reported,20%-<30%,VA,Home purchase,0.0285714285714285,0.0,35,13,1,0,2.857142857142857,False,48,False
+Not reported,20%-<30%,VA,Other purpose,0.0,0.0,1,2,0,0,0.0,False,3,True
+Not reported,20%-<30%,VA,Refinancing,0.375,0.5833333333333334,8,12,3,7,-20.833333333333336,True,20,True
+Not reported,30%-<36%,Conventional,Cash-out refinancing,0.0644067796610169,0.0991735537190082,295,242,19,24,-3.476677405799132,True,537,False
+Not reported,30%-<36%,Conventional,Home improvement,0.0565217391304347,0.0726072607260726,690,303,39,22,-1.6085521595637828,True,993,False
+Not reported,30%-<36%,Conventional,Home purchase,0.0237020316027088,0.0404135338345864,1772,1064,42,43,-1.671150223187766,True,2836,False
+Not reported,30%-<36%,Conventional,Other purpose,0.0717488789237668,0.1118881118881118,669,286,48,32,-4.013923296434507,True,955,False
+Not reported,30%-<36%,Conventional,Refinancing,0.0405186385737439,0.1070496083550913,617,383,25,41,-6.653096978134745,True,1000,False
+Not reported,30%-<36%,FHA,Cash-out refinancing,0.1333333333333333,0.3571428571428571,15,14,2,5,-22.380952380952383,True,29,True
+Not reported,30%-<36%,FHA,Home improvement,,0.0,0,1,0,0,,,1,True
+Not reported,30%-<36%,FHA,Home purchase,0.0642201834862385,0.0588235294117647,109,68,7,4,0.539665407447383,False,177,False
+Not reported,30%-<36%,FHA,Other purpose,1.0,1.0,1,3,1,3,0.0,False,4,True
+Not reported,30%-<36%,FHA,Refinancing,0.1818181818181818,0.5,11,6,2,3,-31.818181818181817,True,17,True
+Not reported,30%-<36%,RHS/FSA,Home purchase,0.1666666666666666,0.1111111111111111,30,9,5,1,5.555555555555555,False,39,False
+Not reported,30%-<36%,VA,Cash-out refinancing,0.1,0.4,10,5,1,2,-30.000000000000004,True,15,True
+Not reported,30%-<36%,VA,Home purchase,0.0666666666666666,0.0,60,15,4,0,6.666666666666667,False,75,False
+Not reported,30%-<36%,VA,Other purpose,,0.0,0,1,0,0,,,1,True
+Not reported,30%-<36%,VA,Refinancing,0.3333333333333333,0.4285714285714285,3,14,1,6,-9.523809523809524,True,17,True
+Not reported,36,Conventional,Cash-out refinancing,0.0517241379310344,0.0925925925925925,58,54,3,5,-4.08684546615581,True,112,False
+Not reported,36,Conventional,Home improvement,0.0729166666666666,0.0892857142857142,96,56,7,5,-1.6369047619047616,True,152,False
+Not reported,36,Conventional,Home purchase,0.0289855072463768,0.0227272727272727,345,176,10,4,0.6258234519104084,False,521,False
+Not reported,36,Conventional,Not applicable,0.5,,2,0,1,0,,,2,True
+Not reported,36,Conventional,Other purpose,0.0689655172413793,0.1290322580645161,116,62,8,8,-6.0066740823136815,True,178,False
+Not reported,36,Conventional,Refinancing,0.0654205607476635,0.0454545454545454,107,66,7,3,1.996601529311809,False,173,False
+Not reported,36,FHA,Cash-out refinancing,0.0,0.2,2,10,0,2,-20.0,True,12,True
+Not reported,36,FHA,Home purchase,0.0625,0.1111111111111111,16,18,1,2,-4.861111111111111,True,34,False
+Not reported,36,FHA,Other purpose,1.0,,1,0,1,0,,,1,True
+Not reported,36,FHA,Refinancing,0.0,0.0,2,1,0,0,0.0,False,3,True
+Not reported,36,RHS/FSA,Home purchase,0.0,0.0,3,1,0,0,0.0,False,4,True
+Not reported,36,VA,Cash-out refinancing,0.0,0.0,1,1,0,0,0.0,False,2,True
+Not reported,36,VA,Home purchase,0.0,0.25,9,4,0,1,-25.0,True,13,True
+Not reported,36,VA,Refinancing,0.0,,3,0,0,0,,,3,True
+Not reported,37,Conventional,Cash-out refinancing,0.028169014084507,0.1372549019607843,71,51,2,7,-10.908588787627728,True,122,False
+Not reported,37,Conventional,Home improvement,0.1037735849056603,0.0416666666666666,106,48,11,2,6.210691823899372,False,154,False
+Not reported,37,Conventional,Home purchase,0.0333333333333333,0.0378151260504201,330,238,11,9,-0.4481792717086832,True,568,False
+Not reported,37,Conventional,Not applicable,1.0,,1,0,1,0,,,1,True
+Not reported,37,Conventional,Other purpose,0.0467289719626168,0.0602409638554216,107,83,5,5,-1.3511991892804869,True,190,False
+Not reported,37,Conventional,Refinancing,0.0341880341880341,0.0491803278688524,117,61,4,3,-1.4992293680818267,True,178,False
+Not reported,37,FHA,Cash-out refinancing,0.0,0.3333333333333333,3,3,0,1,-33.33333333333333,True,6,True
+Not reported,37,FHA,Home purchase,0.0526315789473684,0.1333333333333333,19,15,1,2,-8.070175438596491,True,34,False
+Not reported,37,FHA,Refinancing,0.0,0.6666666666666666,2,3,0,2,-66.66666666666666,True,5,True
+Not reported,37,RHS/FSA,Home purchase,0.0,0.25,3,4,0,1,-25.0,True,7,True
+Not reported,37,VA,Cash-out refinancing,,0.0,0,1,0,0,,,1,True
+Not reported,37,VA,Home purchase,0.0,0.0,12,3,0,0,0.0,False,15,True
+Not reported,37,VA,Refinancing,0.0,0.5,1,4,0,2,-50.0,True,5,True
+Not reported,38,Conventional,Cash-out refinancing,0.1492537313432835,0.087719298245614,67,57,10,5,6.153443309766954,False,124,False
+Not reported,38,Conventional,Home improvement,0.0583333333333333,0.0714285714285714,120,56,7,4,-1.309523809523809,True,176,False
+Not reported,38,Conventional,Home purchase,0.0348101265822784,0.0576131687242798,316,243,11,14,-2.280304214200136,True,559,False
+Not reported,38,Conventional,Not applicable,0.0,,1,0,0,0,,,1,True
+Not reported,38,Conventional,Other purpose,0.0769230769230769,0.1290322580645161,104,62,8,8,-5.21091811414392,True,166,False
+Not reported,38,Conventional,Refinancing,0.018018018018018,0.0531914893617021,111,94,2,5,-3.5173471343684106,True,205,False
+Not reported,38,FHA,Cash-out refinancing,0.2,0.0,5,3,1,0,20.0,False,8,True
+Not reported,38,FHA,Home purchase,0.0714285714285714,0.1764705882352941,28,17,2,3,-10.50420168067227,True,45,False
+Not reported,38,FHA,Other purpose,,0.0,0,1,0,0,,,1,True
+Not reported,38,FHA,Refinancing,0.6666666666666666,0.0,3,1,2,0,66.66666666666666,False,4,True
+Not reported,38,RHS/FSA,Home purchase,0.0,0.5,2,2,0,1,-50.0,True,4,True
+Not reported,38,VA,Cash-out refinancing,1.0,,1,0,1,0,,,1,True
+Not reported,38,VA,Home purchase,0.0,0.0,14,2,0,0,0.0,False,16,True
+Not reported,38,VA,Refinancing,0.3333333333333333,,3,0,1,0,,,3,True
+Not reported,39,Conventional,Cash-out refinancing,0.0461538461538461,0.1162790697674418,65,86,3,10,-7.01252236135957,True,151,False
+Not reported,39,Conventional,Home improvement,0.0103092783505154,0.0428571428571428,97,70,1,3,-3.25478645066274,True,167,False
+Not reported,39,Conventional,Home purchase,0.0302114803625377,0.0387931034482758,331,232,10,9,-0.8581623085738097,True,563,False
+Not reported,39,Conventional,Not applicable,,0.5,0,2,0,1,,,2,True
+Not reported,39,Conventional,Other purpose,0.0839694656488549,0.1219512195121951,131,82,11,10,-3.798175386334016,True,213,False
+Not reported,39,Conventional,Refinancing,0.0483870967741935,0.0526315789473684,124,76,6,4,-0.4244482173174871,True,200,False
+Not reported,39,FHA,Cash-out refinancing,0.0,0.375,6,8,0,3,-37.5,True,14,True
+Not reported,39,FHA,Home purchase,0.0606060606060606,0.0,33,18,2,0,6.0606060606060606,False,51,False
+Not reported,39,FHA,Refinancing,0.0,0.8333333333333334,3,6,0,5,-83.33333333333334,True,9,True
+Not reported,39,RHS/FSA,Home purchase,0.2,0.0,5,1,1,0,20.0,False,6,True
+Not reported,39,VA,Cash-out refinancing,,0.0,0,2,0,0,,,2,True
+Not reported,39,VA,Home purchase,0.0,0.0,6,2,0,0,0.0,False,8,True
+Not reported,39,VA,Refinancing,,0.0,0,1,0,0,,,1,True
+Not reported,40,Conventional,Cash-out refinancing,0.0333333333333333,0.0357142857142857,60,84,2,3,-0.2380952380952379,True,144,False
+Not reported,40,Conventional,Home improvement,0.1,0.1052631578947368,90,76,9,8,-0.5263157894736831,True,166,False
+Not reported,40,Conventional,Home purchase,0.0305555555555555,0.0564516129032258,360,248,11,14,-2.589605734767025,True,608,False
+Not reported,40,Conventional,Not applicable,,1.0,0,1,0,1,,,1,True
+Not reported,40,Conventional,Other purpose,0.087719298245614,0.1095890410958904,114,73,10,8,-2.186974285027637,True,187,False
+Not reported,40,Conventional,Refinancing,0.0672268907563025,0.0617283950617283,119,81,8,5,0.5498495694574126,False,200,False
+Not reported,40,FHA,Cash-out refinancing,0.0,0.0,1,3,0,0,0.0,False,4,True
+Not reported,40,FHA,Home purchase,0.0333333333333333,0.0555555555555555,30,18,1,1,-2.222222222222222,True,48,False
+Not reported,40,FHA,Refinancing,,0.3333333333333333,0,3,0,1,,,3,True
+Not reported,40,RHS/FSA,Home purchase,0.0,0.0,7,2,0,0,0.0,False,9,True
+Not reported,40,VA,Cash-out refinancing,0.0,,1,0,0,0,,,1,True
+Not reported,40,VA,Home purchase,0.0,0.5,8,2,0,1,-50.0,True,10,True
+Not reported,40,VA,Refinancing,0.0,,2,0,0,0,,,2,True
+Not reported,41,Conventional,Cash-out refinancing,0.0583333333333333,0.063063063063063,120,111,7,7,-0.4729729729729723,True,231,False
+Not reported,41,Conventional,Home improvement,0.0412371134020618,0.0307692307692307,97,65,4,2,1.0467882632831085,False,162,False
+Not reported,41,Conventional,Home purchase,0.03954802259887,0.0387596899224806,354,258,14,10,0.078833267638944,False,612,False
+Not reported,41,Conventional,Other purpose,0.1176470588235294,0.1111111111111111,102,63,12,7,0.6535947712418305,False,165,False
+Not reported,41,Conventional,Refinancing,0.037037037037037,0.075,108,80,4,6,-3.796296296296296,True,188,False
+Not reported,41,FHA,Cash-out refinancing,0.0,0.25,2,4,0,1,-25.0,True,6,True
+Not reported,41,FHA,Home purchase,0.074074074074074,0.0384615384615384,27,26,2,1,3.5612535612535607,False,53,False
+Not reported,41,FHA,Refinancing,0.5,0.5,2,4,1,2,0.0,False,6,True
+Not reported,41,RHS/FSA,Home purchase,,0.0,0,2,0,0,,,2,True
+Not reported,41,VA,Cash-out refinancing,0.0,0.0,1,1,0,0,0.0,False,2,True
+Not reported,41,VA,Home purchase,0.0,0.0,5,5,0,0,0.0,False,10,True
+Not reported,41,VA,Refinancing,1.0,,1,0,1,0,,,1,True
+Not reported,42,Conventional,Cash-out refinancing,0.0606060606060606,0.0843373493975903,66,83,4,7,-2.3731288791529748,True,149,False
+Not reported,42,Conventional,Home improvement,0.0530973451327433,0.125,113,96,6,12,-7.190265486725664,True,209,False
+Not reported,42,Conventional,Home purchase,0.0266666666666666,0.04,375,275,10,11,-1.3333333333333333,True,650,False
+Not reported,42,Conventional,Other purpose,0.0869565217391304,0.1610169491525423,115,118,10,19,-7.406042741341193,True,233,False
+Not reported,42,Conventional,Refinancing,0.0258620689655172,0.1089108910891089,116,101,3,11,-8.304882212359168,True,217,False
+Not reported,42,FHA,Cash-out refinancing,0.0,0.0,4,1,0,0,0.0,False,5,True
+Not reported,42,FHA,Home purchase,0.0,0.1666666666666666,21,24,0,4,-16.666666666666664,True,45,False
+Not reported,42,FHA,Refinancing,0.0,0.4,2,5,0,2,-40.0,True,7,True
+Not reported,42,RHS/FSA,Home purchase,1.0,0.0,1,1,1,0,100.0,False,2,True
+Not reported,42,VA,Cash-out refinancing,0.0,,1,0,0,0,,,1,True
+Not reported,42,VA,Home improvement,0.0,,1,0,0,0,,,1,True
+Not reported,42,VA,Home purchase,0.0,0.0,15,4,0,0,0.0,False,19,True
+Not reported,42,VA,Refinancing,0.0,0.0,1,2,0,0,0.0,False,3,True
+Not reported,43,Conventional,Cash-out refinancing,0.1232876712328767,0.0851063829787234,73,94,9,8,3.8181288254153305,False,167,False
+Not reported,43,Conventional,Home improvement,0.1153846153846153,0.1194029850746268,104,67,12,8,-0.4018369690011472,True,171,False
+Not reported,43,Conventional,Home purchase,0.0389294403892944,0.0497925311203319,411,241,16,12,-1.086309073103754,True,652,False
+Not reported,43,Conventional,Not applicable,,1.0,0,1,0,1,,,1,True
+Not reported,43,Conventional,Other purpose,0.0893854748603352,0.1392405063291139,179,79,16,11,-4.985503146877872,True,258,False
+Not reported,43,Conventional,Refinancing,0.0567375886524822,0.0897435897435897,141,78,8,7,-3.300600109110748,True,219,False
+Not reported,43,FHA,Cash-out refinancing,0.6,0.375,5,8,3,3,22.5,False,13,True
+Not reported,43,FHA,Home purchase,0.0571428571428571,0.1428571428571428,35,21,2,3,-8.571428571428571,True,56,False
+Not reported,43,FHA,Other purpose,,1.0,0,1,0,1,,,1,True
+Not reported,43,FHA,Refinancing,0.6666666666666666,1.0,3,2,2,2,-33.333333333333336,True,5,True
+Not reported,43,RHS/FSA,Home purchase,0.5,0.0,2,1,1,0,50.0,False,3,True
+Not reported,43,VA,Home purchase,0.0,0.0,6,5,0,0,0.0,False,11,True
+Not reported,43,VA,Refinancing,0.0,1.0,1,1,0,1,-100.0,True,2,True
+Not reported,44,Conventional,Cash-out refinancing,0.0428571428571428,0.0581395348837209,70,86,3,5,-1.528239202657807,True,156,False
+Not reported,44,Conventional,Home improvement,0.079646017699115,0.1379310344827586,113,87,9,12,-5.828501678364358,True,200,False
+Not reported,44,Conventional,Home purchase,0.0355987055016181,0.0338983050847457,309,236,11,8,0.170040041687236,False,545,False
+Not reported,44,Conventional,Not applicable,,1.0,0,1,0,1,,,1,True
+Not reported,44,Conventional,Other purpose,0.1047619047619047,0.0427350427350427,105,117,11,5,6.202686202686203,False,222,False
+Not reported,44,Conventional,Refinancing,0.0434782608695652,0.075,115,80,5,6,-3.152173913043478,True,195,False
+Not reported,44,FHA,Cash-out refinancing,0.0,0.0,3,7,0,0,0.0,False,10,True
+Not reported,44,FHA,Home improvement,,0.0,0,1,0,0,,,1,True
+Not reported,44,FHA,Home purchase,0.0,0.2413793103448276,27,29,0,7,-24.13793103448276,True,56,False
+Not reported,44,FHA,Refinancing,0.5,0.375,2,8,1,3,12.5,False,10,True
+Not reported,44,RHS/FSA,Home purchase,0.25,0.0,4,3,1,0,25.0,False,7,True
+Not reported,44,VA,Cash-out refinancing,0.0,0.5,2,2,0,1,-50.0,True,4,True
+Not reported,44,VA,Home purchase,0.0666666666666666,0.0,15,9,1,0,6.666666666666667,False,24,True
+Not reported,44,VA,Refinancing,,1.0,0,1,0,1,,,1,True
+Not reported,45,Conventional,Cash-out refinancing,0.0238095238095238,0.1521739130434782,42,46,1,7,-12.836438923395448,True,88,False
+Not reported,45,Conventional,Home improvement,0.0547945205479452,0.1159420289855072,73,69,4,8,-6.114750843756204,True,142,False
+Not reported,45,Conventional,Home purchase,0.0368852459016393,0.0252100840336134,244,238,9,6,1.1675161868025898,False,482,False
+Not reported,45,Conventional,Other purpose,0.189873417721519,0.141025641025641,79,78,15,11,4.884777669587797,False,157,False
+Not reported,45,Conventional,Refinancing,0.0714285714285714,0.081081081081081,84,74,6,6,-0.965250965250966,True,158,False
+Not reported,45,FHA,Cash-out refinancing,,0.125,0,8,0,1,,,8,True
+Not reported,45,FHA,Home purchase,0.037037037037037,0.0666666666666666,27,30,1,2,-2.9629629629629632,True,57,False
+Not reported,45,FHA,Other purpose,,0.0,0,1,0,0,,,1,True
+Not reported,45,FHA,Refinancing,0.25,0.0,4,1,1,0,25.0,False,5,True
+Not reported,45,RHS/FSA,Home purchase,1.0,0.0,1,2,1,0,100.0,False,3,True
+Not reported,45,VA,Cash-out refinancing,0.0,0.0,1,3,0,0,0.0,False,4,True
+Not reported,45,VA,Home purchase,0.0,0.0,16,1,0,0,0.0,False,17,True
+Not reported,45,VA,Other purpose,,1.0,0,1,0,1,,,1,True
+Not reported,45,VA,Refinancing,,0.0,0,4,0,0,,,4,True
+Not reported,46,Conventional,Cash-out refinancing,0.0,0.1632653061224489,34,49,0,8,-16.3265306122449,True,83,False
+Not reported,46,Conventional,Home improvement,0.0925925925925925,0.074074074074074,54,27,5,2,1.851851851851852,False,81,False
+Not reported,46,Conventional,Home purchase,0.0391304347826087,0.1,230,180,9,18,-6.086956521739131,True,410,False
+Not reported,46,Conventional,Other purpose,0.1052631578947368,0.12,57,50,6,6,-1.473684210526316,True,107,False
+Not reported,46,Conventional,Refinancing,0.0847457627118644,0.1875,59,48,5,9,-10.27542372881356,True,107,False
+Not reported,46,FHA,Cash-out refinancing,0.0,0.3333333333333333,5,12,0,4,-33.33333333333333,True,17,True
+Not reported,46,FHA,Home purchase,0.1290322580645161,0.0384615384615384,31,26,4,1,9.057071960297764,False,57,False
+Not reported,46,FHA,Other purpose,,0.0,0,1,0,0,,,1,True
+Not reported,46,FHA,Refinancing,0.0,0.1428571428571428,1,7,0,1,-14.285714285714285,True,8,True
+Not reported,46,VA,Cash-out refinancing,0.0,0.0,1,1,0,0,0.0,False,2,True
+Not reported,46,VA,Home purchase,0.1538461538461538,0.0,13,2,2,0,15.384615384615383,False,15,True
+Not reported,46,VA,Refinancing,0.5,0.3333333333333333,2,3,1,1,16.666666666666668,False,5,True
+Not reported,47,Conventional,Cash-out refinancing,0.119047619047619,0.1428571428571428,42,49,5,7,-2.380952380952381,True,91,False
+Not reported,47,Conventional,Home improvement,0.04,0.0943396226415094,50,53,2,5,-5.433962264150944,True,103,False
+Not reported,47,Conventional,Home purchase,0.0578512396694214,0.0328638497652582,242,213,14,7,2.498738990416327,False,455,False
+Not reported,47,Conventional,Other purpose,0.26,0.2,50,55,13,11,6.0,False,105,False
+Not reported,47,Conventional,Refinancing,0.1851851851851851,0.1129032258064516,54,62,10,7,7.228195937873356,False,116,False
+Not reported,47,FHA,Cash-out refinancing,0.0,0.0,3,7,0,0,0.0,False,10,True
+Not reported,47,FHA,Home purchase,0.0606060606060606,0.1081081081081081,33,37,2,4,-4.750204750204751,True,70,False
+Not reported,47,FHA,Refinancing,0.25,0.4,4,5,1,2,-15.000000000000002,True,9,True
+Not reported,47,VA,Home purchase,0.0,0.0,13,6,0,0,0.0,False,19,True
+Not reported,47,VA,Refinancing,,0.5,0,4,0,2,,,4,True
+Not reported,48,Conventional,Cash-out refinancing,0.1136363636363636,0.0816326530612244,44,49,5,4,3.200371057513915,False,93,False
+Not reported,48,Conventional,Home improvement,0.0465116279069767,0.1632653061224489,43,49,2,8,-11.675367821547225,True,92,False
+Not reported,48,Conventional,Home purchase,0.0517928286852589,0.05859375,251,256,13,15,-0.6800921314741033,True,507,False
+Not reported,48,Conventional,Not applicable,,1.0,0,1,0,1,,,1,True
+Not reported,48,Conventional,Other purpose,0.1617647058823529,0.1363636363636363,68,44,11,6,2.5401069518716595,False,112,False
+Not reported,48,Conventional,Refinancing,0.1568627450980392,0.1111111111111111,51,63,8,7,4.575163398692811,False,114,False
+Not reported,48,FHA,Cash-out refinancing,0.0,0.0,5,12,0,0,0.0,False,17,True
+Not reported,48,FHA,Home purchase,0.08,0.0357142857142857,25,28,2,1,4.428571428571429,False,53,False
+Not reported,48,FHA,Refinancing,0.6666666666666666,0.4,3,5,2,2,26.66666666666666,False,8,True
+Not reported,48,VA,Cash-out refinancing,0.0,0.0,1,3,0,0,0.0,False,4,True
+Not reported,48,VA,Home purchase,0.0666666666666666,0.0,15,7,1,0,6.666666666666667,False,22,True
+Not reported,48,VA,Refinancing,1.0,0.0,2,1,2,0,100.0,False,3,True
+Not reported,49,Conventional,Cash-out refinancing,0.0847457627118644,0.1604938271604938,59,81,5,13,-7.574806444862942,True,140,False
+Not reported,49,Conventional,Home improvement,0.0704225352112676,0.1764705882352941,71,85,5,15,-10.604805302402651,True,156,False
+Not reported,49,Conventional,Home purchase,0.0308641975308641,0.0626959247648902,324,319,10,20,-3.183172723402608,True,643,False
+Not reported,49,Conventional,Not applicable,0.0,,1,0,0,0,,,1,True
+Not reported,49,Conventional,Other purpose,0.1011235955056179,0.1685393258426966,89,89,9,15,-6.741573033707865,True,178,False
+Not reported,49,Conventional,Refinancing,0.0481927710843373,0.125,83,96,4,12,-7.680722891566265,True,179,False
+Not reported,49,FHA,Cash-out refinancing,0.0,0.0,5,4,0,0,0.0,False,9,True
+Not reported,49,FHA,Home purchase,0.05,0.1666666666666666,40,30,2,5,-11.666666666666666,True,70,False
+Not reported,49,FHA,Refinancing,0.2,0.375,5,8,1,3,-17.5,True,13,True
+Not reported,49,VA,Cash-out refinancing,0.5,,2,0,1,0,,,2,True
+Not reported,49,VA,Home purchase,0.0,0.0,7,4,0,0,0.0,False,11,True
+Not reported,49,VA,Other purpose,,0.0,0,1,0,0,,,1,True
+Not reported,49,VA,Refinancing,,0.0,0,3,0,0,,,3,True
+Not reported,50%-60%,Conventional,Cash-out refinancing,0.4404761904761904,0.5,84,92,37,46,-5.952380952380953,True,176,False
+Not reported,50%-60%,Conventional,Home improvement,0.2791878172588832,0.3058252427184466,197,206,55,63,-2.6637425459563326,True,403,False
+Not reported,50%-60%,Conventional,Home purchase,0.2358078602620087,0.4645161290322581,229,155,54,72,-22.870826877024932,True,384,False
+Not reported,50%-60%,Conventional,Not applicable,1.0,1.0,2,7,2,7,0.0,False,9,True
+Not reported,50%-60%,Conventional,Other purpose,0.2690582959641255,0.4029304029304029,223,273,60,110,-13.387210696627738,True,496,False
+Not reported,50%-60%,Conventional,Refinancing,0.2864077669902912,0.3954802259887006,206,177,59,70,-10.907245899840934,True,383,False
+Not reported,50%-60%,FHA,Cash-out refinancing,0.3157894736842105,0.4375,19,32,6,14,-12.171052631578949,True,51,False
+Not reported,50%-60%,FHA,Home improvement,,0.0,0,2,0,0,,,2,True
+Not reported,50%-60%,FHA,Home purchase,0.1503267973856209,0.15,153,160,23,24,0.0326797385620913,False,313,False
+Not reported,50%-60%,FHA,Other purpose,0.0,0.3333333333333333,1,3,0,1,-33.33333333333333,True,4,True
+Not reported,50%-60%,FHA,Refinancing,0.4,0.5,20,34,8,17,-9.999999999999998,True,54,False
+Not reported,50%-60%,VA,Cash-out refinancing,0.3333333333333333,0.4285714285714285,6,7,2,3,-9.523809523809524,True,13,True
+Not reported,50%-60%,VA,Home purchase,0.0862068965517241,0.1153846153846153,58,26,5,3,-2.9177718832891246,True,84,False
+Not reported,50%-60%,VA,Refinancing,0.2857142857142857,0.3333333333333333,7,12,2,4,-4.761904761904762,True,19,True
+Not reported,<20%,Conventional,Cash-out refinancing,0.1166666666666666,0.2287847929395791,360,1473,42,337,-11.211812627291245,True,1833,False
+Not reported,<20%,Conventional,Home improvement,0.0476190476190476,0.1832460732984293,420,191,20,35,-13.562702567938173,True,611,False
+Not reported,<20%,Conventional,Home purchase,0.0663919413919413,0.2489331436699857,2184,2109,145,525,-18.25412022780444,True,4293,False
+Not reported,<20%,Conventional,Not applicable,1.0,1.0,1,2,1,2,0.0,False,3,True
+Not reported,<20%,Conventional,Other purpose,0.1881443298969072,0.374331550802139,388,187,73,70,-18.618722090523185,True,575,False
+Not reported,<20%,Conventional,Refinancing,0.0778985507246376,0.3278418451400329,552,607,43,199,-24.994329441539527,True,1159,False
+Not reported,<20%,FHA,Cash-out refinancing,0.2,0.2857142857142857,15,14,3,4,-8.57142857142857,True,29,True
+Not reported,<20%,FHA,Home improvement,1.0,,1,0,1,0,,,1,True
+Not reported,<20%,FHA,Home purchase,0.6,0.5,5,20,3,10,9.999999999999998,False,25,True
+Not reported,<20%,FHA,Other purpose,0.0,0.2,5,5,0,1,-20.0,True,10,True
+Not reported,<20%,FHA,Refinancing,0.23950233281493,0.2705570291777188,643,754,154,204,-3.105469636278882,True,1397,False
+Not reported,<20%,RHS/FSA,Home purchase,0.0,0.5,2,4,0,2,-50.0,True,6,True
+Not reported,<20%,RHS/FSA,Refinancing,,0.0,0,2,0,0,,,2,True
+Not reported,<20%,VA,Cash-out refinancing,0.05,0.1666666666666666,20,24,1,4,-11.666666666666666,True,44,False
+Not reported,<20%,VA,Home purchase,0.0,0.1666666666666666,7,6,0,1,-16.666666666666664,True,13,True
+Not reported,<20%,VA,Other purpose,0.0588235294117647,0.0857142857142857,51,35,3,3,-2.689075630252101,True,86,False
+Not reported,<20%,VA,Refinancing,0.1008,0.1397058823529411,625,816,63,114,-3.8905882352941177,True,1441,False
+Not reported,>60%,Conventional,Cash-out refinancing,0.4832214765100671,0.7225806451612903,149,310,72,224,-23.93591686512232,True,459,False
+Not reported,>60%,Conventional,Home improvement,0.3922413793103448,0.6900369003690037,232,271,91,187,-29.77955210586589,True,503,False
+Not reported,>60%,Conventional,Home purchase,0.3322884012539185,0.536036036036036,319,222,106,119,-20.37476347821175,True,541,False
+Not reported,>60%,Conventional,Not applicable,1.0,1.0,1,6,1,6,0.0,False,7,True
+Not reported,>60%,Conventional,Other purpose,0.6380090497737556,0.7087087087087087,221,333,141,236,-7.069965893495311,True,554,False
+Not reported,>60%,Conventional,Refinancing,0.4108527131782946,0.5766129032258065,258,248,106,143,-16.576019004751192,True,506,False
+Not reported,>60%,FHA,Cash-out refinancing,0.9047619047619048,0.967741935483871,21,62,19,60,-6.298003072196623,True,83,False
+Not reported,>60%,FHA,Home improvement,,1.0,0,2,0,2,,,2,True
+Not reported,>60%,FHA,Home purchase,1.0,0.935483870967742,26,31,26,29,6.451612903225811,False,57,False
+Not reported,>60%,FHA,Other purpose,1.0,1.0,2,8,2,8,0.0,False,10,True
+Not reported,>60%,FHA,Refinancing,0.7,0.8235294117647058,30,34,21,28,-12.352941176470589,True,64,False
+Not reported,>60%,RHS/FSA,Home purchase,0.0,0.5,1,2,0,1,-50.0,True,3,True
+Not reported,>60%,RHS/FSA,Refinancing,,0.0,0,1,0,0,,,1,True
+Not reported,>60%,VA,Cash-out refinancing,0.6,0.9333333333333332,5,15,3,14,-33.333333333333336,True,20,True
+Not reported,>60%,VA,Home purchase,0.3684210526315789,0.6923076923076923,19,13,7,9,-32.388663967611336,True,32,False
+Not reported,>60%,VA,Other purpose,1.0,,3,0,3,0,,,3,True
+Not reported,>60%,VA,Refinancing,0.4324324324324324,0.7428571428571429,37,35,16,26,-31.042471042471043,True,72,False
+Not reported,Not reported,Conventional,Cash-out refinancing,0.2836538461538461,0.2402284059835933,4368,37302,1239,8961,4.3425440170252765,False,41670,False
+Not reported,Not reported,Conventional,Home improvement,0.3845750262329486,0.3787728847105393,1906,12126,733,4593,0.5802141522409265,False,14032,False
+Not reported,Not reported,Conventional,Home purchase,0.2081906492417359,0.1470564620449091,14309,112093,2979,16484,6.113418719682684,False,126402,False
+Not reported,Not reported,Conventional,Not applicable,0.127147766323024,0.1029094827586206,291,1856,37,191,2.423828356440336,False,2147,False
+Not reported,Not reported,Conventional,Other purpose,0.5972789115646259,0.4839437597639299,2205,11522,1317,5576,11.333515180069597,False,13727,False
+Not reported,Not reported,Conventional,Refinancing,0.1466242752945576,0.1556260066985401,5347,39113,784,6087,-0.9001731403982444,True,44460,False
+Not reported,Not reported,FHA,Cash-out refinancing,0.8778280542986425,0.825531914893617,221,470,194,388,5.229613940502553,False,691,False
+Not reported,Not reported,FHA,Home improvement,,0.1428571428571428,0,7,0,1,,,7,True
+Not reported,Not reported,FHA,Home purchase,0.5333333333333333,0.1544011544011544,105,1386,56,214,37.89321789321789,False,1491,False
+Not reported,Not reported,FHA,Not applicable,,0.8333333333333334,0,6,0,5,,,6,True
+Not reported,Not reported,FHA,Other purpose,0.42,0.162109375,50,512,21,83,25.7890625,False,562,False
+Not reported,Not reported,FHA,Refinancing,0.2002222792168932,0.2273096281863938,23394,24636,4684,5600,-2.708734896950066,True,48030,False
+Not reported,Not reported,RHS/FSA,Cash-out refinancing,0.0,0.25,1,4,0,1,-25.0,True,5,True
+Not reported,Not reported,RHS/FSA,Home improvement,,0.0,0,1,0,0,,,1,True
+Not reported,Not reported,RHS/FSA,Home purchase,0.7878787878787878,0.7678571428571429,33,56,26,43,2.002164502164494,False,89,False
+Not reported,Not reported,RHS/FSA,Other purpose,0.0,0.0,2,9,0,0,0.0,False,11,True
+Not reported,Not reported,RHS/FSA,Refinancing,0.3720930232558139,0.4137931034482758,43,29,16,12,-4.170008019246191,True,72,False
+Not reported,Not reported,VA,Cash-out refinancing,0.7068965517241379,0.82,58,100,41,82,-11.310344827586205,True,158,False
+Not reported,Not reported,VA,Home purchase,0.4680851063829787,0.532258064516129,47,62,22,33,-6.417295813315027,True,109,False
+Not reported,Not reported,VA,Other purpose,0.375,0.1131221719457013,16,221,6,25,26.187782805429865,False,237,False
+Not reported,Not reported,VA,Refinancing,0.092448023666694,0.1051004636785162,48676,76346,4500,8024,-1.265244001182217,True,125022,False
+Q1 (lowest),20%-<30%,Conventional,Cash-out refinancing,0.1898692810457516,0.2802603800140746,3060,11368,581,3186,-9.039109896832295,True,14428,False
+Q1 (lowest),20%-<30%,Conventional,Home improvement,0.256389342033714,0.4102971750030573,3678,16354,943,6710,-15.390783296934336,True,20032,False
+Q1 (lowest),20%-<30%,Conventional,Home purchase,0.2910515764534354,0.248005170399463,10974,40229,3194,9977,4.304640605397231,False,51203,False
+Q1 (lowest),20%-<30%,Conventional,Not applicable,0.25,0.4285714285714285,4,14,1,6,-17.857142857142854,True,18,True
+Q1 (lowest),20%-<30%,Conventional,Other purpose,0.2808861119000284,0.4171947475011432,3521,15307,989,6386,-13.63086356011149,True,18828,False
+Q1 (lowest),20%-<30%,Conventional,Refinancing,0.1287758346581876,0.204901651414747,3145,9507,405,1948,-7.612581675655944,True,12652,False
+Q1 (lowest),20%-<30%,FHA,Cash-out refinancing,0.4163043478260869,0.4775150672229949,920,4314,383,2060,-6.121071939690798,True,5234,False
+Q1 (lowest),20%-<30%,FHA,Home improvement,0.425,0.4627659574468085,40,188,17,87,-3.77659574468085,True,228,False
+Q1 (lowest),20%-<30%,FHA,Home purchase,0.1632882882882882,0.1578828319384754,888,4421,145,698,0.540545634981282,False,5309,False
+Q1 (lowest),20%-<30%,FHA,Not applicable,1.0,1.0,1,1,1,1,0.0,False,2,True
+Q1 (lowest),20%-<30%,FHA,Other purpose,0.502092050209205,0.5882908404154863,239,1059,120,623,-8.61987902062813,True,1298,False
+Q1 (lowest),20%-<30%,FHA,Refinancing,0.5,0.556237218813906,96,489,48,272,-5.623721881390598,True,585,False
+Q1 (lowest),20%-<30%,RHS/FSA,Cash-out refinancing,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),20%-<30%,RHS/FSA,Home purchase,0.0886917960088691,0.0898174831892411,451,2082,40,187,-0.1125687180371926,True,2533,False
+Q1 (lowest),20%-<30%,RHS/FSA,Refinancing,0.0,0.1176470588235294,6,17,0,2,-11.76470588235294,True,23,True
+Q1 (lowest),20%-<30%,VA,Cash-out refinancing,0.3655913978494624,0.423304805793285,465,1519,170,643,-5.771340794382268,True,1984,False
+Q1 (lowest),20%-<30%,VA,Home improvement,1.0,1.0,2,6,2,6,0.0,False,8,True
+Q1 (lowest),20%-<30%,VA,Home purchase,0.0909090909090909,0.1128563118091914,374,1719,34,194,-2.1947220900100484,True,2093,False
+Q1 (lowest),20%-<30%,VA,Other purpose,0.75,0.6551724137931034,4,29,3,19,9.482758620689658,False,33,False
+Q1 (lowest),20%-<30%,VA,Refinancing,0.2222222222222222,0.5,18,66,4,33,-27.77777777777778,True,84,False
+Q1 (lowest),30%-<36%,Conventional,Cash-out refinancing,0.1648270787343635,0.2269531506669295,4077,15219,672,3454,-6.2126071932566,True,19296,False
+Q1 (lowest),30%-<36%,Conventional,Home improvement,0.2207367795603089,0.3373214733149586,3366,15964,743,5385,-11.65846937546497,True,19330,False
+Q1 (lowest),30%-<36%,Conventional,Home purchase,0.2253949417785359,0.181416575392479,13483,54780,3039,9938,4.397836638605693,False,68263,False
+Q1 (lowest),30%-<36%,Conventional,Not applicable,0.75,0.3076923076923077,4,13,3,4,44.230769230769226,False,17,True
+Q1 (lowest),30%-<36%,Conventional,Other purpose,0.2503061474406074,0.3490660538565788,4083,16971,1022,5924,-9.875990641597143,True,21054,False
+Q1 (lowest),30%-<36%,Conventional,Refinancing,0.1276989512646514,0.1832946635730858,3242,10344,414,1896,-5.55957123084344,True,13586,False
+Q1 (lowest),30%-<36%,FHA,Cash-out refinancing,0.350236646382691,0.4137164629306239,1479,6299,518,2606,-6.347981654793289,True,7778,False
+Q1 (lowest),30%-<36%,FHA,Home improvement,0.1666666666666666,0.5025125628140703,36,199,6,100,-33.584589614740366,True,235,False
+Q1 (lowest),30%-<36%,FHA,Home purchase,0.1222983658408012,0.1241057879904617,1897,9226,232,1145,-0.1807422149660467,True,11123,False
+Q1 (lowest),30%-<36%,FHA,Not applicable,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),30%-<36%,FHA,Other purpose,0.4662921348314606,0.5091693635382956,178,927,83,472,-4.287722870683491,True,1105,False
+Q1 (lowest),30%-<36%,FHA,Refinancing,0.4306569343065693,0.4846266471449487,137,683,59,331,-5.396971283837942,True,820,False
+Q1 (lowest),30%-<36%,RHS/FSA,Home purchase,0.0852819807427785,0.0789623717217787,727,3508,62,277,0.6319609020999748,False,4235,False
+Q1 (lowest),30%-<36%,RHS/FSA,Refinancing,0.5,0.2727272727272727,2,11,1,3,22.72727272727273,False,13,True
+Q1 (lowest),30%-<36%,VA,Cash-out refinancing,0.3033707865168539,0.4107228338918142,623,2089,189,858,-10.73520473749603,True,2712,False
+Q1 (lowest),30%-<36%,VA,Home improvement,0.5,0.625,2,8,1,5,-12.5,True,10,True
+Q1 (lowest),30%-<36%,VA,Home purchase,0.0773809523809523,0.0815911730545876,672,3444,52,281,-0.4210220673635301,True,4116,False
+Q1 (lowest),30%-<36%,VA,Other purpose,0.6666666666666666,0.4230769230769231,3,26,2,11,24.358974358974358,False,29,True
+Q1 (lowest),30%-<36%,VA,Refinancing,0.3333333333333333,0.4457831325301205,24,83,8,37,-11.244979919678716,True,107,False
+Q1 (lowest),36,Conventional,Cash-out refinancing,0.1796791443850267,0.2041532611874817,935,3419,168,698,-2.447411680245498,True,4354,False
+Q1 (lowest),36,Conventional,Home improvement,0.2287480680061824,0.3107380424453595,647,3157,148,981,-8.198997443917714,True,3804,False
+Q1 (lowest),36,Conventional,Home purchase,0.2019721183270996,0.1589252068485295,2941,12207,594,1940,4.304691147857009,False,15148,False
+Q1 (lowest),36,Conventional,Not applicable,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),36,Conventional,Other purpose,0.2506024096385542,0.3256704980842911,830,3654,208,1190,-7.506808844573692,True,4484,False
+Q1 (lowest),36,Conventional,Refinancing,0.1363636363636363,0.1891274554591137,682,2189,93,414,-5.276381909547739,True,2871,False
+Q1 (lowest),36,FHA,Cash-out refinancing,0.2997118155619596,0.3948824343015214,347,1446,104,571,-9.51706187395618,True,1793,False
+Q1 (lowest),36,FHA,Home improvement,0.4,0.3513513513513513,5,37,2,13,4.864864864864865,False,42,False
+Q1 (lowest),36,FHA,Home purchase,0.0938775510204081,0.1160047188360204,490,2543,46,295,-2.212716781561229,True,3033,False
+Q1 (lowest),36,FHA,Other purpose,0.4,0.46524064171123,30,187,12,87,-6.524064171122995,True,217,False
+Q1 (lowest),36,FHA,Refinancing,0.44,0.4615384615384615,25,143,11,66,-2.153846153846156,True,168,False
+Q1 (lowest),36,RHS/FSA,Home purchase,0.0691823899371069,0.0956651718983557,159,669,11,64,-2.648278196124884,True,828,False
+Q1 (lowest),36,RHS/FSA,Refinancing,,0.0,0,1,0,0,,,1,True
+Q1 (lowest),36,VA,Cash-out refinancing,0.3066666666666666,0.3702031602708803,150,443,46,164,-6.353649360421371,True,593,False
+Q1 (lowest),36,VA,Home improvement,,0.0,0,1,0,0,,,1,True
+Q1 (lowest),36,VA,Home purchase,0.0608108108108108,0.0697940503432494,148,874,9,61,-0.8983239532438612,True,1022,False
+Q1 (lowest),36,VA,Other purpose,,0.375,0,8,0,3,,,8,True
+Q1 (lowest),36,VA,Refinancing,0.25,0.3333333333333333,4,12,1,4,-8.333333333333332,True,16,True
+Q1 (lowest),37,Conventional,Cash-out refinancing,0.147410358565737,0.2124810510358767,1004,3958,148,841,-6.507069247013964,True,4962,False
+Q1 (lowest),37,Conventional,Home improvement,0.2130257801899593,0.2989260143198091,737,3352,157,1002,-8.590023412984978,True,4089,False
+Q1 (lowest),37,Conventional,Home purchase,0.1958503615215341,0.1594938627064706,3181,13198,623,2105,3.6356498815063447,False,16379,False
+Q1 (lowest),37,Conventional,Not applicable,1.0,0.0,1,1,1,0,100.0,False,2,True
+Q1 (lowest),37,Conventional,Other purpose,0.2317596566523605,0.313624678663239,932,3890,216,1220,-8.186502201087857,True,4822,False
+Q1 (lowest),37,Conventional,Refinancing,0.1292719167904903,0.1685342895562528,673,2231,87,376,-3.926237276576244,True,2904,False
+Q1 (lowest),37,FHA,Cash-out refinancing,0.3074935400516795,0.3838630806845965,387,1636,119,628,-7.636954063291701,True,2023,False
+Q1 (lowest),37,FHA,Home improvement,0.2857142857142857,0.4594594594594595,7,37,2,17,-17.374517374517378,True,44,False
+Q1 (lowest),37,FHA,Home purchase,0.114018691588785,0.1162790697674418,535,2838,61,330,-0.2260378178656819,True,3373,False
+Q1 (lowest),37,FHA,Other purpose,0.5555555555555556,0.5777777777777777,36,180,20,104,-2.2222222222222143,True,216,False
+Q1 (lowest),37,FHA,Refinancing,0.4193548387096774,0.4808743169398907,31,183,13,88,-6.151947823021326,True,214,False
+Q1 (lowest),37,RHS/FSA,Home purchase,0.1038961038961039,0.1081081081081081,154,703,16,76,-0.4212004212004211,True,857,False
+Q1 (lowest),37,RHS/FSA,Refinancing,,0.0,0,2,0,0,,,2,True
+Q1 (lowest),37,VA,Cash-out refinancing,0.3312883435582822,0.3858267716535433,163,508,54,196,-5.45384280952611,True,671,False
+Q1 (lowest),37,VA,Home improvement,,0.5,0,2,0,1,,,2,True
+Q1 (lowest),37,VA,Home purchase,0.0494505494505494,0.0944386149003148,182,953,9,90,-4.498806544976535,True,1135,False
+Q1 (lowest),37,VA,Other purpose,0.0,0.75,1,4,0,3,-75.0,True,5,True
+Q1 (lowest),37,VA,Refinancing,0.3333333333333333,0.2727272727272727,3,11,1,3,6.0606060606060606,False,14,True
+Q1 (lowest),38,Conventional,Cash-out refinancing,0.1478102189781022,0.2106647537063606,1096,4182,162,881,-6.285453472825838,True,5278,False
+Q1 (lowest),38,Conventional,Home improvement,0.1856963613550815,0.3106371342630571,797,3657,148,1136,-12.49407729079756,True,4454,False
+Q1 (lowest),38,Conventional,Home purchase,0.1864760202561811,0.15902054601745,3357,14212,626,2260,2.745547423873107,False,17569,False
+Q1 (lowest),38,Conventional,Not applicable,,0.0,0,3,0,0,,,3,True
+Q1 (lowest),38,Conventional,Other purpose,0.2258392675483214,0.3035187287173666,983,4405,222,1337,-7.767946116904517,True,5388,False
+Q1 (lowest),38,Conventional,Refinancing,0.1329479768786127,0.1726214371738257,692,2491,92,430,-3.967346029521307,True,3183,False
+Q1 (lowest),38,FHA,Cash-out refinancing,0.3527851458885941,0.3923253150057273,377,1746,133,685,-3.9540169117133206,True,2123,False
+Q1 (lowest),38,FHA,Home improvement,0.25,0.3095238095238095,4,42,1,13,-5.952380952380953,True,46,False
+Q1 (lowest),38,FHA,Home purchase,0.1150442477876106,0.1050995024875621,678,3216,78,338,0.9944745300048436,False,3894,False
+Q1 (lowest),38,FHA,Other purpose,0.5,0.5340314136125655,38,191,19,102,-3.4031413612565453,True,229,False
+Q1 (lowest),38,FHA,Refinancing,0.2564102564102564,0.4105263157894737,39,190,10,78,-15.41160593792173,True,229,False
+Q1 (lowest),38,RHS/FSA,Home purchase,0.0606060606060606,0.0735660847880299,165,802,10,59,-1.2960024181969314,True,967,False
+Q1 (lowest),38,RHS/FSA,Refinancing,0.0,,1,0,0,0,,,1,True
+Q1 (lowest),38,VA,Cash-out refinancing,0.2787878787878788,0.3618538324420677,165,561,46,203,-8.306595365418895,True,726,False
+Q1 (lowest),38,VA,Home improvement,,0.0,0,1,0,0,,,1,True
+Q1 (lowest),38,VA,Home purchase,0.0663507109004739,0.0669180018850141,211,1061,14,71,-0.0567290984540197,True,1272,False
+Q1 (lowest),38,VA,Other purpose,0.0,0.6666666666666666,1,3,0,2,-66.66666666666666,True,4,True
+Q1 (lowest),38,VA,Refinancing,0.0,0.3333333333333333,1,24,0,8,-33.33333333333333,True,25,True
+Q1 (lowest),39,Conventional,Cash-out refinancing,0.1549067315490673,0.2013505217925107,1233,4887,191,984,-4.644379024344344,True,6120,False
+Q1 (lowest),39,Conventional,Home improvement,0.2088535754824063,0.2901428917413417,881,4129,184,1198,-8.128931625893538,True,5010,False
+Q1 (lowest),39,Conventional,Home purchase,0.2040761598283722,0.1736348387898366,3729,16097,761,2795,3.0441321038535585,False,19826,False
+Q1 (lowest),39,Conventional,Not applicable,0.0,,1,0,0,0,,,1,True
+Q1 (lowest),39,Conventional,Other purpose,0.2095959595959595,0.2872404757105422,1188,4961,249,1425,-7.764451611458265,True,6149,False
+Q1 (lowest),39,Conventional,Refinancing,0.1208651399491094,0.1754002911208151,786,2748,95,482,-5.453515117170574,True,3534,False
+Q1 (lowest),39,FHA,Cash-out refinancing,0.3560606060606061,0.3911688311688311,396,1925,141,753,-3.510822510822509,True,2321,False
+Q1 (lowest),39,FHA,Home improvement,0.0909090909090909,0.4146341463414634,11,41,1,17,-32.37250554323725,True,52,False
+Q1 (lowest),39,FHA,Home purchase,0.0841799709724238,0.1088905969766846,689,3903,58,425,-2.47106260042608,True,4592,False
+Q1 (lowest),39,FHA,Other purpose,0.4193548387096774,0.495049504950495,31,202,13,100,-7.569466624081761,True,233,False
+Q1 (lowest),39,FHA,Refinancing,0.2285714285714285,0.4150943396226415,35,212,8,88,-18.652291105121297,True,247,False
+Q1 (lowest),39,RHS/FSA,Home purchase,0.0439560439560439,0.0930962343096234,182,956,8,89,-4.9140190353579465,True,1138,False
+Q1 (lowest),39,RHS/FSA,Other purpose,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),39,VA,Cash-out refinancing,0.2959183673469387,0.3838383838383838,196,594,58,228,-8.792001649144504,True,790,False
+Q1 (lowest),39,VA,Home improvement,0.0,0.5,1,2,0,1,-50.0,True,3,True
+Q1 (lowest),39,VA,Home purchase,0.0823045267489712,0.0814441645675902,243,1191,20,97,0.0860362181380927,False,1434,False
+Q1 (lowest),39,VA,Other purpose,1.0,0.2857142857142857,2,7,2,2,71.42857142857143,False,9,True
+Q1 (lowest),39,VA,Refinancing,0.1666666666666666,0.3461538461538461,6,26,1,9,-17.94871794871795,True,32,False
+Q1 (lowest),40,Conventional,Cash-out refinancing,0.1413127413127413,0.1945532915360501,1295,5104,183,993,-5.324055022330884,True,6399,False
+Q1 (lowest),40,Conventional,Home improvement,0.2097130242825607,0.2791949450035104,906,4273,190,1193,-6.948192072094975,True,5179,False
+Q1 (lowest),40,Conventional,Home purchase,0.1736605964634468,0.1603417796110783,3789,16970,658,2721,1.3318816852368438,False,20759,False
+Q1 (lowest),40,Conventional,Not applicable,0.0,0.6666666666666666,2,3,0,2,-66.66666666666666,True,5,True
+Q1 (lowest),40,Conventional,Other purpose,0.2298951048951049,0.2939388181645449,1144,5263,263,1547,-6.404371326944003,True,6407,False
+Q1 (lowest),40,Conventional,Refinancing,0.1491841491841491,0.1654337592468056,858,2974,128,492,-1.624961006265646,True,3832,False
+Q1 (lowest),40,FHA,Cash-out refinancing,0.2909482758620689,0.3847726111394992,464,1957,135,753,-9.382433527743029,True,2421,False
+Q1 (lowest),40,FHA,Home improvement,0.1818181818181818,0.5185185185185185,11,54,2,28,-33.67003367003367,True,65,False
+Q1 (lowest),40,FHA,Home purchase,0.1045576407506702,0.1098591549295774,746,4260,78,468,-0.530151417890723,True,5006,False
+Q1 (lowest),40,FHA,Other purpose,0.3125,0.589622641509434,32,212,10,125,-27.7122641509434,True,244,False
+Q1 (lowest),40,FHA,Refinancing,0.3235294117647059,0.4218009478672986,34,211,11,89,-9.82715361025927,True,245,False
+Q1 (lowest),40,RHS/FSA,Home purchase,0.056,0.083203732503888,250,1286,14,107,-2.720373250388803,True,1536,False
+Q1 (lowest),40,RHS/FSA,Not applicable,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),40,RHS/FSA,Refinancing,,0.75,0,4,0,3,,,4,True
+Q1 (lowest),40,VA,Cash-out refinancing,0.3005181347150259,0.3592814371257485,193,668,58,240,-5.876330241072258,True,861,False
+Q1 (lowest),40,VA,Home improvement,,1.0,0,2,0,2,,,2,True
+Q1 (lowest),40,VA,Home purchase,0.0595744680851063,0.0739411342426417,235,1393,14,103,-1.4366666157535402,True,1628,False
+Q1 (lowest),40,VA,Other purpose,0.0,0.5,2,6,0,3,-50.0,True,8,True
+Q1 (lowest),40,VA,Refinancing,0.4,0.52,5,25,2,13,-12.0,True,30,False
+Q1 (lowest),41,Conventional,Cash-out refinancing,0.1474048442906574,0.2003887612652412,1445,5659,213,1134,-5.298391697458377,True,7104,False
+Q1 (lowest),41,Conventional,Home improvement,0.2122844827586207,0.281594011448701,928,4542,197,1279,-6.93095286900803,True,5470,False
+Q1 (lowest),41,Conventional,Home purchase,0.1738276454701694,0.1533732136922565,4073,18054,708,2769,2.045443177791284,False,22127,False
+Q1 (lowest),41,Conventional,Not applicable,1.0,0.25,2,4,2,1,75.0,False,6,True
+Q1 (lowest),41,Conventional,Other purpose,0.217939214232765,0.3045836249125262,1349,5716,294,1741,-8.664441067976119,True,7065,False
+Q1 (lowest),41,Conventional,Refinancing,0.1282660332541567,0.1654557463672391,842,3028,108,501,-3.718971311308233,True,3870,False
+Q1 (lowest),41,FHA,Cash-out refinancing,0.3130252100840336,0.3827729157070474,476,2171,149,831,-6.974770562301385,True,2647,False
+Q1 (lowest),41,FHA,Home improvement,0.4,0.320754716981132,5,53,2,17,7.924528301886796,False,58,False
+Q1 (lowest),41,FHA,Home purchase,0.129071170084439,0.1006493506493506,829,4620,107,465,2.8421819435088427,False,5449,False
+Q1 (lowest),41,FHA,Other purpose,0.4883720930232558,0.4622641509433962,43,212,21,98,2.610794207985956,False,255,False
+Q1 (lowest),41,FHA,Refinancing,0.225,0.396078431372549,40,255,9,101,-17.1078431372549,True,295,False
+Q1 (lowest),41,RHS/FSA,Cash-out refinancing,,0.0,0,1,0,0,,,1,True
+Q1 (lowest),41,RHS/FSA,Home purchase,0.2340425531914893,0.1403508771929824,94,513,22,72,9.369167599850693,False,607,False
+Q1 (lowest),41,RHS/FSA,Refinancing,,0.0,0,2,0,0,,,2,True
+Q1 (lowest),41,VA,Cash-out refinancing,0.2637362637362637,0.3507462686567164,182,670,48,235,-8.701000492045269,True,852,False
+Q1 (lowest),41,VA,Home improvement,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),41,VA,Home purchase,0.0659340659340659,0.0866425992779783,273,1385,18,120,-2.07085333439124,True,1658,False
+Q1 (lowest),41,VA,Other purpose,,0.4,0,5,0,2,,,5,True
+Q1 (lowest),41,VA,Refinancing,0.5714285714285714,0.3809523809523809,7,21,4,8,19.047619047619047,False,28,True
+Q1 (lowest),42,Conventional,Cash-out refinancing,0.1406976744186046,0.1876304023845007,1720,6710,242,1259,-4.693272796589609,True,8430,False
+Q1 (lowest),42,Conventional,Home improvement,0.1940298507462686,0.2460244648318043,1340,6540,260,1609,-5.199461408553563,True,7880,False
+Q1 (lowest),42,Conventional,Home purchase,0.1668538064226364,0.1436672967863894,4453,20102,743,2888,2.3186509636246995,False,24555,False
+Q1 (lowest),42,Conventional,Not applicable,,0.5,0,2,0,1,,,2,True
+Q1 (lowest),42,Conventional,Other purpose,0.2163080407701019,0.2734631925120162,1766,7906,382,2162,-5.715515174191424,True,9672,False
+Q1 (lowest),42,Conventional,Refinancing,0.1581352833638025,0.1737113402061855,1094,3880,173,674,-1.5576056842383,True,4974,False
+Q1 (lowest),42,FHA,Cash-out refinancing,0.3571428571428571,0.4018612521150592,504,2364,180,950,-4.471839497220209,True,2868,False
+Q1 (lowest),42,FHA,Home improvement,0.0,0.375,6,56,0,21,-37.5,True,62,False
+Q1 (lowest),42,FHA,Home purchase,0.1270935960591133,0.1047438330170777,1015,5270,129,552,2.234976304203551,False,6285,False
+Q1 (lowest),42,FHA,Other purpose,0.45,0.4604651162790698,40,215,18,99,-1.0465116279069764,True,255,False
+Q1 (lowest),42,FHA,Refinancing,0.3469387755102041,0.3949579831932773,49,238,17,94,-4.801920768307322,True,287,False
+Q1 (lowest),42,RHS/FSA,Home purchase,0.1794871794871795,0.1145833333333333,78,480,14,55,6.490384615384616,False,558,False
+Q1 (lowest),42,RHS/FSA,Refinancing,,0.0,0,2,0,0,,,2,True
+Q1 (lowest),42,VA,Cash-out refinancing,0.2412060301507537,0.3531914893617021,199,705,48,249,-11.198545921094835,True,904,False
+Q1 (lowest),42,VA,Home improvement,,1.0,0,4,0,4,,,4,True
+Q1 (lowest),42,VA,Home purchase,0.0833333333333333,0.086105675146771,276,1533,23,132,-0.2772341813437703,True,1809,False
+Q1 (lowest),42,VA,Other purpose,0.0,0.3333333333333333,1,9,0,3,-33.33333333333333,True,10,True
+Q1 (lowest),42,VA,Refinancing,0.0,0.2857142857142857,6,28,0,8,-28.57142857142857,True,34,False
+Q1 (lowest),43,Conventional,Cash-out refinancing,0.1486946651532349,0.1864184964374,1762,6877,262,1282,-3.7723831284165055,True,8639,False
+Q1 (lowest),43,Conventional,Home improvement,0.2124293785310734,0.3049238242437624,885,4529,188,1381,-9.249444571268898,True,5414,False
+Q1 (lowest),43,Conventional,Home purchase,0.1607384061233678,0.1381909547738693,4442,19900,714,2750,2.254745134949851,False,24342,False
+Q1 (lowest),43,Conventional,Not applicable,1.0,0.0,1,6,1,0,100.0,False,7,True
+Q1 (lowest),43,Conventional,Other purpose,0.2460496613995485,0.2957224654765914,1329,5938,327,1756,-4.967280407704289,True,7267,False
+Q1 (lowest),43,Conventional,Refinancing,0.1483198146002317,0.1880538234328848,863,3047,128,573,-3.973400883265304,True,3910,False
+Q1 (lowest),43,FHA,Cash-out refinancing,0.3218390804597701,0.3806863527533918,522,2506,168,954,-5.884727229362174,True,3028,False
+Q1 (lowest),43,FHA,Home improvement,0.0,0.3863636363636363,5,44,0,17,-38.63636363636363,True,49,False
+Q1 (lowest),43,FHA,Home purchase,0.0915287244401168,0.0954755967224795,1027,5614,94,536,-0.3946872282362665,True,6641,False
+Q1 (lowest),43,FHA,Other purpose,0.4047619047619047,0.459915611814346,42,237,17,109,-5.515370705244122,True,279,False
+Q1 (lowest),43,FHA,Refinancing,0.375,0.3840304182509506,64,263,24,101,-0.9030418250950578,True,327,False
+Q1 (lowest),43,RHS/FSA,Home purchase,0.1764705882352941,0.1234567901234567,85,486,15,60,5.301379811183734,False,571,False
+Q1 (lowest),43,RHS/FSA,Refinancing,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),43,VA,Cash-out refinancing,0.2533333333333333,0.3526011560693641,225,692,57,244,-9.92678227360308,True,917,False
+Q1 (lowest),43,VA,Home improvement,0.0,1.0,2,2,0,2,-100.0,True,4,True
+Q1 (lowest),43,VA,Home purchase,0.0714285714285714,0.0779619398403928,294,1629,21,127,-0.653336841182145,True,1923,False
+Q1 (lowest),43,VA,Other purpose,1.0,0.6,1,5,1,3,40.0,False,6,True
+Q1 (lowest),43,VA,Refinancing,0.3333333333333333,0.2727272727272727,6,22,2,6,6.0606060606060606,False,28,True
+Q1 (lowest),44,Conventional,Cash-out refinancing,0.1325254104769351,0.1771557392447867,2558,10646,339,1886,-4.463032876785167,True,13204,False
+Q1 (lowest),44,Conventional,Home improvement,0.1969811320754717,0.2675881348035409,1325,6439,261,1723,-7.060700272806924,True,7764,False
+Q1 (lowest),44,Conventional,Home purchase,0.1510586319218241,0.1339734386216798,4912,22288,742,2986,1.7085193300144297,False,27200,False
+Q1 (lowest),44,Conventional,Not applicable,0.0,0.3333333333333333,1,6,0,2,-33.33333333333333,True,7,True
+Q1 (lowest),44,Conventional,Other purpose,0.2267876200640341,0.2813551177318596,1874,8324,425,2342,-5.456749766782551,True,10198,False
+Q1 (lowest),44,Conventional,Refinancing,0.1447236180904522,0.1708238851095994,995,3969,144,678,-2.610026701914714,True,4964,False
+Q1 (lowest),44,FHA,Cash-out refinancing,0.3176470588235294,0.3539949838767466,595,2791,189,988,-3.634792505321727,True,3386,False
+Q1 (lowest),44,FHA,Home improvement,0.1818181818181818,0.44,11,50,2,22,-25.818181818181817,True,61,False
+Q1 (lowest),44,FHA,Home purchase,0.1185015290519877,0.1001251564455569,1308,7191,155,720,1.8376372606430824,False,8499,False
+Q1 (lowest),44,FHA,Other purpose,0.3636363636363636,0.5064935064935064,55,231,20,117,-14.28571428571428,True,286,False
+Q1 (lowest),44,FHA,Refinancing,0.3559322033898305,0.3838028169014084,59,284,21,109,-2.787061351157793,True,343,False
+Q1 (lowest),44,RHS/FSA,Home purchase,0.1875,0.1454545454545454,64,385,12,56,4.204545454545455,False,449,False
+Q1 (lowest),44,VA,Cash-out refinancing,0.2510288065843621,0.3333333333333333,243,789,61,263,-8.230452674897116,True,1032,False
+Q1 (lowest),44,VA,Home improvement,0.0,0.6666666666666666,1,3,0,2,-66.66666666666666,True,4,True
+Q1 (lowest),44,VA,Home purchase,0.0470914127423822,0.0812533191715347,361,1883,17,153,-3.416190642915252,True,2244,False
+Q1 (lowest),44,VA,Other purpose,0.6666666666666666,0.2857142857142857,3,7,2,2,38.095238095238095,False,10,True
+Q1 (lowest),44,VA,Refinancing,0.25,0.2307692307692307,8,26,2,6,1.9230769230769216,False,34,False
+Q1 (lowest),45,Conventional,Cash-out refinancing,0.1892682926829268,0.263905050034908,1025,4297,194,1134,-7.463675735198122,True,5322,False
+Q1 (lowest),45,Conventional,Home improvement,0.2321428571428571,0.3140933140933141,784,4158,182,1306,-8.195045695045694,True,4942,False
+Q1 (lowest),45,Conventional,Home purchase,0.1614452321061056,0.1516816431322208,4373,19475,706,2954,0.9763588973884852,False,23848,False
+Q1 (lowest),45,Conventional,Not applicable,1.0,,1,0,1,0,,,1,True
+Q1 (lowest),45,Conventional,Other purpose,0.2929806714140386,0.3577331759149941,983,5082,288,1818,-6.475250450095543,True,6065,False
+Q1 (lowest),45,Conventional,Refinancing,0.1697054698457223,0.2037037037037037,713,2700,121,550,-3.39982338579814,True,3413,False
+Q1 (lowest),45,FHA,Cash-out refinancing,0.2921960072595281,0.3834716459197787,551,2892,161,1109,-9.127563866025056,True,3443,False
+Q1 (lowest),45,FHA,Home improvement,0.3333333333333333,0.35,3,60,1,21,-1.6666666666666663,True,63,False
+Q1 (lowest),45,FHA,Home purchase,0.0947274352100089,0.1076394849785407,1119,5825,106,627,-1.291204976853183,True,6944,False
+Q1 (lowest),45,FHA,Other purpose,0.44,0.4489795918367347,50,245,22,110,-0.897959183673469,True,295,False
+Q1 (lowest),45,FHA,Refinancing,0.36,0.375,50,320,18,120,-1.500000000000001,True,370,False
+Q1 (lowest),45,RHS/FSA,Home purchase,0.320754716981132,0.1518987341772152,53,316,17,48,16.885598280391687,False,369,False
+Q1 (lowest),45,RHS/FSA,Refinancing,1.0,0.0,1,3,1,0,100.0,False,4,True
+Q1 (lowest),45,VA,Cash-out refinancing,0.248,0.3669609079445145,250,793,62,291,-11.896090794451451,True,1043,False
+Q1 (lowest),45,VA,Home purchase,0.0835734870317002,0.0738668158925573,347,1787,29,132,0.970667113914292,False,2134,False
+Q1 (lowest),45,VA,Other purpose,0.0,0.5555555555555556,1,9,0,5,-55.55555555555556,True,10,True
+Q1 (lowest),45,VA,Refinancing,0.1666666666666666,0.3703703703703703,6,27,1,10,-20.37037037037037,True,33,False
+Q1 (lowest),46,Conventional,Cash-out refinancing,0.2509225092250922,0.2963061387191071,813,3763,204,1115,-4.538362949401487,True,4576,False
+Q1 (lowest),46,Conventional,Home improvement,0.279320987654321,0.3672082717872969,648,3385,181,1243,-8.788728413297592,True,4033,False
+Q1 (lowest),46,Conventional,Home purchase,0.1661420863309352,0.1559651610289649,4448,19748,739,3080,1.0176925301970283,False,24196,False
+Q1 (lowest),46,Conventional,Not applicable,,0.0,0,3,0,0,,,3,True
+Q1 (lowest),46,Conventional,Other purpose,0.3062261753494282,0.4047229366378302,787,4277,241,1731,-9.849676128840208,True,5064,False
+Q1 (lowest),46,Conventional,Refinancing,0.1742424242424242,0.2300739523418241,660,2434,115,560,-5.58315280993999,True,3094,False
+Q1 (lowest),46,FHA,Cash-out refinancing,0.2866161616161616,0.3260252772762445,792,3877,227,1264,-3.940911566008293,True,4669,False
+Q1 (lowest),46,FHA,Home improvement,0.3636363636363636,0.3939393939393939,11,66,4,26,-3.030303030303028,True,77,False
+Q1 (lowest),46,FHA,Home purchase,0.1154422788605697,0.1031081081081081,1334,7400,154,763,1.2334170752461613,False,8734,False
+Q1 (lowest),46,FHA,Other purpose,0.6666666666666666,0.4657534246575342,57,365,38,170,20.09132420091324,False,422,False
+Q1 (lowest),46,FHA,Refinancing,0.3076923076923077,0.440721649484536,65,388,20,171,-13.302934179222836,True,453,False
+Q1 (lowest),46,RHS/FSA,Home purchase,0.4347826086956521,0.4173228346456692,23,127,10,53,1.745977404998289,False,150,False
+Q1 (lowest),46,VA,Cash-out refinancing,0.2591093117408907,0.3494132985658409,247,767,64,268,-9.030398682495022,True,1014,False
+Q1 (lowest),46,VA,Home improvement,0.0,0.5,1,2,0,1,-50.0,True,3,True
+Q1 (lowest),46,VA,Home purchase,0.053072625698324,0.0818030050083472,358,1797,19,147,-2.873037931002323,True,2155,False
+Q1 (lowest),46,VA,Other purpose,0.3333333333333333,0.375,3,8,1,3,-4.166666666666669,True,11,True
+Q1 (lowest),46,VA,Refinancing,0.4,0.3181818181818182,5,22,2,7,8.181818181818185,False,27,True
+Q1 (lowest),47,Conventional,Cash-out refinancing,0.2158119658119658,0.2926006266570258,936,4149,202,1214,-7.678866084505998,True,5085,False
+Q1 (lowest),47,Conventional,Home improvement,0.2817764165390505,0.3940616892476218,653,3469,184,1367,-11.228527270857125,True,4122,False
+Q1 (lowest),47,Conventional,Home purchase,0.1719402985074626,0.1498934297099434,5025,21582,864,3235,2.2046868797519217,False,26607,False
+Q1 (lowest),47,Conventional,Not applicable,0.0,0.5,1,4,0,2,-50.0,True,5,True
+Q1 (lowest),47,Conventional,Other purpose,0.328235294117647,0.4078306878306878,850,4725,279,1927,-7.959539371304075,True,5575,False
+Q1 (lowest),47,Conventional,Refinancing,0.1996879875195008,0.2439393939393939,641,2640,128,644,-4.425140641989314,True,3281,False
+Q1 (lowest),47,FHA,Cash-out refinancing,0.3469387755102041,0.4023965983764979,588,2587,204,1041,-5.545782286629381,True,3175,False
+Q1 (lowest),47,FHA,Home improvement,0.2727272727272727,0.4285714285714285,11,42,3,18,-15.584415584415584,True,53,False
+Q1 (lowest),47,FHA,Home purchase,0.120836560805577,0.1081766636824828,1291,6702,156,725,1.2659897123094233,False,7993,False
+Q1 (lowest),47,FHA,Other purpose,0.4888888888888889,0.4516129032258064,45,186,22,84,3.7275985663082434,False,231,False
+Q1 (lowest),47,FHA,Refinancing,0.2857142857142857,0.4027303754266211,49,293,14,118,-11.701608971233544,True,342,False
+Q1 (lowest),47,RHS/FSA,Home purchase,0.6,0.3622047244094488,25,127,15,46,23.779527559055115,False,152,False
+Q1 (lowest),47,RHS/FSA,Refinancing,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),47,VA,Cash-out refinancing,0.2558139534883721,0.3523809523809524,258,840,66,296,-9.65669988925803,True,1098,False
+Q1 (lowest),47,VA,Home improvement,,0.0,0,3,0,0,,,3,True
+Q1 (lowest),47,VA,Home purchase,0.0665137614678899,0.0850954100051573,436,1939,29,165,-1.858164853726739,True,2375,False
+Q1 (lowest),47,VA,Other purpose,1.0,0.6,1,5,1,3,40.0,False,6,True
+Q1 (lowest),47,VA,Refinancing,0.25,0.2631578947368421,8,19,2,5,-1.315789473684209,True,27,True
+Q1 (lowest),48,Conventional,Cash-out refinancing,0.2230088495575221,0.2753880266075388,1130,4510,252,1242,-5.237917705001668,True,5640,False
+Q1 (lowest),48,Conventional,Home improvement,0.2812071330589849,0.3555330463408457,729,3949,205,1404,-7.432591328186083,True,4678,False
+Q1 (lowest),48,Conventional,Home purchase,0.1821980018165304,0.1728008679686196,5505,23964,1003,4141,0.9397133847910828,False,29469,False
+Q1 (lowest),48,Conventional,Not applicable,,0.0,0,2,0,0,,,2,True
+Q1 (lowest),48,Conventional,Other purpose,0.348326359832636,0.3850134151015715,956,5218,333,2009,-3.668705526893551,True,6174,False
+Q1 (lowest),48,Conventional,Refinancing,0.1823204419889502,0.2181500872600349,724,2865,132,625,-3.5829645271084622,True,3589,False
+Q1 (lowest),48,FHA,Cash-out refinancing,0.3458904109589041,0.430379746835443,584,2449,202,1054,-8.448933587653896,True,3033,False
+Q1 (lowest),48,FHA,Home improvement,0.2857142857142857,0.4186046511627907,7,43,2,18,-13.289036544850502,True,50,False
+Q1 (lowest),48,FHA,Home purchase,0.1219512195121951,0.1154598825831702,1353,6643,165,767,0.6491336929024871,False,7996,False
+Q1 (lowest),48,FHA,Other purpose,0.3823529411764705,0.4758620689655172,34,145,13,69,-9.350912778904668,True,179,False
+Q1 (lowest),48,FHA,Refinancing,0.3571428571428571,0.4012158054711246,70,329,25,132,-4.4072948328267465,True,399,False
+Q1 (lowest),48,RHS/FSA,Home purchase,0.5789473684210527,0.4426229508196721,19,61,11,27,13.632441760138054,False,80,False
+Q1 (lowest),48,RHS/FSA,Refinancing,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),48,VA,Cash-out refinancing,0.242063492063492,0.3273164861612515,252,831,61,272,-8.525299409775947,True,1083,False
+Q1 (lowest),48,VA,Home improvement,,0.6666666666666666,0,3,0,2,,,3,True
+Q1 (lowest),48,VA,Home purchase,0.0703517587939698,0.0867195242814668,398,2018,28,175,-1.6367765487496952,True,2416,False
+Q1 (lowest),48,VA,Other purpose,0.0,0.5,1,4,0,2,-50.0,True,5,True
+Q1 (lowest),48,VA,Refinancing,0.4,0.238095238095238,5,21,2,5,16.190476190476193,False,26,True
+Q1 (lowest),49,Conventional,Cash-out refinancing,0.1739990113692535,0.2274368231046931,2023,8587,352,1953,-5.343781173543957,True,10610,False
+Q1 (lowest),49,Conventional,Home improvement,0.2288273615635179,0.2833136405408953,1228,7617,281,2158,-5.448627897737746,True,8845,False
+Q1 (lowest),49,Conventional,Home purchase,0.1341620734138618,0.1227603288364249,8527,37952,1144,4659,1.1401744577436896,False,46479,False
+Q1 (lowest),49,Conventional,Not applicable,0.0,1.0,1,3,0,3,-100.0,True,4,True
+Q1 (lowest),49,Conventional,Other purpose,0.2716273442226255,0.326721594954735,1653,9831,449,3212,-5.5094250732109495,True,11484,False
+Q1 (lowest),49,Conventional,Refinancing,0.1712062256809338,0.1884663602173004,1285,4786,220,902,-1.72601345363666,True,6071,False
+Q1 (lowest),49,FHA,Cash-out refinancing,0.3476263399693721,0.4093376764386536,653,2763,227,1131,-6.171133646928151,True,3416,False
+Q1 (lowest),49,FHA,Home improvement,0.2857142857142857,0.5471698113207547,7,53,2,29,-26.1455525606469,True,60,False
+Q1 (lowest),49,FHA,Home purchase,0.1136789506558401,0.1223511604439959,1601,7928,182,970,-0.867220978815586,True,9529,False
+Q1 (lowest),49,FHA,Other purpose,0.3333333333333333,0.4782608695652174,27,207,9,99,-14.49275362318841,True,234,False
+Q1 (lowest),49,FHA,Refinancing,0.4659090909090909,0.469208211143695,88,341,41,160,-0.3299120234604158,True,429,False
+Q1 (lowest),49,RHS/FSA,Home purchase,0.7222222222222222,0.5285714285714286,18,70,13,37,19.365079365079364,False,88,False
+Q1 (lowest),49,VA,Cash-out refinancing,0.217391304347826,0.3308189655172414,276,928,60,307,-11.34276611694153,True,1204,False
+Q1 (lowest),49,VA,Home improvement,,0.5,0,2,0,1,,,2,True
+Q1 (lowest),49,VA,Home purchase,0.082039911308204,0.0936960276338514,451,2316,37,217,-1.1656116325647474,True,2767,False
+Q1 (lowest),49,VA,Other purpose,0.0,0.25,1,8,0,2,-25.0,True,9,True
+Q1 (lowest),49,VA,Refinancing,0.0909090909090909,0.2903225806451613,11,31,1,9,-19.94134897360704,True,42,False
+Q1 (lowest),50%-60%,Conventional,Cash-out refinancing,0.7590697674418605,0.8017456359102244,2150,10426,1632,8359,-4.267586846836391,True,12576,False
+Q1 (lowest),50%-60%,Conventional,Home improvement,0.5502379693283976,0.6276094587105118,3782,21652,2081,13589,-7.737148938211414,True,25434,False
+Q1 (lowest),50%-60%,Conventional,Home purchase,0.7628218547205359,0.8004457965601374,9554,33199,7288,26574,-3.762394183960149,True,42753,False
+Q1 (lowest),50%-60%,Conventional,Not applicable,1.0,0.3478260869565217,1,23,1,8,65.21739130434783,False,24,True
+Q1 (lowest),50%-60%,Conventional,Other purpose,0.6126350789692435,0.6656411470042993,4812,25353,2948,16876,-5.3006068035055804,True,30165,False
+Q1 (lowest),50%-60%,Conventional,Refinancing,0.5182926829268293,0.6156739811912225,2460,9570,1275,5892,-9.738129826439325,True,12030,False
+Q1 (lowest),50%-60%,FHA,Cash-out refinancing,0.3969402522224519,0.4575913535769428,4837,19430,1920,8891,-6.065110135449093,True,24267,False
+Q1 (lowest),50%-60%,FHA,Home improvement,0.4098360655737705,0.5424836601307189,61,306,25,166,-13.264759455694842,True,367,False
+Q1 (lowest),50%-60%,FHA,Home purchase,0.1770074864116501,0.166011859733034,9751,40979,1726,6803,1.0995626678616088,False,50730,False
+Q1 (lowest),50%-60%,FHA,Not applicable,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),50%-60%,FHA,Other purpose,0.476027397260274,0.5046649703138253,292,1179,139,595,-2.86375730535513,True,1471,False
+Q1 (lowest),50%-60%,FHA,Refinancing,0.3992094861660079,0.4784747847478475,506,2439,202,1167,-7.926529858183956,True,2945,False
+Q1 (lowest),50%-60%,RHS/FSA,Cash-out refinancing,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),50%-60%,RHS/FSA,Home purchase,0.8135593220338984,0.6677316293929713,118,313,96,209,14.58276926409271,False,431,False
+Q1 (lowest),50%-60%,VA,Cash-out refinancing,0.3658031088082901,0.4503280224929709,1930,6402,706,2883,-8.45249136846808,True,8332,False
+Q1 (lowest),50%-60%,VA,Home improvement,0.0,0.5789473684210527,2,19,0,11,-57.89473684210527,True,21,True
+Q1 (lowest),50%-60%,VA,Home purchase,0.1018487394957983,0.1132598813467909,2975,12979,303,1470,-1.1411141850992652,True,15954,False
+Q1 (lowest),50%-60%,VA,Other purpose,0.3333333333333333,0.6388888888888888,6,36,2,23,-30.555555555555557,True,42,False
+Q1 (lowest),50%-60%,VA,Refinancing,0.3157894736842105,0.4497354497354497,57,189,18,85,-13.39459760512392,True,246,False
+Q1 (lowest),<20%,Conventional,Cash-out refinancing,0.3709401709401709,0.4647084140305573,1755,9294,651,4319,-9.37682430903864,True,11049,False
+Q1 (lowest),<20%,Conventional,Home improvement,0.4498009730207872,0.6549539657065631,2261,11839,1017,7754,-20.51529926857758,True,14100,False
+Q1 (lowest),<20%,Conventional,Home purchase,0.4716548959725138,0.4543229608910644,5239,20021,2471,9096,1.733193508144948,False,25260,False
+Q1 (lowest),<20%,Conventional,Not applicable,0.9545454545454546,0.9363636363636364,22,110,21,103,1.8181818181818188,False,132,False
+Q1 (lowest),<20%,Conventional,Other purpose,0.4666344294003868,0.705064361552194,2068,10643,965,7504,-23.842993215180712,True,12711,False
+Q1 (lowest),<20%,Conventional,Refinancing,0.2742474916387959,0.4240042864797285,1794,5599,492,2374,-14.975679484093256,True,7393,False
+Q1 (lowest),<20%,FHA,Cash-out refinancing,0.7127659574468085,0.8241758241758241,282,1547,201,1275,-11.140986672901564,True,1829,False
+Q1 (lowest),<20%,FHA,Home improvement,0.4666666666666667,0.6304347826086957,15,92,7,58,-16.3768115942029,True,107,False
+Q1 (lowest),<20%,FHA,Home purchase,0.6495726495726496,0.688622754491018,234,1503,152,1035,-3.905010491836836,True,1737,False
+Q1 (lowest),<20%,FHA,Not applicable,1.0,1.0,13,39,13,39,0.0,False,52,False
+Q1 (lowest),<20%,FHA,Other purpose,0.6352941176470588,0.6832460732984293,85,382,54,261,-4.795195565137056,True,467,False
+Q1 (lowest),<20%,FHA,Refinancing,0.2651515151515151,0.6552380952380953,264,525,70,344,-39.00865800865802,True,789,False
+Q1 (lowest),<20%,RHS/FSA,Cash-out refinancing,,1.0,0,2,0,2,,,2,True
+Q1 (lowest),<20%,RHS/FSA,Home purchase,0.38,0.1961722488038277,50,209,19,41,18.382775119617225,False,259,False
+Q1 (lowest),<20%,RHS/FSA,Not applicable,1.0,,1,0,1,0,,,1,True
+Q1 (lowest),<20%,RHS/FSA,Refinancing,0.5,0.5,4,6,2,3,0.0,False,10,True
+Q1 (lowest),<20%,VA,Cash-out refinancing,0.8144329896907216,0.8261617900172117,194,581,158,480,-1.172880032649004,True,775,False
+Q1 (lowest),<20%,VA,Home improvement,0.6666666666666666,1.0,3,10,2,10,-33.333333333333336,True,13,True
+Q1 (lowest),<20%,VA,Home purchase,0.6907216494845361,0.65625,97,416,67,273,3.447164948453607,False,513,False
+Q1 (lowest),<20%,VA,Not applicable,,1.0,0,1,0,1,,,1,True
+Q1 (lowest),<20%,VA,Other purpose,0.7777777777777778,0.7777777777777778,9,18,7,14,0.0,False,27,True
+Q1 (lowest),<20%,VA,Refinancing,0.1001964636542239,0.1101243339253996,509,563,51,62,-0.9927870271175684,True,1072,False
+Q1 (lowest),>60%,Conventional,Cash-out refinancing,0.9349260117668032,0.9447663551401868,5609,21400,5244,20218,-0.9840343373383575,True,27009,False
+Q1 (lowest),>60%,Conventional,Home improvement,0.9501220788280432,0.9618966677290272,11468,56478,10896,54326,-1.177458890098404,True,67946,False
+Q1 (lowest),>60%,Conventional,Home purchase,0.9499264260365272,0.963022344007346,23106,68609,21949,66072,-1.309591797081866,True,91715,False
+Q1 (lowest),>60%,Conventional,Not applicable,0.6666666666666666,0.9523809523809524,6,21,4,20,-28.57142857142857,True,27,True
+Q1 (lowest),>60%,Conventional,Other purpose,0.95090844317777,0.9650762496689876,14035,64197,13346,61955,-1.4167806491217738,True,78232,False
+Q1 (lowest),>60%,Conventional,Refinancing,0.884324834749764,0.9166273918371194,6354,21218,5619,19449,-3.230255708735541,True,27572,False
+Q1 (lowest),>60%,FHA,Cash-out refinancing,0.916839199447895,0.9363946633571208,2898,9669,2657,9054,-1.955546390922569,True,12567,False
+Q1 (lowest),>60%,FHA,Home improvement,0.9090909090909092,0.9667590027700832,55,361,50,349,-5.766809367917403,True,416,False
+Q1 (lowest),>60%,FHA,Home purchase,0.9748762847354396,0.9719064276344556,5254,9148,5122,8891,0.2969857100983963,False,14402,False
+Q1 (lowest),>60%,FHA,Other purpose,0.8019323671497585,0.8471023427866831,207,811,166,687,-4.51699756369246,True,1018,False
+Q1 (lowest),>60%,FHA,Refinancing,0.7589098532494759,0.8899933730947648,477,1509,362,1343,-13.108351984528888,True,1986,False
+Q1 (lowest),>60%,RHS/FSA,Home purchase,0.9856115107913668,0.9779411764705882,139,272,137,266,0.7670334320778682,False,411,False
+Q1 (lowest),>60%,RHS/FSA,Refinancing,0.3333333333333333,0.5,3,6,1,3,-16.666666666666668,True,9,True
+Q1 (lowest),>60%,VA,Cash-out refinancing,0.9104084321475626,0.9463126843657818,1518,5085,1382,4812,-3.590425221821913,True,6603,False
+Q1 (lowest),>60%,VA,Home improvement,1.0,0.9444444444444444,7,18,7,17,5.555555555555558,False,25,True
+Q1 (lowest),>60%,VA,Home purchase,0.7700072098053352,0.7504819608923161,1387,3631,1068,2725,1.95252489130191,False,5018,False
+Q1 (lowest),>60%,VA,Other purpose,1.0,0.9333333333333332,23,75,23,70,6.666666666666665,False,98,False
+Q1 (lowest),>60%,VA,Refinancing,0.2959183673469387,0.5402985074626866,196,335,58,181,-24.438014011574783,True,531,False
+Q1 (lowest),Not reported,Conventional,Cash-out refinancing,0.5149923396804552,0.5521487107735359,4569,25015,2353,13812,-3.715637109308068,True,29584,False
+Q1 (lowest),Not reported,Conventional,Home improvement,0.4880803011292346,0.6168788650418334,3188,13745,1556,8479,-12.879856391259882,True,16933,False
+Q1 (lowest),Not reported,Conventional,Home purchase,0.3152629573170731,0.2991565629942013,10496,37940,3309,11350,1.6106394322871809,False,48436,False
+Q1 (lowest),Not reported,Conventional,Not applicable,1.0,0.75,4,32,4,24,25.0,False,36,False
+Q1 (lowest),Not reported,Conventional,Other purpose,0.5556869236226059,0.6796099078616729,4229,16714,2350,11359,-12.3922984239067,True,20943,False
+Q1 (lowest),Not reported,Conventional,Refinancing,0.2275362318840579,0.2922271552581008,4830,15091,1099,4410,-6.469092337404287,True,19921,False
+Q1 (lowest),Not reported,FHA,Cash-out refinancing,0.5595567867036011,0.7831275720164609,1805,7290,1010,5709,-22.35707853128598,True,9095,False
+Q1 (lowest),Not reported,FHA,Home improvement,0.1496598639455782,0.1944444444444444,294,864,44,168,-4.478458049886622,True,1158,False
+Q1 (lowest),Not reported,FHA,Home purchase,0.2625152625152625,0.3376402584155049,819,2941,215,993,-7.512499590024241,True,3760,False
+Q1 (lowest),Not reported,FHA,Other purpose,0.0936046511627907,0.1476345840130505,1720,3678,161,543,-5.402993285025988,True,5398,False
+Q1 (lowest),Not reported,FHA,Refinancing,0.158188768009409,0.2115697588400651,6802,13518,1076,2860,-5.338099083065609,True,20320,False
+Q1 (lowest),Not reported,RHS/FSA,Cash-out refinancing,,0.0,0,2,0,0,,,2,True
+Q1 (lowest),Not reported,RHS/FSA,Home purchase,0.4677419354838709,0.2715596330275229,62,545,29,148,19.6182302456348,False,607,False
+Q1 (lowest),Not reported,RHS/FSA,Refinancing,0.1333333333333333,0.4666666666666667,15,15,2,7,-33.333333333333336,True,30,False
+Q1 (lowest),Not reported,VA,Cash-out refinancing,0.2429906542056074,0.573408947700063,749,1587,182,910,-33.04182934944555,True,2336,False
+Q1 (lowest),Not reported,VA,Home improvement,,0.6666666666666666,0,3,0,2,,,3,True
+Q1 (lowest),Not reported,VA,Home purchase,0.4181818181818181,0.3825503355704698,55,298,23,114,3.5631482611348355,False,353,False
+Q1 (lowest),Not reported,VA,Not applicable,0.0,0.0,2,1,0,0,0.0,False,3,True
+Q1 (lowest),Not reported,VA,Other purpose,1.0,0.2857142857142857,1,7,1,2,71.42857142857143,False,8,True
+Q1 (lowest),Not reported,VA,Refinancing,0.0939809926082365,0.1528265107212475,1894,2565,178,392,-5.884551811301103,True,4459,False
+Q2,20%-<30%,Conventional,Cash-out refinancing,0.1620628856890978,0.2040553127462921,6806,13957,1103,2848,-4.199242705719433,True,20763,False
+Q2,20%-<30%,Conventional,Home improvement,0.2003641036624545,0.2769723624911766,9338,18417,1871,5101,-7.660825882872213,True,27755,False
+Q2,20%-<30%,Conventional,Home purchase,0.2132939951405761,0.1320617958913187,28810,48288,6145,6377,8.123219924925742,False,77098,False
+Q2,20%-<30%,Conventional,Not applicable,1.0,0.4444444444444444,3,9,3,4,55.55555555555556,False,12,True
+Q2,20%-<30%,Conventional,Other purpose,0.2189280165717245,0.3034906069812139,7724,16129,1691,4895,-8.456259040948943,True,23853,False
+Q2,20%-<30%,Conventional,Refinancing,0.1141520136131593,0.1602193419740777,7052,10030,805,1607,-4.606732836091839,True,17082,False
+Q2,20%-<30%,FHA,Cash-out refinancing,0.3457609805924412,0.3763555177546247,1958,4703,677,1770,-3.0594537162183464,True,6661,False
+Q2,20%-<30%,FHA,Home improvement,0.375,0.4230769230769231,32,104,12,44,-4.807692307692308,True,136,False
+Q2,20%-<30%,FHA,Home purchase,0.0823710546574287,0.1025641025641025,3897,5265,321,540,-2.019304790667377,True,9162,False
+Q2,20%-<30%,FHA,Other purpose,0.4647887323943662,0.5454545454545454,142,297,66,162,-8.066581306017923,True,439,False
+Q2,20%-<30%,FHA,Refinancing,0.4298245614035088,0.4744801512287334,228,529,98,251,-4.465558982522467,True,757,False
+Q2,20%-<30%,RHS/FSA,Cash-out refinancing,0.0,,1,0,0,0,,,1,True
+Q2,20%-<30%,RHS/FSA,Home purchase,0.0701654306902452,0.0658327847267939,1753,1519,123,100,0.4332645963451342,False,3272,False
+Q2,20%-<30%,RHS/FSA,Refinancing,0.1818181818181818,0.1176470588235294,11,17,2,2,6.417112299465241,False,28,True
+Q2,20%-<30%,VA,Cash-out refinancing,0.3487712665406427,0.370721048798252,1058,2746,369,1018,-2.19497822576093,True,3804,False
+Q2,20%-<30%,VA,Home improvement,0.25,0.7777777777777778,4,9,1,7,-52.77777777777778,True,13,True
+Q2,20%-<30%,VA,Home purchase,0.0551319648093841,0.0720967373944786,1705,4383,94,316,-1.6964772585094503,True,6088,False
+Q2,20%-<30%,VA,Other purpose,0.375,0.3548387096774194,8,31,3,11,2.0161290322580627,False,39,False
+Q2,20%-<30%,VA,Refinancing,0.425,0.3859649122807017,40,114,17,44,3.903508771929826,False,154,False
+Q2,30%-<36%,Conventional,Cash-out refinancing,0.1450605949320602,0.1799775028121484,8169,16891,1185,3040,-3.491690788008825,True,25060,False
+Q2,30%-<36%,Conventional,Home improvement,0.1890732588328253,0.2419609079445145,8859,19032,1675,4605,-5.288764911168912,True,27891,False
+Q2,30%-<36%,Conventional,Home purchase,0.1391246830558924,0.0914353199487682,36284,60119,5048,5497,4.768936310712412,False,96403,False
+Q2,30%-<36%,Conventional,Not applicable,0.2,0.3636363636363636,10,11,2,4,-16.363636363636363,True,21,True
+Q2,30%-<36%,Conventional,Other purpose,0.207253309600623,0.257035553329995,8989,19970,1863,5133,-4.978224372937201,True,28959,False
+Q2,30%-<36%,Conventional,Refinancing,0.1127516778523489,0.1518844927807988,6705,10666,756,1620,-3.913281492844981,True,17371,False
+Q2,30%-<36%,FHA,Cash-out refinancing,0.2900267481849446,0.3266832917705736,2617,6015,759,1965,-3.6656543585628976,True,8632,False
+Q2,30%-<36%,FHA,Home improvement,0.3947368421052631,0.3454545454545454,38,110,15,38,4.92822966507177,False,148,False
+Q2,30%-<36%,FHA,Home purchase,0.0713868442575067,0.0774039345467916,8559,10878,611,842,-0.6017090289284974,True,19437,False
+Q2,30%-<36%,FHA,Not applicable,,0.0,0,1,0,0,,,1,True
+Q2,30%-<36%,FHA,Other purpose,0.4257425742574257,0.4126394052044609,101,269,43,111,1.310316905296477,False,370,False
+Q2,30%-<36%,FHA,Refinancing,0.2740740740740741,0.3523693803159173,405,823,111,290,-7.829530624184327,True,1228,False
+Q2,30%-<36%,RHS/FSA,Cash-out refinancing,1.0,,1,0,1,0,,,1,True
+Q2,30%-<36%,RHS/FSA,Home purchase,0.0631508229761504,0.0674911660777385,2977,2830,188,191,-0.4340343101588026,True,5807,False
+Q2,30%-<36%,RHS/FSA,Refinancing,0.0714285714285714,0.0769230769230769,14,13,1,1,-0.5494505494505503,True,27,True
+Q2,30%-<36%,VA,Cash-out refinancing,0.2579730687455705,0.3464203233256351,1411,3464,364,1200,-8.844725458006458,True,4875,False
+Q2,30%-<36%,VA,Home improvement,0.0,0.3846153846153846,3,13,0,5,-38.46153846153847,True,16,True
+Q2,30%-<36%,VA,Home purchase,0.0446084724005134,0.0592631440933525,3116,7627,139,452,-1.4654671692839083,True,10743,False
+Q2,30%-<36%,VA,Not applicable,0.0,,1,0,0,0,,,1,True
+Q2,30%-<36%,VA,Other purpose,0.7142857142857143,0.4,7,30,5,12,31.428571428571427,False,37,False
+Q2,30%-<36%,VA,Refinancing,0.4038461538461538,0.3448275862068966,52,116,21,40,5.901856763925728,False,168,False
+Q2,36,Conventional,Cash-out refinancing,0.1272189349112426,0.1702959240647683,1690,3582,215,610,-4.307698915352567,True,5272,False
+Q2,36,Conventional,Home improvement,0.1898305084745762,0.2441607821835958,1770,3682,336,899,-5.433027370901961,True,5452,False
+Q2,36,Conventional,Home purchase,0.1206505799226769,0.0829372623574144,7501,12624,905,1047,3.7713317565262527,False,20125,False
+Q2,36,Conventional,Not applicable,0.5,0.0,2,4,1,0,50.0,False,6,True
+Q2,36,Conventional,Other purpose,0.1741046831955922,0.2439766081871345,1815,4275,316,1043,-6.987192499154224,True,6090,False
+Q2,36,Conventional,Refinancing,0.0991345397324941,0.1586629001883239,1271,2124,126,337,-5.9528360455829805,True,3395,False
+Q2,36,FHA,Cash-out refinancing,0.2684684684684684,0.3209076175040519,555,1234,149,396,-5.243914903558345,True,1789,False
+Q2,36,FHA,Home improvement,0.3333333333333333,0.2941176470588235,6,17,2,5,3.9215686274509776,False,23,True
+Q2,36,FHA,Home purchase,0.063570784490532,0.0786516853932584,2218,2937,141,231,-1.5080900902726415,True,5155,False
+Q2,36,FHA,Other purpose,0.375,0.5116279069767442,24,43,9,22,-13.66279069767442,True,67,False
+Q2,36,FHA,Refinancing,0.2592592592592592,0.2934782608695652,108,184,28,54,-3.4219001610306,True,292,False
+Q2,36,RHS/FSA,Home purchase,0.0656934306569343,0.068362480127186,548,629,36,43,-0.2669049470251705,True,1177,False
+Q2,36,RHS/FSA,Refinancing,0.0,0.0,2,3,0,0,0.0,False,5,True
+Q2,36,VA,Cash-out refinancing,0.3028169014084507,0.34593837535014,284,714,86,247,-4.312147394168936,True,998,False
+Q2,36,VA,Home improvement,,0.0,0,1,0,0,,,1,True
+Q2,36,VA,Home purchase,0.0386740331491712,0.0607704829083016,724,1843,28,112,-2.209644975913041,True,2567,False
+Q2,36,VA,Other purpose,0.3333333333333333,0.0,3,3,1,0,33.33333333333333,False,6,True
+Q2,36,VA,Refinancing,0.375,0.4444444444444444,8,27,3,12,-6.944444444444442,True,35,False
+Q2,37,Conventional,Cash-out refinancing,0.1396348012889366,0.1710951080208592,1862,4027,260,689,-3.146030673192257,True,5889,False
+Q2,37,Conventional,Home improvement,0.1750841750841751,0.2267540665210002,1782,4119,312,934,-5.166989143682516,True,5901,False
+Q2,37,Conventional,Home purchase,0.1156204021579205,0.0802755728620638,8156,13354,943,1072,3.534482929585675,False,21510,False
+Q2,37,Conventional,Not applicable,0.5,0.0,4,6,2,0,50.0,False,10,True
+Q2,37,Conventional,Other purpose,0.1955334987593052,0.2457458563535911,2015,4525,394,1112,-5.021235759428596,True,6540,False
+Q2,37,Conventional,Refinancing,0.12372634643377,0.1449462365591398,1374,2325,170,337,-2.1219890125369774,True,3699,False
+Q2,37,FHA,Cash-out refinancing,0.2915309446254072,0.3308157099697885,614,1324,179,438,-3.928476534438136,True,1938,False
+Q2,37,FHA,Home improvement,0.4285714285714285,0.5714285714285714,7,21,3,12,-14.285714285714285,True,28,True
+Q2,37,FHA,Home purchase,0.0632,0.0785942492012779,2500,3130,158,246,-1.5394249201277952,True,5630,False
+Q2,37,FHA,Other purpose,0.3571428571428571,0.4864864864864865,14,37,5,18,-12.934362934362936,True,51,False
+Q2,37,FHA,Refinancing,0.3603603603603603,0.34375,111,224,40,77,1.6610360360360343,False,335,False
+Q2,37,RHS/FSA,Home purchase,0.077175697865353,0.0715396578538102,609,643,47,46,0.5636040011542776,False,1252,False
+Q2,37,RHS/FSA,Refinancing,0.2,0.0,5,5,1,0,20.0,False,10,True
+Q2,37,VA,Cash-out refinancing,0.2916666666666667,0.3319727891156462,264,735,77,244,-4.0306122448979576,True,999,False
+Q2,37,VA,Home improvement,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q2,37,VA,Home purchase,0.0363391655450874,0.0544824170381376,743,2019,27,110,-1.814325149305021,True,2762,False
+Q2,37,VA,Other purpose,0.0,0.125,1,8,0,1,-12.5,True,9,True
+Q2,37,VA,Refinancing,0.3,0.2692307692307692,10,26,3,7,3.076923076923077,False,36,False
+Q2,38,Conventional,Cash-out refinancing,0.1232943469785575,0.1732320835310868,2052,4214,253,730,-4.993773655252936,True,6266,False
+Q2,38,Conventional,Home improvement,0.172077922077922,0.2258608235010835,1848,4153,318,938,-5.378290142316147,True,6001,False
+Q2,38,Conventional,Home purchase,0.1091934184788862,0.0806875488315931,8691,14079,949,1136,2.8505869647293056,False,22770,False
+Q2,38,Conventional,Not applicable,0.25,0.0,4,1,1,0,25.0,False,5,True
+Q2,38,Conventional,Other purpose,0.1964032181732134,0.2426,2113,5000,415,1213,-4.6196781826786575,True,7113,False
+Q2,38,Conventional,Refinancing,0.119322033898305,0.1413807358412567,1475,2419,176,342,-2.205870194295162,True,3894,False
+Q2,38,FHA,Cash-out refinancing,0.2430668841761827,0.2818116462976276,613,1391,149,392,-3.87447621214449,True,2004,False
+Q2,38,FHA,Home improvement,0.1428571428571428,0.3,7,20,1,6,-15.714285714285714,True,27,True
+Q2,38,FHA,Home purchase,0.0607375271149674,0.0705109905795032,2766,3503,168,247,-0.977346346453583,True,6269,False
+Q2,38,FHA,Other purpose,0.2857142857142857,0.3863636363636363,14,44,4,17,-10.064935064935066,True,58,False
+Q2,38,FHA,Refinancing,0.2845528455284553,0.3695652173913043,123,230,35,85,-8.501237186284904,True,353,False
+Q2,38,RHS/FSA,Home purchase,0.0812883435582822,0.0683760683760683,652,702,53,48,1.2912275182213828,False,1354,False
+Q2,38,RHS/FSA,Refinancing,0.0,0.0,2,2,0,0,0.0,False,4,True
+Q2,38,VA,Cash-out refinancing,0.254416961130742,0.3170103092783505,283,776,72,246,-6.259334814760847,True,1059,False
+Q2,38,VA,Home improvement,,0.0,0,1,0,0,,,1,True
+Q2,38,VA,Home purchase,0.0596833130328867,0.0574929311969839,821,2122,49,122,0.2190381835902748,False,2943,False
+Q2,38,VA,Other purpose,0.0,0.5714285714285714,1,7,0,4,-57.14285714285714,True,8,True
+Q2,38,VA,Refinancing,0.5454545454545454,0.3103448275862069,11,29,6,9,23.51097178683385,False,40,False
+Q2,39,Conventional,Cash-out refinancing,0.1350348027842227,0.1728919704764034,2155,4471,291,773,-3.7857167692180727,True,6626,False
+Q2,39,Conventional,Home improvement,0.181457610312345,0.223982398239824,2017,4545,366,1018,-4.252478792747894,True,6562,False
+Q2,39,Conventional,Home purchase,0.1124155498947834,0.0762123197903014,9029,15260,1015,1163,3.620323010448204,False,24289,False
+Q2,39,Conventional,Not applicable,,0.6666666666666666,0,3,0,2,,,3,True
+Q2,39,Conventional,Other purpose,0.1822849807445443,0.2375409239723535,2337,5498,426,1306,-5.525594322780927,True,7835,False
+Q2,39,Conventional,Refinancing,0.0999346832135859,0.1349904397705545,1531,2615,153,353,-3.50557565569686,True,4146,False
+Q2,39,FHA,Cash-out refinancing,0.2782193958664546,0.2943925233644859,629,1498,175,441,-1.6173127498031292,True,2127,False
+Q2,39,FHA,Home improvement,0.3333333333333333,0.2777777777777778,9,18,3,5,5.555555555555553,False,27,True
+Q2,39,FHA,Home purchase,0.067051652229708,0.0732243104710764,3117,4097,209,300,-0.6172658241368354,True,7214,False
+Q2,39,FHA,Other purpose,0.4,0.4333333333333333,15,30,6,13,-3.3333333333333326,True,45,False
+Q2,39,FHA,Refinancing,0.319672131147541,0.3491379310344827,122,232,39,81,-2.946579988694176,True,354,False
+Q2,39,RHS/FSA,Home purchase,0.070323488045007,0.0549872122762148,711,782,50,43,1.5336275768792194,False,1493,False
+Q2,39,RHS/FSA,Refinancing,0.3333333333333333,0.0,3,1,1,0,33.33333333333333,False,4,True
+Q2,39,VA,Cash-out refinancing,0.2317073170731707,0.2763636363636363,328,825,76,228,-4.4656319290465625,True,1153,False
+Q2,39,VA,Home improvement,0.0,0.75,1,4,0,3,-75.0,True,5,True
+Q2,39,VA,Home purchase,0.0297356828193832,0.0567933595456531,908,2289,27,130,-2.7057676726269864,True,3197,False
+Q2,39,VA,Other purpose,,0.5,0,6,0,3,,,6,True
+Q2,39,VA,Refinancing,0.3333333333333333,0.3793103448275862,9,29,3,11,-4.597701149425287,True,38,False
+Q2,40,Conventional,Cash-out refinancing,0.1374722838137472,0.1678046761845644,2255,4833,310,811,-3.0332392370817223,True,7088,False
+Q2,40,Conventional,Home improvement,0.1621749408983451,0.2207567567567567,2115,4625,343,1021,-5.8581815858411606,True,6740,False
+Q2,40,Conventional,Home purchase,0.1006833226564168,0.0775035170737946,9366,15638,943,1212,2.3179805582622226,False,25004,False
+Q2,40,Conventional,Not applicable,1.0,0.0,2,3,2,0,100.0,False,5,True
+Q2,40,Conventional,Other purpose,0.1919191919191919,0.232671601615074,2574,5944,494,1383,-4.075240969588212,True,8518,False
+Q2,40,Conventional,Refinancing,0.1150602409638554,0.1464047442550037,1660,2698,191,395,-3.13445032911483,True,4358,False
+Q2,40,FHA,Cash-out refinancing,0.2651413189771198,0.3039591315453384,743,1566,197,476,-3.881781256821864,True,2309,False
+Q2,40,FHA,Home improvement,0.2222222222222222,0.2857142857142857,9,14,2,4,-6.349206349206349,True,23,True
+Q2,40,FHA,Home purchase,0.0684498130572332,0.0750682438580527,3477,4396,238,330,-0.661843080081953,True,7873,False
+Q2,40,FHA,Other purpose,0.4,0.3823529411764705,20,34,8,13,1.764705882352946,False,54,False
+Q2,40,FHA,Refinancing,0.3398692810457516,0.2969924812030075,153,266,52,79,4.287679984274412,False,419,False
+Q2,40,RHS/FSA,Home purchase,0.0639360639360639,0.0497017892644135,1001,1006,64,50,1.423427467165041,False,2007,False
+Q2,40,RHS/FSA,Other purpose,0.0,,1,0,0,0,,,1,True
+Q2,40,RHS/FSA,Refinancing,1.0,0.0,1,2,1,0,100.0,False,3,True
+Q2,40,VA,Cash-out refinancing,0.219941348973607,0.2785388127853881,341,876,75,244,-5.859746381178107,True,1217,False
+Q2,40,VA,Home improvement,,0.0,0,3,0,0,,,3,True
+Q2,40,VA,Home purchase,0.0436681222707423,0.0559776089564174,916,2501,40,140,-1.2309486685675082,True,3417,False
+Q2,40,VA,Other purpose,,0.5,0,8,0,4,,,8,True
+Q2,40,VA,Refinancing,0.1428571428571428,0.2903225806451613,14,31,2,9,-14.746543778801849,True,45,False
+Q2,41,Conventional,Cash-out refinancing,0.1476301476301476,0.1625303228214219,2574,5359,380,871,-1.490017519127429,True,7933,False
+Q2,41,Conventional,Home improvement,0.1805687203791469,0.2196062512685204,2110,4927,381,1082,-3.903753088937348,True,7037,False
+Q2,41,Conventional,Home purchase,0.0967518320459497,0.079177837354781,10098,16785,977,1329,1.7573994691168646,False,26883,False
+Q2,41,Conventional,Not applicable,0.0,0.5,3,2,0,1,-50.0,True,5,True
+Q2,41,Conventional,Other purpose,0.1844624447717231,0.248125,2716,6400,501,1588,-6.366255522827688,True,9116,False
+Q2,41,Conventional,Refinancing,0.1236363636363636,0.152726041313918,1650,2953,204,451,-2.90896776775544,True,4603,False
+Q2,41,FHA,Cash-out refinancing,0.2648578811369509,0.3137614678899083,774,1635,205,513,-4.890358675295737,True,2409,False
+Q2,41,FHA,Home improvement,0.1428571428571428,0.3333333333333333,7,15,1,5,-19.047619047619047,True,22,True
+Q2,41,FHA,Home purchase,0.065283540802213,0.0745391938424144,3615,4937,236,368,-0.9255653040201416,True,8552,False
+Q2,41,FHA,Other purpose,0.2857142857142857,0.5,21,50,6,25,-21.42857142857143,True,71,False
+Q2,41,FHA,Refinancing,0.2765957446808511,0.3210702341137124,141,299,39,96,-4.447448943286131,True,440,False
+Q2,41,RHS/FSA,Cash-out refinancing,,1.0,0,1,0,1,,,1,True
+Q2,41,RHS/FSA,Home purchase,0.1063829787234042,0.1089324618736383,376,459,40,50,-0.2549483150234094,True,835,False
+Q2,41,RHS/FSA,Refinancing,0.0,1.0,1,2,0,2,-100.0,True,3,True
+Q2,41,VA,Cash-out refinancing,0.2415902140672783,0.2965116279069767,327,860,79,255,-5.492141383969848,True,1187,False
+Q2,41,VA,Home improvement,1.0,0.0,1,3,1,0,100.0,False,4,True
+Q2,41,VA,Home purchase,0.0476190476190476,0.0553239863584691,1071,2639,51,146,-0.7704938739421497,True,3710,False
+Q2,41,VA,Other purpose,0.0,0.125,1,8,0,1,-12.5,True,9,True
+Q2,41,VA,Refinancing,0.5,0.2692307692307692,4,26,2,7,23.07692307692308,False,30,False
+Q2,42,Conventional,Cash-out refinancing,0.1376659678546471,0.1633173843700159,2862,6270,394,1024,-2.565141651536884,True,9132,False
+Q2,42,Conventional,Home improvement,0.1598603839441535,0.2057378348391187,2865,6309,458,1298,-4.587745089496514,True,9174,False
+Q2,42,Conventional,Home purchase,0.1005845782685348,0.0782589458547646,10777,18081,1084,1415,2.232563241377017,False,28858,False
+Q2,42,Conventional,Not applicable,0.6666666666666666,,3,0,2,0,,,3,True
+Q2,42,Conventional,Other purpose,0.1832914221849678,0.2204125950054288,3579,8289,656,1827,-3.712117282046101,True,11868,False
+Q2,42,Conventional,Refinancing,0.1217434869739478,0.1364647026125625,1996,3598,243,491,-1.4721215638614629,True,5594,False
+Q2,42,FHA,Cash-out refinancing,0.2767857142857143,0.3134592680047225,784,1694,217,531,-3.6673553719008263,True,2478,False
+Q2,42,FHA,Home improvement,0.1428571428571428,0.5,7,14,1,7,-35.714285714285715,True,21,True
+Q2,42,FHA,Home purchase,0.0713052060202319,0.0777489818585709,4053,5402,289,420,-0.6443775838338981,True,9455,False
+Q2,42,FHA,Other purpose,0.5263157894736842,0.4864864864864865,19,37,10,18,3.982930298719767,False,56,False
+Q2,42,FHA,Refinancing,0.4244604316546763,0.3344594594594595,139,296,59,99,9.00009721952168,False,435,False
+Q2,42,RHS/FSA,Home purchase,0.0816326530612244,0.0739030023094688,343,433,28,32,0.7729650751755662,False,776,False
+Q2,42,RHS/FSA,Refinancing,,0.0,0,2,0,0,,,2,True
+Q2,42,VA,Cash-out refinancing,0.2560975609756097,0.3031283710895361,328,927,84,281,-4.703081011392641,True,1255,False
+Q2,42,VA,Home improvement,0.5,0.0,2,2,1,0,50.0,False,4,True
+Q2,42,VA,Home purchase,0.0531135531135531,0.0630597014925373,1092,2680,58,169,-0.99461483789842,True,3772,False
+Q2,42,VA,Other purpose,0.0,0.4285714285714285,1,7,0,3,-42.85714285714285,True,8,True
+Q2,42,VA,Refinancing,0.2727272727272727,0.2727272727272727,11,33,3,9,0.0,False,44,False
+Q2,43,Conventional,Cash-out refinancing,0.1289198606271777,0.1619601328903654,2870,6020,370,975,-3.304027226318776,True,8890,False
+Q2,43,Conventional,Home improvement,0.1950629235237173,0.251931330472103,2066,4660,403,1174,-5.6868406948385655,True,6726,False
+Q2,43,Conventional,Home purchase,0.0936770337162603,0.0753847008499527,10707,18001,1003,1357,1.8292332866307617,False,28708,False
+Q2,43,Conventional,Not applicable,0.0,0.0,5,4,0,0,0.0,False,9,True
+Q2,43,Conventional,Other purpose,0.2253086419753086,0.2576002587322121,2592,6184,584,1593,-3.2291616756903507,True,8776,False
+Q2,43,Conventional,Refinancing,0.1395053899809765,0.1763470958712386,1577,2858,220,504,-3.684170589026209,True,4435,False
+Q2,43,FHA,Cash-out refinancing,0.2678787878787879,0.3198380566801619,825,1729,221,553,-5.195926880137408,True,2554,False
+Q2,43,FHA,Home improvement,0.2222222222222222,0.2592592592592592,9,27,2,7,-3.7037037037037033,True,36,False
+Q2,43,FHA,Home purchase,0.0636138055492894,0.0678470958133377,4433,6043,282,410,-0.4233290264048325,True,10476,False
+Q2,43,FHA,Other purpose,0.4615384615384615,0.5277777777777778,26,36,12,19,-6.623931623931623,True,62,False
+Q2,43,FHA,Refinancing,0.3034482758620689,0.3674911660777385,145,283,44,104,-6.404289021566956,True,428,False
+Q2,43,RHS/FSA,Home purchase,0.0681114551083591,0.095,323,400,22,38,-2.688854489164087,True,723,False
+Q2,43,RHS/FSA,Refinancing,0.0,,2,0,0,0,,,2,True
+Q2,43,VA,Cash-out refinancing,0.2374670184696569,0.2957317073170731,379,984,90,291,-5.826468884741617,True,1363,False
+Q2,43,VA,Home improvement,0.0,0.5,1,2,0,1,-50.0,True,3,True
+Q2,43,VA,Home purchase,0.038917089678511,0.0546318289786223,1182,2947,46,161,-1.5714739300111331,True,4129,False
+Q2,43,VA,Other purpose,0.75,0.5,4,2,3,1,25.0,False,6,True
+Q2,43,VA,Refinancing,0.5,0.2857142857142857,14,28,7,8,21.42857142857143,False,42,False
+Q2,44,Conventional,Cash-out refinancing,0.1246925725528775,0.154524089306698,4066,8510,507,1315,-2.983151675382048,True,12576,False
+Q2,44,Conventional,Home improvement,0.1720430107526881,0.2248982912937347,2511,6145,432,1382,-5.285528054104654,True,8656,False
+Q2,44,Conventional,Home purchase,0.0926567370973328,0.0710647097392444,11548,19827,1070,1409,2.1592027358088406,False,31375,False
+Q2,44,Conventional,Not applicable,,0.0,0,3,0,0,,,3,True
+Q2,44,Conventional,Other purpose,0.2010823127314155,0.2368680641183723,3511,8110,706,1921,-3.5785751386956832,True,11621,False
+Q2,44,Conventional,Refinancing,0.12013165112452,0.1568259918775382,1823,3201,219,502,-3.669434075301824,True,5024,False
+Q2,44,FHA,Cash-out refinancing,0.2900763358778626,0.3142250530785562,917,1884,266,592,-2.414871720069367,True,2801,False
+Q2,44,FHA,Home improvement,0.3529411764705882,0.1666666666666666,17,24,6,4,18.62745098039216,False,41,False
+Q2,44,FHA,Home purchase,0.0689655172413793,0.0669087861433161,5307,7159,366,479,0.2056731098063202,False,12466,False
+Q2,44,FHA,Other purpose,0.5357142857142857,0.3548387096774194,28,31,15,11,18.087557603686637,False,59,False
+Q2,44,FHA,Refinancing,0.2894736842105263,0.3647798742138364,152,318,44,116,-7.530619000331012,True,470,False
+Q2,44,RHS/FSA,Home purchase,0.1225296442687747,0.1033434650455927,253,329,31,34,1.9186179223182,False,582,False
+Q2,44,RHS/FSA,Refinancing,,0.0,0,2,0,0,,,2,True
+Q2,44,VA,Cash-out refinancing,0.2553191489361702,0.2963311382878645,423,1063,108,315,-4.101198935169437,True,1486,False
+Q2,44,VA,Home improvement,,0.3333333333333333,0,3,0,1,,,3,True
+Q2,44,VA,Home purchase,0.057396928051738,0.0692584122835674,1237,3061,71,212,-1.186148423182939,True,4298,False
+Q2,44,VA,Other purpose,,0.6,0,5,0,3,,,5,True
+Q2,44,VA,Refinancing,0.4444444444444444,0.3225806451612903,9,31,4,10,12.18637992831541,False,40,False
+Q2,45,Conventional,Cash-out refinancing,0.1921097770154373,0.2283378746594005,1749,3670,336,838,-3.6228097643963175,True,5419,False
+Q2,45,Conventional,Home improvement,0.2096866096866096,0.2625029911462072,1755,4179,368,1097,-5.2816381459597554,True,5934,False
+Q2,45,Conventional,Home purchase,0.1004323899371069,0.0771532132788677,10176,17381,1022,1341,2.3279176658239185,False,27557,False
+Q2,45,Conventional,Not applicable,0.3333333333333333,0.6666666666666666,3,3,1,2,-33.33333333333333,True,6,True
+Q2,45,Conventional,Other purpose,0.2513586956521739,0.3084805653710247,2208,5660,555,1746,-5.712186971885086,True,7868,False
+Q2,45,Conventional,Refinancing,0.1412213740458015,0.1899193548387096,1310,2480,185,471,-4.869798079290813,True,3790,False
+Q2,45,FHA,Cash-out refinancing,0.2426383981154299,0.2902869757174393,849,1812,206,526,-4.764857760200936,True,2661,False
+Q2,45,FHA,Home improvement,0.5,0.3333333333333333,2,21,1,7,16.666666666666668,False,23,True
+Q2,45,FHA,Home purchase,0.0713669685209141,0.081714560924707,4638,6229,331,509,-1.034759240379282,True,10867,False
+Q2,45,FHA,Other purpose,0.2857142857142857,0.4615384615384615,14,39,4,18,-17.582417582417587,True,53,False
+Q2,45,FHA,Refinancing,0.2848484848484848,0.3236245954692556,165,309,47,100,-3.87761106207708,True,474,False
+Q2,45,RHS/FSA,Home purchase,0.083743842364532,0.0752212389380531,203,226,17,17,0.8522603426478912,False,429,False
+Q2,45,RHS/FSA,Refinancing,,0.0,0,1,0,0,,,1,True
+Q2,45,VA,Cash-out refinancing,0.2433862433862433,0.3147751605995717,378,934,92,294,-7.138891721332835,True,1312,False
+Q2,45,VA,Home improvement,0.0,0.0,4,2,0,0,0.0,False,6,True
+Q2,45,VA,Home purchase,0.0517826825127334,0.0626434896687438,1178,3049,61,191,-1.08608071560104,True,4227,False
+Q2,45,VA,Other purpose,0.0,0.0,1,7,0,0,0.0,False,8,True
+Q2,45,VA,Refinancing,0.4166666666666667,0.3214285714285714,12,28,5,9,9.523809523809524,False,40,False
+Q2,46,Conventional,Cash-out refinancing,0.215,0.2508436445444319,1600,3556,344,892,-3.5843644544431923,True,5156,False
+Q2,46,Conventional,Home improvement,0.272005772005772,0.3179239931934203,1386,3526,377,1121,-4.591822118764827,True,4912,False
+Q2,46,Conventional,Home purchase,0.100555934848337,0.0851764705882353,10253,17000,1031,1448,1.537946426010177,False,27253,False
+Q2,46,Conventional,Not applicable,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q2,46,Conventional,Other purpose,0.2930123311802701,0.3486828014564146,1703,4669,499,1628,-5.567047027614458,True,6372,False
+Q2,46,Conventional,Refinancing,0.1757289204097714,0.2137870855148342,1269,2292,223,490,-3.805816510506274,True,3561,False
+Q2,46,FHA,Cash-out refinancing,0.2820236813778256,0.2845330739299611,929,2056,262,585,-0.2509392552135447,True,2985,False
+Q2,46,FHA,Home improvement,0.5,0.5263157894736842,12,19,6,10,-2.631578947368418,True,31,False
+Q2,46,FHA,Home purchase,0.0661255196990694,0.0811953763744009,5051,7094,334,576,-1.5069856675331408,True,12145,False
+Q2,46,FHA,Other purpose,0.5,0.358974358974359,16,39,8,14,14.102564102564102,False,55,False
+Q2,46,FHA,Refinancing,0.3463687150837989,0.3482142857142857,179,336,62,117,-0.1845570630486792,True,515,False
+Q2,46,RHS/FSA,Home purchase,0.2112676056338028,0.2727272727272727,71,99,15,27,-6.14596670934699,True,170,False
+Q2,46,VA,Cash-out refinancing,0.2707317073170732,0.3001912045889101,410,1046,111,314,-2.9459497271836943,True,1456,False
+Q2,46,VA,Home improvement,,0.0,0,3,0,0,,,3,True
+Q2,46,VA,Home purchase,0.0362095531587057,0.0598933835058011,1298,3189,47,191,-2.3683830347095496,True,4487,False
+Q2,46,VA,Other purpose,0.6666666666666666,0.5,3,10,2,5,16.666666666666664,False,13,True
+Q2,46,VA,Refinancing,0.3076923076923077,0.24,13,25,4,6,6.769230769230772,False,38,False
+Q2,47,Conventional,Cash-out refinancing,0.2069954128440367,0.241675338189386,1744,3844,361,929,-3.467992534534936,True,5588,False
+Q2,47,Conventional,Home improvement,0.2740631888317413,0.3082531350247885,1361,3429,373,1057,-3.418994619304722,True,4790,False
+Q2,47,Conventional,Home purchase,0.0988314158891204,0.0799542807380395,11039,18373,1091,1469,1.8877135151080875,False,29412,False
+Q2,47,Conventional,Not applicable,1.0,1.0,1,1,1,1,0.0,False,2,True
+Q2,47,Conventional,Other purpose,0.2924311926605504,0.3442851453604141,1744,5022,510,1729,-5.185395269986371,True,6766,False
+Q2,47,Conventional,Refinancing,0.1891891891891892,0.216148023549201,1258,2378,238,514,-2.695883436001181,True,3636,False
+Q2,47,FHA,Cash-out refinancing,0.232,0.3185792349726776,875,1830,203,583,-8.657923497267758,True,2705,False
+Q2,47,FHA,Home improvement,0.2,0.3636363636363636,10,22,2,8,-16.363636363636363,True,32,False
+Q2,47,FHA,Home purchase,0.0689386562804284,0.0768901569186875,5135,7010,354,539,-0.7951500638259155,True,12145,False
+Q2,47,FHA,Not applicable,1.0,,1,0,1,0,,,1,True
+Q2,47,FHA,Other purpose,0.3888888888888889,0.4375,18,32,7,14,-4.861111111111111,True,50,False
+Q2,47,FHA,Refinancing,0.3,0.3355048859934853,160,307,48,103,-3.5504885993485336,True,467,False
+Q2,47,RHS/FSA,Home purchase,0.2592592592592592,0.2079207920792079,81,101,21,21,5.133846718005134,False,182,False
+Q2,47,VA,Cash-out refinancing,0.2770448548812665,0.257286432160804,379,995,105,256,1.9758422720462463,False,1374,False
+Q2,47,VA,Home improvement,0.0,0.4,1,5,0,2,-40.0,True,6,True
+Q2,47,VA,Home purchase,0.0399079048349961,0.0632872503840245,1303,3255,52,206,-2.3379345549028416,True,4558,False
+Q2,47,VA,Other purpose,0.0,0.3333333333333333,2,3,0,1,-33.33333333333333,True,5,True
+Q2,47,VA,Refinancing,0.3157894736842105,0.4166666666666667,19,36,6,15,-10.087719298245618,True,55,False
+Q2,48,Conventional,Cash-out refinancing,0.204356846473029,0.2260447933502655,1928,4331,394,979,-2.1687946877236493,True,6259,False
+Q2,48,Conventional,Home improvement,0.2517938682322244,0.3101026472177201,1533,3702,386,1148,-5.830877898549574,True,5235,False
+Q2,48,Conventional,Home purchase,0.106225583908237,0.0816053179878956,12031,20158,1278,1645,2.462026592034143,False,32189,False
+Q2,48,Conventional,Not applicable,0.0,0.0,2,1,0,0,0.0,False,3,True
+Q2,48,Conventional,Other purpose,0.2978260869565217,0.3478751410304626,1840,5318,548,1850,-5.004905407394084,True,7158,False
+Q2,48,Conventional,Refinancing,0.1766975308641975,0.2003992015968063,1296,2505,229,502,-2.3701670732608844,True,3801,False
+Q2,48,FHA,Cash-out refinancing,0.2770053475935828,0.3145888594164456,935,1885,259,593,-3.7583511822862734,True,2820,False
+Q2,48,FHA,Home improvement,0.4444444444444444,0.4666666666666667,9,15,4,7,-2.222222222222225,True,24,True
+Q2,48,FHA,Home purchase,0.0755803156917363,0.0777991218441273,5385,7288,407,567,-0.2218806152391034,True,12673,False
+Q2,48,FHA,Other purpose,0.2777777777777778,0.4761904761904761,18,42,5,20,-19.84126984126984,True,60,False
+Q2,48,FHA,Refinancing,0.25,0.3595166163141994,152,331,38,119,-10.95166163141994,True,483,False
+Q2,48,RHS/FSA,Home purchase,0.3283582089552239,0.1967213114754098,67,61,22,12,13.163689747981405,False,128,False
+Q2,48,VA,Cash-out refinancing,0.2511737089201878,0.3014861995753715,426,942,107,284,-5.031249065518373,True,1368,False
+Q2,48,VA,Home improvement,0.5,0.0,2,2,1,0,50.0,False,4,True
+Q2,48,VA,Home purchase,0.0522827687776141,0.0568763165814023,1358,3323,71,189,-0.4593547803788206,True,4681,False
+Q2,48,VA,Other purpose,0.6666666666666666,0.0,3,2,2,0,66.66666666666666,False,5,True
+Q2,48,VA,Refinancing,0.5384615384615384,0.1052631578947368,13,19,7,2,43.31983805668016,False,32,False
+Q2,49,Conventional,Cash-out refinancing,0.167410050550104,0.1857994299041202,3363,7718,563,1434,-1.838937935401616,True,11081,False
+Q2,49,Conventional,Home improvement,0.1899304134261154,0.2478941034897713,2443,6648,464,1648,-5.796369006365593,True,9091,False
+Q2,49,Conventional,Home purchase,0.0708075209216389,0.0635075720566683,18402,32752,1303,2080,0.7299948864970665,False,51154,False
+Q2,49,Conventional,Not applicable,0.0,0.375,1,8,0,3,-37.5,True,9,True
+Q2,49,Conventional,Other purpose,0.2441106179583475,0.2687024409526633,2929,10119,715,2719,-2.4591822994315757,True,13048,False
+Q2,49,Conventional,Refinancing,0.145852324521422,0.1659477290027911,2194,3941,320,654,-2.0095404481369123,True,6135,False
+Q2,49,FHA,Cash-out refinancing,0.287321063394683,0.3159509202453988,978,1956,281,618,-2.862985685071573,True,2934,False
+Q2,49,FHA,Home improvement,0.5625,0.4736842105263157,16,19,9,9,8.881578947368423,False,35,False
+Q2,49,FHA,Home purchase,0.0745517458320226,0.0855446927374301,6358,8592,474,735,-1.0992946905407517,True,14950,False
+Q2,49,FHA,Other purpose,0.3636363636363636,0.4516129032258064,22,31,8,14,-8.797653958944279,True,53,False
+Q2,49,FHA,Refinancing,0.3184357541899441,0.3603351955307262,179,358,57,129,-4.18994413407821,True,537,False
+Q2,49,RHS/FSA,Home purchase,0.3333333333333333,0.3181818181818182,51,44,17,14,1.5151515151515138,False,95,False
+Q2,49,RHS/FSA,Refinancing,0.0,,1,0,0,0,,,1,True
+Q2,49,VA,Cash-out refinancing,0.1761904761904762,0.3026819923371647,420,1044,74,316,-12.649151614668854,True,1464,False
+Q2,49,VA,Home improvement,0.5,0.75,2,4,1,3,-25.0,True,6,True
+Q2,49,VA,Home purchase,0.0600139567341242,0.0656299420137058,1433,3794,86,249,-0.5615985279581639,True,5227,False
+Q2,49,VA,Other purpose,1.0,0.6666666666666666,2,6,2,4,33.333333333333336,False,8,True
+Q2,49,VA,Refinancing,0.2142857142857142,0.25,14,24,3,6,-3.5714285714285725,True,38,False
+Q2,50%-60%,Conventional,Cash-out refinancing,0.6994665085951393,0.7314022383146808,3374,7595,2360,5555,-3.1935729719541506,True,10969,False
+Q2,50%-60%,Conventional,Home improvement,0.5109576304954178,0.5685322520407619,7529,18743,3847,10656,-5.75746215453441,True,26272,False
+Q2,50%-60%,Conventional,Home purchase,0.5667686034658511,0.6116881318376957,12753,14442,7228,8834,-4.491952837184455,True,27195,False
+Q2,50%-60%,Conventional,Not applicable,0.5,0.5454545454545454,4,11,2,6,-4.545454545454541,True,15,True
+Q2,50%-60%,Conventional,Other purpose,0.5754687003495392,0.604050736497545,9441,24440,5433,14763,-2.8582036148005807,True,33881,False
+Q2,50%-60%,Conventional,Refinancing,0.4906937394247039,0.5966087788869137,4137,7313,2030,4363,-10.591503946220977,True,11450,False
+Q2,50%-60%,FHA,Cash-out refinancing,0.3306783850590497,0.3444507121703568,7282,14182,2408,4885,-1.3772327111307048,True,21464,False
+Q2,50%-60%,FHA,Home improvement,0.4716981132075472,0.453125,53,128,25,58,1.8573113207547176,False,181,False
+Q2,50%-60%,FHA,Home purchase,0.1085046992240518,0.1069167267772701,39049,49908,4237,5336,0.1587972446781646,False,88957,False
+Q2,50%-60%,FHA,Other purpose,0.3941605839416058,0.4838709677419355,137,217,54,105,-8.971038380032963,True,354,False
+Q2,50%-60%,FHA,Refinancing,0.3764614185502728,0.4052013422818792,1283,2384,483,966,-2.8739923731606387,True,3667,False
+Q2,50%-60%,RHS/FSA,Home purchase,0.3671497584541063,0.4027149321266968,207,221,76,89,-3.5565173672590547,True,428,False
+Q2,50%-60%,RHS/FSA,Other purpose,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q2,50%-60%,RHS/FSA,Refinancing,0.6666666666666666,,3,0,2,0,,,3,True
+Q2,50%-60%,VA,Cash-out refinancing,0.2756307888853401,0.3567484662576687,3131,6520,863,2326,-8.111767737232856,True,9651,False
+Q2,50%-60%,VA,Home improvement,0.1666666666666666,0.1333333333333333,6,15,1,2,3.3333333333333326,False,21,True
+Q2,50%-60%,VA,Home purchase,0.0627490963017888,0.0741537771800044,10789,22305,677,1654,-1.1404680878215625,True,33094,False
+Q2,50%-60%,VA,Other purpose,0.6363636363636364,0.4146341463414634,11,41,7,17,22.172949002217297,False,52,False
+Q2,50%-60%,VA,Refinancing,0.2135922330097087,0.3434343434343434,103,198,22,68,-12.98421104246347,True,301,False
+Q2,<20%,Conventional,Cash-out refinancing,0.254071661237785,0.3709976184175708,1842,3779,468,1402,-11.692595717978577,True,5621,False
+Q2,<20%,Conventional,Home improvement,0.2836585365853658,0.4651844612753482,4100,8186,1163,3808,-18.15259246899824,True,12286,False
+Q2,<20%,Conventional,Home purchase,0.406468124709167,0.2950671292804344,8596,13258,3494,3912,11.14009954287326,False,21854,False
+Q2,<20%,Conventional,Not applicable,0.9047619047619048,0.9230769230769232,21,26,19,24,-1.831501831501836,True,47,False
+Q2,<20%,Conventional,Other purpose,0.3028475711892797,0.4873573851372186,2985,6486,904,3161,-18.450981394793885,True,9471,False
+Q2,<20%,Conventional,Refinancing,0.1386785960082587,0.2547114252061248,2906,3396,403,865,-11.603282919786606,True,6302,False
+Q2,<20%,FHA,Cash-out refinancing,0.5162907268170426,0.5679475164011246,399,1067,206,606,-5.165678958408204,True,1466,False
+Q2,<20%,FHA,Home improvement,0.1666666666666666,0.4411764705882353,30,68,5,30,-27.450980392156865,True,98,False
+Q2,<20%,FHA,Home purchase,0.2073490813648294,0.224233983286908,381,718,79,161,-1.6884901922078672,True,1099,False
+Q2,<20%,FHA,Not applicable,1.0,1.0,14,12,14,12,0.0,False,26,True
+Q2,<20%,FHA,Other purpose,0.4239130434782608,0.6042402826855123,92,283,39,171,-18.032723920725147,True,375,False
+Q2,<20%,FHA,Refinancing,0.7088607594936709,0.8294930875576036,79,217,56,180,-12.063232806393277,True,296,False
+Q2,<20%,RHS/FSA,Cash-out refinancing,,1.0,0,3,0,3,,,3,True
+Q2,<20%,RHS/FSA,Home purchase,0.1042944785276073,0.1184210526315789,163,152,17,18,-1.4126574103971583,True,315,False
+Q2,<20%,RHS/FSA,Not applicable,1.0,,1,0,1,0,,,1,True
+Q2,<20%,RHS/FSA,Refinancing,0.0,0.0,3,1,0,0,0.0,False,4,True
+Q2,<20%,VA,Cash-out refinancing,0.5217391304347826,0.5762411347517731,230,564,120,325,-5.450200431699049,True,794,False
+Q2,<20%,VA,Home improvement,,0.75,0,4,0,3,,,4,True
+Q2,<20%,VA,Home purchase,0.0714285714285714,0.112087912087912,224,455,16,51,-4.065934065934067,True,679,False
+Q2,<20%,VA,Not applicable,1.0,,1,0,1,0,,,1,True
+Q2,<20%,VA,Other purpose,0.6,0.6666666666666666,5,18,3,12,-6.666666666666665,True,23,True
+Q2,<20%,VA,Refinancing,0.25,0.5757575757575758,8,33,2,19,-32.57575757575758,True,41,False
+Q2,>60%,Conventional,Cash-out refinancing,0.9136351013607332,0.917973286875726,3601,6888,3290,6323,-0.4338185514992765,True,10489,False
+Q2,>60%,Conventional,Home improvement,0.9196387745770462,0.9385915227036722,8748,21186,8045,19885,-1.8952748126625951,True,29934,False
+Q2,>60%,Conventional,Home purchase,0.8902103400825634,0.92362008094377,10174,11613,9057,10726,-3.340974086120652,True,21787,False
+Q2,>60%,Conventional,Not applicable,1.0,0.8888888888888888,2,9,2,8,11.111111111111116,False,11,True
+Q2,>60%,Conventional,Other purpose,0.925195787199568,0.9484464260833216,11109,28708,10278,27228,-2.3250638883753783,True,39817,False
+Q2,>60%,Conventional,Refinancing,0.8645960211124645,0.9126888942192372,4926,8338,4259,7610,-4.809287310677279,True,13264,False
+Q2,>60%,FHA,Cash-out refinancing,0.96875,0.98,1376,2250,1333,2205,-1.1249999999999982,True,3626,False
+Q2,>60%,FHA,Home improvement,1.0,1.0,27,51,27,51,0.0,False,78,False
+Q2,>60%,FHA,Home purchase,0.9742895805142084,0.9756877799104288,3695,3126,3600,3050,-0.1398199396220212,True,6821,False
+Q2,>60%,FHA,Other purpose,0.9591836734693876,0.979591836734694,49,98,47,96,-2.0408163265306145,True,147,False
+Q2,>60%,FHA,Refinancing,0.9745222929936306,0.975095785440613,314,522,306,509,-0.0573492446982459,True,836,False
+Q2,>60%,RHS/FSA,Home purchase,0.8928571428571429,0.8064516129032258,28,31,25,25,8.640552995391715,False,59,False
+Q2,>60%,RHS/FSA,Refinancing,,1.0,0,1,0,1,,,1,True
+Q2,>60%,VA,Cash-out refinancing,0.7301587301587301,0.8618485742379548,1260,2034,920,1753,-13.16898440792247,True,3294,False
+Q2,>60%,VA,Home improvement,0.8571428571428571,0.7142857142857143,7,7,6,5,14.28571428571428,False,14,True
+Q2,>60%,VA,Home purchase,0.3241877256317689,0.3944819489286763,2770,3407,898,1344,-7.029422329690732,True,6177,False
+Q2,>60%,VA,Other purpose,0.8461538461538461,1.0,13,33,11,33,-15.384615384615383,True,46,False
+Q2,>60%,VA,Refinancing,0.75,0.8372093023255814,48,86,36,72,-8.720930232558144,True,134,False
+Q2,Not reported,Conventional,Cash-out refinancing,0.5733629300776915,0.7564281073053003,4505,10773,2583,8149,-18.306517722760884,True,15278,False
+Q2,Not reported,Conventional,Home improvement,0.3437902879243661,0.4912956975876648,4654,8042,1600,3951,-14.750540966329869,True,12696,False
+Q2,Not reported,Conventional,Home purchase,0.202189841113032,0.1741448552832017,12147,14442,2456,2515,2.8044985829830256,False,26589,False
+Q2,Not reported,Conventional,Not applicable,0.6,0.6923076923076923,5,13,3,9,-9.230769230769232,True,18,True
+Q2,Not reported,Conventional,Other purpose,0.4234724742891712,0.5943893693313647,4959,9482,2100,5636,-17.091689504219342,True,14441,False
+Q2,Not reported,Conventional,Refinancing,0.1779301997175711,0.2634399308556612,4957,5785,882,1524,-8.550973113809007,True,10742,False
+Q2,Not reported,FHA,Cash-out refinancing,0.9161793372319688,0.9605215501629843,1026,2761,940,2652,-4.4342212931015705,True,3787,False
+Q2,Not reported,FHA,Home improvement,0.2666666666666666,0.5,30,30,8,15,-23.33333333333333,True,60,False
+Q2,Not reported,FHA,Home purchase,0.2506631299734748,0.2674743709226468,754,1073,189,287,-1.6811240949172024,True,1827,False
+Q2,Not reported,FHA,Not applicable,,1.0,0,1,0,1,,,1,True
+Q2,Not reported,FHA,Other purpose,0.1238938053097345,0.4375,113,48,14,21,-31.360619469026556,True,161,False
+Q2,Not reported,FHA,Refinancing,0.2698706099815157,0.567193675889328,541,506,146,287,-29.73230659078123,True,1047,False
+Q2,Not reported,RHS/FSA,Cash-out refinancing,1.0,1.0,1,1,1,1,0.0,False,2,True
+Q2,Not reported,RHS/FSA,Home improvement,1.0,,1,0,1,0,,,1,True
+Q2,Not reported,RHS/FSA,Home purchase,0.2571428571428571,0.1674418604651162,175,215,45,36,8.970099667774084,False,390,False
+Q2,Not reported,RHS/FSA,Not applicable,,0.0,0,1,0,0,,,1,True
+Q2,Not reported,RHS/FSA,Other purpose,,1.0,0,1,0,1,,,1,True
+Q2,Not reported,RHS/FSA,Refinancing,1.0,0.5,5,4,5,2,50.0,False,9,True
+Q2,Not reported,VA,Cash-out refinancing,0.967741935483871,0.9758883248730964,279,788,270,769,-0.8146389389225406,True,1067,False
+Q2,Not reported,VA,Home improvement,,0.0,0,2,0,0,,,2,True
+Q2,Not reported,VA,Home purchase,0.2191780821917808,0.2052785923753665,146,341,32,70,1.3899489816414228,False,487,False
+Q2,Not reported,VA,Other purpose,0.0,0.6666666666666666,1,3,0,2,-66.66666666666666,True,4,True
+Q2,Not reported,VA,Refinancing,0.8,0.8135593220338984,20,59,16,48,-1.3559322033898311,True,79,False
+Q3,20%-<30%,Conventional,Cash-out refinancing,0.1327699683107174,0.1770258495498112,12307,13772,1634,2438,-4.425588123909375,True,26079,False
+Q3,20%-<30%,Conventional,Home improvement,0.1652694610778443,0.2323692833736999,23380,21057,3864,4893,-6.709982229585565,True,44437,False
+Q3,20%-<30%,Conventional,Home purchase,0.0860929518093809,0.0746050538310703,55986,54058,4820,4033,1.1487897978310582,False,110044,False
+Q3,20%-<30%,Conventional,Not applicable,0.0,0.1818181818181818,8,11,0,2,-18.181818181818183,True,19,True
+Q3,20%-<30%,Conventional,Other purpose,0.1936064835659612,0.2662375045794735,17768,19107,3440,5087,-7.263102101351221,True,36875,False
+Q3,20%-<30%,Conventional,Refinancing,0.0982331127753944,0.1413414853443625,13753,11122,1351,1572,-4.310837256896807,True,24875,False
+Q3,20%-<30%,FHA,Cash-out refinancing,0.2748798901853123,0.3573468740082513,2914,3151,801,1126,-8.246698382293904,True,6065,False
+Q3,20%-<30%,FHA,Home improvement,0.2,0.4722222222222222,40,36,8,17,-27.22222222222222,True,76,False
+Q3,20%-<30%,FHA,Home purchase,0.0598853868194842,0.0841229936182556,6980,5171,418,435,-2.423760679877142,True,12151,False
+Q3,20%-<30%,FHA,Not applicable,,1.0,0,1,0,1,,,1,True
+Q3,20%-<30%,FHA,Other purpose,0.4166666666666667,0.5,84,106,35,53,-8.333333333333332,True,190,False
+Q3,20%-<30%,FHA,Refinancing,0.3805496828752642,0.4186046511627907,473,516,180,216,-3.805496828752647,True,989,False
+Q3,20%-<30%,RHS/FSA,Cash-out refinancing,0.0,,1,0,0,0,,,1,True
+Q3,20%-<30%,RHS/FSA,Home purchase,0.1751269035532995,0.1627906976744186,394,172,69,28,1.2336205878880873,False,566,False
+Q3,20%-<30%,RHS/FSA,Refinancing,0.2,1.0,5,1,1,1,-80.0,True,6,True
+Q3,20%-<30%,VA,Cash-out refinancing,0.3145251396648044,0.3403225806451613,1790,2480,563,844,-2.5797440980356856,True,4270,False
+Q3,20%-<30%,VA,Home improvement,0.2727272727272727,0.8333333333333334,11,6,3,5,-56.06060606060607,True,17,True
+Q3,20%-<30%,VA,Home purchase,0.0428434197886647,0.0608070757324488,5205,5427,223,330,-1.7963655943784125,True,10632,False
+Q3,20%-<30%,VA,Other purpose,0.0,0.40625,11,32,0,13,-40.625,True,43,False
+Q3,20%-<30%,VA,Refinancing,0.3118279569892473,0.3707865168539326,93,89,29,33,-5.895855986468529,True,182,False
+Q3,30%-<36%,Conventional,Cash-out refinancing,0.1205206962117887,0.1679159416410119,13674,14942,1648,2509,-4.739524542922313,True,28616,False
+Q3,30%-<36%,Conventional,Home improvement,0.1721044849679645,0.2151781582600647,20290,19449,3492,4185,-4.3073673292100265,True,39739,False
+Q3,30%-<36%,Conventional,Home purchase,0.0627492730364037,0.0620318185060997,62933,56068,3949,3478,0.0717454530304056,False,119001,False
+Q3,30%-<36%,Conventional,Not applicable,0.125,0.1538461538461538,8,13,1,2,-2.884615384615385,True,21,True
+Q3,30%-<36%,Conventional,Other purpose,0.1971062115751537,0.243510158013544,18868,21264,3719,5178,-4.640394643839032,True,40132,False
+Q3,30%-<36%,Conventional,Refinancing,0.1030887730490936,0.1347982062780269,12853,11150,1325,1503,-3.170943322893331,True,24003,False
+Q3,30%-<36%,FHA,Cash-out refinancing,0.2597623089983022,0.3297532656023222,3534,3445,918,1136,-6.999095660401999,True,6979,False
+Q3,30%-<36%,FHA,Home improvement,0.1860465116279069,0.4871794871794871,43,39,8,19,-30.11329755515802,True,82,False
+Q3,30%-<36%,FHA,Home purchase,0.0497033158813263,0.076695466919162,14325,8449,712,648,-2.699215103783568,True,22774,False
+Q3,30%-<36%,FHA,Other purpose,0.3230769230769231,0.5076923076923077,65,65,21,33,-18.461538461538456,True,130,False
+Q3,30%-<36%,FHA,Refinancing,0.2547528517110266,0.2919161676646706,789,668,201,195,-3.7163315953644025,True,1457,False
+Q3,30%-<36%,RHS/FSA,Home purchase,0.1562064156206415,0.1237785016286645,717,307,112,38,3.242791399197706,False,1024,False
+Q3,30%-<36%,RHS/FSA,Refinancing,0.0,0.0,4,1,0,0,0.0,False,5,True
+Q3,30%-<36%,VA,Cash-out refinancing,0.2548823234852278,0.2990690457719162,1997,2578,509,771,-4.418672228668841,True,4575,False
+Q3,30%-<36%,VA,Home improvement,0.2857142857142857,0.1666666666666666,7,12,2,2,11.904761904761903,False,19,True
+Q3,30%-<36%,VA,Home purchase,0.0405859427496304,0.0533037201554691,7441,7204,302,384,-1.2717777405838755,True,14645,False
+Q3,30%-<36%,VA,Other purpose,0.4,0.4,15,25,6,10,0.0,False,40,False
+Q3,30%-<36%,VA,Refinancing,0.303030303030303,0.3737373737373737,99,99,30,37,-7.070707070707072,True,198,False
+Q3,36,Conventional,Cash-out refinancing,0.1390895953757225,0.1616194865042791,2768,3038,385,491,-2.2529891128556576,True,5806,False
+Q3,36,Conventional,Home improvement,0.1748431260695949,0.2231614539306847,3506,3549,613,792,-4.831832786108972,True,7055,False
+Q3,36,Conventional,Home purchase,0.0586327142972994,0.0592524227041993,12331,10835,723,642,-0.0619708406899864,True,23166,False
+Q3,36,Conventional,Not applicable,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q3,36,Conventional,Other purpose,0.1947666576746695,0.2463699119257319,3707,4201,722,1035,-5.160325425106241,True,7908,False
+Q3,36,Conventional,Refinancing,0.1083743842364532,0.1343216531895777,2436,2226,264,299,-2.594726895312452,True,4662,False
+Q3,36,FHA,Cash-out refinancing,0.2324561403508772,0.3273542600896861,684,669,159,219,-9.48981197388089,True,1353,False
+Q3,36,FHA,Home improvement,0.3333333333333333,0.6666666666666666,6,6,2,4,-33.33333333333333,True,12,True
+Q3,36,FHA,Home purchase,0.0519962859795728,0.0767289247854619,3231,1981,168,152,-2.473263880588901,True,5212,False
+Q3,36,FHA,Other purpose,0.5,0.3846153846153846,8,13,4,5,11.538461538461537,False,21,True
+Q3,36,FHA,Refinancing,0.2254901960784313,0.3357142857142857,204,140,46,47,-11.02240896358543,True,344,False
+Q3,36,RHS/FSA,Home purchase,0.1666666666666666,0.0983606557377049,162,61,27,6,6.830601092896174,False,223,False
+Q3,36,RHS/FSA,Refinancing,0.0,,2,0,0,0,,,2,True
+Q3,36,VA,Cash-out refinancing,0.2517985611510791,0.2568421052631578,417,475,105,122,-0.5043544112078746,True,892,False
+Q3,36,VA,Home improvement,0.0,0.3333333333333333,2,3,0,1,-33.33333333333333,True,5,True
+Q3,36,VA,Home purchase,0.0382293762575452,0.0649895178197065,1491,1431,57,93,-2.676014156216122,True,2922,False
+Q3,36,VA,Other purpose,0.25,1.0,4,2,1,2,-75.0,True,6,True
+Q3,36,VA,Refinancing,0.3076923076923077,0.3809523809523809,13,21,4,8,-7.326007326007322,True,34,False
+Q3,37,Conventional,Cash-out refinancing,0.1202641640597845,0.1532184950135992,2877,3309,346,507,-3.295433095381477,True,6186,False
+Q3,37,Conventional,Home improvement,0.1804961505560308,0.2230215827338129,3507,3614,633,806,-4.252543217778215,True,7121,False
+Q3,37,Conventional,Home purchase,0.0609775263240609,0.0592251086089192,12726,11279,776,668,0.1752417715141743,False,24005,False
+Q3,37,Conventional,Not applicable,0.0,0.3333333333333333,1,3,0,1,-33.33333333333333,True,4,True
+Q3,37,Conventional,Other purpose,0.1993062966915688,0.2459016393442623,3748,4392,747,1080,-4.659534265269347,True,8140,False
+Q3,37,Conventional,Refinancing,0.1078753076292042,0.1200521966072205,2438,2299,263,276,-1.2176888978016265,True,4737,False
+Q3,37,FHA,Cash-out refinancing,0.2240896358543417,0.2958397534668721,714,649,160,192,-7.175011761253039,True,1363,False
+Q3,37,FHA,Home improvement,0.3333333333333333,0.3333333333333333,9,9,3,3,0.0,False,18,True
+Q3,37,FHA,Home purchase,0.0523349436392914,0.0747154873824839,3726,2021,195,151,-2.238054374319245,True,5747,False
+Q3,37,FHA,Other purpose,0.6666666666666666,0.2727272727272727,6,11,4,3,39.39393939393939,False,17,True
+Q3,37,FHA,Refinancing,0.270935960591133,0.3048780487804878,203,164,55,50,-3.3942088189354798,True,367,False
+Q3,37,RHS/FSA,Home purchase,0.1676300578034682,0.1341463414634146,173,82,29,11,3.3483716340053564,False,255,False
+Q3,37,VA,Cash-out refinancing,0.2627551020408163,0.2706611570247934,392,484,103,131,-0.7906054983977062,True,876,False
+Q3,37,VA,Home improvement,,0.0,0,1,0,0,,,1,True
+Q3,37,VA,Home purchase,0.0404040404040404,0.0454241816967267,1584,1497,64,68,-0.5020141292686381,True,3081,False
+Q3,37,VA,Not applicable,,0.0,0,1,0,0,,,1,True
+Q3,37,VA,Other purpose,0.6,0.3333333333333333,5,3,3,1,26.666666666666668,False,8,True
+Q3,37,VA,Refinancing,0.4545454545454545,0.28,11,25,5,7,17.45454545454545,False,36,False
+Q3,38,Conventional,Cash-out refinancing,0.118368700265252,0.1618514150943396,3016,3392,357,549,-4.348271482908762,True,6408,False
+Q3,38,Conventional,Home improvement,0.1737022247575584,0.2097457627118644,3506,3776,609,792,-3.6043537954305926,True,7282,False
+Q3,38,Conventional,Home purchase,0.0558170813718897,0.0591197152530601,13383,11519,747,681,-0.3302633881170448,True,24902,False
+Q3,38,Conventional,Not applicable,,0.0,0,1,0,0,,,1,True
+Q3,38,Conventional,Other purpose,0.2028802425467407,0.2382586317821145,3958,4663,803,1111,-3.537838923537373,True,8621,False
+Q3,38,Conventional,Refinancing,0.1174152876280535,0.1289775137887144,2538,2357,298,304,-1.1562226160660882,True,4895,False
+Q3,38,FHA,Cash-out refinancing,0.2374005305039787,0.2937853107344633,754,708,179,208,-5.638478023048451,True,1462,False
+Q3,38,FHA,Home improvement,0.2222222222222222,0.6,9,5,2,3,-37.77777777777778,True,14,True
+Q3,38,FHA,Home purchase,0.0543837357052096,0.0737284181054596,3935,2143,214,158,-1.9344682400249973,True,6078,False
+Q3,38,FHA,Other purpose,0.6,0.2941176470588235,10,17,6,5,30.588235294117645,False,27,True
+Q3,38,FHA,Refinancing,0.23,0.3,200,170,46,51,-6.999999999999998,True,370,False
+Q3,38,RHS/FSA,Home purchase,0.1016042780748663,0.0987654320987654,187,81,19,8,0.2838845976100887,False,268,False
+Q3,38,RHS/FSA,Refinancing,,0.5,0,2,0,1,,,2,True
+Q3,38,VA,Cash-out refinancing,0.2452380952380952,0.3058823529411765,420,510,103,156,-6.064425770308127,True,930,False
+Q3,38,VA,Home improvement,0.3333333333333333,0.0,3,2,1,0,33.33333333333333,False,5,True
+Q3,38,VA,Home purchase,0.0471859010801591,0.0570687418936446,1759,1542,83,88,-0.9882840813485436,True,3301,False
+Q3,38,VA,Not applicable,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q3,38,VA,Other purpose,0.0,0.0,2,4,0,0,0.0,False,6,True
+Q3,38,VA,Refinancing,0.4545454545454545,0.3636363636363636,11,11,5,4,9.090909090909088,False,22,True
+Q3,39,Conventional,Cash-out refinancing,0.1262562814070351,0.1550744248985115,3184,3695,402,573,-2.881814349147632,True,6879,False
+Q3,39,Conventional,Home improvement,0.1630727762803234,0.2203389830508474,3710,3953,605,871,-5.7266206770524,True,7663,False
+Q3,39,Conventional,Home purchase,0.0548793662225423,0.0633110174394578,13885,12099,762,766,-0.8431651216915491,True,25984,False
+Q3,39,Conventional,Not applicable,0.0,,1,0,0,0,,,1,True
+Q3,39,Conventional,Other purpose,0.1988197911938266,0.2377321603128054,4406,5115,876,1216,-3.891236911897889,True,9521,False
+Q3,39,Conventional,Refinancing,0.1113158864725396,0.1325301204819277,2713,2490,302,330,-2.12142340093881,True,5203,False
+Q3,39,FHA,Cash-out refinancing,0.3025,0.32,800,750,242,240,-1.7500000000000016,True,1550,False
+Q3,39,FHA,Home improvement,0.25,0.25,8,8,2,2,0.0,False,16,True
+Q3,39,FHA,Home purchase,0.047351720771296,0.0803229919252018,4097,2353,194,189,-3.2971271153905803,True,6450,False
+Q3,39,FHA,Other purpose,0.3333333333333333,0.3,12,10,4,3,3.3333333333333326,False,22,True
+Q3,39,FHA,Refinancing,0.270042194092827,0.3734939759036144,237,166,64,62,-10.345178181078746,True,403,False
+Q3,39,RHS/FSA,Cash-out refinancing,0.0,,1,0,0,0,,,1,True
+Q3,39,RHS/FSA,Home purchase,0.0917874396135265,0.1351351351351351,207,74,19,10,-4.334769552160857,True,281,False
+Q3,39,RHS/FSA,Refinancing,0.0,,2,0,0,0,,,2,True
+Q3,39,VA,Cash-out refinancing,0.258695652173913,0.3044280442804428,460,542,119,165,-4.573239210652974,True,1002,False
+Q3,39,VA,Home improvement,0.0,1.0,3,1,0,1,-100.0,True,4,True
+Q3,39,VA,Home purchase,0.0388127853881278,0.0560578661844484,1752,1659,68,93,-1.7245080796320609,True,3411,False
+Q3,39,VA,Not applicable,,0.0,0,1,0,0,,,1,True
+Q3,39,VA,Other purpose,,0.1666666666666666,0,6,0,1,,,6,True
+Q3,39,VA,Refinancing,0.1176470588235294,0.391304347826087,17,23,2,9,-27.36572890025576,True,40,False
+Q3,40,Conventional,Cash-out refinancing,0.125036949453148,0.1462593838985244,3383,3863,423,565,-2.122243444537639,True,7246,False
+Q3,40,Conventional,Home improvement,0.1875484370963575,0.2059038789948768,3871,4099,726,844,-1.835544189851929,True,7970,False
+Q3,40,Conventional,Home purchase,0.0594427679135377,0.0637975087831363,14249,12524,847,799,-0.4354740869598583,True,26773,False
+Q3,40,Conventional,Not applicable,0.25,0.0,4,1,1,0,25.0,False,5,True
+Q3,40,Conventional,Other purpose,0.2027303754266211,0.2444486619851964,4395,5269,891,1288,-4.171828655857526,True,9664,False
+Q3,40,Conventional,Refinancing,0.1069227981152591,0.1479650057055914,2759,2629,295,389,-4.104220759033233,True,5388,False
+Q3,40,FHA,Cash-out refinancing,0.2369020501138952,0.2906208718626156,878,757,208,220,-5.371882174872036,True,1635,False
+Q3,40,FHA,Home improvement,0.1666666666666666,0.25,6,8,1,2,-8.333333333333334,True,14,True
+Q3,40,FHA,Home purchase,0.0460387941107735,0.0877768662838392,4279,2438,197,214,-4.173807217306567,True,6717,False
+Q3,40,FHA,Other purpose,0.5,0.75,10,8,5,6,-25.0,True,18,True
+Q3,40,FHA,Refinancing,0.2489626556016597,0.3314285714285714,241,175,60,58,-8.246591582691165,True,416,False
+Q3,40,RHS/FSA,Home purchase,0.0804195804195804,0.0978260869565217,286,92,23,9,-1.7406506536941326,True,378,False
+Q3,40,VA,Cash-out refinancing,0.207852193995381,0.255731922398589,433,567,90,145,-4.787972840320798,True,1000,False
+Q3,40,VA,Home improvement,0.0,0.6666666666666666,2,3,0,2,-66.66666666666666,True,5,True
+Q3,40,VA,Home purchase,0.0545073375262054,0.0592592592592592,1908,1755,104,104,-0.4751921733053811,True,3663,False
+Q3,40,VA,Other purpose,0.5,0.3333333333333333,2,6,1,2,16.666666666666668,False,8,True
+Q3,40,VA,Refinancing,0.3461538461538461,0.5238095238095238,26,21,9,11,-17.76556776556777,True,47,False
+Q3,41,Conventional,Cash-out refinancing,0.1294757949011744,0.1605367793240556,3491,4024,452,646,-3.106098442288121,True,7515,False
+Q3,41,Conventional,Home improvement,0.194750656167979,0.2208825657101519,3810,4147,742,916,-2.61319095421729,True,7957,False
+Q3,41,Conventional,Home purchase,0.0512575177692728,0.0589171974522293,14632,13188,750,777,-0.7659679682956472,True,27820,False
+Q3,41,Conventional,Not applicable,0.0,0.0,4,2,0,0,0.0,False,6,True
+Q3,41,Conventional,Other purpose,0.2132001736864958,0.2425629290617849,4606,5681,982,1378,-2.936275537528901,True,10287,False
+Q3,41,Conventional,Refinancing,0.1190215407082877,0.1363287250384024,2739,2604,326,355,-1.7307184330114758,True,5343,False
+Q3,41,FHA,Cash-out refinancing,0.2453300124533001,0.3135483870967742,803,775,197,243,-6.821837464347405,True,1578,False
+Q3,41,FHA,Home improvement,0.1111111111111111,0.3333333333333333,9,9,1,3,-22.22222222222222,True,18,True
+Q3,41,FHA,Home purchase,0.0541001064962726,0.0790067720090293,4695,2658,254,210,-2.4906665512756723,True,7353,False
+Q3,41,FHA,Other purpose,0.3076923076923077,0.3333333333333333,13,9,4,3,-2.5641025641025603,True,22,True
+Q3,41,FHA,Refinancing,0.2330508474576271,0.3484848484848485,236,198,55,69,-11.54340010272214,True,434,False
+Q3,41,RHS/FSA,Home purchase,0.1809523809523809,0.1632653061224489,105,49,19,8,1.768707482993198,False,154,False
+Q3,41,RHS/FSA,Refinancing,,0.0,0,1,0,0,,,1,True
+Q3,41,VA,Cash-out refinancing,0.2634989200863931,0.3090211132437619,463,521,122,161,-4.552219315736888,True,984,False
+Q3,41,VA,Home improvement,0.0,,2,0,0,0,,,2,True
+Q3,41,VA,Home purchase,0.041182682154171,0.061132922041503,1894,1783,78,109,-1.9950239887332013,True,3677,False
+Q3,41,VA,Other purpose,0.5,1.0,2,2,1,2,-50.0,True,4,True
+Q3,41,VA,Refinancing,0.2307692307692307,0.5454545454545454,13,11,3,6,-31.468531468531463,True,24,True
+Q3,42,Conventional,Cash-out refinancing,0.12275664034458,0.1507177033492823,4179,4598,513,693,-2.796106300470226,True,8777,False
+Q3,42,Conventional,Home improvement,0.1741499564080209,0.2048050413548641,4588,5078,799,1040,-3.0655084946843214,True,9666,False
+Q3,42,Conventional,Home purchase,0.0559635350721701,0.0605628785179907,15796,14035,884,850,-0.4599343445820567,True,29831,False
+Q3,42,Conventional,Not applicable,,0.0,0,1,0,0,,,1,True
+Q3,42,Conventional,Other purpose,0.1983890737173875,0.2375037867312935,5711,6602,1133,1568,-3.911471301390604,True,12313,False
+Q3,42,Conventional,Refinancing,0.1120024683739586,0.1456466069142125,3241,3124,363,455,-3.3644138540253903,True,6365,False
+Q3,42,FHA,Cash-out refinancing,0.2470997679814385,0.3142523364485981,862,856,213,269,-6.7152568467159615,True,1718,False
+Q3,42,FHA,Home improvement,0.2,0.4444444444444444,10,9,2,4,-24.44444444444444,True,19,True
+Q3,42,FHA,Home purchase,0.0559071729957805,0.0805465659834591,4740,2781,265,224,-2.46393929876786,True,7521,False
+Q3,42,FHA,Other purpose,0.4285714285714285,0.4,14,20,6,8,2.8571428571428523,False,34,False
+Q3,42,FHA,Refinancing,0.2711864406779661,0.2974358974358974,236,195,64,58,-2.6249456757931333,True,431,False
+Q3,42,RHS/FSA,Home purchase,0.0833333333333333,0.1282051282051282,120,39,10,5,-4.487179487179486,True,159,False
+Q3,42,RHS/FSA,Refinancing,0.0,,1,0,0,0,,,1,True
+Q3,42,VA,Cash-out refinancing,0.2778947368421052,0.2804232804232804,475,567,132,159,-0.2528543581175158,True,1042,False
+Q3,42,VA,Home improvement,1.0,0.3333333333333333,1,3,1,1,66.66666666666667,False,4,True
+Q3,42,VA,Home purchase,0.0471014492753623,0.0616246498599439,1932,1785,91,110,-1.452320058458166,True,3717,False
+Q3,42,VA,Other purpose,0.6666666666666666,0.5,3,4,2,2,16.666666666666664,False,7,True
+Q3,42,VA,Refinancing,0.4,0.4166666666666667,20,24,8,10,-1.6666666666666663,True,44,False
+Q3,43,Conventional,Cash-out refinancing,0.1322806109241522,0.1569311246730601,3863,4588,511,720,-2.4650513748907947,True,8451,False
+Q3,43,Conventional,Home improvement,0.2031200254695956,0.2485395645246946,3141,3766,638,936,-4.541953905509896,True,6907,False
+Q3,43,Conventional,Home purchase,0.0576161091263397,0.0615351163296368,15395,13797,887,849,-0.3919007203297152,True,29192,False
+Q3,43,Conventional,Not applicable,0.0,,3,0,0,0,,,3,True
+Q3,43,Conventional,Other purpose,0.2396324807549044,0.2747420710737485,4027,5234,965,1438,-3.510959031884414,True,9261,False
+Q3,43,Conventional,Refinancing,0.1348497156783103,0.1708299758259468,2462,2482,332,424,-3.59802601476365,True,4944,False
+Q3,43,FHA,Cash-out refinancing,0.2538975501113585,0.2708600770218228,898,779,228,211,-1.6962526910464293,True,1677,False
+Q3,43,FHA,Home improvement,0.1538461538461538,0.8333333333333334,13,6,2,5,-67.94871794871796,True,19,True
+Q3,43,FHA,Home purchase,0.053554040895813,0.0918955578162088,5135,2949,275,271,-3.8341516920395833,True,8084,False
+Q3,43,FHA,Other purpose,0.1428571428571428,0.5714285714285714,7,7,1,4,-42.85714285714285,True,14,True
+Q3,43,FHA,Refinancing,0.248,0.3141361256544502,250,191,62,60,-6.613612565445026,True,441,False
+Q3,43,RHS/FSA,Home purchase,0.043859649122807,0.1627906976744186,114,43,5,7,-11.89310485516116,True,157,False
+Q3,43,VA,Cash-out refinancing,0.2266666666666666,0.2388349514563106,450,515,102,123,-1.216828478964402,True,965,False
+Q3,43,VA,Home improvement,0.5,,2,0,1,0,,,2,True
+Q3,43,VA,Home purchase,0.0454325761237312,0.0544290288153681,2069,1874,94,102,-0.8996452691636924,True,3943,False
+Q3,43,VA,Other purpose,0.0,1.0,1,1,0,1,-100.0,True,2,True
+Q3,43,VA,Refinancing,0.5,0.4782608695652174,12,23,6,11,2.1739130434782594,False,35,False
+Q3,44,Conventional,Cash-out refinancing,0.125390015600624,0.1519524617996604,5128,5890,643,895,-2.6562446199036414,True,11018,False
+Q3,44,Conventional,Home improvement,0.1747426562892292,0.2162805802121671,3983,4619,696,999,-4.153792392293792,True,8602,False
+Q3,44,Conventional,Home purchase,0.0491269791601476,0.0590301694448271,15979,14518,785,857,-0.9903190284679418,True,30497,False
+Q3,44,Conventional,Not applicable,0.5,0.3333333333333333,2,3,1,1,16.666666666666668,False,5,True
+Q3,44,Conventional,Other purpose,0.2176024868855644,0.248527304569336,5147,6281,1120,1561,-3.092481768377167,True,11428,False
+Q3,44,Conventional,Refinancing,0.1301939058171745,0.1632863526985218,2888,2909,376,475,-3.3092446881347297,True,5797,False
+Q3,44,FHA,Cash-out refinancing,0.2743455497382199,0.3100120627261761,955,829,262,257,-3.56665129879562,True,1784,False
+Q3,44,FHA,Home improvement,0.3333333333333333,0.4,9,10,3,4,-6.666666666666671,True,19,True
+Q3,44,FHA,Home purchase,0.0478207164284453,0.0710382513661202,5667,3111,271,221,-2.321753493767483,True,8778,False
+Q3,44,FHA,Other purpose,0.5,0.3333333333333333,10,12,5,4,16.666666666666668,False,22,True
+Q3,44,FHA,Refinancing,0.2575757575757575,0.2653061224489796,264,196,68,52,-0.773036487322204,True,460,False
+Q3,44,RHS/FSA,Home purchase,0.1,0.081081081081081,80,37,8,3,1.891891891891892,False,117,False
+Q3,44,RHS/FSA,Refinancing,0.0,,1,0,0,0,,,1,True
+Q3,44,VA,Cash-out refinancing,0.2294776119402985,0.2549019607843137,536,561,123,143,-2.5424348844015205,True,1097,False
+Q3,44,VA,Home improvement,,1.0,0,1,0,1,,,1,True
+Q3,44,VA,Home purchase,0.0442600276625172,0.0569843671205244,2169,1983,96,113,-1.2724339458007168,True,4152,False
+Q3,44,VA,Other purpose,0.3333333333333333,0.3333333333333333,3,3,1,1,0.0,False,6,True
+Q3,44,VA,Refinancing,0.2666666666666666,0.3333333333333333,15,18,4,6,-6.666666666666665,True,33,False
+Q3,45,Conventional,Cash-out refinancing,0.1868823000898472,0.2175171914585595,2226,2763,416,601,-3.063489136871228,True,4989,False
+Q3,45,Conventional,Home improvement,0.228656273199703,0.2701882210078931,2694,3294,616,890,-4.153194780819009,True,5988,False
+Q3,45,Conventional,Home purchase,0.0555946021928591,0.06534263189812,14228,13192,791,862,-0.9748029705260924,True,27420,False
+Q3,45,Conventional,Other purpose,0.2852816474863719,0.3056169836355595,3302,4522,942,1382,-2.033533614918759,True,7824,False
+Q3,45,Conventional,Refinancing,0.1531400966183574,0.1840133222314737,2070,2402,317,442,-3.0873225613116286,True,4472,False
+Q3,45,FHA,Cash-out refinancing,0.2198327359617682,0.3063725490196078,837,816,184,250,-8.653981305783965,True,1653,False
+Q3,45,FHA,Home improvement,0.2,0.5,5,10,1,5,-30.0,True,15,True
+Q3,45,FHA,Home purchase,0.060629615235134,0.0859819337571094,5146,2989,312,257,-2.535231852197532,True,8135,False
+Q3,45,FHA,Other purpose,0.3333333333333333,0.3333333333333333,9,12,3,4,0.0,False,21,True
+Q3,45,FHA,Refinancing,0.2386831275720164,0.3023255813953488,243,172,58,52,-6.3642453823332366,True,415,False
+Q3,45,RHS/FSA,Home purchase,0.2112676056338028,0.1818181818181818,71,22,15,4,2.944942381562099,False,93,False
+Q3,45,VA,Cash-out refinancing,0.2193396226415094,0.2628676470588235,424,544,93,143,-4.35280244173141,True,968,False
+Q3,45,VA,Home improvement,0.0,,1,0,0,0,,,1,True
+Q3,45,VA,Home purchase,0.0493023255813953,0.0651138168343038,2150,1889,106,123,-1.5811491252908518,True,4039,False
+Q3,45,VA,Other purpose,1.0,0.0,1,1,1,0,100.0,False,2,True
+Q3,45,VA,Refinancing,0.3125,0.1818181818181818,16,11,5,2,13.068181818181818,False,27,True
+Q3,46,Conventional,Cash-out refinancing,0.1974063400576368,0.2181282240235814,2082,2714,411,592,-2.0721883965944543,True,4796,False
+Q3,46,Conventional,Home improvement,0.2689035916824197,0.3043168034249019,2116,2803,569,853,-3.541321174248224,True,4919,False
+Q3,46,Conventional,Home purchase,0.0609292811221507,0.066977829638273,13688,12855,834,861,-0.6048548516122256,True,26543,False
+Q3,46,Conventional,Not applicable,0.0,0.0,1,3,0,0,0.0,False,4,True
+Q3,46,Conventional,Other purpose,0.3563308506468052,0.3349502170028082,2551,3917,909,1312,2.138063364399695,False,6468,False
+Q3,46,Conventional,Refinancing,0.1733187534171678,0.1985645933014354,1829,2090,317,415,-2.5245839884267567,True,3919,False
+Q3,46,FHA,Cash-out refinancing,0.2491694352159468,0.2895662368112544,903,853,225,247,-4.039680159530754,True,1756,False
+Q3,46,FHA,Home improvement,0.25,0.8,12,5,3,4,-55.00000000000001,True,17,True
+Q3,46,FHA,Home purchase,0.0619047619047619,0.0736707238949391,5460,3122,338,230,-1.1765961990177236,True,8582,False
+Q3,46,FHA,Other purpose,0.3636363636363636,0.4117647058823529,11,17,4,7,-4.812834224598928,True,28,True
+Q3,46,FHA,Refinancing,0.2231404958677686,0.3031674208144796,242,221,54,67,-8.002692494671102,True,463,False
+Q3,46,RHS/FSA,Home purchase,0.2058823529411764,0.1428571428571428,34,21,7,3,6.302521008403361,False,55,False
+Q3,46,VA,Cash-out refinancing,0.2419006479481641,0.2785977859778598,463,542,112,151,-3.6697138029695626,True,1005,False
+Q3,46,VA,Home improvement,0.5,0.0,2,2,1,0,50.0,False,4,True
+Q3,46,VA,Home purchase,0.0503261882572227,0.0473074987418218,2146,1987,108,94,0.3018689515400893,False,4133,False
+Q3,46,VA,Other purpose,0.5,0.1666666666666666,2,6,1,1,33.333333333333336,False,8,True
+Q3,46,VA,Refinancing,0.2222222222222222,0.2222222222222222,18,18,4,4,0.0,False,36,False
+Q3,47,Conventional,Cash-out refinancing,0.2004555808656036,0.2250673854447439,2195,2968,440,668,-2.461180457914031,True,5163,False
+Q3,47,Conventional,Home improvement,0.280295566502463,0.2994960403167747,2030,2778,569,832,-1.9200473814311612,True,4808,False
+Q3,47,Conventional,Home purchase,0.0578407032141179,0.0631547663273646,14903,13459,862,850,-0.5314063113246635,True,28362,False
+Q3,47,Conventional,Not applicable,0.0,0.0,2,2,0,0,0.0,False,4,True
+Q3,47,Conventional,Other purpose,0.3445566778900112,0.3295425827647207,2673,3957,921,1304,1.501409512529045,False,6630,False
+Q3,47,Conventional,Refinancing,0.180817610062893,0.1890424481737413,1908,2026,345,383,-0.8224838110848287,True,3934,False
+Q3,47,FHA,Cash-out refinancing,0.2251131221719457,0.3008423586040915,884,831,199,250,-7.572923643214577,True,1715,False
+Q3,47,FHA,Home improvement,0.25,0.4166666666666667,8,12,2,5,-16.666666666666668,True,20,True
+Q3,47,FHA,Home purchase,0.0640304734264465,0.0890649762282091,5513,3155,353,281,-2.5034502801762617,True,8668,False
+Q3,47,FHA,Other purpose,0.75,0.6923076923076923,12,13,9,9,5.769230769230771,False,25,True
+Q3,47,FHA,Refinancing,0.268,0.3172043010752688,250,186,67,59,-4.92043010752688,True,436,False
+Q3,47,RHS/FSA,Home purchase,0.1111111111111111,0.0666666666666666,45,15,5,1,4.444444444444444,False,60,False
+Q3,47,VA,Cash-out refinancing,0.184090909090909,0.2775800711743772,440,562,81,156,-9.348916208346814,True,1002,False
+Q3,47,VA,Home improvement,0.0,,2,0,0,0,,,2,True
+Q3,47,VA,Home purchase,0.0483725135623869,0.059488692232055,2212,2034,107,121,-1.1116178669668082,True,4246,False
+Q3,47,VA,Other purpose,0.5,0.0,2,3,1,0,50.0,False,5,True
+Q3,47,VA,Refinancing,0.3076923076923077,0.3125,26,16,8,5,-0.480769230769229,True,42,False
+Q3,48,Conventional,Cash-out refinancing,0.1897312474929803,0.2169312169312169,2493,3213,473,697,-2.719996943823657,True,5706,False
+Q3,48,Conventional,Home improvement,0.2764265668849392,0.2752772341813437,2138,3066,591,844,0.1149332703595462,False,5204,False
+Q3,48,Conventional,Home purchase,0.0571802706241815,0.0667851527787271,16037,14629,917,977,-0.96048821545456,True,30666,False
+Q3,48,Conventional,Not applicable,0.5,0.0,2,2,1,0,50.0,False,4,True
+Q3,48,Conventional,Other purpose,0.3488727550630492,0.3359922649262751,2617,4137,913,1390,1.288049013677417,False,6754,False
+Q3,48,Conventional,Refinancing,0.1693257848687596,0.2013245033112582,1943,2265,329,456,-3.199871844249863,True,4208,False
+Q3,48,FHA,Cash-out refinancing,0.2359952324195471,0.2922077922077922,839,770,198,225,-5.62125597882451,True,1609,False
+Q3,48,FHA,Home improvement,0.6,0.3,10,10,6,3,30.0,False,20,True
+Q3,48,FHA,Home purchase,0.057362401715511,0.0909090909090909,5596,3146,321,286,-3.354668919357983,True,8742,False
+Q3,48,FHA,Other purpose,0.25,0.7272727272727273,8,11,2,8,-47.72727272727273,True,19,True
+Q3,48,FHA,Refinancing,0.316017316017316,0.2628865979381443,231,194,73,51,5.313071807917169,False,425,False
+Q3,48,RHS/FSA,Home purchase,0.1025641025641025,0.2777777777777778,39,18,4,5,-17.521367521367523,True,57,False
+Q3,48,VA,Cash-out refinancing,0.2316784869976359,0.28,423,525,98,147,-4.83215130023641,True,948,False
+Q3,48,VA,Home improvement,0.0,0.0,1,2,0,0,0.0,False,3,True
+Q3,48,VA,Home purchase,0.0431554524361949,0.0586154623547246,2155,1979,93,116,-1.5460009918529714,True,4134,False
+Q3,48,VA,Other purpose,0.5,0.6666666666666666,2,3,1,2,-16.666666666666664,True,5,True
+Q3,48,VA,Refinancing,0.375,0.4545454545454545,8,22,3,10,-7.954545454545453,True,30,False
+Q3,49,Conventional,Cash-out refinancing,0.1605787476280835,0.1680112241318835,4216,5702,677,958,-0.7432476503800051,True,9918,False
+Q3,49,Conventional,Home improvement,0.2129538763493621,0.2269736842105263,3057,5168,651,1173,-1.4019807861164215,True,8225,False
+Q3,49,Conventional,Home purchase,0.0513368552647497,0.0563284407572856,24797,23505,1273,1324,-0.4991585492535915,True,48302,False
+Q3,49,Conventional,Not applicable,,0.0,0,3,0,0,,,3,True
+Q3,49,Conventional,Other purpose,0.2919305976315064,0.2560435387925579,3631,7901,1060,2023,3.588705883894855,False,11532,False
+Q3,49,Conventional,Refinancing,0.1505722460658083,0.1510400964727163,2796,3317,421,501,-0.0467850406908026,True,6113,False
+Q3,49,FHA,Cash-out refinancing,0.2606438213914849,0.2998745294855709,963,797,251,239,-3.923070809408596,True,1760,False
+Q3,49,FHA,Home improvement,0.5,0.25,10,4,5,1,25.0,False,14,True
+Q3,49,FHA,Home purchase,0.0672713529856387,0.0900730321882607,6615,3697,445,333,-2.2801679202622047,True,10312,False
+Q3,49,FHA,Other purpose,0.3684210526315789,0.6,19,10,7,6,-23.157894736842103,True,29,True
+Q3,49,FHA,Refinancing,0.2602230483271375,0.3087557603686636,269,217,70,67,-4.853271204152604,True,486,False
+Q3,49,RHS/FSA,Home purchase,0.2068965517241379,0.0,29,10,6,0,20.689655172413797,False,39,False
+Q3,49,RHS/FSA,Refinancing,,1.0,0,1,0,1,,,1,True
+Q3,49,VA,Cash-out refinancing,0.216796875,0.2699186991869918,512,615,111,166,-5.3121824186991855,True,1127,False
+Q3,49,VA,Home improvement,0.5,0.25,2,4,1,1,25.0,False,6,True
+Q3,49,VA,Home purchase,0.0420624151967435,0.0627017058552328,2211,2169,93,136,-2.0639290658489267,True,4380,False
+Q3,49,VA,Other purpose,0.5,0.0,2,3,1,0,50.0,False,5,True
+Q3,49,VA,Refinancing,0.375,0.375,16,16,6,6,0.0,False,32,False
+Q3,50%-60%,Conventional,Cash-out refinancing,0.6394242498170285,0.6798514391829155,4099,5385,2621,3661,-4.042718936588696,True,9484,False
+Q3,50%-60%,Conventional,Home improvement,0.5103134479271992,0.5348530666046367,9890,12897,5047,6898,-2.453961867743748,True,22787,False
+Q3,50%-60%,Conventional,Home purchase,0.5182296560796843,0.6104707012487992,10642,8328,5515,5084,-9.224104516911492,True,18970,False
+Q3,50%-60%,Conventional,Not applicable,0.6,0.6,5,5,3,3,0.0,False,10,True
+Q3,50%-60%,Conventional,Other purpose,0.5907986519319696,0.5988965841061158,12759,17038,7538,10204,-0.8097932174146227,True,29797,False
+Q3,50%-60%,Conventional,Refinancing,0.5083994831087317,0.6122824631860776,5417,5976,2754,3659,-10.388298007734589,True,11393,False
+Q3,50%-60%,FHA,Cash-out refinancing,0.2724399494310999,0.3284819766457945,6328,5909,1724,1941,-5.6042027214694645,True,12237,False
+Q3,50%-60%,FHA,Home improvement,0.4166666666666667,0.4893617021276595,60,47,25,23,-7.269503546099287,True,107,False
+Q3,50%-60%,FHA,Home purchase,0.0851260136939736,0.1004402861860209,41186,21804,3506,2190,-1.5314272492047225,True,62990,False
+Q3,50%-60%,FHA,Other purpose,0.5645161290322581,0.5147058823529411,62,68,35,35,4.981024667931699,False,130,False
+Q3,50%-60%,FHA,Refinancing,0.3113596233078281,0.3700670141474311,1699,1343,529,497,-5.870739083960302,True,3042,False
+Q3,50%-60%,RHS/FSA,Home purchase,0.18,0.25,100,52,18,13,-7.000000000000001,True,152,False
+Q3,50%-60%,VA,Cash-out refinancing,0.2583576760791951,0.3330354483169496,3081,3357,796,1118,-7.467777223775457,True,6438,False
+Q3,50%-60%,VA,Home improvement,0.125,0.5,8,16,1,8,-37.5,True,24,True
+Q3,50%-60%,VA,Home purchase,0.0523020738228772,0.0721739130434782,15334,13800,802,996,-1.987183922060099,True,29134,False
+Q3,50%-60%,VA,Other purpose,0.6,0.6923076923076923,20,13,12,9,-9.230769230769232,True,33,False
+Q3,50%-60%,VA,Refinancing,0.3189655172413793,0.3771929824561403,116,114,37,43,-5.822746521476102,True,230,False
+Q3,<20%,Conventional,Cash-out refinancing,0.2020057306590258,0.3099099099099099,3490,3885,705,1204,-10.790417925088413,True,7375,False
+Q3,<20%,Conventional,Home improvement,0.2149844905750417,0.3916875074431344,8382,8397,1802,3289,-17.67030168680927,True,16779,False
+Q3,<20%,Conventional,Home purchase,0.2090955844537506,0.1762202237935058,13611,14567,2846,2567,3.287536066024477,False,28178,False
+Q3,<20%,Conventional,Not applicable,0.72,0.75,25,20,18,15,-3.0000000000000027,True,45,False
+Q3,<20%,Conventional,Other purpose,0.2688229056203605,0.4413391122403228,5658,6691,1521,2953,-17.251620661996224,True,12349,False
+Q3,<20%,Conventional,Refinancing,0.1142172523961661,0.2165587158546888,5008,3551,572,769,-10.23414634585227,True,8559,False
+Q3,<20%,FHA,Cash-out refinancing,0.3860544217687074,0.4955300127713921,588,783,227,388,-10.947559100268462,True,1371,False
+Q3,<20%,FHA,Home improvement,0.2,0.2954545454545454,45,44,9,13,-9.545454545454549,True,89,False
+Q3,<20%,FHA,Home purchase,0.1289752650176678,0.1915966386554622,566,595,73,114,-6.262137363779435,True,1161,False
+Q3,<20%,FHA,Not applicable,1.0,1.0,5,2,5,2,0.0,False,7,True
+Q3,<20%,FHA,Other purpose,0.5737704918032787,0.6,61,95,35,57,-2.622950819672132,True,156,False
+Q3,<20%,FHA,Refinancing,0.6788990825688074,0.726027397260274,109,146,74,106,-4.712831469146661,True,255,False
+Q3,<20%,RHS/FSA,Home purchase,0.238095238095238,0.15,21,20,5,3,8.809523809523808,False,41,False
+Q3,<20%,RHS/FSA,Refinancing,0.0,0.0,2,1,0,0,0.0,False,3,True
+Q3,<20%,VA,Cash-out refinancing,0.4438775510204081,0.4812734082397004,392,534,174,257,-3.739585721929223,True,926,False
+Q3,<20%,VA,Home improvement,0.0,0.5,1,2,0,1,-50.0,True,3,True
+Q3,<20%,VA,Home purchase,0.0870147255689424,0.0944444444444444,747,900,65,85,-0.7429718875502006,True,1647,False
+Q3,<20%,VA,Not applicable,,1.0,0,2,0,2,,,2,True
+Q3,<20%,VA,Other purpose,0.75,0.3636363636363636,4,11,3,4,38.63636363636363,False,15,True
+Q3,<20%,VA,Refinancing,0.4473684210526316,0.5714285714285714,38,35,17,20,-12.40601503759398,True,73,False
+Q3,>60%,Conventional,Cash-out refinancing,0.8904657933042213,0.9123505976095616,2748,3765,2447,3435,-2.188480430534045,True,6513,False
+Q3,>60%,Conventional,Home improvement,0.9075700543705564,0.9255855059655324,7173,11315,6510,10473,-1.8015451594976195,True,18488,False
+Q3,>60%,Conventional,Home purchase,0.8364856619890177,0.893777704810376,6556,6091,5484,5444,-5.729204282135825,True,12647,False
+Q3,>60%,Conventional,Not applicable,1.0,1.0,5,3,5,3,0.0,False,8,True
+Q3,>60%,Conventional,Other purpose,0.9337446894598422,0.9424796476711598,9886,14986,9231,14124,-0.8734958211317534,True,24872,False
+Q3,>60%,Conventional,Refinancing,0.8660714285714286,0.9142179229786458,4480,5479,3880,5009,-4.814649440721719,True,9959,False
+Q3,>60%,FHA,Cash-out refinancing,0.968944099378882,0.9748148148148148,644,675,624,658,-0.5870715435932761,True,1319,False
+Q3,>60%,FHA,Home improvement,0.9285714285714286,1.0,14,24,13,24,-7.14285714285714,True,38,False
+Q3,>60%,FHA,Home purchase,0.9540449976065104,0.9606791778373548,2089,1119,1993,1075,-0.66341802308445,True,3208,False
+Q3,>60%,FHA,Other purpose,0.967741935483871,1.0,31,34,30,34,-3.2258064516129004,True,65,False
+Q3,>60%,FHA,Refinancing,0.96,0.9585492227979274,200,193,192,185,0.1450777202072539,False,393,False
+Q3,>60%,RHS/FSA,Cash-out refinancing,1.0,,1,0,1,0,,,1,True
+Q3,>60%,RHS/FSA,Home purchase,1.0,1.0,9,2,9,2,0.0,False,11,True
+Q3,>60%,RHS/FSA,Refinancing,1.0,,1,0,1,0,,,1,True
+Q3,>60%,VA,Cash-out refinancing,0.6093394077448747,0.7880952380952381,878,840,535,662,-17.875583035036335,True,1718,False
+Q3,>60%,VA,Home improvement,1.0,0.6666666666666666,5,6,5,4,33.333333333333336,False,11,True
+Q3,>60%,VA,Home purchase,0.1814216063638696,0.2922764227642276,3897,2460,707,719,-11.085481640035802,True,6357,False
+Q3,>60%,VA,Not applicable,0.0,,1,0,0,0,,,1,True
+Q3,>60%,VA,Other purpose,1.0,1.0,26,21,26,21,0.0,False,47,False
+Q3,>60%,VA,Refinancing,0.5471698113207547,0.8,53,40,29,32,-25.28301886792453,True,93,False
+Q3,Not reported,Conventional,Cash-out refinancing,0.5481967213114755,0.750443443853186,6100,7329,3344,5500,-20.22467225417105,True,13429,False
+Q3,Not reported,Conventional,Home improvement,0.2858779719278144,0.4924951439166519,6982,5663,1996,2789,-20.66171719888376,True,12645,False
+Q3,Not reported,Conventional,Home purchase,0.1134780589737636,0.1392,17228,10625,1955,1479,-2.5721941026236346,True,27853,False
+Q3,Not reported,Conventional,Not applicable,0.0,0.2857142857142857,3,7,0,2,-28.57142857142857,True,10,True
+Q3,Not reported,Conventional,Other purpose,0.3927003293084522,0.6109058667060736,7288,6767,2862,4134,-21.82055373976214,True,14055,False
+Q3,Not reported,Conventional,Refinancing,0.1521545319465081,0.2536549707602339,6730,4104,1024,1041,-10.150043881372577,True,10834,False
+Q3,Not reported,FHA,Cash-out refinancing,0.947310647639956,0.9602824360105914,911,1133,863,1088,-1.2971788370635284,True,2044,False
+Q3,Not reported,FHA,Home improvement,0.6190476190476191,0.6666666666666666,21,12,13,8,-4.761904761904756,True,33,False
+Q3,Not reported,FHA,Home purchase,0.2179310344827586,0.2172211350293542,725,511,158,111,0.0709899453404439,False,1236,False
+Q3,Not reported,FHA,Other purpose,0.217391304347826,0.4375,23,16,5,7,-22.01086956521739,True,39,False
+Q3,Not reported,FHA,Refinancing,0.5783582089552238,0.7035398230088495,268,226,155,159,-12.518161405362571,True,494,False
+Q3,Not reported,RHS/FSA,Cash-out refinancing,1.0,,2,0,2,0,,,2,True
+Q3,Not reported,RHS/FSA,Home purchase,0.4117647058823529,0.4117647058823529,34,17,14,7,0.0,False,51,False
+Q3,Not reported,RHS/FSA,Refinancing,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q3,Not reported,VA,Cash-out refinancing,0.9366197183098592,0.9628647214854112,284,377,266,363,-2.6245003175552006,True,661,False
+Q3,Not reported,VA,Home improvement,0.0,,2,0,0,0,,,2,True
+Q3,Not reported,VA,Home purchase,0.1510791366906475,0.0992063492063492,278,252,42,25,5.187278748429828,False,530,False
+Q3,Not reported,VA,Refinancing,0.7692307692307693,0.7058823529411765,39,34,30,24,6.334841628959276,False,73,False
+Q4 (highest),20%-<30%,Conventional,Cash-out refinancing,0.1126639432380133,0.1731598943911391,18604,15529,2096,2689,-6.049595115312583,True,34133,False
+Q4 (highest),20%-<30%,Conventional,Home improvement,0.151917438724053,0.2420568227290916,42635,24990,6477,6049,-9.013938400503864,True,67625,False
+Q4 (highest),20%-<30%,Conventional,Home purchase,0.0428428912131934,0.0673617232260907,128306,72608,5497,4891,-2.4518832012897325,True,200914,False
+Q4 (highest),20%-<30%,Conventional,Not applicable,0.074074074074074,0.2,27,30,2,6,-12.592592592592592,True,57,False
+Q4 (highest),20%-<30%,Conventional,Other purpose,0.1925189553496208,0.2777777777777778,29675,23040,5713,6400,-8.52588224281569,True,52715,False
+Q4 (highest),20%-<30%,Conventional,Refinancing,0.092233676975945,0.1500029183447148,29100,17133,2684,2570,-5.776924136876986,True,46233,False
+Q4 (highest),20%-<30%,FHA,Cash-out refinancing,0.2703681351840676,0.389430894308943,1657,1230,448,479,-11.906275912487546,True,2887,False
+Q4 (highest),20%-<30%,FHA,Home improvement,0.1333333333333333,0.5294117647058824,30,17,4,9,-39.6078431372549,True,47,False
+Q4 (highest),20%-<30%,FHA,Home purchase,0.0693215339233038,0.1044376434583014,4746,2614,329,273,-3.511610953499761,True,7360,False
+Q4 (highest),20%-<30%,FHA,Other purpose,0.4848484848484848,0.7037037037037037,33,27,16,19,-21.88552188552189,True,60,False
+Q4 (highest),20%-<30%,FHA,Refinancing,0.3341836734693877,0.3825757575757575,392,264,131,101,-4.839208410636981,True,656,False
+Q4 (highest),20%-<30%,RHS/FSA,Cash-out refinancing,1.0,,1,0,1,0,,,1,True
+Q4 (highest),20%-<30%,RHS/FSA,Home purchase,0.4166666666666667,0.25,12,8,5,2,16.666666666666668,False,20,True
+Q4 (highest),20%-<30%,RHS/FSA,Refinancing,1.0,,1,0,1,0,,,1,True
+Q4 (highest),20%-<30%,VA,Cash-out refinancing,0.301840490797546,0.312442396313364,1630,1085,492,339,-1.0601905515818075,True,2715,False
+Q4 (highest),20%-<30%,VA,Home improvement,0.1666666666666666,1.0,12,1,2,1,-83.33333333333334,True,13,True
+Q4 (highest),20%-<30%,VA,Home purchase,0.0504146373568513,0.0658602150537634,7597,2976,383,196,-1.5445577696912052,True,10573,False
+Q4 (highest),20%-<30%,VA,Not applicable,,0.0,0,1,0,0,,,1,True
+Q4 (highest),20%-<30%,VA,Other purpose,0.4666666666666667,0.5714285714285714,15,14,7,8,-10.476190476190473,True,29,True
+Q4 (highest),20%-<30%,VA,Refinancing,0.384,0.4,125,60,48,24,-1.6000000000000014,True,185,False
+Q4 (highest),30%-<36%,Conventional,Cash-out refinancing,0.1178160919540229,0.1678445229681978,15660,13018,1845,2185,-5.00284310141749,True,28678,False
+Q4 (highest),30%-<36%,Conventional,Home improvement,0.1776335995085995,0.2393238965537836,26048,16743,4627,4007,-6.169029704518417,True,42791,False
+Q4 (highest),30%-<36%,Conventional,Home purchase,0.0381226465339226,0.0615667199564611,107023,58798,4080,3620,-2.3444073422538487,True,165821,False
+Q4 (highest),30%-<36%,Conventional,Not applicable,0.1428571428571428,0.037037037037037,14,27,2,1,10.582010582010582,False,41,False
+Q4 (highest),30%-<36%,Conventional,Other purpose,0.2146126683813592,0.2610964592334885,22939,17821,4923,4653,-4.648379085212931,True,40760,False
+Q4 (highest),30%-<36%,Conventional,Refinancing,0.1026154132539091,0.1448888888888889,21488,13500,2205,1956,-4.227347563497974,True,34988,False
+Q4 (highest),30%-<36%,FHA,Cash-out refinancing,0.2231833910034602,0.3018108651911468,1734,994,387,300,-7.862747418768665,True,2728,False
+Q4 (highest),30%-<36%,FHA,Home improvement,0.16,0.3333333333333333,25,15,4,5,-17.333333333333332,True,40,False
+Q4 (highest),30%-<36%,FHA,Home purchase,0.0525577043044291,0.1001964636542239,6412,2545,337,255,-4.7638759349794775,True,8957,False
+Q4 (highest),30%-<36%,FHA,Other purpose,0.2857142857142857,0.3636363636363636,14,22,4,8,-7.792207792207795,True,36,False
+Q4 (highest),30%-<36%,FHA,Refinancing,0.2118451025056947,0.3177570093457944,439,214,93,68,-10.59119068400996,True,653,False
+Q4 (highest),30%-<36%,RHS/FSA,Home purchase,0.2105263157894736,0.0833333333333333,19,12,4,1,12.719298245614036,False,31,False
+Q4 (highest),30%-<36%,VA,Cash-out refinancing,0.2529893014474512,0.2844311377245509,1589,1002,402,285,-3.1441836277099675,True,2591,False
+Q4 (highest),30%-<36%,VA,Home improvement,0.375,0.5,8,6,3,3,-12.5,True,14,True
+Q4 (highest),30%-<36%,VA,Home purchase,0.0430218997019567,0.063815342837746,7717,2946,332,188,-2.0793443135789373,True,10663,False
+Q4 (highest),30%-<36%,VA,Not applicable,0.0,,1,0,0,0,,,1,True
+Q4 (highest),30%-<36%,VA,Other purpose,0.4,0.3636363636363636,10,11,4,4,3.6363636363636376,False,21,True
+Q4 (highest),30%-<36%,VA,Refinancing,0.2150537634408602,0.3333333333333333,93,36,20,12,-11.82795698924731,True,129,False
+Q4 (highest),36,Conventional,Cash-out refinancing,0.1301733286169084,0.1696277495769881,2827,2364,368,401,-3.945442096007976,True,5191,False
+Q4 (highest),36,Conventional,Home improvement,0.1808483616967234,0.2356927710843373,3937,2656,712,626,-5.484440938761395,True,6593,False
+Q4 (highest),36,Conventional,Home purchase,0.0418299979368681,0.0581252943947244,19388,10615,811,617,-1.629529645785628,True,30003,False
+Q4 (highest),36,Conventional,Not applicable,0.2,0.2857142857142857,5,7,1,2,-8.57142857142857,True,12,True
+Q4 (highest),36,Conventional,Other purpose,0.2215457914240338,0.2654605263157895,3778,3040,837,807,-4.39147348917556,True,6818,False
+Q4 (highest),36,Conventional,Refinancing,0.1233766233766233,0.1416596814752724,3542,2386,437,338,-1.828305809864904,True,5928,False
+Q4 (highest),36,FHA,Cash-out refinancing,0.2604790419161676,0.350253807106599,334,197,87,69,-8.977476519043131,True,531,False
+Q4 (highest),36,FHA,Home improvement,0.3333333333333333,0.0,3,5,1,0,33.33333333333333,False,8,True
+Q4 (highest),36,FHA,Home purchase,0.0602316602316602,0.0769230769230769,1295,494,78,38,-1.6691416691416696,True,1789,False
+Q4 (highest),36,FHA,Other purpose,0.0,0.6,2,5,0,3,-60.0,True,7,True
+Q4 (highest),36,FHA,Refinancing,0.2747252747252747,0.3191489361702128,91,47,25,15,-4.442366144493803,True,138,False
+Q4 (highest),36,RHS/FSA,Home purchase,0.1666666666666666,0.0,6,1,1,0,16.666666666666664,False,7,True
+Q4 (highest),36,VA,Cash-out refinancing,0.2114695340501792,0.3048780487804878,279,164,59,50,-9.34085147303086,True,443,False
+Q4 (highest),36,VA,Home improvement,0.5,,2,0,1,0,,,2,True
+Q4 (highest),36,VA,Home purchase,0.0523453433038749,0.0785046728971962,1471,535,77,42,-2.6159329593321345,True,2006,False
+Q4 (highest),36,VA,Other purpose,1.0,0.0,2,1,2,0,100.0,False,3,True
+Q4 (highest),36,VA,Refinancing,0.3333333333333333,0.625,15,8,5,5,-29.166666666666668,True,23,True
+Q4 (highest),37,Conventional,Cash-out refinancing,0.1202296521445457,0.1643835616438356,2961,2482,356,408,-4.415390949928985,True,5443,False
+Q4 (highest),37,Conventional,Home improvement,0.1870467616904226,0.2253469685902118,3999,2738,748,617,-3.8300206899789218,True,6737,False
+Q4 (highest),37,Conventional,Home purchase,0.0421487603305785,0.0603566529492455,19360,10935,816,660,-1.820789261866703,True,30295,False
+Q4 (highest),37,Conventional,Not applicable,0.0,0.1666666666666666,2,6,0,1,-16.666666666666664,True,8,True
+Q4 (highest),37,Conventional,Other purpose,0.2329803328290469,0.2704132231404959,3966,3025,924,818,-3.743289031144897,True,6991,False
+Q4 (highest),37,Conventional,Refinancing,0.1014810751508502,0.1457006369426751,3646,2512,370,366,-4.42195617918249,True,6158,False
+Q4 (highest),37,FHA,Cash-out refinancing,0.2682215743440233,0.2914285714285714,343,175,92,51,-2.3206997084548098,True,518,False
+Q4 (highest),37,FHA,Home improvement,0.0,0.3333333333333333,2,3,0,1,-33.33333333333333,True,5,True
+Q4 (highest),37,FHA,Home purchase,0.0525179856115107,0.0725490196078431,1390,510,73,37,-2.0031033996332352,True,1900,False
+Q4 (highest),37,FHA,Other purpose,0.5,0.0,2,3,1,0,50.0,False,5,True
+Q4 (highest),37,FHA,Refinancing,0.2988505747126437,0.3,87,50,26,15,-0.1149425287356287,True,137,False
+Q4 (highest),37,RHS/FSA,Home purchase,0.6666666666666666,,3,0,2,0,,,3,True
+Q4 (highest),37,VA,Cash-out refinancing,0.2259259259259259,0.3419354838709677,270,155,61,53,-11.60095579450418,True,425,False
+Q4 (highest),37,VA,Home improvement,1.0,0.0,1,3,1,0,100.0,False,4,True
+Q4 (highest),37,VA,Home purchase,0.0524450744153082,0.0587188612099644,1411,562,74,33,-0.6273786794656122,True,1973,False
+Q4 (highest),37,VA,Other purpose,0.5,0.0,2,1,1,0,50.0,False,3,True
+Q4 (highest),37,VA,Refinancing,0.2,0.4285714285714285,15,7,3,3,-22.85714285714285,True,22,True
+Q4 (highest),38,Conventional,Cash-out refinancing,0.1154719429127473,0.1515637530072173,3083,2494,356,378,-3.609181009447001,True,5577,False
+Q4 (highest),38,Conventional,Home improvement,0.1891400363730839,0.2369668246445497,3849,2743,728,650,-4.782678827146586,True,6592,False
+Q4 (highest),38,Conventional,Home purchase,0.0402857709863068,0.0556745182012847,20156,11208,812,624,-1.5388747214977987,True,31364,False
+Q4 (highest),38,Conventional,Not applicable,0.5,0.0,2,4,1,0,50.0,False,6,True
+Q4 (highest),38,Conventional,Other purpose,0.2139760265238459,0.2586822460240182,3921,3081,839,797,-4.470621950017223,True,7002,False
+Q4 (highest),38,Conventional,Refinancing,0.1059275521405049,0.1414421553090332,3644,2524,386,357,-3.551460316852835,True,6168,False
+Q4 (highest),38,FHA,Cash-out refinancing,0.2416918429003021,0.324468085106383,331,188,80,61,-8.277624220608084,True,519,False
+Q4 (highest),38,FHA,Home improvement,0.0,0.2,4,5,0,1,-20.0,True,9,True
+Q4 (highest),38,FHA,Home purchase,0.0655391120507399,0.1051546391752577,1419,485,93,51,-3.961552712451777,True,1904,False
+Q4 (highest),38,FHA,Other purpose,0.6,0.4285714285714285,5,7,3,3,17.142857142857142,False,12,True
+Q4 (highest),38,FHA,Refinancing,0.2924528301886792,0.2884615384615384,106,52,31,15,0.39912917271408,False,158,False
+Q4 (highest),38,RHS/FSA,Home purchase,0.0,0.0,4,1,0,0,0.0,False,5,True
+Q4 (highest),38,VA,Cash-out refinancing,0.2990353697749196,0.2181818181818181,311,165,93,36,8.085355159310145,False,476,False
+Q4 (highest),38,VA,Home improvement,0.5,0.0,2,2,1,0,50.0,False,4,True
+Q4 (highest),38,VA,Home purchase,0.0436432637571157,0.0836298932384341,1581,562,69,47,-3.998662948131841,True,2143,False
+Q4 (highest),38,VA,Other purpose,0.0,1.0,1,1,0,1,-100.0,True,2,True
+Q4 (highest),38,VA,Refinancing,0.2666666666666666,0.25,15,8,4,2,1.6666666666666663,False,23,True
+Q4 (highest),39,Conventional,Cash-out refinancing,0.1308746736292428,0.1534469977761304,3064,2698,401,414,-2.2572324146887643,True,5762,False
+Q4 (highest),39,Conventional,Home improvement,0.1908735332464146,0.2458722182340272,3835,2786,732,685,-5.499868498761268,True,6621,False
+Q4 (highest),39,Conventional,Home purchase,0.0389021479713603,0.0596247751220765,20950,11673,815,696,-2.072262715071621,True,32623,False
+Q4 (highest),39,Conventional,Not applicable,0.0,0.0,7,1,0,0,0.0,False,8,True
+Q4 (highest),39,Conventional,Other purpose,0.2249448664543004,0.2579473206176203,4081,3303,918,852,-3.30024541633199,True,7384,False
+Q4 (highest),39,Conventional,Refinancing,0.1133528006371117,0.1514563106796116,3767,2575,427,390,-3.81035100424999,True,6342,False
+Q4 (highest),39,FHA,Cash-out refinancing,0.2464183381088825,0.288235294117647,349,170,86,49,-4.18169560087645,True,519,False
+Q4 (highest),39,FHA,Home improvement,0.3333333333333333,0.5,6,2,2,1,-16.666666666666668,True,8,True
+Q4 (highest),39,FHA,Home purchase,0.0631720430107526,0.0883458646616541,1488,532,94,47,-2.517382165090144,True,2020,False
+Q4 (highest),39,FHA,Other purpose,0.0,0.0,1,2,0,0,0.0,False,3,True
+Q4 (highest),39,FHA,Refinancing,0.3125,0.3191489361702128,96,47,30,15,-0.6648936170212782,True,143,False
+Q4 (highest),39,RHS/FSA,Home purchase,0.0,0.5,6,2,0,1,-50.0,True,8,True
+Q4 (highest),39,VA,Cash-out refinancing,0.1903225806451612,0.3,310,210,59,63,-10.967741935483872,True,520,False
+Q4 (highest),39,VA,Home purchase,0.0519736842105263,0.0696428571428571,1520,560,79,39,-1.7669172932330828,True,2080,False
+Q4 (highest),39,VA,Other purpose,1.0,0.0,1,2,1,0,100.0,False,3,True
+Q4 (highest),39,VA,Refinancing,0.5454545454545454,0.3076923076923077,11,13,6,4,23.77622377622377,False,24,True
+Q4 (highest),40,Conventional,Cash-out refinancing,0.1261859582542694,0.1642619311875693,3162,2703,399,444,-3.807597293329992,True,5865,False
+Q4 (highest),40,Conventional,Home improvement,0.1906666666666666,0.2295862321493958,3750,2731,715,627,-3.891956548272915,True,6481,False
+Q4 (highest),40,Conventional,Home purchase,0.0407690078253308,0.0625945219290875,20702,11902,844,745,-2.182551410375666,True,32604,False
+Q4 (highest),40,Conventional,Not applicable,0.5,0.0,2,3,1,0,50.0,False,5,True
+Q4 (highest),40,Conventional,Other purpose,0.2169312169312169,0.2521793275217933,3969,3212,861,810,-3.5248110590576367,True,7181,False
+Q4 (highest),40,Conventional,Refinancing,0.1061708434384263,0.1317829457364341,3711,2580,394,340,-2.5612102298007824,True,6291,False
+Q4 (highest),40,FHA,Cash-out refinancing,0.2628571428571428,0.295,350,200,92,59,-3.214285714285714,True,550,False
+Q4 (highest),40,FHA,Home improvement,0.0,,3,0,0,0,,,3,True
+Q4 (highest),40,FHA,Home purchase,0.0604113110539845,0.1005586592178771,1556,537,94,54,-4.014734816389252,True,2093,False
+Q4 (highest),40,FHA,Other purpose,0.6666666666666666,0.5,3,2,2,1,16.666666666666664,False,5,True
+Q4 (highest),40,FHA,Refinancing,0.25,0.2708333333333333,108,48,27,13,-2.0833333333333317,True,156,False
+Q4 (highest),40,RHS/FSA,Home purchase,0.0,,10,0,0,0,,,10,True
+Q4 (highest),40,VA,Cash-out refinancing,0.2440677966101695,0.2793296089385474,295,179,72,50,-3.526181232837797,True,474,False
+Q4 (highest),40,VA,Home improvement,0.0,,1,0,0,0,,,1,True
+Q4 (highest),40,VA,Home purchase,0.0431701030927835,0.0746527777777777,1552,576,67,43,-3.1482674684994274,True,2128,False
+Q4 (highest),40,VA,Other purpose,1.0,1.0,1,2,1,2,0.0,False,3,True
+Q4 (highest),40,VA,Refinancing,0.25,0.0,16,8,4,0,25.0,False,24,True
+Q4 (highest),41,Conventional,Cash-out refinancing,0.1182698124621899,0.1697564521992003,3306,2751,391,467,-5.1486639737010345,True,6057,False
+Q4 (highest),41,Conventional,Home improvement,0.1849742337944128,0.2350492051476154,3687,2642,682,621,-5.007497135320263,True,6329,False
+Q4 (highest),41,Conventional,Home purchase,0.0413670744233822,0.0576500284993078,21418,12281,886,708,-1.628295407592567,True,33699,False
+Q4 (highest),41,Conventional,Not applicable,0.0,0.1428571428571428,2,7,0,1,-14.285714285714285,True,9,True
+Q4 (highest),41,Conventional,Other purpose,0.2207598708716165,0.2569898869720404,4027,3362,889,864,-3.6230016100423863,True,7389,False
+Q4 (highest),41,Conventional,Refinancing,0.1195681511470985,0.1368029739776951,3705,2690,443,368,-1.7234822830596657,True,6395,False
+Q4 (highest),41,FHA,Cash-out refinancing,0.2729658792650918,0.3195876288659793,381,194,104,62,-4.66217496008875,True,575,False
+Q4 (highest),41,FHA,Home improvement,0.0,0.0,3,5,0,0,0.0,False,8,True
+Q4 (highest),41,FHA,Home purchase,0.0524017467248908,0.1007905138339921,1603,506,84,51,-4.838876710910127,True,2109,False
+Q4 (highest),41,FHA,Other purpose,0.0,0.0,4,1,0,0,0.0,False,5,True
+Q4 (highest),41,FHA,Refinancing,0.2783505154639175,0.2894736842105263,97,38,27,11,-1.1123168746608791,True,135,False
+Q4 (highest),41,RHS/FSA,Home purchase,0.2,0.2,10,5,2,1,0.0,False,15,True
+Q4 (highest),41,RHS/FSA,Refinancing,0.0,,1,0,0,0,,,1,True
+Q4 (highest),41,VA,Cash-out refinancing,0.2327044025157232,0.2765957446808511,318,188,74,52,-4.38913421651278,True,506,False
+Q4 (highest),41,VA,Home improvement,0.0,,1,0,0,0,,,1,True
+Q4 (highest),41,VA,Home purchase,0.0402010050251256,0.0591304347826086,1592,575,64,34,-1.8929429757483067,True,2167,False
+Q4 (highest),41,VA,Other purpose,0.5,0.0,2,1,1,0,50.0,False,3,True
+Q4 (highest),41,VA,Refinancing,0.2142857142857142,0.25,14,4,3,1,-3.5714285714285725,True,18,True
+Q4 (highest),42,Conventional,Cash-out refinancing,0.126417704011065,0.1586184841701311,3615,3127,457,496,-3.2200780159066107,True,6742,False
+Q4 (highest),42,Conventional,Home improvement,0.1719776210167842,0.2324037184594953,4111,3012,707,700,-6.04260974427111,True,7123,False
+Q4 (highest),42,Conventional,Home purchase,0.0430779771335588,0.0589908668962419,23353,13358,1006,788,-1.5912889762683098,True,36711,False
+Q4 (highest),42,Conventional,Not applicable,,0.0,0,3,0,0,,,3,True
+Q4 (highest),42,Conventional,Other purpose,0.2253061224489796,0.2411120021384656,4900,3741,1104,902,-1.5805879689486046,True,8641,False
+Q4 (highest),42,Conventional,Refinancing,0.1150256649556696,0.148073701842546,4286,2985,493,442,-3.3048036886876435,True,7271,False
+Q4 (highest),42,FHA,Cash-out refinancing,0.2958904109589041,0.3255813953488372,365,172,108,56,-2.969098438993312,True,537,False
+Q4 (highest),42,FHA,Home improvement,0.0,,7,0,0,0,,,7,True
+Q4 (highest),42,FHA,Home purchase,0.0559610705596107,0.1159929701230228,1644,569,92,66,-6.003189956341213,True,2213,False
+Q4 (highest),42,FHA,Other purpose,0.75,0.3333333333333333,4,6,3,2,41.66666666666667,False,10,True
+Q4 (highest),42,FHA,Refinancing,0.2135922330097087,0.2391304347826087,103,46,22,11,-2.5538201772899978,True,149,False
+Q4 (highest),42,RHS/FSA,Home purchase,0.0,0.5,12,2,0,1,-50.0,True,14,True
+Q4 (highest),42,VA,Cash-out refinancing,0.2014925373134328,0.2678571428571428,268,168,54,45,-6.636460554371001,True,436,False
+Q4 (highest),42,VA,Home purchase,0.055962691538974,0.0671378091872791,1501,566,84,38,-1.1175117648305135,True,2067,False
+Q4 (highest),42,VA,Other purpose,0.6666666666666666,0.0,3,1,2,0,66.66666666666666,False,4,True
+Q4 (highest),42,VA,Refinancing,0.2307692307692307,0.2,13,5,3,1,3.076923076923077,False,18,True
+Q4 (highest),43,Conventional,Cash-out refinancing,0.1306347746090156,0.1613812544045102,3261,2838,426,458,-3.0746479795494555,True,6099,False
+Q4 (highest),43,Conventional,Home improvement,0.2142857142857142,0.2590541116318705,3024,2347,648,608,-4.47683973461562,True,5371,False
+Q4 (highest),43,Conventional,Home purchase,0.0470809792843691,0.0640203741108281,19647,11387,925,729,-1.6939394826459029,True,31034,False
+Q4 (highest),43,Conventional,Not applicable,0.0,0.0,2,4,0,0,0.0,False,6,True
+Q4 (highest),43,Conventional,Other purpose,0.248152359295054,0.2838205302515296,3518,2942,873,835,-3.566817095647559,True,6460,False
+Q4 (highest),43,Conventional,Refinancing,0.1274119448698315,0.1701592623637887,3265,2386,416,406,-4.2747317493957215,True,5651,False
+Q4 (highest),43,FHA,Cash-out refinancing,0.2203947368421052,0.3563218390804598,304,174,67,62,-13.592710223835452,True,478,False
+Q4 (highest),43,FHA,Home improvement,0.5,1.0,2,1,1,1,-50.0,True,3,True
+Q4 (highest),43,FHA,Home purchase,0.0611601513240857,0.1238779174147217,1586,557,97,69,-6.271776609063598,True,2143,False
+Q4 (highest),43,FHA,Other purpose,0.2,0.5,5,2,1,1,-30.0,True,7,True
+Q4 (highest),43,FHA,Refinancing,0.2954545454545454,0.1739130434782608,88,46,26,8,12.15415019762846,False,134,False
+Q4 (highest),43,RHS/FSA,Home purchase,0.0,0.0,7,1,0,0,0.0,False,8,True
+Q4 (highest),43,VA,Cash-out refinancing,0.2304964539007092,0.1962025316455696,282,158,65,31,3.429392225513961,False,440,False
+Q4 (highest),43,VA,Home improvement,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q4 (highest),43,VA,Home purchase,0.0449438202247191,0.0614828209764918,1602,553,72,34,-1.653900075177276,True,2155,False
+Q4 (highest),43,VA,Other purpose,,0.0,0,2,0,0,,,2,True
+Q4 (highest),43,VA,Refinancing,0.3076923076923077,0.3636363636363636,13,11,4,4,-5.594405594405593,True,24,True
+Q4 (highest),44,Conventional,Cash-out refinancing,0.1401127049180328,0.1657010428736964,3904,3452,547,572,-2.558833795566362,True,7356,False
+Q4 (highest),44,Conventional,Home improvement,0.189294675216058,0.2333579881656804,3587,2704,679,631,-4.406331294962248,True,6291,False
+Q4 (highest),44,Conventional,Home purchase,0.0503420368050872,0.0651905506626059,20758,12149,1045,792,-1.4848513857518773,True,32907,False
+Q4 (highest),44,Conventional,Not applicable,0.0,0.0,2,3,0,0,0.0,False,5,True
+Q4 (highest),44,Conventional,Other purpose,0.2318562874251497,0.2397812320092112,4175,3474,968,833,-0.7924944584061594,True,7649,False
+Q4 (highest),44,Conventional,Refinancing,0.1328252585737615,0.1471460340993328,3674,2698,488,397,-1.432077552557126,True,6372,False
+Q4 (highest),44,FHA,Cash-out refinancing,0.2046783625730994,0.3224043715846995,342,183,70,59,-11.772600901160008,True,525,False
+Q4 (highest),44,FHA,Home improvement,0.0,0.0,6,2,0,0,0.0,False,8,True
+Q4 (highest),44,FHA,Home purchase,0.0599886813808715,0.1096121416526138,1767,593,106,65,-4.96234602717423,True,2360,False
+Q4 (highest),44,FHA,Other purpose,0.3333333333333333,1.0,9,1,3,1,-66.66666666666667,True,10,True
+Q4 (highest),44,FHA,Refinancing,0.1858407079646017,0.3333333333333333,113,42,21,14,-14.749262536873154,True,155,False
+Q4 (highest),44,RHS/FSA,Home improvement,0.0,,1,0,0,0,,,1,True
+Q4 (highest),44,RHS/FSA,Home purchase,0.2,0.0,5,2,1,0,20.0,False,7,True
+Q4 (highest),44,RHS/FSA,Refinancing,1.0,1.0,1,1,1,1,0.0,False,2,True
+Q4 (highest),44,VA,Cash-out refinancing,0.2062937062937063,0.2264150943396226,286,159,59,36,-2.0121388045916344,True,445,False
+Q4 (highest),44,VA,Home improvement,1.0,0.0,1,1,1,0,100.0,False,2,True
+Q4 (highest),44,VA,Home purchase,0.0448717948717948,0.0812274368231047,1560,554,70,45,-3.6355641951309834,True,2114,False
+Q4 (highest),44,VA,Other purpose,,1.0,0,1,0,1,,,1,True
+Q4 (highest),44,VA,Refinancing,0.25,0.3636363636363636,8,11,2,4,-11.363636363636363,True,19,True
+Q4 (highest),45,Conventional,Cash-out refinancing,0.1853490658800393,0.1912596401028277,2034,1945,377,372,-0.5910574222788428,True,3979,False
+Q4 (highest),45,Conventional,Home improvement,0.2425137072964993,0.2729103726082578,2371,1986,575,542,-3.039666531175841,True,4357,False
+Q4 (highest),45,Conventional,Home purchase,0.0522407335658013,0.073016213894556,15486,9313,809,680,-2.0775480328754625,True,24799,False
+Q4 (highest),45,Conventional,Not applicable,0.2,0.5,5,4,1,2,-30.0,True,9,True
+Q4 (highest),45,Conventional,Other purpose,0.3070620366757706,0.3020789138735681,2563,2357,787,712,0.4983122802202477,False,4920,False
+Q4 (highest),45,Conventional,Refinancing,0.1555203798971112,0.1898031297324583,2527,1981,393,376,-3.4282749835347155,True,4508,False
+Q4 (highest),45,FHA,Cash-out refinancing,0.1828908554572271,0.3233532934131736,339,167,62,54,-14.046243795594652,True,506,False
+Q4 (highest),45,FHA,Home improvement,1.0,,1,0,1,0,,,1,True
+Q4 (highest),45,FHA,Home purchase,0.0677864427114577,0.11090573012939,1667,541,113,60,-4.31192874179323,True,2208,False
+Q4 (highest),45,FHA,Other purpose,0.2,0.0,5,1,1,0,20.0,False,6,True
+Q4 (highest),45,FHA,Refinancing,0.2403846153846154,0.2619047619047619,104,42,25,11,-2.152014652014653,True,146,False
+Q4 (highest),45,RHS/FSA,Home purchase,0.0,0.0,4,1,0,0,0.0,False,5,True
+Q4 (highest),45,VA,Cash-out refinancing,0.2456896551724137,0.2,232,135,57,27,4.568965517241377,False,367,False
+Q4 (highest),45,VA,Home improvement,0.3333333333333333,0.0,3,1,1,0,33.33333333333333,False,4,True
+Q4 (highest),45,VA,Home purchase,0.0519031141868512,0.0373001776198934,1445,563,75,21,1.4602936566957785,False,2008,False
+Q4 (highest),45,VA,Other purpose,0.0,,2,0,0,0,,,2,True
+Q4 (highest),45,VA,Refinancing,0.125,0.1111111111111111,16,9,2,1,1.3888888888888895,False,25,True
+Q4 (highest),46,Conventional,Cash-out refinancing,0.1864235055724417,0.220865704772475,1974,1802,368,398,-3.444219920003327,True,3776,False
+Q4 (highest),46,Conventional,Home improvement,0.2767359351241764,0.2715765247410817,1973,1738,546,472,0.5159410383094698,False,3711,False
+Q4 (highest),46,Conventional,Home purchase,0.0570574559946861,0.0683114035087719,15055,9120,859,623,-1.125394751408578,True,24175,False
+Q4 (highest),46,Conventional,Not applicable,0.5,0.0,2,2,1,0,50.0,False,4,True
+Q4 (highest),46,Conventional,Other purpose,0.3691523853635942,0.3408985641500694,2159,2159,797,736,2.825382121352477,False,4318,False
+Q4 (highest),46,Conventional,Refinancing,0.1820194862710363,0.2143611404435058,2258,1894,411,406,-3.2341654172469507,True,4152,False
+Q4 (highest),46,FHA,Cash-out refinancing,0.253125,0.3202247191011236,320,178,81,57,-6.709971910112361,True,498,False
+Q4 (highest),46,FHA,Home improvement,1.0,1.0,1,2,1,2,0.0,False,3,True
+Q4 (highest),46,FHA,Home purchase,0.0655441972339146,0.1068965517241379,1663,580,109,62,-4.135235449022333,True,2243,False
+Q4 (highest),46,FHA,Other purpose,0.0,0.0,1,1,0,0,0.0,False,2,True
+Q4 (highest),46,FHA,Refinancing,0.2327586206896551,0.2083333333333333,116,48,27,10,2.442528735632182,False,164,False
+Q4 (highest),46,VA,Cash-out refinancing,0.1949152542372881,0.301775147928994,236,169,46,51,-10.685989369170592,True,405,False
+Q4 (highest),46,VA,Home improvement,,0.5,0,2,0,1,,,2,True
+Q4 (highest),46,VA,Home purchase,0.0518518518518518,0.0596491228070175,1485,570,77,34,-0.7797270955165692,True,2055,False
+Q4 (highest),46,VA,Other purpose,0.6666666666666666,,3,0,2,0,,,3,True
+Q4 (highest),46,VA,Refinancing,0.25,0.2,12,5,3,1,4.999999999999999,False,17,True
+Q4 (highest),47,Conventional,Cash-out refinancing,0.1770833333333333,0.201417004048583,2016,1976,357,398,-2.433367071524967,True,3992,False
+Q4 (highest),47,Conventional,Home improvement,0.2706725468577728,0.2857142857142857,1814,1687,491,482,-1.5041738856512832,True,3501,False
+Q4 (highest),47,Conventional,Home purchase,0.0566099691337755,0.0707125148216018,15227,9277,862,656,-1.4102545687826276,True,24504,False
+Q4 (highest),47,Conventional,Not applicable,0.0,0.5,1,4,0,2,-50.0,True,5,True
+Q4 (highest),47,Conventional,Other purpose,0.3747706422018348,0.3250226654578422,2180,2206,817,717,4.9747976743992615,False,4386,False
+Q4 (highest),47,Conventional,Refinancing,0.1945438282647585,0.2102621305075293,2236,1793,435,377,-1.5718302242770794,True,4029,False
+Q4 (highest),47,FHA,Cash-out refinancing,0.1861198738170347,0.3450704225352112,317,142,59,49,-15.895054871817656,True,459,False
+Q4 (highest),47,FHA,Home improvement,1.0,1.0,2,1,2,1,0.0,False,3,True
+Q4 (highest),47,FHA,Home purchase,0.0733374766935985,0.0947955390334572,1609,538,118,51,-2.1458062339858737,True,2147,False
+Q4 (highest),47,FHA,Other purpose,0.5,0.0,2,1,1,0,50.0,False,3,True
+Q4 (highest),47,FHA,Refinancing,0.1782178217821782,0.3243243243243243,101,37,18,12,-14.610650254214612,True,138,False
+Q4 (highest),47,RHS/FSA,Home purchase,0.0,,2,0,0,0,,,2,True
+Q4 (highest),47,RHS/FSA,Refinancing,1.0,,1,0,1,0,,,1,True
+Q4 (highest),47,VA,Cash-out refinancing,0.2619047619047619,0.2620689655172414,252,145,66,38,-0.0164203612479485,True,397,False
+Q4 (highest),47,VA,Home improvement,0.0,0.0,3,1,0,0,0.0,False,4,True
+Q4 (highest),47,VA,Home purchase,0.0482664853840924,0.0741444866920152,1471,526,71,39,-2.587800130792275,True,1997,False
+Q4 (highest),47,VA,Refinancing,0.0909090909090909,0.3333333333333333,11,3,1,1,-24.24242424242424,True,14,True
+Q4 (highest),48,Conventional,Cash-out refinancing,0.1766245093763628,0.197282099343955,2293,2134,405,421,-2.0657589967592176,True,4427,False
+Q4 (highest),48,Conventional,Home improvement,0.281038961038961,0.2777161862527716,1925,1804,541,501,0.3322774786189419,False,3729,False
+Q4 (highest),48,Conventional,Home purchase,0.0539442083872159,0.0773974059111205,16239,9406,876,728,-2.34531975239046,True,25645,False
+Q4 (highest),48,Conventional,Not applicable,0.0,0.0,1,2,0,0,0.0,False,3,True
+Q4 (highest),48,Conventional,Other purpose,0.3537447008949599,0.3181019332161687,2123,2276,751,724,3.5642767678791265,False,4399,False
+Q4 (highest),48,Conventional,Refinancing,0.1894925909295015,0.1791383219954648,2227,1764,422,316,1.0354268934036708,False,3991,False
+Q4 (highest),48,FHA,Cash-out refinancing,0.1778523489932885,0.3246753246753247,298,154,53,50,-14.682297568203609,True,452,False
+Q4 (highest),48,FHA,Home improvement,0.5,0.6666666666666666,2,3,1,2,-16.666666666666664,True,5,True
+Q4 (highest),48,FHA,Home purchase,0.07,0.1252371916508539,1700,527,119,66,-5.523719165085389,True,2227,False
+Q4 (highest),48,FHA,Other purpose,1.0,0.0,2,1,2,0,100.0,False,3,True
+Q4 (highest),48,FHA,Refinancing,0.3595505617977528,0.3023255813953488,89,43,32,13,5.7224980402403975,False,132,False
+Q4 (highest),48,RHS/FSA,Home purchase,0.0,1.0,3,1,0,1,-100.0,True,4,True
+Q4 (highest),48,VA,Cash-out refinancing,0.2470588235294117,0.29375,255,160,63,47,-4.669117647058823,True,415,False
+Q4 (highest),48,VA,Home improvement,0.3333333333333333,0.0,3,1,1,0,33.33333333333333,False,4,True
+Q4 (highest),48,VA,Home purchase,0.04973474801061,0.0539568345323741,1508,556,75,30,-0.4222086521764021,True,2064,False
+Q4 (highest),48,VA,Other purpose,0.5,,2,0,1,0,,,2,True
+Q4 (highest),48,VA,Refinancing,0.3846153846153846,0.0,13,2,5,0,38.46153846153847,False,15,True
+Q4 (highest),49,Conventional,Cash-out refinancing,0.1377279102384291,0.1631000578368999,3565,3458,491,564,-2.537214759847076,True,7023,False
+Q4 (highest),49,Conventional,Home improvement,0.2310671256454389,0.234887737478411,2324,2895,537,680,-0.3820611832972137,True,5219,False
+Q4 (highest),49,Conventional,Home purchase,0.0468736335811106,0.0668463611859838,22870,12985,1072,868,-1.997272760487321,True,35855,False
+Q4 (highest),49,Conventional,Not applicable,0.0,0.0,2,1,0,0,0.0,False,3,True
+Q4 (highest),49,Conventional,Other purpose,0.2841591591591592,0.2459218981710331,2664,4046,757,995,3.823726098812605,False,6710,False
+Q4 (highest),49,Conventional,Refinancing,0.1578581363004172,0.1745755333043099,2876,2297,454,401,-1.6717397003892716,True,5173,False
+Q4 (highest),49,FHA,Cash-out refinancing,0.2369337979094076,0.303030303030303,287,165,68,50,-6.609650512089537,True,452,False
+Q4 (highest),49,FHA,Home improvement,0.3333333333333333,1.0,3,1,1,1,-66.66666666666667,True,4,True
+Q4 (highest),49,FHA,Home purchase,0.0643617021276595,0.1167247386759581,1880,574,121,67,-5.236303654829862,True,2454,False
+Q4 (highest),49,FHA,Other purpose,0.5,0.5,2,2,1,1,0.0,False,4,True
+Q4 (highest),49,FHA,Refinancing,0.2626262626262626,0.3571428571428571,99,42,26,15,-9.45165945165945,True,141,False
+Q4 (highest),49,RHS/FSA,Home purchase,,0.5,0,2,0,1,,,2,True
+Q4 (highest),49,VA,Cash-out refinancing,0.2040816326530612,0.2457142857142857,245,175,50,43,-4.163265306122449,True,420,False
+Q4 (highest),49,VA,Home improvement,1.0,,1,0,1,0,,,1,True
+Q4 (highest),49,VA,Home purchase,0.0491009681881051,0.0644007155635062,1446,559,71,36,-1.529974737540115,True,2005,False
+Q4 (highest),49,VA,Other purpose,0.6666666666666666,0.0,3,1,2,0,66.66666666666666,False,4,True
+Q4 (highest),49,VA,Refinancing,0.4166666666666667,0.0,12,5,5,0,41.66666666666667,False,17,True
+Q4 (highest),50%-60%,Conventional,Cash-out refinancing,0.60224,0.6868376068376069,3125,2925,1882,2009,-8.459760683760686,True,6050,False
+Q4 (highest),50%-60%,Conventional,Home improvement,0.5130282165519103,0.5619206807476067,7407,6581,3800,3698,-4.889246419569638,True,13988,False
+Q4 (highest),50%-60%,Conventional,Home purchase,0.5247318888159335,0.589906992766104,9138,5806,4795,3425,-6.517510395017057,True,14944,False
+Q4 (highest),50%-60%,Conventional,Not applicable,0.4285714285714285,0.7142857142857143,7,7,3,5,-28.571428571428577,True,14,True
+Q4 (highest),50%-60%,Conventional,Other purpose,0.5990675990675991,0.6148529781352099,9009,7958,5397,4893,-1.5785379067610794,True,16967,False
+Q4 (highest),50%-60%,Conventional,Refinancing,0.5260933480338111,0.5852795470629866,5442,4239,2863,2481,-5.918619902917543,True,9681,False
+Q4 (highest),50%-60%,FHA,Cash-out refinancing,0.2494780793319415,0.3368421052631579,1916,1140,478,384,-8.736402593121634,True,3056,False
+Q4 (highest),50%-60%,FHA,Home improvement,0.4705882352941176,0.5714285714285714,17,7,8,4,-10.084033613445376,True,24,True
+Q4 (highest),50%-60%,FHA,Home purchase,0.0869203419320674,0.1285140562248996,13219,3735,1149,480,-4.159371429283211,True,16954,False
+Q4 (highest),50%-60%,FHA,Other purpose,0.4,0.5,15,14,6,7,-9.999999999999998,True,29,True
+Q4 (highest),50%-60%,FHA,Refinancing,0.2615384615384615,0.3471074380165289,650,242,170,84,-8.55689764780674,True,892,False
+Q4 (highest),50%-60%,RHS/FSA,Home purchase,0.0714285714285714,0.25,14,4,1,1,-17.857142857142858,True,18,True
+Q4 (highest),50%-60%,VA,Cash-out refinancing,0.2576974564926372,0.2988505747126437,1494,870,385,260,-4.11531182200065,True,2364,False
+Q4 (highest),50%-60%,VA,Home improvement,0.2222222222222222,0.5,9,2,2,1,-27.77777777777778,True,11,True
+Q4 (highest),50%-60%,VA,Home purchase,0.0539098235678501,0.0794908062234795,9182,3535,495,281,-2.558098265562935,True,12717,False
+Q4 (highest),50%-60%,VA,Other purpose,0.8888888888888888,0.5714285714285714,9,7,8,4,31.746031746031743,False,16,True
+Q4 (highest),50%-60%,VA,Refinancing,0.2857142857142857,0.2765957446808511,70,47,20,13,0.9118541033434624,False,117,False
+Q4 (highest),<20%,Conventional,Cash-out refinancing,0.1584,0.2652032037970928,8125,10113,1287,2682,-10.680320379709284,True,18238,False
+Q4 (highest),<20%,Conventional,Home improvement,0.1957293832293832,0.3859380520551171,23088,16982,4519,6554,-19.020866882573397,True,40070,False
+Q4 (highest),<20%,Conventional,Home purchase,0.0754603419414298,0.1213457604000909,53167,43990,4012,5338,-4.588541845866109,True,97157,False
+Q4 (highest),<20%,Conventional,Not applicable,0.3414634146341463,0.425,41,40,14,17,-8.353658536585362,True,81,False
+Q4 (highest),<20%,Conventional,Other purpose,0.2555652115783141,0.433618087224613,14959,15569,3823,6751,-17.805287564629896,True,30528,False
+Q4 (highest),<20%,Conventional,Refinancing,0.1187929977521967,0.2097066972389414,14681,10467,1744,2195,-9.091369948674473,True,25148,False
+Q4 (highest),<20%,FHA,Cash-out refinancing,0.4617224880382775,0.5675675675675675,418,555,193,315,-10.584507952929002,True,973,False
+Q4 (highest),<20%,FHA,Home improvement,0.0833333333333333,0.5909090909090909,36,22,3,13,-50.75757575757576,True,58,False
+Q4 (highest),<20%,FHA,Home purchase,0.1486325802615933,0.2057001239157373,841,807,125,166,-5.706754365414396,True,1648,False
+Q4 (highest),<20%,FHA,Not applicable,1.0,,1,0,1,0,,,1,True
+Q4 (highest),<20%,FHA,Other purpose,0.5769230769230769,0.6964285714285714,26,56,15,39,-11.950549450549453,True,82,False
+Q4 (highest),<20%,FHA,Refinancing,0.6354166666666666,0.6736111111111112,96,144,61,97,-3.819444444444453,True,240,False
+Q4 (highest),<20%,RHS/FSA,Home purchase,0.8,0.75,5,4,4,3,5.000000000000004,False,9,True
+Q4 (highest),<20%,VA,Cash-out refinancing,0.4357005758157389,0.5588235294117647,521,374,227,209,-12.312295359602576,True,895,False
+Q4 (highest),<20%,VA,Home improvement,0.3333333333333333,1.0,6,2,2,2,-66.66666666666667,True,8,True
+Q4 (highest),<20%,VA,Home purchase,0.0905870445344129,0.1339977851605758,1976,903,179,121,-4.341074062616292,True,2879,False
+Q4 (highest),<20%,VA,Other purpose,0.5384615384615384,0.5294117647058824,13,17,7,9,0.9049773755656076,False,30,False
+Q4 (highest),<20%,VA,Refinancing,0.3392857142857143,0.3103448275862069,56,29,19,9,2.8940886699507398,False,85,False
+Q4 (highest),>60%,Conventional,Cash-out refinancing,0.8491589799240369,0.9050332383665716,1843,2106,1565,1906,-5.587425844253479,True,3949,False
+Q4 (highest),>60%,Conventional,Home improvement,0.8998174349612049,0.917805582290664,4382,5195,3943,4768,-1.7988147329459192,True,9577,False
+Q4 (highest),>60%,Conventional,Home purchase,0.7621199671322926,0.8398070576288398,4868,3939,3710,3308,-7.768709049654721,True,8807,False
+Q4 (highest),>60%,Conventional,Not applicable,1.0,1.0,2,6,2,6,0.0,False,8,True
+Q4 (highest),>60%,Conventional,Other purpose,0.9181391994230076,0.933408215661104,5546,6232,5092,5817,-1.52690162380964,True,11778,False
+Q4 (highest),>60%,Conventional,Refinancing,0.8474674384949349,0.8885422575155985,3455,3526,2928,3133,-4.107481902066357,True,6981,False
+Q4 (highest),>60%,FHA,Cash-out refinancing,0.9854014598540146,0.970873786407767,137,103,135,100,1.452767344624761,False,240,False
+Q4 (highest),>60%,FHA,Home improvement,1.0,1.0,5,4,5,4,0.0,False,9,True
+Q4 (highest),>60%,FHA,Home purchase,0.9641638225255972,0.95260663507109,586,211,565,201,1.155718745450729,False,797,False
+Q4 (highest),>60%,FHA,Other purpose,1.0,1.0,4,4,4,4,0.0,False,8,True
+Q4 (highest),>60%,FHA,Refinancing,0.9830508474576272,0.9696969696969696,59,33,58,32,1.335387776065744,False,92,False
+Q4 (highest),>60%,RHS/FSA,Home purchase,1.0,,1,0,1,0,,,1,True
+Q4 (highest),>60%,RHS/FSA,Refinancing,1.0,,1,0,1,0,,,1,True
+Q4 (highest),>60%,VA,Cash-out refinancing,0.6261980830670927,0.7126436781609196,313,174,196,124,-8.644559509382688,True,487,False
+Q4 (highest),>60%,VA,Home improvement,1.0,1.0,1,1,1,1,0.0,False,2,True
+Q4 (highest),>60%,VA,Home purchase,0.1629701060752169,0.2941176470588235,2074,663,338,195,-13.114754098360656,True,2737,False
+Q4 (highest),>60%,VA,Other purpose,1.0,1.0,12,6,12,6,0.0,False,18,True
+Q4 (highest),>60%,VA,Refinancing,0.5833333333333334,0.8333333333333334,12,6,7,5,-25.0,True,18,True
+Q4 (highest),Not reported,Conventional,Cash-out refinancing,0.5851131654446924,0.7112506927766488,6274,5413,3671,3850,-12.613752733195636,True,11687,False
+Q4 (highest),Not reported,Conventional,Home improvement,0.280812324929972,0.5040974010770312,7140,4271,2005,2153,-22.32850761470592,True,11411,False
+Q4 (highest),Not reported,Conventional,Home purchase,0.0724405024681944,0.1096201955879008,24917,13191,1805,1446,-3.717969311970644,True,38108,False
+Q4 (highest),Not reported,Conventional,Not applicable,0.2,0.5,5,2,1,1,-30.0,True,7,True
+Q4 (highest),Not reported,Conventional,Other purpose,0.3954945546770103,0.6252964426877471,6703,5060,2651,3164,-22.98018880107368,True,11763,False
+Q4 (highest),Not reported,Conventional,Refinancing,0.1430076376086384,0.2228521587440035,7594,4586,1086,1022,-7.984452113536508,True,12180,False
+Q4 (highest),Not reported,FHA,Cash-out refinancing,0.9616204690831556,0.978891820580475,469,379,451,371,-1.7271351497319287,True,848,False
+Q4 (highest),Not reported,FHA,Home improvement,0.75,0.75,8,4,6,3,0.0,False,12,True
+Q4 (highest),Not reported,FHA,Home purchase,0.2473867595818815,0.2740740740740741,287,135,71,37,-2.6687314492192558,True,422,False
+Q4 (highest),Not reported,FHA,Other purpose,0.5,0.25,8,4,4,1,25.0,False,12,True
+Q4 (highest),Not reported,FHA,Refinancing,0.65625,0.75,96,84,63,63,-9.375,True,180,False
+Q4 (highest),Not reported,RHS/FSA,Home purchase,1.0,1.0,2,3,2,3,0.0,False,5,True
+Q4 (highest),Not reported,RHS/FSA,Refinancing,1.0,,1,0,1,0,,,1,True
+Q4 (highest),Not reported,VA,Cash-out refinancing,0.9289617486338798,0.9426229508196722,183,122,170,115,-1.3661202185792365,True,305,False
+Q4 (highest),Not reported,VA,Home improvement,,0.0,0,1,0,0,,,1,True
+Q4 (highest),Not reported,VA,Home purchase,0.1428571428571428,0.1473684210526315,224,95,32,14,-0.4511278195488716,True,319,False
+Q4 (highest),Not reported,VA,Other purpose,,1.0,0,1,0,1,,,1,True
+Q4 (highest),Not reported,VA,Refinancing,0.6774193548387096,0.6666666666666666,31,12,21,8,1.0752688172043,False,43,False

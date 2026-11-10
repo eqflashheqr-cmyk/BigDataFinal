@@ -1,0 +1,9 @@
+Analytical quantity,Agree,Discrepancy (first few)
+Record counts after each cleaning step,YES,
+Missing-value counts for the important variables,YES,
+Counts and proportions of application outcomes (action_taken),YES,
+Denial rate by joint_flag (RQ1),YES,
+"Descriptive statistics of loan_amount, income, interest_rate, LTI",YES,
+Average and median loan amount by loan type,YES,
+"Aggregated results by financial institution (LEI, top 50)",YES,
+Denial rate in the top 5 states (RQ4),YES,

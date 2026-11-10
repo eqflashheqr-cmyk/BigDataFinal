@@ -1,0 +1,1151 @@
+{
+  "n_comparisons": 8,
+  "n_agree": 8,
+  "all_agree": true,
+  "tolerance": 1e-06,
+  "pandas_version": "2.3.3",
+  "comparisons": [
+    {
+      "quantity": "Record counts after each cleaning step",
+      "pandas": {
+        "records_total": 12224691,
+        "records_with_decision": 8643834,
+        "records_joint_flag_known": 11073994,
+        "records_joint": 4424331,
+        "records_single": 6649663,
+        "records_indeterminate_joint": 1150697
+      },
+      "spark": {
+        "records_total": 12224691,
+        "records_with_decision": 8643834,
+        "records_joint_flag_known": 11073994,
+        "records_joint": 4424331,
+        "records_single": 6649663,
+        "records_indeterminate_joint": 1150697
+      },
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Missing-value counts for the important variables",
+      "pandas": {
+        "loan_amount": 0,
+        "income": 1763458,
+        "interest_rate": 4495628,
+        "rate_spread": 6396177,
+        "combined_loan_to_value_ratio": 4296158,
+        "property_value": 2726340,
+        "debt_to_income_ratio": 0,
+        "total_loan_costs": 6710915,
+        "loan_to_income_ratio": 1919988,
+        "joint_flag": 1150697,
+        "state_code": 0,
+        "lei": 0,
+        "applicant_age": 0
+      },
+      "spark": {
+        "loan_amount": 0,
+        "income": 1763458,
+        "interest_rate": 4495628,
+        "rate_spread": 6396177,
+        "combined_loan_to_value_ratio": 4296158,
+        "property_value": 2726340,
+        "debt_to_income_ratio": 0,
+        "total_loan_costs": 6710915,
+        "loan_to_income_ratio": 1919988,
+        "joint_flag": 1150697,
+        "state_code": 0,
+        "lei": 0,
+        "applicant_age": 0
+      },
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Counts and proportions of application outcomes (action_taken)",
+      "pandas": [
+        {
+          "action_taken": 1,
+          "n": 6190908,
+          "label": "Loan originated",
+          "proportion": 0.5064265428058672
+        },
+        {
+          "action_taken": 2,
+          "n": 360606,
+          "label": "Application approved but not accepted",
+          "proportion": 0.02949816891077247
+        },
+        {
+          "action_taken": 3,
+          "n": 2092320,
+          "label": "Application denied",
+          "proportion": 0.1711552463780066
+        },
+        {
+          "action_taken": 4,
+          "n": 1529192,
+          "label": "Application withdrawn by applicant",
+          "proportion": 0.12509044195881924
+        },
+        {
+          "action_taken": 5,
+          "n": 579848,
+          "label": "File closed for incompleteness",
+          "proportion": 0.0474325281514273
+        },
+        {
+          "action_taken": 6,
+          "n": 1271363,
+          "label": "Purchased loan",
+          "proportion": 0.10399960211673244
+        },
+        {
+          "action_taken": 7,
+          "n": 47145,
+          "label": "Preapproval request denied",
+          "proportion": 0.003856539195960045
+        },
+        {
+          "action_taken": 8,
+          "n": 153309,
+          "label": "Preapproval request approved but not accepted",
+          "proportion": 0.012540930482414647
+        }
+      ],
+      "spark": [
+        {
+          "action_taken": 1,
+          "n": 6190908,
+          "proportion": 0.5064265428058672,
+          "label": "Loan originated"
+        },
+        {
+          "action_taken": 2,
+          "n": 360606,
+          "proportion": 0.02949816891077247,
+          "label": "Application approved but not accepted"
+        },
+        {
+          "action_taken": 3,
+          "n": 2092320,
+          "proportion": 0.1711552463780066,
+          "label": "Application denied"
+        },
+        {
+          "action_taken": 4,
+          "n": 1529192,
+          "proportion": 0.12509044195881924,
+          "label": "Application withdrawn by applicant"
+        },
+        {
+          "action_taken": 5,
+          "n": 579848,
+          "proportion": 0.0474325281514273,
+          "label": "File closed for incompleteness"
+        },
+        {
+          "action_taken": 6,
+          "n": 1271363,
+          "proportion": 0.10399960211673244,
+          "label": "Purchased loan"
+        },
+        {
+          "action_taken": 7,
+          "n": 47145,
+          "proportion": 0.003856539195960045,
+          "label": "Preapproval request denied"
+        },
+        {
+          "action_taken": 8,
+          "n": 153309,
+          "proportion": 0.012540930482414647,
+          "label": "Preapproval request approved but not accepted"
+        }
+      ],
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Denial rate by joint_flag (RQ1)",
+      "pandas": [
+        {
+          "joint_flag": 0,
+          "n_decisions": 5038003,
+          "n_denied": 1414567,
+          "denial_rate": 0.28077930878564383
+        },
+        {
+          "joint_flag": 1,
+          "n_decisions": 3519683,
+          "n_denied": 667288,
+          "denial_rate": 0.18958752819501073
+        }
+      ],
+      "spark": [
+        {
+          "joint_flag": 0,
+          "n_decisions": 5038003,
+          "n_denied": 1414567,
+          "denial_rate": 0.28077930878564383
+        },
+        {
+          "joint_flag": 1,
+          "n_decisions": 3519683,
+          "n_denied": 667288,
+          "denial_rate": 0.18958752819501073
+        }
+      ],
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Descriptive statistics of loan_amount, income, interest_rate, LTI",
+      "pandas": [
+        {
+          "variable": "loan_amount",
+          "n": 12224691,
+          "n_missing": 0,
+          "mean": 315359.2794288216,
+          "median": 225000.0,
+          "std": 3023333.6504477137,
+          "min": 5000.0,
+          "p25": 105000.0,
+          "p75": 375000.0,
+          "max": 2962005000.0
+        },
+        {
+          "variable": "income",
+          "n": 10461233,
+          "n_missing": 1763458,
+          "mean": 321.2447696175011,
+          "median": 104.0,
+          "std": 338005.4541151871,
+          "min": 0.0,
+          "p25": 67.0,
+          "p75": 165.0,
+          "max": 999999999.0
+        },
+        {
+          "variable": "interest_rate",
+          "n": 7729063,
+          "n_missing": 4495628,
+          "mean": 7.047845619559439,
+          "median": 6.75,
+          "std": 1.7073446109350023,
+          "min": 0.0,
+          "p25": 6.25,
+          "p75": 7.62,
+          "max": 60.0
+        },
+        {
+          "variable": "loan_to_income_ratio",
+          "n": 10304703,
+          "n_missing": 1919988,
+          "mean": 2.4478303564792743,
+          "median": 2.0714285714285716,
+          "std": 9.927344306159213,
+          "min": 1.052799871777398e-07,
+          "p25": 0.9154929577464789,
+          "p75": 3.2278481012658227,
+          "max": 11950.5
+        }
+      ],
+      "spark": [
+        {
+          "variable": "loan_amount",
+          "n": 12224691,
+          "n_missing": 0,
+          "mean": 315359.2794288216,
+          "median": 225000.0,
+          "std": 3023333.6504477207,
+          "min": 5000.0,
+          "p25": 105000.0,
+          "p75": 375000.0,
+          "max": 2962005000.0
+        },
+        {
+          "variable": "income",
+          "n": 10461233,
+          "n_missing": 1763458,
+          "mean": 321.2447696175011,
+          "median": 104.0,
+          "std": 338005.454115186,
+          "min": 0.0,
+          "p25": 67.0,
+          "p75": 165.0,
+          "max": 999999999.0
+        },
+        {
+          "variable": "interest_rate",
+          "n": 7729063,
+          "n_missing": 4495628,
+          "mean": 7.0478456195688715,
+          "median": 6.75,
+          "std": 1.707344610935002,
+          "min": 0.0,
+          "p25": 6.25,
+          "p75": 7.62,
+          "max": 60.0
+        },
+        {
+          "variable": "loan_to_income_ratio",
+          "n": 10304703,
+          "n_missing": 1919988,
+          "mean": 2.4478303564793795,
+          "median": 2.0714285714285716,
+          "std": 9.927344306159242,
+          "min": 1.052799871777398e-07,
+          "p25": 0.9154929577464789,
+          "p75": 3.2278481012658227,
+          "max": 11950.5
+        }
+      ],
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Average and median loan amount by loan type",
+      "pandas": [
+        {
+          "loan_type": 1,
+          "n": 9261211,
+          "mean_loan_amount": 312560.8913348373,
+          "median_loan_amount": 185000.0,
+          "label": "Conventional"
+        },
+        {
+          "loan_type": 2,
+          "n": 1871341,
+          "mean_loan_amount": 301991.8470230706,
+          "median_loan_amount": 275000.0,
+          "label": "FHA"
+        },
+        {
+          "loan_type": 3,
+          "n": 1016516,
+          "mean_loan_amount": 375463.5637805996,
+          "median_loan_amount": 335000.0,
+          "label": "VA"
+        },
+        {
+          "loan_type": 4,
+          "n": 75623,
+          "mean_loan_amount": 180936.15698927574,
+          "median_loan_amount": 175000.0,
+          "label": "RHS/FSA"
+        }
+      ],
+      "spark": [
+        {
+          "loan_type": 1,
+          "n": 9261211,
+          "mean_loan_amount": 312560.8913348373,
+          "median_loan_amount": 185000.0,
+          "label": "Conventional"
+        },
+        {
+          "loan_type": 2,
+          "n": 1871341,
+          "mean_loan_amount": 301991.8470230706,
+          "median_loan_amount": 275000.0,
+          "label": "FHA"
+        },
+        {
+          "loan_type": 3,
+          "n": 1016516,
+          "mean_loan_amount": 375463.5637805996,
+          "median_loan_amount": 335000.0,
+          "label": "VA"
+        },
+        {
+          "loan_type": 4,
+          "n": 75623,
+          "mean_loan_amount": 180936.15698927574,
+          "median_loan_amount": 175000.0,
+          "label": "RHS/FSA"
+        }
+      ],
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Aggregated results by financial institution (LEI, top 50)",
+      "pandas": [
+        {
+          "lei": "549300FGXN1K3HLB1R50",
+          "n_applications": 553466,
+          "n_decisions": 451002,
+          "mean_loan_amount": 284078.9497457838,
+          "total_loan_amount": 157228040000
+        },
+        {
+          "lei": "549300HW662MN1WU8550",
+          "n_applications": 493402,
+          "n_decisions": 431091,
+          "mean_loan_amount": 380093.0883944532,
+          "total_loan_amount": 187538690000
+        },
+        {
+          "lei": "RVDPPPGHCGZ40J4VQ731",
+          "n_applications": 383870,
+          "n_decisions": 88393,
+          "mean_loan_amount": 327450.1523953422,
+          "total_loan_amount": 125698290000
+        },
+        {
+          "lei": "549300LYRWPSYPK6S325",
+          "n_applications": 251983,
+          "n_decisions": 76187,
+          "mean_loan_amount": 370156.33991181944,
+          "total_loan_amount": 93273105000
+        },
+        {
+          "lei": "549300FNXYY540N23N64",
+          "n_applications": 247963,
+          "n_decisions": 81667,
+          "mean_loan_amount": 328799.236176365,
+          "total_loan_amount": 81530045000
+        },
+        {
+          "lei": "B4TYDEB6GKMZO031MB27",
+          "n_applications": 233409,
+          "n_decisions": 168147,
+          "mean_loan_amount": 274773.01646466076,
+          "total_loan_amount": 64134495000
+        },
+        {
+          "lei": "X05BVSK68TQ7YTOSNR22",
+          "n_applications": 215754,
+          "n_decisions": 147762,
+          "mean_loan_amount": 89971.58801227323,
+          "total_loan_amount": 19411730000
+        },
+        {
+          "lei": "6BYL5QZYBDK8S7L73M02",
+          "n_applications": 202259,
+          "n_decisions": 130301,
+          "mean_loan_amount": 304661.47365506605,
+          "total_loan_amount": 61620525000
+        },
+        {
+          "lei": "5493003GQDUH26DNNH17",
+          "n_applications": 182226,
+          "n_decisions": 127055,
+          "mean_loan_amount": 212941.2926805176,
+          "total_loan_amount": 38803440000
+        },
+        {
+          "lei": "549300XQVJ1XBNFA5536",
+          "n_applications": 171474,
+          "n_decisions": 108328,
+          "mean_loan_amount": 119587.51764115843,
+          "total_loan_amount": 20506150000
+        },
+        {
+          "lei": "549300VZVN841I2ILS84",
+          "n_applications": 156948,
+          "n_decisions": 106612,
+          "mean_loan_amount": 375577.1975431353,
+          "total_loan_amount": 58946090000
+        },
+        {
+          "lei": "7H6GLXDRUGQFU57RNE97",
+          "n_applications": 150059,
+          "n_decisions": 94758,
+          "mean_loan_amount": 568327.7577486188,
+          "total_loan_amount": 85282695000
+        },
+        {
+          "lei": "254900HA4DQWAE0W3342",
+          "n_applications": 148959,
+          "n_decisions": 7490,
+          "mean_loan_amount": 331173.9807598064,
+          "total_loan_amount": 49331345000
+        },
+        {
+          "lei": "549300DD5QQUHO6PCH70",
+          "n_applications": 147342,
+          "n_decisions": 98290,
+          "mean_loan_amount": 314159.0313691955,
+          "total_loan_amount": 46288820000
+        },
+        {
+          "lei": "549300AG64NHILB7ZP05",
+          "n_applications": 142738,
+          "n_decisions": 114222,
+          "mean_loan_amount": 267769.68992139446,
+          "total_loan_amount": 38220910000
+        },
+        {
+          "lei": "AD6GFRVSDT01YPT1CS68",
+          "n_applications": 127044,
+          "n_decisions": 91074,
+          "mean_loan_amount": 274244.74985044554,
+          "total_loan_amount": 34841150000
+        },
+        {
+          "lei": "549300U3721PJGQZYY68",
+          "n_applications": 124355,
+          "n_decisions": 70928,
+          "mean_loan_amount": 401092.71842708375,
+          "total_loan_amount": 49877885000
+        },
+        {
+          "lei": "5493000YNV8IX4VD3X12",
+          "n_applications": 124257,
+          "n_decisions": 76047,
+          "mean_loan_amount": 137011.4762146197,
+          "total_loan_amount": 17024635000
+        },
+        {
+          "lei": "549300E2UX99HKDBR481",
+          "n_applications": 118269,
+          "n_decisions": 62706,
+          "mean_loan_amount": 272252.027158427,
+          "total_loan_amount": 32198975000
+        },
+        {
+          "lei": "DRMSV1Q0EKMEXLAU1P80",
+          "n_applications": 116064,
+          "n_decisions": 87691,
+          "mean_loan_amount": 258521.93617314586,
+          "total_loan_amount": 30005090000
+        },
+        {
+          "lei": "549300LBCBNR1OT00651",
+          "n_applications": 109999,
+          "n_decisions": 52724,
+          "mean_loan_amount": 252945.61768743352,
+          "total_loan_amount": 27823765000
+        },
+        {
+          "lei": "549300AQ3T62GXDU7D76",
+          "n_applications": 109444,
+          "n_decisions": 86615,
+          "mean_loan_amount": 305253.0061035781,
+          "total_loan_amount": 33408110000
+        },
+        {
+          "lei": "549300YIQ7S7Z8PIHE53",
+          "n_applications": 107725,
+          "n_decisions": 90757,
+          "mean_loan_amount": 175472.12810396843,
+          "total_loan_amount": 18902735000
+        },
+        {
+          "lei": "JJKC32MCHWDI71265Z06",
+          "n_applications": 104913,
+          "n_decisions": 69647,
+          "mean_loan_amount": 255521.0984339405,
+          "total_loan_amount": 26807485000
+        },
+        {
+          "lei": "549300PIL8LFAQ04XC20",
+          "n_applications": 103755,
+          "n_decisions": 88849,
+          "mean_loan_amount": 107555.73225386729,
+          "total_loan_amount": 11159445000
+        },
+        {
+          "lei": "549300MGPZBLQDIL7538",
+          "n_applications": 102436,
+          "n_decisions": 79832,
+          "mean_loan_amount": 318032.91811472527,
+          "total_loan_amount": 32578020000
+        },
+        {
+          "lei": "549300GKFNPRWNS0GF29",
+          "n_applications": 100220,
+          "n_decisions": 68595,
+          "mean_loan_amount": 371163.24087008584,
+          "total_loan_amount": 37197980000
+        },
+        {
+          "lei": "2WHM8VNJH63UN14OL754",
+          "n_applications": 99418,
+          "n_decisions": 82678,
+          "mean_loan_amount": 179575.6301675753,
+          "total_loan_amount": 17853050000
+        },
+        {
+          "lei": "5493001SXWZ4OFP8Z903",
+          "n_applications": 95859,
+          "n_decisions": 81251,
+          "mean_loan_amount": 338153.7988086669,
+          "total_loan_amount": 32415085000
+        },
+        {
+          "lei": "254900UL88QFG0E40516",
+          "n_applications": 95238,
+          "n_decisions": 69550,
+          "mean_loan_amount": 84216.38421638422,
+          "total_loan_amount": 8020600000
+        },
+        {
+          "lei": "549300NOCASXPA34X033",
+          "n_applications": 94214,
+          "n_decisions": 41075,
+          "mean_loan_amount": 237308.25567325452,
+          "total_loan_amount": 22357760000
+        },
+        {
+          "lei": "KB1H1DSPRFMYMCUFXT09",
+          "n_applications": 89649,
+          "n_decisions": 54537,
+          "mean_loan_amount": 693469.6984907807,
+          "total_loan_amount": 62168865000
+        },
+        {
+          "lei": "549300CB67L6KPJLHE19",
+          "n_applications": 86455,
+          "n_decisions": 86234,
+          "mean_loan_amount": 118123.47463998612,
+          "total_loan_amount": 10212365000
+        },
+        {
+          "lei": "549300DD4R4SYK5RAQ92",
+          "n_applications": 85393,
+          "n_decisions": 73840,
+          "mean_loan_amount": 336103.60333985224,
+          "total_loan_amount": 28700895000
+        },
+        {
+          "lei": "549300H3IZO24NSOO931",
+          "n_applications": 75139,
+          "n_decisions": 65082,
+          "mean_loan_amount": 364880.0889019018,
+          "total_loan_amount": 27416725000
+        },
+        {
+          "lei": "EQTWLK1G7ODGC2MGLV11",
+          "n_applications": 70295,
+          "n_decisions": 60727,
+          "mean_loan_amount": 210337.36396614267,
+          "total_loan_amount": 14785665000
+        },
+        {
+          "lei": "SS1TRMSN6BRNMOREEV51",
+          "n_applications": 67724,
+          "n_decisions": 42596,
+          "mean_loan_amount": 327127.0155336365,
+          "total_loan_amount": 22154350000
+        },
+        {
+          "lei": "54930021WPEXNHYZUL09",
+          "n_applications": 65552,
+          "n_decisions": 13461,
+          "mean_loan_amount": 293906.0593116915,
+          "total_loan_amount": 19266130000
+        },
+        {
+          "lei": "QFROUN1UWUYU0DVIWD51",
+          "n_applications": 64198,
+          "n_decisions": 46889,
+          "mean_loan_amount": 207651.17293373626,
+          "total_loan_amount": 13330790000
+        },
+        {
+          "lei": "5493001GCBD5XGNIC815",
+          "n_applications": 64079,
+          "n_decisions": 42129,
+          "mean_loan_amount": 70048.6118697233,
+          "total_loan_amount": 4488645000
+        },
+        {
+          "lei": "PAOOWF3GUFM46FBSP561",
+          "n_applications": 62267,
+          "n_decisions": 6936,
+          "mean_loan_amount": 336368.62222364976,
+          "total_loan_amount": 20944665000
+        },
+        {
+          "lei": "549300VCMRO4ST680C11",
+          "n_applications": 59968,
+          "n_decisions": 24735,
+          "mean_loan_amount": 361679.2289220918,
+          "total_loan_amount": 21689180000
+        },
+        {
+          "lei": "03D0JEWFDFUS0SEEKG89",
+          "n_applications": 56022,
+          "n_decisions": 39693,
+          "mean_loan_amount": 297731.2484381136,
+          "total_loan_amount": 16679500000
+        },
+        {
+          "lei": "E57ODZWZ7FF32TWEFA76",
+          "n_applications": 54449,
+          "n_decisions": 19195,
+          "mean_loan_amount": 689382.6332898675,
+          "total_loan_amount": 37536195000
+        },
+        {
+          "lei": "5493008CPTDVOS570626",
+          "n_applications": 48856,
+          "n_decisions": 39448,
+          "mean_loan_amount": 145742.99983625347,
+          "total_loan_amount": 7120420000
+        },
+        {
+          "lei": "549300SHE1JTCOWBP090",
+          "n_applications": 46466,
+          "n_decisions": 39409,
+          "mean_loan_amount": 151779.58076873413,
+          "total_loan_amount": 7052590000
+        },
+        {
+          "lei": "549300SUCQ1358EGVE89",
+          "n_applications": 44490,
+          "n_decisions": 19117,
+          "mean_loan_amount": 286801.5284333558,
+          "total_loan_amount": 12759800000
+        },
+        {
+          "lei": "549300R9S3MVDV4MGF56",
+          "n_applications": 44242,
+          "n_decisions": 36250,
+          "mean_loan_amount": 236372.9035757877,
+          "total_loan_amount": 10457610000
+        },
+        {
+          "lei": "3Y4U8VZURTYWI1W2K376",
+          "n_applications": 41733,
+          "n_decisions": 30678,
+          "mean_loan_amount": 442636.1632281408,
+          "total_loan_amount": 18472535000
+        },
+        {
+          "lei": "254900DTLHVWQ7NP7R34",
+          "n_applications": 37444,
+          "n_decisions": 34191,
+          "mean_loan_amount": 323944.02307445783,
+          "total_loan_amount": 12129760000
+        }
+      ],
+      "spark": [
+        {
+          "lei": "549300FGXN1K3HLB1R50",
+          "n_applications": 553466,
+          "n_decisions": 451002,
+          "mean_loan_amount": 284078.9497457838,
+          "total_loan_amount": 157228040000.0
+        },
+        {
+          "lei": "549300HW662MN1WU8550",
+          "n_applications": 493402,
+          "n_decisions": 431091,
+          "mean_loan_amount": 380093.0883944532,
+          "total_loan_amount": 187538690000.0
+        },
+        {
+          "lei": "RVDPPPGHCGZ40J4VQ731",
+          "n_applications": 383870,
+          "n_decisions": 88393,
+          "mean_loan_amount": 327450.1523953422,
+          "total_loan_amount": 125698290000.0
+        },
+        {
+          "lei": "549300LYRWPSYPK6S325",
+          "n_applications": 251983,
+          "n_decisions": 76187,
+          "mean_loan_amount": 370156.33991181944,
+          "total_loan_amount": 93273105000.0
+        },
+        {
+          "lei": "549300FNXYY540N23N64",
+          "n_applications": 247963,
+          "n_decisions": 81667,
+          "mean_loan_amount": 328799.236176365,
+          "total_loan_amount": 81530045000.0
+        },
+        {
+          "lei": "B4TYDEB6GKMZO031MB27",
+          "n_applications": 233409,
+          "n_decisions": 168147,
+          "mean_loan_amount": 274773.01646466076,
+          "total_loan_amount": 64134495000.0
+        },
+        {
+          "lei": "X05BVSK68TQ7YTOSNR22",
+          "n_applications": 215754,
+          "n_decisions": 147762,
+          "mean_loan_amount": 89971.58801227323,
+          "total_loan_amount": 19411730000.0
+        },
+        {
+          "lei": "6BYL5QZYBDK8S7L73M02",
+          "n_applications": 202259,
+          "n_decisions": 130301,
+          "mean_loan_amount": 304661.47365506605,
+          "total_loan_amount": 61620525000.0
+        },
+        {
+          "lei": "5493003GQDUH26DNNH17",
+          "n_applications": 182226,
+          "n_decisions": 127055,
+          "mean_loan_amount": 212941.2926805176,
+          "total_loan_amount": 38803440000.0
+        },
+        {
+          "lei": "549300XQVJ1XBNFA5536",
+          "n_applications": 171474,
+          "n_decisions": 108328,
+          "mean_loan_amount": 119587.51764115843,
+          "total_loan_amount": 20506150000.0
+        },
+        {
+          "lei": "549300VZVN841I2ILS84",
+          "n_applications": 156948,
+          "n_decisions": 106612,
+          "mean_loan_amount": 375577.1975431353,
+          "total_loan_amount": 58946090000.0
+        },
+        {
+          "lei": "7H6GLXDRUGQFU57RNE97",
+          "n_applications": 150059,
+          "n_decisions": 94758,
+          "mean_loan_amount": 568327.7577486188,
+          "total_loan_amount": 85282695000.0
+        },
+        {
+          "lei": "254900HA4DQWAE0W3342",
+          "n_applications": 148959,
+          "n_decisions": 7490,
+          "mean_loan_amount": 331173.9807598064,
+          "total_loan_amount": 49331345000.0
+        },
+        {
+          "lei": "549300DD5QQUHO6PCH70",
+          "n_applications": 147342,
+          "n_decisions": 98290,
+          "mean_loan_amount": 314159.0313691955,
+          "total_loan_amount": 46288820000.0
+        },
+        {
+          "lei": "549300AG64NHILB7ZP05",
+          "n_applications": 142738,
+          "n_decisions": 114222,
+          "mean_loan_amount": 267769.68992139446,
+          "total_loan_amount": 38220910000.0
+        },
+        {
+          "lei": "AD6GFRVSDT01YPT1CS68",
+          "n_applications": 127044,
+          "n_decisions": 91074,
+          "mean_loan_amount": 274244.74985044554,
+          "total_loan_amount": 34841150000.0
+        },
+        {
+          "lei": "549300U3721PJGQZYY68",
+          "n_applications": 124355,
+          "n_decisions": 70928,
+          "mean_loan_amount": 401092.71842708375,
+          "total_loan_amount": 49877885000.0
+        },
+        {
+          "lei": "5493000YNV8IX4VD3X12",
+          "n_applications": 124257,
+          "n_decisions": 76047,
+          "mean_loan_amount": 137011.4762146197,
+          "total_loan_amount": 17024635000.0
+        },
+        {
+          "lei": "549300E2UX99HKDBR481",
+          "n_applications": 118269,
+          "n_decisions": 62706,
+          "mean_loan_amount": 272252.027158427,
+          "total_loan_amount": 32198975000.0
+        },
+        {
+          "lei": "DRMSV1Q0EKMEXLAU1P80",
+          "n_applications": 116064,
+          "n_decisions": 87691,
+          "mean_loan_amount": 258521.93617314586,
+          "total_loan_amount": 30005090000.0
+        },
+        {
+          "lei": "549300LBCBNR1OT00651",
+          "n_applications": 109999,
+          "n_decisions": 52724,
+          "mean_loan_amount": 252945.61768743352,
+          "total_loan_amount": 27823765000.0
+        },
+        {
+          "lei": "549300AQ3T62GXDU7D76",
+          "n_applications": 109444,
+          "n_decisions": 86615,
+          "mean_loan_amount": 305253.0061035781,
+          "total_loan_amount": 33408110000.0
+        },
+        {
+          "lei": "549300YIQ7S7Z8PIHE53",
+          "n_applications": 107725,
+          "n_decisions": 90757,
+          "mean_loan_amount": 175472.12810396843,
+          "total_loan_amount": 18902735000.0
+        },
+        {
+          "lei": "JJKC32MCHWDI71265Z06",
+          "n_applications": 104913,
+          "n_decisions": 69647,
+          "mean_loan_amount": 255521.0984339405,
+          "total_loan_amount": 26807485000.0
+        },
+        {
+          "lei": "549300PIL8LFAQ04XC20",
+          "n_applications": 103755,
+          "n_decisions": 88849,
+          "mean_loan_amount": 107555.73225386729,
+          "total_loan_amount": 11159445000.0
+        },
+        {
+          "lei": "549300MGPZBLQDIL7538",
+          "n_applications": 102436,
+          "n_decisions": 79832,
+          "mean_loan_amount": 318032.91811472527,
+          "total_loan_amount": 32578020000.0
+        },
+        {
+          "lei": "549300GKFNPRWNS0GF29",
+          "n_applications": 100220,
+          "n_decisions": 68595,
+          "mean_loan_amount": 371163.24087008584,
+          "total_loan_amount": 37197980000.0
+        },
+        {
+          "lei": "2WHM8VNJH63UN14OL754",
+          "n_applications": 99418,
+          "n_decisions": 82678,
+          "mean_loan_amount": 179575.6301675753,
+          "total_loan_amount": 17853050000.0
+        },
+        {
+          "lei": "5493001SXWZ4OFP8Z903",
+          "n_applications": 95859,
+          "n_decisions": 81251,
+          "mean_loan_amount": 338153.7988086669,
+          "total_loan_amount": 32415085000.0
+        },
+        {
+          "lei": "254900UL88QFG0E40516",
+          "n_applications": 95238,
+          "n_decisions": 69550,
+          "mean_loan_amount": 84216.38421638422,
+          "total_loan_amount": 8020600000.0
+        },
+        {
+          "lei": "549300NOCASXPA34X033",
+          "n_applications": 94214,
+          "n_decisions": 41075,
+          "mean_loan_amount": 237308.25567325452,
+          "total_loan_amount": 22357760000.0
+        },
+        {
+          "lei": "KB1H1DSPRFMYMCUFXT09",
+          "n_applications": 89649,
+          "n_decisions": 54537,
+          "mean_loan_amount": 693469.6984907807,
+          "total_loan_amount": 62168865000.0
+        },
+        {
+          "lei": "549300CB67L6KPJLHE19",
+          "n_applications": 86455,
+          "n_decisions": 86234,
+          "mean_loan_amount": 118123.47463998612,
+          "total_loan_amount": 10212365000.0
+        },
+        {
+          "lei": "549300DD4R4SYK5RAQ92",
+          "n_applications": 85393,
+          "n_decisions": 73840,
+          "mean_loan_amount": 336103.60333985224,
+          "total_loan_amount": 28700895000.0
+        },
+        {
+          "lei": "549300H3IZO24NSOO931",
+          "n_applications": 75139,
+          "n_decisions": 65082,
+          "mean_loan_amount": 364880.0889019018,
+          "total_loan_amount": 27416725000.0
+        },
+        {
+          "lei": "EQTWLK1G7ODGC2MGLV11",
+          "n_applications": 70295,
+          "n_decisions": 60727,
+          "mean_loan_amount": 210337.36396614267,
+          "total_loan_amount": 14785665000.0
+        },
+        {
+          "lei": "SS1TRMSN6BRNMOREEV51",
+          "n_applications": 67724,
+          "n_decisions": 42596,
+          "mean_loan_amount": 327127.0155336365,
+          "total_loan_amount": 22154350000.0
+        },
+        {
+          "lei": "54930021WPEXNHYZUL09",
+          "n_applications": 65552,
+          "n_decisions": 13461,
+          "mean_loan_amount": 293906.0593116915,
+          "total_loan_amount": 19266130000.0
+        },
+        {
+          "lei": "QFROUN1UWUYU0DVIWD51",
+          "n_applications": 64198,
+          "n_decisions": 46889,
+          "mean_loan_amount": 207651.17293373626,
+          "total_loan_amount": 13330790000.0
+        },
+        {
+          "lei": "5493001GCBD5XGNIC815",
+          "n_applications": 64079,
+          "n_decisions": 42129,
+          "mean_loan_amount": 70048.6118697233,
+          "total_loan_amount": 4488645000.0
+        },
+        {
+          "lei": "PAOOWF3GUFM46FBSP561",
+          "n_applications": 62267,
+          "n_decisions": 6936,
+          "mean_loan_amount": 336368.62222364976,
+          "total_loan_amount": 20944665000.0
+        },
+        {
+          "lei": "549300VCMRO4ST680C11",
+          "n_applications": 59968,
+          "n_decisions": 24735,
+          "mean_loan_amount": 361679.2289220918,
+          "total_loan_amount": 21689180000.0
+        },
+        {
+          "lei": "03D0JEWFDFUS0SEEKG89",
+          "n_applications": 56022,
+          "n_decisions": 39693,
+          "mean_loan_amount": 297731.2484381136,
+          "total_loan_amount": 16679500000.0
+        },
+        {
+          "lei": "E57ODZWZ7FF32TWEFA76",
+          "n_applications": 54449,
+          "n_decisions": 19195,
+          "mean_loan_amount": 689382.6332898675,
+          "total_loan_amount": 37536195000.0
+        },
+        {
+          "lei": "5493008CPTDVOS570626",
+          "n_applications": 48856,
+          "n_decisions": 39448,
+          "mean_loan_amount": 145742.99983625347,
+          "total_loan_amount": 7120420000.0
+        },
+        {
+          "lei": "549300SHE1JTCOWBP090",
+          "n_applications": 46466,
+          "n_decisions": 39409,
+          "mean_loan_amount": 151779.58076873413,
+          "total_loan_amount": 7052590000.0
+        },
+        {
+          "lei": "549300SUCQ1358EGVE89",
+          "n_applications": 44490,
+          "n_decisions": 19117,
+          "mean_loan_amount": 286801.5284333558,
+          "total_loan_amount": 12759800000.0
+        },
+        {
+          "lei": "549300R9S3MVDV4MGF56",
+          "n_applications": 44242,
+          "n_decisions": 36250,
+          "mean_loan_amount": 236372.9035757877,
+          "total_loan_amount": 10457610000.0
+        },
+        {
+          "lei": "3Y4U8VZURTYWI1W2K376",
+          "n_applications": 41733,
+          "n_decisions": 30678,
+          "mean_loan_amount": 442636.1632281408,
+          "total_loan_amount": 18472535000.0
+        },
+        {
+          "lei": "254900DTLHVWQ7NP7R34",
+          "n_applications": 37444,
+          "n_decisions": 34191,
+          "mean_loan_amount": 323944.02307445783,
+          "total_loan_amount": 12129760000.0
+        }
+      ],
+      "agree": true,
+      "discrepancy": []
+    },
+    {
+      "quantity": "Denial rate in the top 5 states (RQ4)",
+      "pandas": [
+        {
+          "state_code": "CA",
+          "n_decisions": 726569,
+          "n_denied": 179528,
+          "denial_rate": 0.24709009054886735
+        },
+        {
+          "state_code": "FL",
+          "n_decisions": 713095,
+          "n_denied": 206264,
+          "denial_rate": 0.28925178272179725
+        },
+        {
+          "state_code": "TX",
+          "n_decisions": 708459,
+          "n_denied": 183419,
+          "denial_rate": 0.2588985389415619
+        },
+        {
+          "state_code": "NC",
+          "n_decisions": 355323,
+          "n_denied": 85052,
+          "denial_rate": 0.2393653098729888
+        },
+        {
+          "state_code": "PA",
+          "n_decisions": 339497,
+          "n_denied": 81850,
+          "denial_rate": 0.24109196841209202
+        }
+      ],
+      "spark": [
+        {
+          "state_code": "CA",
+          "n_decisions": 726569,
+          "n_denied": 179528,
+          "denial_rate": 0.24709009054886735
+        },
+        {
+          "state_code": "FL",
+          "n_decisions": 713095,
+          "n_denied": 206264,
+          "denial_rate": 0.28925178272179725
+        },
+        {
+          "state_code": "TX",
+          "n_decisions": 708459,
+          "n_denied": 183419,
+          "denial_rate": 0.2588985389415619
+        },
+        {
+          "state_code": "NC",
+          "n_decisions": 355323,
+          "n_denied": 85052,
+          "denial_rate": 0.2393653098729888
+        },
+        {
+          "state_code": "PA",
+          "n_decisions": 339497,
+          "n_denied": 81850,
+          "denial_rate": 0.24109196841209202
+        }
+      ],
+      "agree": true,
+      "discrepancy": []
+    }
+  ]
+}

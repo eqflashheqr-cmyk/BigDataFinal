@@ -1,0 +1,20 @@
+# Big Data Analysis - Final Project (HMDA 2024)
+# Python 3.11.9 | Tested on Windows 10, JDK 17, PySpark 4.0.1
+#
+# Install:
+#   pip install -r requirements.txt
+#
+# Non-Python prerequisites (NOT installable via pip):
+#   - JDK 17            -> E:\Tools\jdk17        (JAVA_HOME)
+#   - Hadoop winutils   -> E:\Tools\hadoop\hadoop-3.3.6  (HADOOP_HOME)
+#   Both bin dirs must be on PATH so the JVM can load hadoop.dll.
+
+pandas==2.3.3
+numpy==2.2.6
+pyarrow==26.0.1
+pyspark==4.0.1
+matplotlib==3.10.9
+seaborn==0.13.2
+scikit-learn==1.9.1
+jupyterlab==4.6.3
+notebook==7.6.2
