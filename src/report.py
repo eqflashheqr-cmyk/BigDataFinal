@@ -352,37 +352,56 @@ def build_report() -> str:
           f"{r['ingest_s']:.1f} s | {r['clean_s']:.1f} s | {r['analyze_s']:.1f} s | "
           f"**{r['total_s']:.1f} s** | {r['rows_per_second']:,.0f} rows/s |")
     A("")
+    A("Both engines process exactly the same records at every level — the row "
+      "counts below are identical, and are selected by a SHA-256 hash of the LEI "
+      "that is byte-identical in both engines.")
+    A("")
     spark_full = bench[(bench["engine"] == "pyspark") & (bench["fraction"] == "100%")].iloc[0]
     pandas_full = bench[(bench["engine"] == "pandas") & (bench["fraction"] == "100%")].iloc[0]
-    A(f"At full scale Spark is **{pandas_full['total_s'] / spark_full['total_s']:.1f}x faster** "
+    A(f"At full scale Spark is **{pandas_full['total_s'] / spark_full['total_s']:.2f}x faster** "
       f"end-to-end ({pandas_full['total_s']:.0f} s vs {spark_full['total_s']:.0f} s) and "
-      f"**{spark_full['rows_per_second'] / pandas_full['rows_per_second']:.1f}x** the "
+      f"**{spark_full['rows_per_second'] / pandas_full['rows_per_second']:.2f}x** the "
       "throughput.")
     A("")
     A("**Why.** The dominant cost in Pandas is the cleaning stage "
       f"({pandas_full['clean_s']:.0f} s of {pandas_full['total_s']:.0f} s at full scale). "
       "Pandas must materialise the data: the raw file has 99 string columns, and the "
       "cleaning step needs a column-wide copy for each of the ~80 numeric conversions, "
-      "so every conversion touches roughly 12.25 M x 99 Python objects. Spark keeps "
+      "so every conversion touches roughly 12.2 M x 99 Python objects. Spark keeps "
       "the data in its columnar in-memory representation and evaluates the same "
-      "expressions as a lazily planned, vectorised DAG, which is why its cleaning stage "
-      "costs a fraction as much. The gap is *not* in the I/O — both engines read the "
-      "same 4.32 GiB file at similar speed — but in the per-cell processing.")
+      "expressions as a lazily planned, vectorised DAG, which is why its cleaning "
+      "stage costs a fraction as much.")
     A("")
-    A("**Scaling.** Spark's advantage widens with the data size, because its cost is "
-      "linear in the number of rows and it parallelises across cores, while Pandas' "
-      "cost is super-linear in practice: the cleaning stage is dominated by memory "
-      "allocation and garbage collection, and at full scale the working set no longer "
-      "fits comfortably in the 16 GB of RAM. This is the expected qualitative result — "
-      "the assignment's point being that Pandas is fine for a justified subset but "
-      "does not scale to the full national dataset without the chunked, "
-      "column-pruning approach used here.")
+    A("**But the deduplication step narrows the gap sharply, and the reason is "
+      "instructive.** `dropDuplicates` over all 99 columns is a full-table "
+      "aggregation on every column, and it costs Spark "
+      f"{spark_full['clean_s']:.0f} s of its {spark_full['total_s']:.0f} s cleaning "
+      "stage — four times what the same stage cost without deduplication. Pandas "
+      "gets its deduplication almost for free, because it hashes the 99 columns "
+      "row-by-row as part of the same pass that already touches every cell. So "
+      "the operation that is *cheap* in a row-at-a-time engine is *expensive* in a "
+      "column-at-a-time one.")
+    A("")
+    A("**Scaling.** Spark's advantage is 1.56x at 25 %, 1.60x at 50 % and 1.57x at "
+      "100 % — essentially constant. That is the honest result: on this machine, "
+      "the two engines scale at a similar rate, and the gap comes from the "
+      "constant-factor difference in per-cell processing rather than from "
+      "Spark's parallelism paying off more at larger volumes.")
+    A("")
+    A("**Where the remaining difference in absolute terms is.** Pandas' ingest "
+      f"stage is {pandas_full['ingest_s']:.0f} s against Spark's "
+      f"{spark_full['ingest_s']:.0f} s — Spark pays a fixed JVM and CSV-parser "
+      "cost that does not shrink with the data. It is also why Spark would be "
+      "*slower* than Pandas on a small enough dataset: the fixed overhead "
+      "dominates before the per-row advantage can accumulate.")
     A("")
     A("![Benchmark](figures/fig5_benchmark_scaling.png)")
     A("")
     A("> **Practical note.** The Pandas pipeline writes its Parquet output "
       "**chunk by chunk** (`src/pandas_pipeline.py`), so the full dataset never has to "
-      "be resident in memory. The benchmark measures the same chunked approach.")
+      "be resident in memory. The benchmark measures the same chunked approach, and "
+      "the row counts confirm that both engines processed exactly the same records "
+      "(3,367,092 / 5,735,393 / 12,224,691).")
     A("")
 
     # ------------------------------------------------------------------
@@ -413,7 +432,13 @@ def build_report() -> str:
       "alongside it.")
     A("* **Both engines ran on the same 16 GB machine.** The benchmark therefore "
       "measures single-node behaviour on one dataset size, not true distributed "
-      "scalability.")
+      "scalability. The constant ~1.6x advantage of Spark should not be read as "
+      "the speedup available on a cluster.")
+    A("* **The deduplication step narrows Spark's advantage** from 3.3x to 1.57x, "
+      "because a full-table distinct over 99 columns is a column-at-a-time "
+      "operation. A workload without it — grouping by loan type, say — favours "
+      "Spark considerably more. The measured workload is the full pipeline, and "
+      "that is what is reported.")
     A("")
 
     # ------------------------------------------------------------------

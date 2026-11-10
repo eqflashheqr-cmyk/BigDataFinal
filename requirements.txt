@@ -9,12 +9,21 @@
 #   - Hadoop winutils   -> E:\Tools\hadoop\hadoop-3.3.6  (HADOOP_HOME)
 #   Both bin dirs must be on PATH so the JVM can load hadoop.dll.
 
+# --- Core analysis -------------------------------------------------------
 pandas==2.3.3
 numpy==2.2.6
 pyarrow==26.0.1
 pyspark==4.0.1
+
+# --- Visualisation -------------------------------------------------------
 matplotlib==3.10.9
 seaborn==0.13.2
+
+# --- Report rendering (src/export_pdf.py -> report.pdf) -------------------
+reportlab==5.0.1
+pillow==12.2.0
+
+# --- Optional: exploratory notebooks / predictive extension --------------
 scikit-learn==1.9.1
 jupyterlab==4.6.3
 notebook==7.6.2

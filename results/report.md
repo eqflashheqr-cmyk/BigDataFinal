@@ -217,22 +217,28 @@ Median over 3 repeats. Both engines process exactly the same records (selected b
 
 | Engine | Data | Rows | Ingest | Clean | Analyse | **Total** | Throughput |
 |---|---|---:|---:|---:|---:|---:|---:|
-| pandas | 25% | 3,374,950 | 15.5 s | 196.2 s | 13.1 s | **224.6 s** | 15,029 rows/s |
-| pyspark | 25% | 3,374,950 | 41.4 s | 37.0 s | 11.3 s | **89.9 s** | 37,532 rows/s |
-| pandas | 50% | 5,750,421 | 16.4 s | 333.8 s | 22.5 s | **372.8 s** | 15,425 rows/s |
-| pyspark | 50% | 5,750,421 | 55.2 s | 58.3 s | 16.2 s | **129.4 s** | 44,455 rows/s |
-| pandas | 100% | 12,251,439 | 18.9 s | 732.8 s | 54.2 s | **805.2 s** | 15,215 rows/s |
-| pyspark | 100% | 12,251,439 | 104.3 s | 108.9 s | 28.4 s | **241.5 s** | 50,725 rows/s |
+| pandas | 25% | 3,367,092 | 14.9 s | 214.2 s | 12.9 s | **242.0 s** | 13,914 rows/s |
+| pyspark | 25% | 3,367,092 | 40.4 s | 104.0 s | 11.0 s | **155.1 s** | 21,713 rows/s |
+| pandas | 50% | 5,735,393 | 16.0 s | 364.4 s | 22.6 s | **403.3 s** | 14,221 rows/s |
+| pyspark | 50% | 5,735,393 | 52.8 s | 183.7 s | 12.6 s | **252.5 s** | 22,711 rows/s |
+| pandas | 100% | 12,224,691 | 18.0 s | 784.3 s | 53.3 s | **855.9 s** | 14,284 rows/s |
+| pyspark | 100% | 12,224,691 | 97.1 s | 437.4 s | 23.8 s | **544.8 s** | 22,440 rows/s |
 
-At full scale Spark is **3.3x faster** end-to-end (805 s vs 242 s) and **3.3x** the throughput.
+Both engines process exactly the same records at every level — the row counts below are identical, and are selected by a SHA-256 hash of the LEI that is byte-identical in both engines.
 
-**Why.** The dominant cost in Pandas is the cleaning stage (733 s of 805 s at full scale). Pandas must materialise the data: the raw file has 99 string columns, and the cleaning step needs a column-wide copy for each of the ~80 numeric conversions, so every conversion touches roughly 12.25 M x 99 Python objects. Spark keeps the data in its columnar in-memory representation and evaluates the same expressions as a lazily planned, vectorised DAG, which is why its cleaning stage costs a fraction as much. The gap is *not* in the I/O — both engines read the same 4.32 GiB file at similar speed — but in the per-cell processing.
+At full scale Spark is **1.57x faster** end-to-end (856 s vs 545 s) and **1.57x** the throughput.
 
-**Scaling.** Spark's advantage widens with the data size, because its cost is linear in the number of rows and it parallelises across cores, while Pandas' cost is super-linear in practice: the cleaning stage is dominated by memory allocation and garbage collection, and at full scale the working set no longer fits comfortably in the 16 GB of RAM. This is the expected qualitative result — the assignment's point being that Pandas is fine for a justified subset but does not scale to the full national dataset without the chunked, column-pruning approach used here.
+**Why.** The dominant cost in Pandas is the cleaning stage (784 s of 856 s at full scale). Pandas must materialise the data: the raw file has 99 string columns, and the cleaning step needs a column-wide copy for each of the ~80 numeric conversions, so every conversion touches roughly 12.2 M x 99 Python objects. Spark keeps the data in its columnar in-memory representation and evaluates the same expressions as a lazily planned, vectorised DAG, which is why its cleaning stage costs a fraction as much.
+
+**But the deduplication step narrows the gap sharply, and the reason is instructive.** `dropDuplicates` over all 99 columns is a full-table aggregation on every column, and it costs Spark 437 s of its 545 s cleaning stage — four times what the same stage cost without deduplication. Pandas gets its deduplication almost for free, because it hashes the 99 columns row-by-row as part of the same pass that already touches every cell. So the operation that is *cheap* in a row-at-a-time engine is *expensive* in a column-at-a-time one.
+
+**Scaling.** Spark's advantage is 1.56x at 25 %, 1.60x at 50 % and 1.57x at 100 % — essentially constant. That is the honest result: on this machine, the two engines scale at a similar rate, and the gap comes from the constant-factor difference in per-cell processing rather than from Spark's parallelism paying off more at larger volumes.
+
+**Where the remaining difference in absolute terms is.** Pandas' ingest stage is 18 s against Spark's 97 s — Spark pays a fixed JVM and CSV-parser cost that does not shrink with the data. It is also why Spark would be *slower* than Pandas on a small enough dataset: the fixed overhead dominates before the per-row advantage can accumulate.
 
 ![Benchmark](figures/fig5_benchmark_scaling.png)
 
-> **Practical note.** The Pandas pipeline writes its Parquet output **chunk by chunk** (`src/pandas_pipeline.py`), so the full dataset never has to be resident in memory. The benchmark measures the same chunked approach.
+> **Practical note.** The Pandas pipeline writes its Parquet output **chunk by chunk** (`src/pandas_pipeline.py`), so the full dataset never has to be resident in memory. The benchmark measures the same chunked approach, and the row counts confirm that both engines processed exactly the same records (3,367,092 / 5,735,393 / 12,224,691).
 
 ## 7. Limitations
 
@@ -242,7 +248,8 @@ At full scale Spark is **3.3x faster** end-to-end (805 s vs 242 s) and **3.3x** 
 * **`interest_rate` is missing for 36.8 % of records** — HMDA only requires it for originated loans — so the interest-rate comparison in RQ2 rests on a biased subset (originations only).
 * **`income` is missing for 14.5 % of records**; the loan-to-income ratio is missing for 15.8 %.
 * **Extreme values are retained.** The mean loan amount is therefore dominated by a small number of very large loans (standard deviation $3.0 M vs a median of $225,000); the median is the more meaningful statistic and is reported alongside it.
-* **Both engines ran on the same 16 GB machine.** The benchmark therefore measures single-node behaviour on one dataset size, not true distributed scalability.
+* **Both engines ran on the same 16 GB machine.** The benchmark therefore measures single-node behaviour on one dataset size, not true distributed scalability. The constant ~1.6x advantage of Spark should not be read as the speedup available on a cluster.
+* **The deduplication step narrows Spark's advantage** from 3.3x to 1.57x, because a full-table distinct over 99 columns is a column-at-a-time operation. A workload without it — grouping by loan type, say — favours Spark considerably more. The measured workload is the full pipeline, and that is what is reported.
 
 ## 8. Reproducing
 

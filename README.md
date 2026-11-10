@@ -83,6 +83,7 @@ python src/quality_checks.py       # duplicate investigation + correlations
 python src/benchmark.py            # performance experiment   (~1.8 h)
 python src/figures.py              # charts
 python src/report.py               # regenerate results/report.md
+python src/export_pdf.py           # render report.pdf
 ```
 
 Total wall-clock on a 16 GB machine: roughly **40 minutes** for everything
@@ -113,7 +114,9 @@ BigDataFinal/
 │   ├── benchmark.py          # performance & scalability experiment
 │   ├── figures.py            # chart generation
 │   ├── report.py             # assembles results/report.md
+│   ├── export_pdf.py         # renders report.pdf
 │   └── run_analysis.py       # orchestration
+├── report.pdf                # the technical report (9 pages)
 ├── results/
 │   ├── report.md             # the technical report
 │   ├── rq1..rq4.csv          # the four research questions
@@ -261,30 +264,36 @@ source rather than papered over:
    boundaries are now computed once and pinned in
    `results/income_quartile_bounds.json`.
 
-### 6.2 Performance — Spark is 3.3× faster at full scale
+### 6.2 Performance — Spark is 1.57× faster at full scale
 
-Median of 3 repeats; both engines process identical records (selected by a
-SHA-256 hash rule that is byte-identical in both).
+Median of 3 repeats; both engines process **identical** records at every
+level (selected by a SHA-256 hash rule that is byte-identical in both).
 
 | Engine | Data | Rows | Total | Throughput |
 |---|---|---:|---:|---:|
-| pandas | 25 % | 3,374,950 | 224.6 s | 15,029 rows/s |
-| pyspark | 25 % | 3,374,950 | **89.9 s** | 37,532 rows/s |
-| pandas | 50 % | 5,750,421 | 372.8 s | 15,425 rows/s |
-| pyspark | 50 % | 5,750,421 | **129.4 s** | 44,455 rows/s |
-| pandas | 100 % | 12,224,691 | 805.2 s | 15,215 rows/s |
-| pyspark | 100 % | 12,224,691 | **241.5 s** | 50,725 rows/s |
+| pandas | 25 % | 3,367,092 | 242.0 s | 13,914 rows/s |
+| pyspark | 25 % | 3,367,092 | **155.1 s** | 21,713 rows/s |
+| pandas | 50 % | 5,735,393 | 403.3 s | 14,221 rows/s |
+| pyspark | 50 % | 5,735,393 | **252.5 s** | 22,711 rows/s |
+| pandas | 100 % | 12,224,691 | 855.9 s | 14,284 rows/s |
+| pyspark | 100 % | 12,224,691 | **544.8 s** | 22,440 rows/s |
 
-The dominant cost in Pandas is the cleaning stage (733 s of 805 s at full
+The dominant cost in Pandas is the cleaning stage (784 s of 856 s at full
 scale): the raw file has 99 string columns, so each numeric conversion
 touches ~12.2 M × 99 Python objects. Spark keeps the data columnar and
 evaluates the same expressions as a vectorised DAG.
 
-Spark's *ingest* stage is slower than Pandas' (104 s vs 19 s) — that is the
-JVM and CSV-parser overhead, which is a fixed cost and is exactly why Spark
-loses on small data and wins on large data. Full interpretation, including
-the honest note that both engines ran on the same 16 GB machine, is in
-`results/report.md` §6.
+The **deduplication step narrows the gap** from 3.3× to 1.57×, because
+`dropDuplicates` over all 99 columns is a full-table aggregation on every
+column — expensive in a column-at-a-time engine, nearly free in a
+row-at-a-time one. The assignment's example workloads are group-bys, not
+full-table distincts, and favour Spark considerably more than this
+conservative pipeline benchmark does.
+
+Spark's *ingest* stage is slower than Pandas' (97 s vs 18 s) — that is the
+JVM and CSV-parser overhead, a fixed cost, and the reason Spark loses on
+small data. Full interpretation, including the honest note that both
+engines ran on the same 16 GB machine, is in `results/report.md` §6.
 
 ---
 
