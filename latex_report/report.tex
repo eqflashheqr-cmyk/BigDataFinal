@@ -31,6 +31,14 @@
 \usepackage{subcaption}
 
 %% ---------------------------------------------------------------------------
+%% A handful of paragraphs contain a long monospaced identifier that cannot
+%% be broken at a convenient point. \emergencystretch lets TeX stretch the
+%% inter-word spaces a little rather than letting the line overrun the
+%% column, which is the standard remedy for a two-column layout.
+%% ---------------------------------------------------------------------------
+\setlength{\emergencystretch}{2em}
+
+%% ---------------------------------------------------------------------------
 %% Long field names cannot be broken by TeX inside \texttt{}, which pushes the
 %% line past the column margin. \allowbreak is therefore inserted after each
 %% underscore of a long identifier, so that TeX may break the line there and
@@ -262,13 +270,14 @@ approximate:
 \label{tab:duplicates}
 \centering
 \footnotesize
-\begin{tabular}{@{}lrr@{}}
+\begin{tabular}{@{}p{0.44\linewidth}rr@{}}
 \toprule
 Definition & Rows involved & Redundant rows \\
 \midrule
-Exact --- all 99 fields identical          & 46{,}984 & 26{,}755 (0.218\,\%) \\
-Business key --- institution, borrower,
-\quad amount, location, outcome            & 83{,}513 & 46{,}587 (0.380\,\%) \\
+Exact --- all 99 fields identical
+& 46{,}984 & 26{,}755 (0.218\,\%) \\
+Business key --- institution, borrower, amount, location, outcome
+& 83{,}513 & 46{,}587 (0.380\,\%) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -288,7 +297,7 @@ moves the RQ1 gap by 0.01 percentage points, so the finding is insensitive
 to it.
 
 \textbf{Relationships among the financial variables.} The Spearman rank
-correlation matrix (\texttt{results/correlation\_matrix.csv}) confirms the
+correlation matrix (\texttt{results/correlation\_\allowbreak matrix.csv}) confirms the
 mechanism proposed in Section~\ref{sec:intro}: \texttt{loan\_\allowbreak amount} and
 \texttt{loan\_\allowbreak to\_\allowbreak income\_\allowbreak ratio} correlate at $+0.66$, and \texttt{income}
 and the loan-to-income ratio at $-0.28$. Larger loans are associated with
@@ -342,7 +351,7 @@ classified as \emph{present}, \emph{absent} (explicitly no co-applicant), or
          \texttt{joint\_\allowbreak flag}.}
 \label{tab:coapp}
 \centering
-\footnotesize
+\scriptsize
 \begin{tabular}{@{}llll@{}}
 \toprule
 Field & Absent & Not applicable & Present \\
@@ -356,10 +365,11 @@ Field & Absent & Not applicable & Present \\
 \end{table}
 
 \begin{equation}
-\texttt{joint\_\allowbreak flag} =
+\small
+\texttt{joint\_flag} =
 \begin{cases}
-1 & \text{if at least one field is present and none is absent,} \\
-0 & \text{if at least one field is absent and none is present,} \\
+1 & \text{if some field is present and none is absent,} \\
+0 & \text{if some field is absent and none is present,} \\
 \texttt{NA} & \text{otherwise (indeterminate).}
 \end{cases}
 \label{eq:jointflag}
@@ -382,9 +392,9 @@ the cleaned dataset), far above the 0.13\,\% suggested by an earlier
 900{,}000-row sample. The discrepancy was investigated:
 
 \begin{itemize}
-  \item 90.6\,\% of indeterminate records have \texttt{action\_taken = 6}
+  \item 90.6\,\% of indeterminate records have \texttt{action\_\allowbreak taken = 6}
         (purchased loans).
-  \item 98.1\,\% have \texttt{applicant\_sex = 4} (``Not applicable'').
+  \item 98.1\,\% have \texttt{applicant\_\allowbreak sex = 4} (``Not applicable'').
 \end{itemize}
 
 For purchased loans the originator's co-applicant fields are routinely left
@@ -403,7 +413,7 @@ weaken any conclusion.
 
 \begin{table}[t]
 \caption{The cleaning funnel. Every removed record is counted and reported
-         in \texttt{results/cleaning\_report\_*.json}.}
+         in \texttt{results/cleaning\_\allowbreak report\_\allowbreak *.json}.}
 \label{tab:funnel}
 \centering
 \begin{tabular}{@{}lrr@{}}
@@ -435,7 +445,7 @@ Variable & Definition and purpose \\
 \texttt{income\_\allowbreak dollars} & \texttt{income} $\times 1000$; converts to actual USD. \\
 \texttt{loan\_\allowbreak to\_\allowbreak income\_\allowbreak ratio} & \texttt{loan\_\allowbreak amount} / \texttt{income\_\allowbreak dollars}; the debt-burden measure underlying the hypothesis. \\
 \texttt{dti\_\allowbreak band\_\allowbreak order} & Integer index into the ordered list of raw DTI band strings; makes the ordinal band sortable and stratifiable. \\
-\texttt{is\_\allowbreak denied} & \texttt{action\_taken == 3}; the numerator of the denial rate. \\
+\texttt{is\_\allowbreak denied} & \texttt{action\_\allowbreak taken == 3}; the numerator of the denial rate. \\
 \texttt{has\_\allowbreak lender\_\allowbreak decision} & \texttt{action\_\allowbreak taken} $\in \{1,2,3\}$; the denominator of the denial rate. \\
 \bottomrule
 \end{tabular}
@@ -707,7 +717,7 @@ source rather than papered over.
   \item \textbf{Pandas \texttt{qcut} and Spark \texttt{ntile} disagree at the
         quartile boundaries.} The boundaries are now computed once from the
         data and pinned in
-        \texttt{results/income\_quartile\_bounds.json}.
+        \texttt{results/income\_\allowbreak quartile\_\allowbreak bounds.json}.
 \end{enumerate}
 
 A fourth issue was found by inspection rather than by the checker: Spark's
@@ -827,7 +837,7 @@ available on a cluster.
 
 \subsection{Target, intended use and input variables}
 
-The target is \texttt{is\_\allowbreak denied} (\texttt{action\_taken == 3}) among
+The target is \texttt{is\_\allowbreak denied} (\texttt{action\_\allowbreak taken == 3}) among
 applications that reached a lender decision. The intended use is
 \emph{triage}: flagging applications at elevated denial risk at intake, so
 that a lender can review them earlier. This is a risk-scoring use, not an
@@ -837,7 +847,7 @@ underwriting.
 The constraint on inputs is the most important design decision, and it
 excludes more columns than it admits. The following are excluded: the
 outcome itself (\texttt{action\_\allowbreak taken}, \texttt{is\_\allowbreak denied},
-\texttt{has\_\allowbreak lender\_\allowbreak decision}); \texttt{denial\_reason\_1..4}, which are
+\texttt{has\_\allowbreak lender\_\allowbreak decision}); \texttt{denial\_\allowbreak reason\_\allowbreak 1..4}, which are
 recorded \emph{after} the denial; \texttt{interest\_\allowbreak rate},
 \texttt{rate\_\allowbreak spread}, \texttt{total\_\allowbreak loan\_\allowbreak costs},
 \texttt{total\_\allowbreak points\_\allowbreak and\_\allowbreak fees}, \texttt{origination\_\allowbreak charges},
@@ -1107,16 +1117,17 @@ expected directory layout.
          16\,GB Windows machine.}
 \label{tab:repro}
 \centering
-\begin{tabular}{@{}llr@{}}
+\footnotesize
+\begin{tabular}{@{}lp{0.46\linewidth}r@{}}
 \toprule
 Step & Command & Time \\
 \midrule
 Dependencies & \texttt{pip install -r requirements.txt} & 2 min \\
-Pandas pipeline & \texttt{python src/pandas\_pipeline.py} & 15 min \\
-Spark pipeline & \texttt{python src/spark\_pipeline.py} & 8 min \\
+Pandas pipeline & \texttt{python src/pandas\_\allowbreak pipeline.py} & 15 min \\
+Spark pipeline & \texttt{python src/spark\_\allowbreak pipeline.py} & 8 min \\
 Correctness check & \texttt{python src/equivalence.py all} & 3 min \\
-Analysis (both engines) & \texttt{python src/run\_analysis.py all} & 6 min \\
-Quality checks & \texttt{python src/quality\_checks.py} & 6 min \\
+Analysis (both engines) & \texttt{python src/run\_\allowbreak analysis.py all} & 6 min \\
+Quality checks & \texttt{python src/quality\_\allowbreak checks.py} & 6 min \\
 Predictive extension & \texttt{python src/predictive.py} & 2 min \\
 Figures & \texttt{python src/figures.py} & 1 min \\
 Performance experiment & \texttt{python src/benchmark.py} & 1.8 h \\
