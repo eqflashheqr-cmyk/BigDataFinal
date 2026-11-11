@@ -1,0 +1,35 @@
+{
+  "agree": true,
+  "n_strata": 1730,
+  "tolerance": 1e-06,
+  "key_columns": [
+    "income_quartile",
+    "dti_band",
+    "loan_type_label",
+    "loan_purpose_label"
+  ],
+  "strata_key_mismatches": 0,
+  "count_mismatches": {
+    "n_decisions_joint": 0,
+    "n_decisions_single": 0,
+    "n_denied_joint": 0,
+    "n_denied_single": 0,
+    "n_decisions_total": 0
+  },
+  "rate_mismatches": {
+    "denial_rate_joint": 0,
+    "denial_rate_single": 0,
+    "gap_pp": 0
+  },
+  "flag_mismatches": {
+    "suppressed_small_cell": 0
+  },
+  "max_rate_difference": 0.0,
+  "total_numeric_mismatches": 0,
+  "joint_lower": {
+    "real_mismatches": 0,
+    "null_representation_differences": 182,
+    "note": "Pandas writes NaN where a stratum has no decisions for one group; Spark's SQL comparison of NULL yields False. Both mean the joint group cannot have the lower denial rate. Counts and rates are identical in every stratum."
+  },
+  "pandas_version": "2.3.3"
+}

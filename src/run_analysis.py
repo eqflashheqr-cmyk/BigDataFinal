@@ -43,17 +43,59 @@ def main() -> None:
         print(f"  written: results/{rq.lower()}.csv  ({len(df)} rows)")
 
     # ---- the headline numbers, in one place ------------------------------
+    # The record counts are read from the artefacts that actually produced
+    # them, never hardcoded: hardcoding them once meant the summary silently
+    # kept the pre-dedup numbers after the duplicate fix changed them.
     rq1 = pd.read_csv(C.RESULTS_DIR / "rq1.csv")
+
+    cleaning = {}
+    for engine in ("pandas", "spark"):
+        p = C.RESULTS_DIR / f"cleaning_report_{engine}.json"
+        if p.exists():
+            cleaning[engine] = json.loads(p.read_text(encoding="utf-8"))
+
+    def _pick(*values):
+        """First value that is not None."""
+        for v in values:
+            if v is not None:
+                return v
+        return None
+
+    src = cleaning.get("pandas") or cleaning.get("spark") or {}
+    records_after_cleaning = _pick(src.get("records_after_cleaning"))
+    records_indeterminate = _pick(src.get("records_indeterminate_joint"))
+
+    # The decision / joint-flag counts live in the equivalence report, which
+    # is produced by the pipeline that measures them.
+    eq_path = C.RESULTS_DIR / "equivalence_report.json"
+    eq_counts = {}
+    if eq_path.exists():
+        eq = json.loads(eq_path.read_text(encoding="utf-8"))
+        for c in eq.get("comparisons", []):
+            if c["quantity"].startswith("Record counts"):
+                eq_counts = c.get("pandas", {})
+                break
+
+    records_with_decision = _pick(
+        eq_counts.get("records_with_decision"), src.get("records_with_decision"))
+    records_joint_known = _pick(
+        eq_counts.get("records_joint_flag_known"), src.get("records_joint_flag_known"))
+
+    indeterminate_rate_pct = (
+        round(records_indeterminate / records_after_cleaning * 100, 2)
+        if records_indeterminate and records_after_cleaning else None
+    )
+
     summary = {
         "dataset": {
             "source": "FFIEC 2024 Public One-Year National Loan-Level Dataset",
             "raw_file": str(C.RAW_FILE),
-            "records_raw": 12_259_199,
-            "records_after_cleaning": 12_251_439,
-            "records_with_lender_decision": 8_654_559,
-            "records_joint_flag_known": 11_093_946,
-            "records_indeterminate_joint": 1_157_493,
-            "indeterminate_rate_pct": round(1_157_493 / 12_251_439 * 100, 2),
+            "records_raw": _pick(src.get("records_raw")),
+            "records_after_cleaning": records_after_cleaning,
+            "records_with_lender_decision": records_with_decision,
+            "records_joint_flag_known": records_joint_known,
+            "records_indeterminate_joint": records_indeterminate,
+            "indeterminate_rate_pct": indeterminate_rate_pct,
         },
         "denial_rate_formula": "D / (O + A + D) with O=action_taken 1, A=2, D=3",
         "rq1_headline": rq1.to_dict("records"),

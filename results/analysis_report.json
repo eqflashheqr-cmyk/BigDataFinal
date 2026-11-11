@@ -3,11 +3,11 @@
     "source": "FFIEC 2024 Public One-Year National Loan-Level Dataset",
     "raw_file": "E:\\Projects\\BigDataFinal\\data\\pipe_file\\2024_public_lar_one_year_pipe.txt",
     "records_raw": 12259199,
-    "records_after_cleaning": 12251439,
-    "records_with_lender_decision": 8654559,
-    "records_joint_flag_known": 11093946,
-    "records_indeterminate_joint": 1157493,
-    "indeterminate_rate_pct": 9.45
+    "records_after_cleaning": 12224691,
+    "records_with_lender_decision": 8643834,
+    "records_joint_flag_known": 11073994,
+    "records_indeterminate_joint": 1150697,
+    "indeterminate_rate_pct": 9.41
   },
   "denial_rate_formula": "D / (O + A + D) with O=action_taken 1, A=2, D=3",
   "rq1_headline": [
