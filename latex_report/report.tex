@@ -31,6 +31,17 @@
 \usepackage{subcaption}
 
 %% ---------------------------------------------------------------------------
+%% Long field names cannot be broken by TeX inside \texttt{}, which pushes the
+%% line past the column margin. \allowbreak is therefore inserted after each
+%% underscore of a long identifier, so that TeX may break the line there and
+%% the name wraps onto the next line instead of overrunning the column.
+%%
+%% This is robust in every context, including moving arguments such as
+%% \caption and \subsection, where \seqsplit's \futurelet-based scanner does
+%% not survive.
+%% ---------------------------------------------------------------------------
+
+%% ---------------------------------------------------------------------------
 %% Title
 %% ---------------------------------------------------------------------------
 \title{Joint vs.\ Single Mortgage Applications in the 2024 HMDA National
@@ -64,7 +75,7 @@ regulated US lender in 2024. This report asks a specific question about it:
 \emph{do applications filed jointly by two borrowers get denied less often than
 single-borrower applications, and does that advantage survive scrutiny?}
 
-We derive a \texttt{joint\_flag} from the four co-applicant fields, clean the
+We derive a \texttt{joint\_\allowbreak flag} from the four co-applicant fields, clean the
 data under rules that are applied identically in two independent engine
 implementations (Pandas and PySpark), and analyse it at full scale. Across
 the 8.56 million applications that reached a lender decision, joint
@@ -169,15 +180,16 @@ mean anything.
 A record describes an application (and, if the loan was made, the loan). The
 single most important consequence of this is that \emph{not every record
 represents a completed mortgage loan}. The outcome field
-\texttt{action\_taken} takes eight values, and only three of them are lender
+\texttt{action\_\allowbreak taken} takes eight values, and only three of them are lender
 decisions:
 
 \begin{table}[t]
-\caption{\texttt{action\_taken}: outcome distribution in the cleaned dataset
+\caption{\texttt{action\_\allowbreak taken}: outcome distribution in the cleaned dataset
          (12{,}224{,}691 records). Only codes 1--3 are lender decisions and
          therefore enter the denial-rate denominator.}
 \label{tab:outcomes}
 \centering
+\footnotesize
 \begin{tabular}{@{}rlrr@{}}
 \toprule
 Code & Meaning & Records & Share \\
@@ -205,10 +217,10 @@ reading the schema alone:
 \begin{itemize}
   \item \texttt{income} is reported in \textbf{thousands} of US dollars, so a
         median of 104 denotes \$104{,}000.
-  \item \texttt{debt\_to\_income\_ratio} is an \textbf{ordinal band string}
+  \item \texttt{debt\_\allowbreak to\_\allowbreak income\_\allowbreak ratio} is an \textbf{ordinal band string}
         (\texttt{30\%-<36\%}, \texttt{>60\%}, \texttt{NA}, \texttt{Exempt}),
         not a number. Treating it as a ratio yields nonsense.
-  \item \texttt{applicant\_age} is likewise a band string.
+  \item \texttt{applicant\_\allowbreak age} is likewise a band string.
   \item The special codes \texttt{1111}, \texttt{8888}, \texttt{9999},
         \texttt{Exempt} and \texttt{NA} are \emph{not} numeric values. They
         are converted to true missing values, never to zero --- zero is a
@@ -230,7 +242,7 @@ removed: 7{,}753 records, chiefly negative \texttt{income} values such as
 \texttt{-18010}. Every removed record is counted.
 
 \textbf{Extreme values are kept.} \texttt{income} reaches 999{,}999{,}999
-(thousands) and \texttt{loan\_amount} reaches \$2.96 billion. These are
+(thousands) and \texttt{loan\_\allowbreak amount} reaches \$2.96 billion. These are
 genuine HMDA outliers rather than parse errors. Discarding them would have
 biased the analysis \emph{towards} finding a smaller denial gap, because very
 large loans are over-represented among denials; the mean loan amount is
@@ -249,6 +261,7 @@ approximate:
          Only the exact definition is used for removal.}
 \label{tab:duplicates}
 \centering
+\footnotesize
 \begin{tabular}{@{}lrr@{}}
 \toprule
 Definition & Rows involved & Redundant rows \\
@@ -276,8 +289,8 @@ to it.
 
 \textbf{Relationships among the financial variables.} The Spearman rank
 correlation matrix (\texttt{results/correlation\_matrix.csv}) confirms the
-mechanism proposed in Section~\ref{sec:intro}: \texttt{loan\_amount} and
-\texttt{loan\_to\_income\_ratio} correlate at $+0.66$, and \texttt{income}
+mechanism proposed in Section~\ref{sec:intro}: \texttt{loan\_\allowbreak amount} and
+\texttt{loan\_\allowbreak to\_\allowbreak income\_\allowbreak ratio} correlate at $+0.66$, and \texttt{income}
 and the loan-to-income ratio at $-0.28$. Larger loans are associated with
 heavier debt burden, and higher income with lighter burden --- which is the
 channel through which a second income helps.
@@ -316,34 +329,34 @@ Section~\ref{sec:correctness} found \emph{three} genuine bugs, none of which
 would have been caught by reading the code --- each would have silently
 corrupted the results.
 
-\subsection{Deriving \texttt{joint\_flag}}
+\subsection{Deriving \texttt{joint\_\allowbreak flag}}
 
-\texttt{joint\_flag} is not a field in HMDA. It is derived from the four
-co-applicant fields: \texttt{co\_applicant\_ethnicity\_1},
-\texttt{co\_applicant\_race\_1}, \texttt{co\_applicant\_sex} and
-\texttt{co\_applicant\_credit\_score\_type}. Each field's value is
+\texttt{joint\_\allowbreak flag} is not a field in HMDA. It is derived from the four
+co-applicant fields: \texttt{co\_\allowbreak applicant\_\allowbreak ethnicity\_\allowbreak 1},
+\texttt{co\_\allowbreak applicant\_\allowbreak race\_\allowbreak 1}, \texttt{co\_\allowbreak applicant\_\allowbreak sex} and
+\texttt{co\_\allowbreak applicant\_\allowbreak credit\_\allowbreak score\_\allowbreak type}. Each field's value is
 classified as \emph{present}, \emph{absent} (explicitly no co-applicant), or
 \emph{not applicable} (not reported):
-
 \begin{table}[t]
 \caption{Classification of the co-applicant fields used to derive
-         \texttt{joint\_flag}.}
+         \texttt{joint\_\allowbreak flag}.}
 \label{tab:coapp}
 \centering
+\footnotesize
 \begin{tabular}{@{}llll@{}}
 \toprule
 Field & Absent & Not applicable & Present \\
 \midrule
-\texttt{co\_applicant\_ethnicity\_1}    & 5 & 4 & 1, 2, 3, 11--14 \\
-\texttt{co\_applicant\_race\_1}          & 8 & 7 & 1--6, 21--27, 41--44 \\
-\texttt{co\_applicant\_sex}              & 5 & 4 & 1, 2, 3, 6 \\
-\texttt{co\_applicant\_credit\_score\_type} & 10 & 9, 1111 & 1--8, 11--15 \\
+\texttt{co\_\allowbreak applicant\_\allowbreak ethnicity\_\allowbreak 1}    & 5 & 4 & 1, 2, 3, 11--14 \\
+\texttt{co\_\allowbreak applicant\_\allowbreak race\_\allowbreak 1}          & 8 & 7 & 1--6, 21--27, 41--44 \\
+\texttt{co\_\allowbreak applicant\_\allowbreak sex}              & 5 & 4 & 1, 2, 3, 6 \\
+\texttt{co\_\allowbreak applicant\_\allowbreak credit\_\allowbreak score\_\allowbreak type} & 10 & 9, 1111 & 1--8, 11--15 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{equation}
-\texttt{joint\_flag} =
+\texttt{joint\_\allowbreak flag} =
 \begin{cases}
 1 & \text{if at least one field is present and none is absent,} \\
 0 & \text{if at least one field is absent and none is present,} \\
@@ -359,7 +372,7 @@ that a co-applicant \emph{exists} --- one cannot fail to report the
 ethnicity of a co-applicant who does not exist. Code \texttt{3} / \texttt{6}
 therefore counts as \emph{present}. Getting this wrong would have shrunk the
 joint group substantially. The rule was validated against the independent
-\texttt{co\_applicant\_ethnicity\_observed} field and produced \textbf{zero
+\texttt{co\_\allowbreak applicant\_\allowbreak ethnicity\_\allowbreak observed} field and produced \textbf{zero
 false positives}.
 
 \subsection{The indeterminate rate, investigated rather than accepted}
@@ -413,16 +426,17 @@ After implausible-value removal    & 12{,}224{,}691 &  7{,}753 \\
 \caption{Derived variables and their purpose.}
 \label{tab:derived}
 \centering
-\begin{tabular}{@{}lp{0.62\linewidth}@{}}
+\footnotesize
+\begin{tabular}{@{}lp{0.58\linewidth}@{}}
 \toprule
 Variable & Definition and purpose \\
 \midrule
-\texttt{joint\_flag} & Eq.~\ref{eq:jointflag}; the core grouping variable. \\
-\texttt{income\_dollars} & \texttt{income} $\times 1000$; converts to actual USD. \\
-\texttt{loan\_to\_income\_ratio} & \texttt{loan\_amount} / \texttt{income\_dollars}; the debt-burden measure underlying the hypothesis. \\
-\texttt{dti\_band\_order} & Integer index into the ordered list of raw DTI band strings; makes the ordinal band sortable and stratifiable. \\
-\texttt{is\_denied} & \texttt{action\_taken == 3}; the numerator of the denial rate. \\
-\texttt{has\_lender\_decision} & \texttt{action\_taken} $\in \{1,2,3\}$; the denominator of the denial rate. \\
+\texttt{joint\_\allowbreak flag} & Eq.~\ref{eq:jointflag}; the core grouping variable. \\
+\texttt{income\_\allowbreak dollars} & \texttt{income} $\times 1000$; converts to actual USD. \\
+\texttt{loan\_\allowbreak to\_\allowbreak income\_\allowbreak ratio} & \texttt{loan\_\allowbreak amount} / \texttt{income\_\allowbreak dollars}; the debt-burden measure underlying the hypothesis. \\
+\texttt{dti\_\allowbreak band\_\allowbreak order} & Integer index into the ordered list of raw DTI band strings; makes the ordinal band sortable and stratifiable. \\
+\texttt{is\_\allowbreak denied} & \texttt{action\_taken == 3}; the numerator of the denial rate. \\
+\texttt{has\_\allowbreak lender\_\allowbreak decision} & \texttt{action\_\allowbreak taken} $\in \{1,2,3\}$; the denominator of the denial rate. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -433,7 +447,7 @@ Parquet with Snappy compression, one directory per engine. The full cleaned
 dataset is 1.04\,GB as Parquet against 4.32\,GB as raw text. Partitioning
 was considered and rejected: the dataset is a single flat table with no
 natural partition key that the analysis filters on, and partitioning by
-\texttt{state\_code} would create 50+ small files for no benefit at this
+\texttt{state\_\allowbreak code} would create 50+ small files for no benefit at this
 size.
 
 %% ===========================================================================
@@ -466,18 +480,19 @@ a \textbf{32.5\,\% relative reduction}.
          dollars.}
 \label{tab:rq2}
 \centering
+\scriptsize
 \begin{tabular}{@{}llrrrr@{}}
 \toprule
 Variable & Group & $n$ & Missing & Median & p25 -- p75 \\
 \midrule
-\texttt{income\_dollars} & Joint  & 3{,}391{,}302 & 128{,}381 & \$133{,}000 & 91{,}000 -- 200{,}000 \\
-\texttt{income\_dollars} & Single & 4{,}698{,}220 & 339{,}783 &  \$85{,}000 & 57{,}000 -- 134{,}000 \\
-\texttt{loan\_amount}     & Joint  & 3{,}519{,}683 &       0 & \$245{,}000 & 105{,}000 -- 405{,}000 \\
-\texttt{loan\_amount}     & Single & 5{,}038{,}003 &       0 & \$175{,}000 &  75{,}000 -- 315{,}000 \\
+\texttt{income\_\allowbreak dollars} & Joint  & 3{,}391{,}302 & 128{,}381 & \$133{,}000 & 91{,}000 -- 200{,}000 \\
+\texttt{income\_\allowbreak dollars} & Single & 4{,}698{,}220 & 339{,}783 &  \$85{,}000 & 57{,}000 -- 134{,}000 \\
+\texttt{loan\_\allowbreak amount}     & Joint  & 3{,}519{,}683 &       0 & \$245{,}000 & 105{,}000 -- 405{,}000 \\
+\texttt{loan\_\allowbreak amount}     & Single & 5{,}038{,}003 &       0 & \$175{,}000 &  75{,}000 -- 315{,}000 \\
 \texttt{lti}              & Joint  & 3{,}361{,}071 & 158{,}612 &      1.88 & 0.82 -- 2.94 \\
 \texttt{lti}              & Single & 4{,}612{,}844 & 425{,}159 &      2.07 & 0.88 -- 3.35 \\
-\texttt{interest\_rate}   & Joint  & 2{,}748{,}176 & 771{,}507 &      6.88 & 6.25 -- 7.62 \\
-\texttt{interest\_rate}   & Single & 3{,}494{,}434 & 1{,}543{,}569 & 6.88 & 6.25 -- 7.99 \\
+\texttt{interest\_\allowbreak rate}   & Joint  & 2{,}748{,}176 & 771{,}507 &      6.88 & 6.25 -- 7.62 \\
+\texttt{interest\_\allowbreak rate}   & Single & 3{,}494{,}434 & 1{,}543{,}569 & 6.88 & 6.25 -- 7.99 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -544,9 +559,13 @@ applicants who are most attractive on paper.
 
 \begin{table}[t]
 \caption{RQ4: the denial-rate gap by loan purpose and by state. Joint is
-         lower in every level shown.}
+         lower in every level shown, with one exception: for applications
+         whose loan purpose is not reported, joint applications are denied
+         \emph{more} often. That cell contains only 3{,}245 decisions and is
+         small enough to be noise.}
 \label{tab:rq4}
 \centering
+\footnotesize
 \begin{tabular}{@{}llrrr@{}}
 \toprule
 Dimension & Level & Joint & Single & Gap \\
@@ -554,6 +573,7 @@ Dimension & Level & Joint & Single & Gap \\
 Purpose & Cash-out refinancing & 27.08\,\% & 35.88\,\% & $-8.81$ pp \\
 Purpose & Home improvement     & 28.18\,\% & 43.18\,\% & \textbf{$-15.00$ pp} \\
 Purpose & Home purchase        & 11.91\,\% & 16.49\,\% & $-4.58$ pp \\
+Purpose & Not applicable       & 32.45\,\% & 23.10\,\% & $+9.35$ pp \\
 Purpose & Other purpose        & 34.77\,\% & 46.37\,\% & $-11.60$ pp \\
 Purpose & Refinancing          & 18.82\,\% & 25.87\,\% & $-7.05$ pp \\
 \midrule
@@ -570,6 +590,10 @@ The gap is present in every loan purpose and in every one of the five
 largest states. It is widest for \emph{home improvement} and narrowest for
 \emph{home purchase}, which is consistent with home-improvement loans being
 the marginal application that a second income tips from denial to approval.
+The one exception is the ``loan purpose not reported'' cell, where joint
+applications are denied \emph{more} often (+9.35\,pp); it contains only
+3{,}245 decisions, so it is better read as a small-sample artefact than as
+a counter-example to the pattern.
 
 \begin{figure*}[t]
 \centering
@@ -594,7 +618,7 @@ the marginal application that a second income tips from denial to approval.
 The raw file is 4.32\,GiB of text with 99 columns; materialised as a Pandas
 DataFrame of strings that is roughly 40\,GB, which does not fit in the
 16\,GB of RAM available. The Pandas pipeline therefore reads 500{,}000 rows
-at a time, applies the shared \texttt{clean\_pandas} rules to each chunk,
+at a time, applies the shared \texttt{clean\_\allowbreak pandas} rules to each chunk,
 and appends the result to the Parquet writer, so the full dataset is never
 resident.
 
@@ -612,7 +636,7 @@ Section~\ref{sec:bugs}.
 \section{PySpark Implementation}
 
 Spark reads the same raw file with \texttt{spark.read.csv}, applies
-\texttt{clean\_spark}, and writes its own Parquet output. The session is
+\texttt{clean\_\allowbreak spark}, and writes its own Parquet output. The session is
 configured with 8\,GB of driver memory (half the machine, leaving headroom
 for the OS), 16 shuffle partitions rather than the default of 200 (which
 dominates runtime on a single machine), Arrow-enabled PySpark, and Snappy
@@ -650,7 +674,7 @@ additionally computed independently in both engines and diffed cell by cell
 1 & Record counts after each cleaning step            & agree \\
 2 & Missing-value counts for 13 important variables   & agree \\
 3 & Counts and proportions of application outcomes    & agree \\
-4 & Denial rate by \texttt{joint\_flag} (RQ1)         & agree \\
+4 & Denial rate by \texttt{joint\_\allowbreak flag} (RQ1)         & agree \\
 5 & Descriptive statistics of amount, income, rate, LTI & agree \\
 6 & Average and median loan amount by loan type      & agree \\
 7 & Aggregated results by institution (LEI, top 50)   & agree \\
@@ -668,13 +692,13 @@ source rather than papered over.
 
 \begin{enumerate}
   \item \textbf{Spark's \texttt{SUM} propagates NULL.} The
-        \texttt{joint\_flag} rule sums per-field indicators, so a single
+        \texttt{joint\_\allowbreak flag} rule sums per-field indicators, so a single
         empty co-applicant field made the whole sum null and a valid record
         became ``indeterminate''. Spark found 1{,}159{,}851 indeterminate
         records where Pandas found 1{,}157{,}493. Fixed by wrapping every
         counter in \texttt{coalesce}.
   \item \textbf{Pandas \texttt{Int64.isin(("1","2","3")}) is always
-        \texttt{False}.} After numeric parsing, \texttt{action\_taken} is
+        \texttt{False}.} After numeric parsing, \texttt{action\_\allowbreak taken} is
         \texttt{Int64}, but the outcome codes were still written as
         \emph{strings} in the configuration. Pandas compared $1 = \texttt{"1"}$
         and found no decisions at all, where Spark's \texttt{isin} coerced the
@@ -710,7 +734,7 @@ Both engines must process \emph{equivalent input records}. The sample is
 defined by $\text{SHA-256}(\texttt{lei})[0{:}8] \bmod 1000 < \text{threshold}$.
 SHA-256 is available in both Python's \texttt{hashlib} and Spark's
 \texttt{sha2()} and produces identical digests, so the two engines select the
-same rows. Two alternatives were rejected: \texttt{loan\_amount} modulo
+same rows. Two alternatives were rejected: \texttt{loan\_\allowbreak amount} modulo
 1000 is degenerate, because HMDA reports loan amounts in whole thousands and
 they are almost always exact multiples of 1000; and the built-in \texttt{hash()}
 is not stable across implementations.
@@ -778,7 +802,7 @@ conservative pipeline benchmark does.
 hold the raw frame at all and survives only through chunked processing.
 Spark exhausted memory twice during development when the full 104-column
 dataset was cached; the fix was column projection before caching and
-\texttt{MEMORY\_AND\_DISK} or \texttt{DISK\_ONLY} storage levels.
+\texttt{MEMORY\_\allowbreak AND\_\allowbreak DISK} or \texttt{DISK\_\allowbreak ONLY} storage levels.
 
 \begin{figure*}[t]
 \centering
@@ -803,7 +827,7 @@ available on a cluster.
 
 \subsection{Target, intended use and input variables}
 
-The target is \texttt{is\_denied} (\texttt{action\_taken == 3}) among
+The target is \texttt{is\_\allowbreak denied} (\texttt{action\_taken == 3}) among
 applications that reached a lender decision. The intended use is
 \emph{triage}: flagging applications at elevated denial risk at intake, so
 that a lender can review them earlier. This is a risk-scoring use, not an
@@ -812,15 +836,15 @@ underwriting.
 
 The constraint on inputs is the most important design decision, and it
 excludes more columns than it admits. The following are excluded: the
-outcome itself (\texttt{action\_taken}, \texttt{is\_denied},
-\texttt{has\_lender\_decision}); \texttt{denial\_reason\_1..4}, which are
-recorded \emph{after} the denial; \texttt{interest\_rate},
-\texttt{rate\_spread}, \texttt{total\_loan\_costs},
-\texttt{total\_points\_and\_fees}, \texttt{origination\_charges},
-\texttt{discount\_points} and \texttt{lender\_credits}, which HMDA reports
+outcome itself (\texttt{action\_\allowbreak taken}, \texttt{is\_\allowbreak denied},
+\texttt{has\_\allowbreak lender\_\allowbreak decision}); \texttt{denial\_reason\_1..4}, which are
+recorded \emph{after} the denial; \texttt{interest\_\allowbreak rate},
+\texttt{rate\_\allowbreak spread}, \texttt{total\_\allowbreak loan\_\allowbreak costs},
+\texttt{total\_\allowbreak points\_\allowbreak and\_\allowbreak fees}, \texttt{origination\_\allowbreak charges},
+\texttt{discount\_\allowbreak points} and \texttt{lender\_\allowbreak credits}, which HMDA reports
 only for originated loans and which would therefore leak the outcome;
-\texttt{purchaser\_type}, known only after origination; and
-\texttt{hoepa\_status}, a post-decision designation. The list is asserted
+\texttt{purchaser\_\allowbreak type}, known only after origination; and
+\texttt{hoepa\_\allowbreak status}, a post-decision designation. The list is asserted
 against the cleaned schema at run time, so a future edit cannot silently
 introduce a leak.
 
@@ -833,7 +857,7 @@ reproducible. A histogram gradient-boosting model is fitted on the same
 training rows as a comparison point.
 
 The split is \textbf{random and stratified}, not temporal. HMDA's one-year
-national file has no application date, and \texttt{activity\_year} is 2024
+national file has no application date, and \texttt{activity\_\allowbreak year} is 2024
 for every record --- verified at run time --- so there is no time axis to
 split on. A random split is therefore the honest choice, and it is stated as
 a limitation rather than disguised.
@@ -986,7 +1010,7 @@ a home purchase with equity behind it.
         cannot see: number of borrowers on the note, credit history and
         score, debt beyond the DTI band, and the lender's own policy toward
         the two.
-  \item \textbf{\texttt{joint\_flag} is inferred, not reported.} 9.41\,\% of
+  \item \textbf{\texttt{joint\_\allowbreak flag} is inferred, not reported.} 9.41\,\% of
         records overall (1.00\,\% of decision records) cannot be classified.
         Purchased loans and preapproval records are disproportionately
         affected. The rule was validated against an independent HMDA field
@@ -1102,4 +1126,6 @@ Report & \texttt{python src/report.py} & 1 min \\
 \end{table}
 
 \end{document}
+
+
 
