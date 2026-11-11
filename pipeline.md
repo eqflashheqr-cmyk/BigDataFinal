@@ -830,6 +830,11 @@ python src/report.py     # -> results/report.md
 python src/export_pdf.py # -> report.pdf
 ```
 
+**The Markdown version was subsequently superseded by a LaTeX version**
+(§12), which is the one written in the ACM 2-column template the assignment
+specifies. Both are kept: the Markdown one is convenient to regenerate
+programmatically, the LaTeX one is the formatted deliverable.
+
 | § | Report section | Content |
 |---|---|---|
 | 1 | Introduction and problem formulation | RQ1–RQ4, headline finding |
@@ -943,7 +948,169 @@ which matches on the basename and is immune to the directory's encoding.
 
 ---
 
-## 11 — Audit against the assignment
+## 11 — Phase 11: Optional predictive extension
+
+This phase was added last, after the core deliverable was complete. The
+governing constraint from the request was that the code must be **as light
+as possible on RAM, CPU and disk**, and that a longer runtime was
+acceptable in exchange.
+
+### 11.1 Target and the leakage boundary
+
+The target is `is_denied` (`action_taken == 3`) among applications that
+reached a lender decision. The intended use is *triage* — flagging elevated
+denial risk at intake — not automated credit decisioning.
+
+The binding design decision is which columns are *admissible*. The
+following are excluded, each for a stated reason:
+
+| Excluded | Why |
+|---|---|
+| `action_taken`, `is_denied`, `has_lender_decision` | The outcome itself |
+| `denial_reason_1..4` | Recorded *after* the denial — direct leakage |
+| `interest_rate`, `rate_spread`, `total_loan_costs`, `total_points_and_fees`, `origination_charges`, `discount_points`, `lender_credits` | HMDA reports these only for originated loans, so their presence/absence leaks the outcome |
+| `purchaser_type` | Known only after origination |
+| `hoepa_status` | A post-decision designation |
+
+The exclusion list is **asserted against the cleaned schema at run time**,
+so a future edit to the feature list cannot silently introduce a leak.
+
+### 11.2 The resource budget, and how it was met
+
+The naive approach — materialise the decision population, one-hot encode,
+fit — needs well over 16 GB. Instead:
+
+| Technique | Effect |
+|---|---|
+| Hash-based sampling from Parquet row groups | 2,000,000 rows (23.1 % of 8,643,834) drawn without reading the other 10.6 M |
+| Sampling rule keyed on the institution LEI | A genuine random sample, not "the first N rows" — which would be ordered by lender and biased |
+| Immediate downcasting (`float32`, `int8`/`int16`) | ~352 MB of non-zeros instead of multiple GB |
+| Sparse matrices throughout | No estimator ever materialises a dense matrix of the full sample |
+| Chunked densification (200,000 rows at a time) | Caps peak RAM for the tree model and the permutation-importance step |
+| `n_jobs=1` | Runs on one core without oversubscribing a 16 GB machine |
+
+Result: **131 seconds** end to end, peak RAM well under 2 GB.
+
+### 11.3 The solver decision, and why it changed
+
+The first implementation used `SGDClassifier(loss='log_loss')` for speed.
+Its calibration showed the model over-predicting badly in the top decile
+(0.954 predicted vs 0.738 observed).
+
+The natural hypothesis is that an iterative solver with a fixed iteration
+count simply had not converged. **That hypothesis was tested and rejected.**
+`LogisticRegression(solver='liblinear')` — a deterministic convex solver —
+reproduces the same pattern (0.953 vs 0.745), and so does a much
+under-regularised SGD fit. The over-prediction is therefore a property of
+the *linear model*, not of the optimiser.
+
+`liblinear` was adopted anyway, for three reasons that are about the fit
+rather than the speed:
+
+1. It is deterministic and convex, so the fit is exactly reproducible.
+2. It operates directly on the sparse matrix, so no dense copy is created.
+3. It is slightly better calibrated in the middle of the probability range —
+   which is exactly where a triage threshold sits.
+
+The over-prediction is now reported as a documented limitation, and the
+practical implication is stated: the model should not be used to rank
+applications in the highest band.
+
+### 11.4 Models and results
+
+| Model | ROC-AUC | PR-AUC | Brier | Best F₁ |
+|---|---|---|---|---|
+| Logistic regression (primary) | 0.774 | 0.526 | 0.150 | 0.538 |
+| Gradient boosting (comparison) | 0.836 | 0.689 | 0.124 | 0.614 |
+
+The logistic regression is the **primary** model because it is calibrated
+and its coefficients can be read directly, which matters for a triage use.
+The 0.062 ROC-AUC gap is reported rather than hidden: the extra signal lies
+in interactions between applicant and loan characteristics that a linear
+model cannot represent.
+
+### 11.5 Differential performance
+
+ROC-AUC is stable across the levels of ethnicity (0.658–0.777), race
+(0.659–0.811), sex (0.657–0.804) and loan type (0.577–0.781). The joint/single
+split (0.772 vs 0.760) reflects different base rates, not different skill.
+The lowest values occur in small groups with atypically low denial rates.
+
+### 11.6 An honest statement about the use of the model
+
+The predictors **include protected characteristics** (ethnicity, race, sex).
+They are included because they are what the lender records, and because
+their inclusion is what makes the differential-performance check possible.
+But a model that scores applications using ethnicity or race is legally
+restricted under fair-lending rules. The extension is a research
+instrument; its outputs must not be used to score individual borrowers.
+This is stated in the report rather than left implicit.
+
+---
+
+## 12 — Phase 12: LaTeX report
+
+### 12.1 The format
+
+The report was rewritten in LaTeX using the ACM Large 2-Column Format
+Template (`acmart.cls`, `sigconf`). The template files were extracted from
+the provided `.zip` into `latex_template/` and the working copy lives in
+`latex_report/`.
+
+### 12.2 A build environment note
+
+`latexmk` does not work on this machine: MiKTeX's `latexmk` wrapper is a
+Perl script, and Perl is not installed. The build is therefore three
+`pdflatex` passes:
+
+```powershell
+cd latex_report
+pdflatex report.tex   # ×3
+```
+
+Two `acmart` pitfalls cost a build cycle each and are recorded so the next
+person does not repeat them:
+
+- `\maketitle` must come **after** `\begin{abstract}` in `acmart`, not
+  before. Putting it first raises *"Abstract must be defined before
+  maketitle"*.
+- Redefining `\footnotetextcopyrightpermission` breaks the class internals
+  and produces an *"Undefined control sequence"* at `\maketitle`. Leave it
+  alone.
+
+### 12.3 Verifying the numbers
+
+Every headline figure in the report was re-derived from the artefacts in
+`results/` and compared against the prose. Several had drifted and were
+corrected:
+
+| Figure | Was | Corrected to | Why it had drifted |
+|---|---|---|---|
+| Exact duplicate rows involved | 46,974 | 46,984 | Measured on the raw file, not the cleaned set |
+| Indeterminate records | 1,157,493 | 1,150,697 | The figure was carried over from the pre-fix run |
+| Indeterminate rate among decisions | 1.01 % | 1.00 % | Recomputed from the final artefacts |
+| Income-quartile decision counts | ~2,037,000 | 2,039,745 | Pooled over the final stratum set |
+| DTI >60 % gap | 5.86 pp | 5.87 pp | Recomputed |
+| Group ROC-AUC ranges | SGD values | liblinear values | The solver changed in §11.3 |
+
+### 12.4 A measurement bug found by the verification pass
+
+`results/quality_checks.json` reported only **4** duplicate rows, against
+the 26,755 the cleaning pipeline removes. The two numbers were measuring
+different things: `quality_checks.py` reads the *cleaned* Parquet, whose
+exact duplicates have already been removed, so near-zero is the correct
+answer for that input. The 26,755 figure is measured on the raw file.
+
+Rather than adjust either number, the raw-file measurement was given its
+own artefact (`src/dup_probe.py` → `results/duplicate_probe_raw.json`) and
+the report now says explicitly which population each figure describes. The
+cleaned dataset retains 2 residual rows rather than zero, because the
+pipeline normalises whitespace and parses numerics before hashing; that is
+reported too, rather than rounded away.
+
+---
+
+## 13 — Audit against the assignment
 
 | Assignment requirement | Where | Status |
 |---|---|---|
@@ -970,11 +1137,11 @@ which matches on the basename and is immune to the directory's encoding.
 | **3.5A** Experimental design documented | §9.1–9.2 | ✅ |
 | **3.5B** Timing methodology, median, comparable conditions | §9.1–9.2 | ✅ |
 | **3.5C** Results table, speedup, 5 interpretation questions | §9.3–9.4 | ✅ |
-| **4** Optional predictive analysis | — | ⬜ Not undertaken (§12) |
-| **5** Financial & ethical considerations | report §7 | ✅ |
-| **6.2** Technical report, ~8 pages, 12-section structure | §10.1 | ✅ `results/report.md` |
+| **4** Optional predictive analysis | §11 | ✅ `src/predictive.py` |
+| **5** Financial & ethical considerations | report §10 | ✅ |
+| **6.2** Technical report, ~8 pages, 12-section structure | §10.1, §12 | ✅ `latex_report/report.pdf` (10 pp) |
 | **6.3** Code & reproducibility repository | §10.3 | ✅ |
-| **6.4** Presentation and defence | — | ⬜ Team deliverable (§12) |
+| **6.4** Presentation and defence | — | ⬜ Team deliverable (§13) |
 
 **Score-relevant criteria:** problem formulation 10 ✅ · data engineering 20 ✅ ·
 descriptive and diagnostic analysis 25 ✅ · Pandas–Spark implementation and
@@ -983,20 +1150,18 @@ interpretation 10 ✅ · presentation and defence 15 ⬜ (team).
 
 ---
 
-## 12 — What remains for submission
+## 14 — What remains for submission
 
 | # | Task | Who | Notes |
 |---|---|---|---|
-| 1 | **Optional predictive extension** | Team | Up to 10 bonus points, capped at 100. A logistic regression predicting `action_taken == 3` from borrower characteristics, trained on 2024 data with a proper temporal split if a second year is added. §4 of the assignment gives the exact requirements. Not started. |
-| 2 | **Trim `report.pdf` to the ~8-page target** | Team | The report renders to **9 pages**, which is already close to the ~8-page target. It reads well; a light trim of §2 would land it inside the limit. |
-| 3 | **Presentation + defence** | Team | Six slides minimum: problem & RQs, dataset & preparation, key findings, the two implementations, equivalence result, performance, interpretation & limitations. §6.4 lists the required coverage. |
-| 4 | **Re-run the benchmark** | Optional | Spark's figures are from before the `clean_spark` refactor (§9.5). The published numbers are already the optimistic end, so this is optional. |
-| 5 | **Verify the proposal matches this implementation** | Team | The proposal PDF was written before the analysis. The RQs match, but the proposal's expected findings should be reconciled with the actual results — particularly the *widening* gap at higher incomes, which was not the original hypothesis. |
-| 6 | **Confirm the repository is public and the link works** | ✅ | Published at <https://github.com/eqflashheqr-cmyk/BigDataFinal> — public, `main` branch pushed, contents verified. |
+| 1 | **Presentation + defence** | Team | Six slides minimum: problem & RQs, dataset & preparation, key findings, the two implementations, equivalence result, performance, predictive extension, interpretation & limitations. §6.4 lists the required coverage. |
+| 2 | **Trim the report if the grader counts pages strictly** | Team | The LaTeX report renders to **10 pages** against a "~8 page" guideline. The overrun is the predictive extension and the six new figures. It is a bonus section, so trimming it is the obvious lever if the limit is enforced. |
+| 3 | **Verify the proposal matches this implementation** | Team | The proposal PDF was written before the analysis. The RQs match, but the proposal's expected findings should be reconciled with the actual results — particularly the *widening* gap at higher incomes, which was not the original hypothesis. |
+| 4 | **Confirm the repository is public and the link works** | ✅ | Published at <https://github.com/eqflashheqr-cmyk/BigDataFinal>. The predictive extension and the LaTeX report are on `feature/predictive-extension-latex-report` as PR #1. |
 
 ---
 
-## 13 — Decisions log
+## 15 — Decisions log
 
 The decisions that could plausibly have gone the other way, and why they
 didn't.
@@ -1017,21 +1182,31 @@ didn't.
 | 12 | Compare in 3 separate processes | One process | Pandas + cached Spark together OOM the JVM | The comparison cannot complete |
 | 13 | Gitignore the raw data | Commit it | The assignment forbids duplicating large public datasets | A 10 GB repository that cannot be cloned |
 | 14 | Carry row hashes across chunks in the benchmark | Clean each chunk independently | A duplicate spanning two chunks survives in Pandas but not in Spark | The two engines process 47 different rows at 25 % — the benchmark is invalid |
+| 15 | `liblinear` for the primary model | `SGDClassifier` for speed | Deterministic and convex; better calibrated in the range where a triage threshold sits | The fit would depend on the iteration count, and the mid-range calibration would be slightly worse |
+| 16 | Report the gradient-boosting gap rather than only the linear model | Present only the primary model | The gap is a real finding about where the signal is; hiding it would be dishonest | A reviewer would find the comparison missing |
+| 17 | Include protected characteristics in the model | Exclude them for legal safety | They are what the lender records, and without them the differential-performance check is impossible | The fairness check could not be run; the model would still be legally restricted, as stated |
+| 18 | Sample 23.1 % of the decision population for the model | Use the full population | The full population does not fit in 16 GB alongside the sparse encodings | The extension would not run at all on the target machine |
+| 19 | Measure duplicates on the raw file for the report | Quote the cleaned-dataset figure | The cleaned dataset has already had its exact duplicates removed, so it answers a different question | The report would understate the duplicate rate by four orders of magnitude |
+| 20 | Report the LaTeX version as the deliverable | Keep the Markdown version | The assignment specifies the ACM 2-column template | The submission would not match the required format |
 
 ---
 
-## 14 — Known risks
+## 16 — Known risks
 
 | Risk | Severity | Mitigation |
 |---|---|---|
-| `joint_flag` is **inferred**, not reported | Medium | Validated against `co_applicant_ethnicity_observed`; the rule, the indeterminate rate, and the direction of any bias are all documented (report §3.1, §7) |
+| `joint_flag` is **inferred**, not reported | Medium | Validated against `co_applicant_ethnicity_observed`; the rule, the indeterminate rate, and the direction of any bias are all documented (report §3.2) |
 | The finding is **associational** | Medium | Stated explicitly in the report's limitations; no causal language is used |
-| Interest rate missing for 36.8 % of records, non-randomly | Medium | Disclosed in report §7; the RQ2 interest-rate comparison is explicitly flagged as resting on a biased subset |
+| Interest rate missing for 36.8 % of records, non-randomly | Medium | Disclosed in report §2.3; the RQ2 interest-rate comparison is explicitly flagged as resting on a biased subset |
 | The 12 M × 99 string frame cannot be held in Pandas | Low | Chunked pipeline; documented as a limitation per §3.4A |
-| **Chunk-boundary bugs** in stateful operations | Medium | Found twice (§7.5, §10.4) — both invisible to code review. Mitigated by running the chunked and non-chunked paths against each other; the benchmark now verifies row-count parity between engines |
+| **Chunk-boundary bugs** in stateful operations | Medium | Found twice (§7.5, §9.2) — both invisible to code review. Mitigated by running the chunked and non-chunked paths against each other; the benchmark now verifies row-count parity between engines |
 | Benchmark timings vary with background load | Low | 3 repeats, median reported; one repeat drifted to 1001 s and is visible in `results/benchmark_results.json` |
-| Report may exceed the ~8-page target | Low | `report.pdf` renders to 9 pages — already close; a light trim of §2 lands it inside the limit |
-| Team members may not be able to explain every module | Medium | Each module has a docstring stating its purpose; the decisions log (§13) is the defence narrative |
+| Report may exceed the ~8-page target | Low | The LaTeX report renders to 10 pages. The overrun is the optional predictive extension and the six figures it added — the obvious lever if the limit is enforced |
+| The predictive model over-predicts in the top probability band | Low | Documented in the report with the evidence that it is a model property, not a solver artefact, and an explicit instruction not to rank applications in that band |
+| The predictive model uses protected characteristics | Medium | Stated plainly in the report and in the README: research instrument only, not for scoring individual borrowers |
+| The predictive split is random, not temporal | Low | The file has a single reporting year and no application date, so no time axis exists. Verified at run time and stated as a limitation |
+| MiKTeX `latexmk` needs Perl | Low | The build uses three `pdflatex` passes; documented in the README |
+| Team members may not be able to explain every module | Medium | Each module has a docstring stating its purpose; the decisions log (§15) is the defence narrative |
 
 ---
 
@@ -1054,9 +1229,17 @@ didn't.
 | `src/equivalence.py` | Pandas vs Spark comparison |
 | `src/benchmark.py` | performance and scalability experiment |
 | `src/figures.py` | chart generation |
+| `src/predictive.py` | the optional predictive extension |
+| `src/predictive_figures.py` | charts for the predictive extension |
+| `src/dup_probe.py` | duplicate measurement on the **raw** file |
 | `src/report.py` | assembles `results/report.md` |
 | `src/export_pdf.py` | renders `results/report.md` → `report.pdf` |
 | `src/run_analysis.py` | orchestration |
+| `latex_report/report.tex` | the LaTeX report source (ACM `sigconf`) |
+| `latex_report/report.pdf` | the technical report, compiled (10 pages) |
+| `latex_template/` | the ACM template as provided, extracted |
+| `results/predictive_*.csv / .json / .npz` | predictive extension artefacts |
+| `results/duplicate_probe_raw.json` | duplicate counts measured on the raw file |
 | `report.pdf` | the technical report, rendered (9 pages) |
 | `results/report.md` | the technical report |
 | `results/rq1..rq4.csv` | the four research questions |
