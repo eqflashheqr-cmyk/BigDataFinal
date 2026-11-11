@@ -113,9 +113,17 @@ BigDataFinal/
 │   ├── equivalence.py        # Pandas vs Spark comparison
 │   ├── benchmark.py          # performance & scalability experiment
 │   ├── figures.py            # chart generation
+│   ├── predictive.py         # optional predictive extension (Part 4)
+│   ├── predictive_figures.py # charts for the predictive extension
+│   ├── dup_probe.py          # duplicate measurement on the RAW file
 │   ├── report.py             # assembles results/report.md
 │   ├── export_pdf.py         # renders report.pdf
 │   └── run_analysis.py       # orchestration
+├── latex_report/             # the LaTeX report (ACM 2-column)
+│   ├── report.tex
+│   ├── acmart.cls
+│   ├── figures/
+│   └── report.pdf            # the compiled technical report (10 pages)
 ├── report.pdf                # the technical report (9 pages)
 ├── results/
 │   ├── report.md             # the technical report
@@ -123,10 +131,12 @@ BigDataFinal/
 │   ├── equivalence_report.json
 │   ├── benchmark_results.csv / .json
 │   ├── quality_checks.json
+│   ├── duplicate_probe_raw.json
 │   ├── correlation_matrix.csv
-│   └── cleaning_report_{pandas,spark}.json
+│   ├── cleaning_report_{pandas,spark}.json
+│   └── predictive_*.csv / .json / .npz
 └── figures/
-    └── fig1..fig6.png
+    └── fig1..fig9.png
 ```
 
 ---
@@ -307,10 +317,82 @@ engines ran on the same 16 GB machine, is in `results/report.md` §6.
 | `fig4_gap_by_purpose_state.png` | RQ4 — the gap by purpose and state |
 | `fig5_benchmark_scaling.png` | Performance and throughput |
 | `fig6_missingness.png` | Data quality |
+| `fig7_predictive_roc_pr.png` | Predictive extension — ROC and precision–recall curves |
+| `fig8_predictive_calibration.png` | Predictive extension — reliability diagram and calibration gap |
+| `fig9_predictive_importance.png` | Predictive extension — permutation importance |
 
 ---
 
-## 8. Environment
+## 8. Predictive extension (optional part)
+
+`src/predictive.py` predicts mortgage denial from application characteristics.
+It is deliberately built to be light on RAM, CPU and disk:
+
+- **Sampling from Parquet row groups.** A 2,000,000-row modelling sample
+  (23.1 % of the 8,643,834-record decision population) is drawn by a hash
+  rule on the institution LEI. The 12.2 M rows are never materialised.
+- **Immediate downcasting.** Numerics become `float32`, categoricals `int8` /
+  `int16`, and every matrix stays sparse (~352 MB of non-zeros). No estimator
+  ever builds a dense matrix of the full sample.
+- **Chunked densification.** The tree model and the permutation-importance
+  step densify 200,000 rows at a time, capping peak RAM well under 2 GB.
+- **Single-threaded.** `n_jobs=1`, so the pipeline runs on one core without
+  oversubscribing a 16 GB machine.
+
+The whole extension runs in **131 seconds**.
+
+| Model | ROC-AUC | PR-AUC | Brier | Best F₁ |
+|---|---|---|---|---|
+| Logistic regression (primary) | 0.774 | 0.526 | 0.150 | 0.538 |
+| Gradient boosting (comparison) | 0.836 | 0.689 | 0.124 | 0.614 |
+
+The logistic regression is the primary model because it is calibrated and its
+coefficients are readable; the gradient-boosting gap is reported rather than
+hidden. Post-decision and conditional fields (`interest_rate`,
+`rate_spread`, `purchaser_type`, `denial_reason_1..4`, …) are excluded, and
+the exclusion list is asserted against the cleaned schema at run time.
+
+**Two findings worth reading before using the model:**
+
+1. The linear model **over-predicts in the top probability band** (mean
+   predicted 0.95 against an observed rate of 0.75). This was verified not to
+   be a solver artefact — an independent convex fit reproduces it — so the
+   model should not be used to rank applications in that band.
+2. The predictor variables include protected characteristics. The model is a
+   research instrument and **must not** be used to score individual
+   borrowers.
+
+---
+
+## 9. The report
+
+The final technical report is written in LaTeX using the ACM Large 2-Column
+Format Template (`acmart.cls`, `sigconf`) and lives in `latex_report/`.
+
+```
+latex_report/
+├── report.tex                   # the report source
+├── acmart.cls                   # from the ACM template
+├── ACM-Reference-Format.bst
+├── figures/                     # copies of the figures above
+└── report.pdf                   # the compiled report (10 pages)
+```
+
+To rebuild it (MiKTeX):
+
+```powershell
+cd latex_report
+pdflatex report.tex
+pdflatex report.tex
+pdflatex report.tex
+```
+
+`latexmk` is not used because MiKTeX's `latexmk` wrapper requires Perl, which
+is not installed on this machine.
+
+---
+
+## 10. Environment
 
 Python 3.11 · pandas 2.3.3 · numpy 2.2.6 · pyarrow 26.0.1 · PySpark 4.0.1 ·
 matplotlib 3.10.9 · seaborn 0.13.2 · Temurin OpenJDK 17 · Hadoop winutils 3.3.6 ·

@@ -1,0 +1,15 @@
+{
+  "records_raw": 12259199,
+  "exact_duplicates": {
+    "definition": "all 99 raw fields identical",
+    "rows_involved": 46984,
+    "redundant_rows": 26755,
+    "pct_of_dataset": 0.2182
+  },
+  "business_key_duplicates": {
+    "definition": "identical on the application-identifying fields: lei, state_code, county_code, census_tract, action_taken, loan_amount, loan_type, loan_purpose, lien_status, applicant_ethnicity_1, applicant_race_1, applicant_sex, applicant_age, income, debt_to_income_ratio, interest_rate, property_value, activity_year",
+    "rows_involved": 83513,
+    "redundant_rows": 46587,
+    "pct_of_dataset": 0.38
+  }
+}

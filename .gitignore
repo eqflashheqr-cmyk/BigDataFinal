@@ -63,3 +63,17 @@ secrets/
 credentials*.json
 token*.json
 .netrc
+
+# LaTeX build artefacts
+latex_report/*.aux
+latex_report/*.log
+latex_report/*.out
+latex_report/pass*.log
+latex_report/pass*.err
+latex_report/*.png
+!latex_report/figures/*.png
+
+# Local scratch logs
+*.log
+*.err
+
