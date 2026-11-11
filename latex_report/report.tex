@@ -1027,7 +1027,7 @@ a home purchase with equity behind it.
         with zero false positives, but it remains an inference.
   \item \textbf{Sample and reporting bias.} The dataset covers regulated
         lenders only, and the analysis population excludes applications that
-        never reached a decision --- 42.9\,\% of all records.
+        never reached a decision --- 29.29\,\% of all records.
   \item \textbf{Non-random interest-rate missingness.} The RQ2 interest-rate
         comparison rests on originated loans and is flagged as such.
   \item \textbf{Single machine.} Both engines ran on the same 16\,GB host,
@@ -1105,12 +1105,19 @@ McKinney, Wes.
 \end{thebibliography}
 
 \appendix
+
+% acmart forces \flushbottom, which stretches every column to the full text
+% height. On this final page the last column then ends about 1.8pt below the
+% text block, and TeX reports it as an overfull \vbox. A negative
+% \enlargethispage shrinks that column to its natural depth, which removes
+% the overfull box without changing any content.
+\enlargethispage{-4pt}
+
 \section{Repository and Reproduction}
 
 The full source, the result files and the execution record are in the public
-repository \texttt{eqflashheqr-cmyk/BigDataFinal}. The raw dataset is not
-included; \texttt{README.md} gives the download instructions and the
-expected directory layout.
+repository \texttt{eqflashheqr-cmyk/BigDataFinal}. \texttt{README.md} gives
+the data-download instructions and the expected directory layout.
 
 \begin{table}[t]
 \caption{Reproduction steps and their approximate wall-clock cost on a
@@ -1127,11 +1134,11 @@ Pandas pipeline & \texttt{python src/pandas\_\allowbreak pipeline.py} & 15 min \
 Spark pipeline & \texttt{python src/spark\_\allowbreak pipeline.py} & 8 min \\
 Correctness check & \texttt{python src/equivalence.py all} & 3 min \\
 Analysis (both engines) & \texttt{python src/run\_\allowbreak analysis.py all} & 6 min \\
+RQ3 cross-engine diff & \texttt{python src/rq3\_\allowbreak equivalence.py} & 1 min \\
 Quality checks & \texttt{python src/quality\_\allowbreak checks.py} & 6 min \\
 Predictive extension & \texttt{python src/predictive.py} & 2 min \\
-Figures & \texttt{python src/figures.py} & 1 min \\
+Figures and report & \texttt{src/figures.py}, \texttt{src/report.py} & 1 min \\
 Performance experiment & \texttt{python src/benchmark.py} & 1.8 h \\
-Report & \texttt{python src/report.py} & 1 min \\
 \bottomrule
 \end{tabular}
 \end{table}

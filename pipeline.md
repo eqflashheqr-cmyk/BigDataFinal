@@ -653,6 +653,33 @@ Additionally, all four research questions were computed independently in
 both engines and diffed cell-by-cell: **RQ1, RQ2, RQ3 (1,730 strata) and RQ4
 — zero differing cells.**
 
+For RQ3 — the largest of the four, at 1,730 strata — the diff is run by
+`src/rq3_equivalence.py`, which writes `results/rq3_equivalence.json`:
+
+```bash
+python src/run_analysis.py all   # writes results/rq3_{pandas,spark}.csv
+python src/rq3_equivalence.py     # writes results/rq3_equivalence.json
+```
+
+```
+strata compared      : 1,730
+strata key mismatches: 0
+numeric mismatches   : 0
+max rate difference  : 0
+joint_lower real diff: 0
+null-repr differences: 182
+RESULT: AGREE
+```
+
+The 182 "null-representation differences" are **not** a numerical
+discrepancy. They are strata where one of the two groups has no decisions
+at all, so the group's denial rate is undefined: Pandas writes `NaN` for
+`joint_lower` there, while Spark's SQL comparison of a NULL yields `False`.
+Both mean the same thing — the joint group cannot have the lower denial
+rate when it has no decisions. Every count and every rate is identical in
+all 1,730 rows, and the script reports the difference explicitly rather
+than hiding it.
+
 ### 8.3 The discrepancies that were found and explained
 
 The assignment requires an explanation for any discrepancy. Three were found;
@@ -821,7 +848,7 @@ finding in the project.
 The assignment (§6.2) recommends a 12-section report. `src/report.py`
 generates `results/report.md` in exactly that structure, and
 `src/export_pdf.py` renders it to **`report.pdf`** at the repository root
-(9 pages) using ReportLab — handling headings, paragraphs, lists, fenced code
+using ReportLab — handling headings, paragraphs, lists, fenced code
 blocks, pipe tables, blockquotes and the figure images. The PDF export is
 scripted, so the report can be regenerated after any change:
 
@@ -829,6 +856,9 @@ scripted, so the report can be regenerated after any change:
 python src/report.py     # -> results/report.md
 python src/export_pdf.py # -> report.pdf
 ```
+
+(The root `report.pdf` is no longer committed — see §10.3. The LaTeX
+report in `latex_report/` is the deliverable.)
 
 **The Markdown version was subsequently superseded by a LaTeX version**
 (§12), which is the one written in the ACM 2-column template the assignment
@@ -877,15 +907,15 @@ committed:
 README.md                  reproduction instructions, method, findings
 requirements.txt           pinned versions
 pipeline.md                this document
-report.pdf                 the technical report (9 pages)
 docs/                      schema + data dictionary
-src/                       13 modules
-results/                   all CSV + JSON outputs, report.md
+src/                       16 modules
+results/                   all CSV + JSON outputs, report.md, predictive artefacts
 figures/                   6 PNGs
+latex_report/              the LaTeX report source and the compiled PDF
 Tài Liệu Được Cấp và Proposal/HMDA_Proposal_Overleaf (1).pdf   the team's proposal (Deliverable 1)
 ```
 
-**Two exclusions worth justifying:**
+**What is not committed, and why:**
 
 * **The raw dataset.** 9.9 GB of public data. The assignment (§6.3) forbids
   duplicating large public datasets and requires download instructions
@@ -894,6 +924,37 @@ Tài Liệu Được Cấp và Proposal/HMDA_Proposal_Overleaf (1).pdf   the tea
 * **The instructor's material.** The assignment PDF and the two lecture-note
   PDFs are the instructor's course content, not this project's deliverable.
   The team's own proposal **is** kept, because it is Deliverable 1.
+* **Regenerable intermediates.** These are written by the scripts that
+  produce them and are rebuilt by a clean run, so tracking them adds bulk
+  without adding information:
+
+  | Path | Written by | Rebuilt by |
+  |---|---|---|
+  | `results/rq*_pandas.csv`, `results/rq*_spark.csv` | `src/analysis.py` | `python src/run_analysis.py all` |
+  | `results/_equiv_pandas.json`, `results/_equiv_spark.json` | `src/equivalence.py` | `python src/equivalence.py all` |
+  | `latex_template/` | unzip of the instructor's `.zip` | copy of `acmart.cls` etc. into `latex_report/` |
+
+  The consolidated files the report and the figures actually read
+  (`results/rq1..rq4.csv`, `results/equivalence_report.json`) **are**
+  committed, so the report's claims are checkable without re-running
+  anything.
+
+  Hiding the two RQ3 CSVs initially left the report's "1,730 strata, zero
+  differing cells" claim without a tracked artefact. `src/rq3_equivalence.py`
+  fixes that: it diffs the two per-engine files and writes the small,
+  permanent summary `results/rq3_equivalence.json`, which is committed.
+
+* **The superseded `report.pdf` at the repository root.** The ReportLab
+  render of the Markdown report was replaced by the LaTeX report
+  (`latex_report/report.pdf`). Keeping both would leave two PDFs claiming to
+  be the deliverable.
+
+* **The predictive artefacts are kept.** `results/predictive_predictions.npz`
+  holds the test-set probabilities behind the predictive extension's
+  figures and evaluation tables. It is ~13 MB, which is large for a git
+  object, but it is the primary empirical output of Part 4, and a reviewer
+  can regenerate the extension's numbers from it without retraining the
+  model. It is therefore tracked deliberately.
 
 The repository is a clone-and-run artifact: a reviewer who downloads the data
 per `README.md` reproduces every number and every figure.
@@ -1055,7 +1116,9 @@ This is stated in the report rather than left implicit.
 The report was rewritten in LaTeX using the ACM Large 2-Column Format
 Template (`acmart.cls`, `sigconf`). The template files were extracted from
 the provided `.zip` into `latex_template/` and the working copy lives in
-`latex_report/`.
+`latex_report/`. `latex_template/` is **not tracked**: it is the instructor's
+material verbatim, and `latex_report/` already contains the files the build
+actually needs.
 
 ### 12.2 A build environment note
 
@@ -1227,6 +1290,7 @@ didn't.
 | `src/analysis.py` | RQ1–RQ4, both engines |
 | `src/quality_checks.py` | duplicate investigation, correlation matrix |
 | `src/equivalence.py` | Pandas vs Spark comparison |
+| `src/rq3_equivalence.py` | cell-by-cell Pandas vs Spark diff for the 1,730 RQ3 strata |
 | `src/benchmark.py` | performance and scalability experiment |
 | `src/figures.py` | chart generation |
 | `src/predictive.py` | the optional predictive extension |
@@ -1237,12 +1301,11 @@ didn't.
 | `src/run_analysis.py` | orchestration |
 | `latex_report/report.tex` | the LaTeX report source (ACM `sigconf`) |
 | `latex_report/report.pdf` | the technical report, compiled (10 pages) |
-| `latex_template/` | the ACM template as provided, extracted |
 | `results/predictive_*.csv / .json / .npz` | predictive extension artefacts |
 | `results/duplicate_probe_raw.json` | duplicate counts measured on the raw file |
-| `report.pdf` | the technical report, rendered (9 pages) |
 | `results/report.md` | the technical report |
 | `results/rq1..rq4.csv` | the four research questions |
+| `results/rq3_equivalence.json` | the RQ3 cross-engine diff (1,730 strata, zero differing cells) |
 | `results/equivalence_report.json` | cell-by-cell Pandas vs Spark comparison |
 | `results/benchmark_results.{csv,json}` | performance measurements |
 | `results/quality_checks.json` | duplicate investigation results |
