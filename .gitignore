@@ -68,6 +68,8 @@ token*.json
 latex_report/*.aux
 latex_report/*.log
 latex_report/*.out
+latex_report/*.bbl
+latex_report/*.blg
 latex_report/pass*.log
 latex_report/pass*.err
 latex_report/*.png
@@ -104,3 +106,17 @@ results/rq*_spark.csv
 results/_equiv_pandas.json
 results/_equiv_spark.json
 latex_template/
+
+# ---------------------------------------------------------------------------
+# Local working material — not part of the deliverable.
+#
+#   transcript_extract/
+#       Raw dumps of the AI assistant's chat transcripts, kept for the
+#       team's own reference while writing the analysis. They are not an
+#       input to any script in src/ and are of no use to a reviewer.
+#   [Team13] Big Data.docx
+#       The team's internal notes on the instructor's feedback. Working
+#       material, not a deliverable.
+# ---------------------------------------------------------------------------
+transcript_extract/
+\[Team13\] Big Data.docx

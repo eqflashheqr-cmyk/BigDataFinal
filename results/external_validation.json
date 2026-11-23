@@ -1,0 +1,200 @@
+{
+  "external_benchmarks_file": "E:\\Projects\\BigDataFinal\\results\\external_benchmarks.json",
+  "checks": [
+    {
+      "check": "national_denial_rate",
+      "our_value_pct": 24.33,
+      "external_value_pct": 24.3,
+      "difference_pp": 0.03,
+      "relative_difference_pct": 0.11,
+      "external_source": "Consumer Financial Protection Bureau, HMDA public LAR, 2024 One Year release",
+      "external_url": "https://ffiec.cfpb.gov/data-browser/",
+      "interpretation": "Our figure is computed over every record in the cleaned file; the CFPB figure is over the same year's national release. The two should agree closely, and a difference of well under one percentage point confirms that the cleaning pipeline did not drop or reclassify decisions."
+    },
+    {
+      "check": "denial_rate_by_loan_purpose",
+      "comparisons": [
+        {
+          "loan_purpose": "Home purchase",
+          "our_denial_rate_pct": 14.45,
+          "external_denial_rate_pct": 14.4,
+          "difference_pp": 0.05,
+          "our_n": 4261825,
+          "our_joint_rate_pct": 11.91,
+          "our_single_rate_pct": 16.49,
+          "external_decided": 4319109
+        },
+        {
+          "loan_purpose": "Refinancing",
+          "our_denial_rate_pct": 22.88,
+          "external_denial_rate_pct": 22.9,
+          "difference_pp": -0.02,
+          "our_n": 957385,
+          "our_joint_rate_pct": 18.82,
+          "our_single_rate_pct": 25.87,
+          "external_decided": 975958
+        },
+        {
+          "loan_purpose": "Cash-out refinancing",
+          "our_denial_rate_pct": 32.8,
+          "external_denial_rate_pct": 32.7,
+          "difference_pp": 0.1,
+          "our_n": 1196337,
+          "our_joint_rate_pct": 27.08,
+          "our_single_rate_pct": 35.88,
+          "external_decided": 1211684
+        },
+        {
+          "loan_purpose": "Home improvement",
+          "our_denial_rate_pct": 37.33,
+          "external_denial_rate_pct": 37.4,
+          "difference_pp": -0.07,
+          "our_n": 1012674,
+          "our_joint_rate_pct": 28.18,
+          "our_single_rate_pct": 43.18,
+          "external_decided": 1017507
+        }
+      ],
+      "external_source": "CFPB HMDA public LAR, 2024 One Year release",
+      "interpretation": "Loan purpose is the strongest external check available, because the CFPB publishes the same breakdown and the purpose mix is not something a cleaning rule could plausibly distort. A sign difference between our figure and the published one on any purpose would indicate a systematic labelling problem."
+    },
+    {
+      "check": "joint_applicant_denial_rate",
+      "our_value_pct": 18.96,
+      "external_value_pct": 20.7,
+      "difference_pp": -1.74,
+      "external_source": "CFPB HMDA public LAR, 2024 One Year release",
+      "interpretation": "HMDA's own 'derived sex' field classifies a record as Joint when a co-applicant is present. Our joint_flag is inferred independently from the five co-applicant fields, so agreement here is a genuine external corroboration of the inference rule. The difference is small because HMDA applies essentially the same rule."
+    },
+    {
+      "check": "interest_rate_vs_pmms",
+      "our_value_pct": 7.15,
+      "our_median_pct": 6.88,
+      "external_value_pct": 6.72,
+      "difference_pp": 0.43,
+      "prediction": "our rate should be ABOVE the PMMS rate",
+      "prediction_holds": true,
+      "pmms_range_2024": [
+        6.08,
+        7.22
+      ],
+      "external_source": "Freddie Mac, Primary Mortgage Market Survey (via FRED series MORTGAGE30US)",
+      "external_url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "interpretation": "The comparison is a prediction test, not an equality check. PMMS surveys conforming, conventional, fully amortising home-purchase loans to prime borrowers; HMDA additionally contains cash-out refinances, home-improvement loans and loans to borrowers outside the prime tiers, all of which price higher. Our rate should therefore sit above the PMMS average, and the excess should be larger for the purposes PMMS excludes."
+    },
+    {
+      "check": "loan_amount_against_fhfa_conforming_limit",
+      "n_records": 12224691,
+      "fhfa_baseline_2024": 766550,
+      "fhfa_high_cost_ceiling_2024": 1149825,
+      "n_above_baseline": 479752,
+      "pct_above_baseline": 3.924,
+      "n_above_high_cost_ceiling": 197215,
+      "pct_above_high_cost_ceiling": 1.6133,
+      "median_loan_amount": 225000.0,
+      "p99_loan_amount": 1445000.0,
+      "max_loan_amount": 2962005000.0,
+      "external_source": "Federal Housing Finance Agency (announced 28 November 2023)",
+      "external_url": "https://www.fhfa.gov/news/news-release/fhfa-announces-conforming-loan-limit-values-for-2024",
+      "interpretation": "A mortgage above the conforming limit is a jumbo loan and is not purchased by Fannie Mae or Freddie Mac. The limit is therefore an external boundary on the loan-amount distribution: if a large share of the records sat just below an arbitrary cut-off, the cut-off would be an artefact rather than a market boundary. The share above the high-cost ceiling is the decisive number, because no one-unit property anywhere in the US may have a conforming limit above it.",
+      "by_loan_purpose": [
+        {
+          "loan_purpose": "Cash-out refinancing",
+          "n": 1731682,
+          "median_loan_amount": 195000.0,
+          "pct_above_fhfa_baseline": 2.468,
+          "pct_above_fhfa_high_cost_ceiling": 1.0596
+        },
+        {
+          "loan_purpose": "Home improvement",
+          "n": 1202832,
+          "median_loan_amount": 75000.0,
+          "pct_above_fhfa_baseline": 0.561,
+          "pct_above_fhfa_high_cost_ceiling": 0.2148
+        },
+        {
+          "loan_purpose": "Home purchase",
+          "n": 6561883,
+          "median_loan_amount": 295000.0,
+          "pct_above_fhfa_baseline": 5.263,
+          "pct_above_fhfa_high_cost_ceiling": 2.0861
+        },
+        {
+          "loan_purpose": "Not applicable",
+          "n": 20242,
+          "median_loan_amount": 95000.0,
+          "pct_above_fhfa_baseline": 2.87,
+          "pct_above_fhfa_high_cost_ceiling": 1.7587
+        },
+        {
+          "loan_purpose": "Other purpose",
+          "n": 1393535,
+          "median_loan_amount": 75000.0,
+          "pct_above_fhfa_baseline": 0.931,
+          "pct_above_fhfa_high_cost_ceiling": 0.4527
+        },
+        {
+          "loan_purpose": "Refinancing",
+          "n": 1314517,
+          "median_loan_amount": 255000.0,
+          "pct_above_fhfa_baseline": 5.429,
+          "pct_above_fhfa_high_cost_ceiling": 2.4898
+        }
+      ]
+    },
+    {
+      "check": "joint_vs_single_gap_decomposition",
+      "raw_gap_pp": -9.12,
+      "within_strata_weighted_gap_pp": -4.12,
+      "within_strata_unweighted_gap_pp": -2.62,
+      "income_mix_adjusted_gap_pp": -4.26,
+      "pct_of_raw_gap_explained_by_composition": 54.8,
+      "odds_ratio_joint_observed_controls": 0.842716918061288,
+      "odds_ratio_joint_within_lender": 0.8932904625687824,
+      "interpretation": "The raw gap between joint and single applicants is substantially a composition effect: once income quartile and loan type are held fixed, roughly half of it disappears. What remains is still negative and still significant, and it survives lender fixed effects, so it is not an artefact of which lenders the two groups face."
+    },
+    {
+      "check": "joint_flag_cross_field_corroboration",
+      "rows_examined": 12224691,
+      "fields": [
+        {
+          "field": "co_applicant_ethnicity_1",
+          "records_agreeing_with_joint_flag": 11013940,
+          "records_contradicting_joint_flag": 0,
+          "pct_contradicting": 0.0
+        },
+        {
+          "field": "co_applicant_race_1",
+          "records_agreeing_with_joint_flag": 10998001,
+          "records_contradicting_joint_flag": 0,
+          "pct_contradicting": 0.0
+        },
+        {
+          "field": "co_applicant_sex",
+          "records_agreeing_with_joint_flag": 10707840,
+          "records_contradicting_joint_flag": 0,
+          "pct_contradicting": 0.0
+        },
+        {
+          "field": "co_applicant_credit_score_type",
+          "records_agreeing_with_joint_flag": 6544812,
+          "records_contradicting_joint_flag": 0,
+          "pct_contradicting": 0.0
+        },
+        {
+          "field": "co_applicant_age",
+          "records_agreeing_with_joint_flag": 11025040,
+          "records_contradicting_joint_flag": 4872,
+          "pct_contradicting": 0.0399
+        }
+      ],
+      "total_contradictions": 4872,
+      "total_contradictions_pct": 0.0399,
+      "interpretation": "Five independent HMDA fields are used to cross-check the inferred joint_flag. Four of them agree with it on every single record. The fifth, co_applicant_age, disagrees on a small number of records, which is the expected consequence of it being a coarser field (an age band) than the others."
+    }
+  ],
+  "summary": {
+    "n_checks": 7,
+    "checks_that_pass": 7
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "sample": {
+    "n_decision_records_with_known_joint": 787722,
+    "n_lenders": 1466,
+    "max_rows_per_lender": 2000,
+    "seed": 20240101,
+    "note": "The same capped subsample is used for all three models, so the coefficients are comparable and the difference between them is not a difference of sample."
+  },
+  "linear_probability_model_with_lender_dummies": {
+    "note": "For a linear model the within-transformation and the dummy-variable parameterisation give identical slope coefficients, so this is the estimand the demeaned-logit code was trying to reach, estimated in a form where the transformation is valid.  Standard errors are clustered by lender.",
+    "n": 787722,
+    "n_clusters": 1466,
+    "r_squared": 0.2374936120333614,
+    "joint": {
+      "beta": -0.023849546091705903,
+      "std_error": 0.0021849964635080837,
+      "ci95_low": -0.028132139160181747,
+      "ci95_high": -0.01956695302323006,
+      "z": -10.915141735934286,
+      "p_value": 0.0
+    },
+    "joint_probability_difference_pp": -2.3849546091705904,
+    "other_coefficients": {
+      "log_income": {
+        "beta": -0.048880991037873245,
+        "std_error": 0.004144091803651527,
+        "ci95_low": -0.05700341097303024,
+        "ci95_high": -0.04075857110271625,
+        "z": -11.795344638553185,
+        "p_value": 0.0
+      },
+      "lti": {
+        "beta": 2.0819936523093733e-06,
+        "std_error": 5.907669243975892e-05,
+        "ci95_low": -0.00011370832352961811,
+        "ci95_high": 0.00011787231083423685,
+        "z": 0.03524221763824037,
+        "p_value": 0.971886598317717
+      },
+      "dti_ord": {
+        "beta": 0.01643171150562645,
+        "std_error": 0.0005965504691707294,
+        "ci95_low": 0.015262472586051819,
+        "ci95_high": 0.01760095042520108,
+        "z": 27.544545440502844,
+        "p_value": 0.0
+      }
+    }
+  },
+  "logit_with_lender_dummies": {
+    "note": "the same lender dummies in a logistic regression: a different estimator of the same population parameter, on a different scale",
+    "n": 787722,
+    "n_events": 142644,
+    "pseudo_r2_mcfadden": 0.2518075109639383,
+    "joint": {
+      "beta": -0.20534926602935824,
+      "std_error": 0.007435420504246901,
+      "odds_ratio": 0.8143628374601929,
+      "ci95_low": 0.8025808429143649,
+      "ci95_high": 0.8263177932680589,
+      "z": -27.617707150801838,
+      "p_value": 0.0
+    }
+  },
+  "logit_without_lender_fixed_effects_same_sample": {
+    "note": "the same model without the lender dummies, on the same rows, so the two are directly comparable",
+    "n": 787722,
+    "joint": {
+      "odds_ratio": 0.8117251624630316,
+      "beta": -0.20859346598742887,
+      "std_error": 0.007051624748310959,
+      "ci95_low": 0.8005833332262797,
+      "ci95_high": 0.8230220540819102,
+      "z": -29.580908433534024,
+      "p_value": 0.0
+    }
+  },
+  "interpretation": {
+    "joint_effect_lpm_pp": -2.3849546091705904,
+    "joint_effect_lpm_ci95_pp": [
+      -2.813213916018175,
+      -1.9566953023230058
+    ],
+    "joint_effect_logit_with_fe_odds_ratio": 0.8143628374601929,
+    "joint_effect_logit_no_fe_odds_ratio": 0.8117251624630316,
+    "note": "The linear probability model reports a probability difference in percentage points; the logistic models report an odds ratio.  A negative probability difference and an odds ratio below one are the same finding expressed on different scales."
+  }
+}

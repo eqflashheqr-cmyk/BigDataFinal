@@ -1,0 +1,579 @@
+{
+  "config": {
+    "seed": 20240101,
+    "row_cap": 2000000,
+    "split": "GroupShuffleSplit by LEI",
+    "train_val_test": [
+      0.6,
+      0.2,
+      0.2
+    ],
+    "repeats": 1,
+    "logistic_C": 0.1,
+    "solver": "liblinear",
+    "n_features": 44,
+    "n_threads": 1
+  },
+  "sample": {
+    "n_rows": 2000000,
+    "population_size": 8643834,
+    "pct_of_population": 23.14,
+    "denial_rate_pct": 24.19
+  },
+  "features_removed_from_model": [
+    "applicant_sex",
+    "applicant_ethnicity_1",
+    "applicant_race_1",
+    "tract_minority_population_percent"
+  ],
+  "splits": {
+    "n_train": 1142118,
+    "n_validation": 389264,
+    "n_test": 468618,
+    "n_lenders_train": 2934,
+    "n_lenders_validation": 979,
+    "n_lenders_test": 979,
+    "lenders_shared_train_test": 0,
+    "lenders_shared_train_validation": 0,
+    "lenders_shared_validation_test": 0
+  },
+  "threshold_selection": {
+    "selected_on": "validation set",
+    "threshold": 0.2,
+    "validation_f1_at_threshold": 0.6183785859862353,
+    "sweep": [
+      {
+        "threshold": 0.05,
+        "f1": 0.4808411947473562,
+        "precision": 0.3172029040075941,
+        "recall": 0.9932250672511707
+      },
+      {
+        "threshold": 0.1,
+        "f1": 0.5510934009539334,
+        "precision": 0.38857273244310037,
+        "recall": 0.9473033110823287
+      },
+      {
+        "threshold": 0.15,
+        "f1": 0.6086619381029489,
+        "precision": 0.46347012138999355,
+        "recall": 0.8863206137292019
+      },
+      {
+        "threshold": 0.2,
+        "f1": 0.6183785859862353,
+        "precision": 0.4931722740971296,
+        "recall": 0.8287918036597921
+      },
+      {
+        "threshold": 0.25,
+        "f1": 0.6106978029287461,
+        "precision": 0.5182811387282233,
+        "recall": 0.7432250672511707
+      },
+      {
+        "threshold": 0.3,
+        "f1": 0.5902785522819135,
+        "precision": 0.5498176659812722,
+        "recall": 0.6371674803228056
+      },
+      {
+        "threshold": 0.35,
+        "f1": 0.5351682793053809,
+        "precision": 0.5928920381136951,
+        "recall": 0.4876872239380957
+      },
+      {
+        "threshold": 0.4,
+        "f1": 0.44883078231292517,
+        "precision": 0.6235749305924745,
+        "recall": 0.35058616452459235
+      },
+      {
+        "threshold": 0.45,
+        "f1": 0.32889548812138153,
+        "precision": 0.6615550647525349,
+        "recall": 0.21884859353724553
+      },
+      {
+        "threshold": 0.5,
+        "f1": 0.15769377625047729,
+        "precision": 0.6820376016260162,
+        "recall": 0.08915346551094284
+      },
+      {
+        "threshold": 0.55,
+        "f1": 0.067636277639825,
+        "precision": 0.669162377164249,
+        "recall": 0.035618212613330674
+      },
+      {
+        "threshold": 0.6,
+        "f1": 0.04080319217402497,
+        "precision": 0.6569948186528497,
+        "recall": 0.021055428248812725
+      },
+      {
+        "threshold": 0.65,
+        "f1": 0.02580036439354503,
+        "precision": 0.6344,
+        "recall": 0.013167945269170735
+      },
+      {
+        "threshold": 0.7,
+        "f1": 0.015629356293562935,
+        "precision": 0.6328021248339973,
+        "recall": 0.007912390820630335
+      },
+      {
+        "threshold": 0.75,
+        "f1": 0.009626241397782998,
+        "precision": 0.6554433221099888,
+        "recall": 0.004848726379064129
+      },
+      {
+        "threshold": 0.8,
+        "f1": 0.0057044122388577945,
+        "precision": 0.6699029126213593,
+        "recall": 0.00286440171365946
+      },
+      {
+        "threshold": 0.85,
+        "f1": 0.0031468415648083737,
+        "precision": 0.6089743589743589,
+        "recall": 0.0015774965959283983
+      },
+      {
+        "threshold": 0.9,
+        "f1": 0.0025351692598299946,
+        "precision": 0.5930232558139535,
+        "recall": 0.0012702998904054997
+      },
+      {
+        "threshold": 0.95,
+        "f1": 0.0018897794428466045,
+        "precision": 0.5560975609756098,
+        "recall": 0.000946497957557039
+      }
+    ]
+  },
+  "validation_metrics": {
+    "threshold": 0.2,
+    "roc_auc": 0.7815545170263078,
+    "pr_auc": 0.5726864404265992,
+    "brier": 0.17893168816248767,
+    "positive_rate": 0.30941469028731144,
+    "precision": 0.4931722740971296,
+    "recall": 0.8287918036597921,
+    "f1": 0.6183785859862353,
+    "accuracy": 0.6834847301574253,
+    "confusion_matrix": {
+      "true_positive": 99823,
+      "false_positive": 102587,
+      "false_negative": 20621,
+      "true_negative": 166233,
+      "n": 389264
+    },
+    "baseline_majority_class": {
+      "majority_class": "approved",
+      "accuracy": 0.6905853097126886,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "note": "Always predicting the majority class. Its accuracy is the number a classifier has to beat to be worth anything; its recall is zero on the minority class by construction, which is exactly why a triage model has to beat it on F1 rather than on accuracy."
+    },
+    "baseline_constant_rate": {
+      "accuracy": 0.6905853097126886,
+      "brier": 0.2136772397217186
+    }
+  },
+  "test_metrics": {
+    "threshold": 0.2,
+    "roc_auc": 0.6943443716881855,
+    "pr_auc": 0.38665087238901247,
+    "brier": 0.16586665703710327,
+    "positive_rate": 0.23466021364949702,
+    "precision": 0.3538855171893848,
+    "recall": 0.6829656439263045,
+    "f1": 0.46620317204134204,
+    "accuracy": 0.6329974520825065,
+    "confusion_matrix": {
+      "true_positive": 75103,
+      "false_positive": 137121,
+      "false_negative": 34863,
+      "true_negative": 221531,
+      "n": 468618
+    },
+    "baseline_majority_class": {
+      "majority_class": "approved",
+      "accuracy": 0.7653397863505029,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "note": "Always predicting the majority class. Its accuracy is the number a classifier has to beat to be worth anything; its recall is zero on the minority class by construction, which is exactly why a triage model has to beat it on F1 rather than on accuracy."
+    },
+    "baseline_constant_rate": {
+      "accuracy": 0.7653397863505029,
+      "brier": 0.17959479777946943
+    }
+  },
+  "group_kfold_auc": {
+    "mean": 0.7413159085176938,
+    "sd": 0.037131048244090026,
+    "folds": [
+      0.6893835508314591,
+      0.7058078065563544,
+      0.7715876968553084,
+      0.7837795269341565,
+      0.75602096141119
+    ],
+    "note": "GroupKFold by LEI. Every lender is entirely within one fold, so the score measures generalisation to an unseen lender rather than to unseen records of a known lender."
+  },
+  "calibration": [
+    {
+      "bin": 1,
+      "mean_predicted": 0.05366740878715693,
+      "observed_rate": 0.06809355127822116,
+      "n": null
+    },
+    {
+      "bin": 2,
+      "mean_predicted": 0.07630367762474498,
+      "observed_rate": 0.09739234347659084,
+      "n": null
+    },
+    {
+      "bin": 3,
+      "mean_predicted": 0.09623519946496967,
+      "observed_rate": 0.11079339336776066,
+      "n": null
+    },
+    {
+      "bin": 4,
+      "mean_predicted": 0.11719322513243476,
+      "observed_rate": 0.13960436183606836,
+      "n": null
+    },
+    {
+      "bin": 5,
+      "mean_predicted": 0.15114921198711861,
+      "observed_rate": 0.20483547437155905,
+      "n": null
+    },
+    {
+      "bin": 6,
+      "mean_predicted": 0.2020357457463929,
+      "observed_rate": 0.28276642055396695,
+      "n": null
+    },
+    {
+      "bin": 7,
+      "mean_predicted": 0.25758533468578526,
+      "observed_rate": 0.30569129980154075,
+      "n": null
+    },
+    {
+      "bin": 8,
+      "mean_predicted": 0.30747003483946217,
+      "observed_rate": 0.3430498058128121,
+      "n": null
+    },
+    {
+      "bin": 9,
+      "mean_predicted": 0.360318242025454,
+      "observed_rate": 0.35455166232768554,
+      "n": null
+    },
+    {
+      "bin": 10,
+      "mean_predicted": 0.47162872939711875,
+      "observed_rate": 0.43982331099825017,
+      "n": null
+    }
+  ],
+  "differential_performance": [
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": -1,
+      "n": 311,
+      "denial_rate_observed": 0.41479099678456594,
+      "mean_predicted_probability": 0.21863396914127683,
+      "roc_auc_within_group": 0.6595536246699036,
+      "precision": 0.5693430656934306,
+      "recall": 0.6046511627906976
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 1,
+      "n": 51858,
+      "denial_rate_observed": 0.2715299471634078,
+      "mean_predicted_probability": 0.20283156977139355,
+      "roc_auc_within_group": 0.7071458497986391,
+      "precision": 0.4338142004605047,
+      "recall": 0.6556352531780413
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 2,
+      "n": 335807,
+      "denial_rate_observed": 0.21961722060588373,
+      "mean_predicted_probability": 0.2100667153696563,
+      "roc_auc_within_group": 0.6928281631359794,
+      "precision": 0.32994089122820647,
+      "recall": 0.6910330987538814
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 3,
+      "n": 65256,
+      "denial_rate_observed": 0.27808937109231335,
+      "mean_predicted_probability": 0.21748683750087858,
+      "roc_auc_within_group": 0.6944346101040301,
+      "precision": 0.409541712581837,
+      "recall": 0.6963134402380559
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 4,
+      "n": 9785,
+      "denial_rate_observed": 0.15912110373019928,
+      "mean_predicted_probability": 0.1471300124737678,
+      "roc_auc_within_group": 0.575403270752719,
+      "precision": 0.1762023217247098,
+      "recall": 0.2729608220937701
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 11,
+      "n": 2267,
+      "denial_rate_observed": 0.3956771063078959,
+      "mean_predicted_probability": 0.25464459303919385,
+      "roc_auc_within_group": 0.7514513097185264,
+      "precision": 0.5638461538461539,
+      "recall": 0.8171683389074693
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 12,
+      "n": 859,
+      "denial_rate_observed": 0.38882421420256114,
+      "mean_predicted_probability": 0.22310546964359967,
+      "roc_auc_within_group": 0.7049415454804676,
+      "precision": 0.540045766590389,
+      "recall": 0.7065868263473054
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 13,
+      "n": 420,
+      "denial_rate_observed": 0.4523809523809524,
+      "mean_predicted_probability": 0.23690018208813188,
+      "roc_auc_within_group": 0.7339359267734554,
+      "precision": 0.6293103448275862,
+      "recall": 0.7684210526315789
+    },
+    {
+      "attribute": "applicant_ethnicity_1",
+      "group_code": 14,
+      "n": 2055,
+      "denial_rate_observed": 0.4291970802919708,
+      "mean_predicted_probability": 0.23385347546609425,
+      "roc_auc_within_group": 0.7135327560976081,
+      "precision": 0.5891891891891892,
+      "recall": 0.7414965986394558
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 1,
+      "n": 5003,
+      "denial_rate_observed": 0.32380571657005797,
+      "mean_predicted_probability": 0.22554961582145128,
+      "roc_auc_within_group": 0.7161543009163465,
+      "precision": 0.4788907284768212,
+      "recall": 0.7141975308641976
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 2,
+      "n": 25548,
+      "denial_rate_observed": 0.1960623140754658,
+      "mean_predicted_probability": 0.1599376627410042,
+      "roc_auc_within_group": 0.7106333338293812,
+      "precision": 0.3690062543432939,
+      "recall": 0.5300459173487722
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 3,
+      "n": 46407,
+      "denial_rate_observed": 0.3427931131079363,
+      "mean_predicted_probability": 0.23127356092268103,
+      "roc_auc_within_group": 0.6774999076009393,
+      "precision": 0.46981440361975785,
+      "recall": 0.7049283379431732
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 4,
+      "n": 1188,
+      "denial_rate_observed": 0.3392255892255892,
+      "mean_predicted_probability": 0.22108232914431422,
+      "roc_auc_within_group": 0.6957531886646331,
+      "precision": 0.4677685950413223,
+      "recall": 0.7022332506203474
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 5,
+      "n": 304374,
+      "denial_rate_observed": 0.20859534651448547,
+      "mean_predicted_probability": 0.21044181539438458,
+      "roc_auc_within_group": 0.6927707842575268,
+      "precision": 0.3148123051904052,
+      "recall": 0.695169394087351
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 6,
+      "n": 71693,
+      "denial_rate_observed": 0.28697362364526524,
+      "mean_predicted_probability": 0.21741275188899223,
+      "roc_auc_within_group": 0.6967009616700095,
+      "precision": 0.4234338061465721,
+      "recall": 0.6964615534169339
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 7,
+      "n": 9777,
+      "denial_rate_observed": 0.15945586580750742,
+      "mean_predicted_probability": 0.14684102811806296,
+      "roc_auc_within_group": 0.5756566844069972,
+      "precision": 0.17708333333333334,
+      "recall": 0.27261064785118666
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 21,
+      "n": 2041,
+      "denial_rate_observed": 0.21068103870651642,
+      "mean_predicted_probability": 0.1374660556727903,
+      "roc_auc_within_group": 0.775019127221284,
+      "precision": 0.5068493150684932,
+      "recall": 0.5162790697674419
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 22,
+      "n": 397,
+      "denial_rate_observed": 0.30982367758186397,
+      "mean_predicted_probability": 0.17673663149171995,
+      "roc_auc_within_group": 0.7676695745059641,
+      "precision": 0.5205479452054794,
+      "recall": 0.6178861788617886
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 23,
+      "n": 636,
+      "denial_rate_observed": 0.37735849056603776,
+      "mean_predicted_probability": 0.22163702746874858,
+      "roc_auc_within_group": 0.7283775252525252,
+      "precision": 0.5232558139534884,
+      "recall": 0.75
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 25,
+      "n": 206,
+      "denial_rate_observed": 0.28640776699029125,
+      "mean_predicted_probability": 0.2018711174721591,
+      "roc_auc_within_group": 0.7243168453822207,
+      "precision": 0.4470588235294118,
+      "recall": 0.6440677966101694
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 26,
+      "n": 298,
+      "denial_rate_observed": 0.4395973154362416,
+      "mean_predicted_probability": 0.22048856827760852,
+      "roc_auc_within_group": 0.6875257119349089,
+      "precision": 0.5477707006369427,
+      "recall": 0.6564885496183206
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 27,
+      "n": 567,
+      "denial_rate_observed": 0.36507936507936506,
+      "mean_predicted_probability": 0.20003318824899005,
+      "roc_auc_within_group": 0.7630568974771874,
+      "precision": 0.584,
+      "recall": 0.7053140096618358
+    },
+    {
+      "attribute": "applicant_race_1",
+      "group_code": 44,
+      "n": 216,
+      "denial_rate_observed": 0.48148148148148145,
+      "mean_predicted_probability": 0.24621553796323298,
+      "roc_auc_within_group": 0.6795157967032968,
+      "precision": 0.6014492753623188,
+      "recall": 0.7980769230769231
+    },
+    {
+      "attribute": "applicant_sex",
+      "group_code": 1,
+      "n": 276576,
+      "denial_rate_observed": 0.2262054552817309,
+      "mean_predicted_probability": 0.20496702677060255,
+      "roc_auc_within_group": 0.6967637806719736,
+      "precision": 0.3479915328924068,
+      "recall": 0.6753192781676071
+    },
+    {
+      "attribute": "applicant_sex",
+      "group_code": 2,
+      "n": 150269,
+      "denial_rate_observed": 0.24177974166328384,
+      "mean_predicted_probability": 0.21668802149956765,
+      "roc_auc_within_group": 0.6944892755877861,
+      "precision": 0.35795048547770164,
+      "recall": 0.7031817681382803
+    },
+    {
+      "attribute": "applicant_sex",
+      "group_code": 3,
+      "n": 31713,
+      "denial_rate_observed": 0.29836344716677704,
+      "mean_predicted_probability": 0.23195057795442653,
+      "roc_auc_within_group": 0.6756218523581399,
+      "precision": 0.4053750073995146,
+      "recall": 0.7237370534770662
+    },
+    {
+      "attribute": "applicant_sex",
+      "group_code": 4,
+      "n": 9735,
+      "denial_rate_observed": 0.15921931176168463,
+      "mean_predicted_probability": 0.14627087703967223,
+      "roc_auc_within_group": 0.5752232841350227,
+      "precision": 0.176,
+      "recall": 0.2696774193548387
+    },
+    {
+      "attribute": "applicant_sex",
+      "group_code": 6,
+      "n": 325,
+      "denial_rate_observed": 0.18153846153846154,
+      "mean_predicted_probability": 0.24320594365555215,
+      "roc_auc_within_group": 0.6015037593984962,
+      "precision": 0.22674418604651161,
+      "recall": 0.6610169491525424
+    }
+  ],
+  "fit_seconds": 15.9,
+  "total_seconds": 162.6
+}

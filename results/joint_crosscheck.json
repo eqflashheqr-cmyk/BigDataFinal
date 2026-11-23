@@ -1,0 +1,198 @@
+{
+  "source": "E:\\Projects\\BigDataFinal\\data\\clean\\hmda_2024_clean\\part-00000.parquet",
+  "rows_examined": 12224691,
+  "note": "The five co-applicant fields are cross-checked against each other and against the shipped joint_flag. 'contradiction' means one field asserts a co-applicant while another asserts none. 'not_applicable_vs_decided' means one field says the attribute was not applicable (or not collected) while another gives a definite answer - a different statement, not a contradiction.",
+  "joint_flag_distribution": {
+    "joint": 4424331,
+    "single": 6649663,
+    "indeterminate": 1150697,
+    "pct_indeterminate": 9.413
+  },
+  "fields": {
+    "co_applicant_ethnicity_1": {
+      "no_co_applicant_code": "5",
+      "not_applicable_codes": [
+        "4"
+      ],
+      "present": 4382013,
+      "absent": 6646315,
+      "not_applicable": 1147726,
+      "missing_or_unreported": 48637,
+      "pct_present": 35.846,
+      "pct_absent": 54.368,
+      "pct_not_applicable": 9.389,
+      "pct_missing": 0.398,
+      "agreement_with_joint_flag": {
+        "field_present_and_flag_joint": 4372364,
+        "field_absent_and_flag_single": 6641576,
+        "field_unreported_and_flag_indeterminate": 64,
+        "contradicts_the_flag": 0
+      }
+    },
+    "co_applicant_race_1": {
+      "no_co_applicant_code": "8",
+      "not_applicable_codes": [
+        "7"
+      ],
+      "present": 4374197,
+      "absent": 6640415,
+      "not_applicable": 1152864,
+      "missing_or_unreported": 57215,
+      "pct_present": 35.782,
+      "pct_absent": 54.32,
+      "pct_not_applicable": 9.431,
+      "pct_missing": 0.468,
+      "agreement_with_joint_flag": {
+        "field_present_and_flag_joint": 4359595,
+        "field_absent_and_flag_single": 6638406,
+        "field_unreported_and_flag_indeterminate": 25,
+        "contradicts_the_flag": 0
+      }
+    },
+    "co_applicant_sex": {
+      "no_co_applicant_code": "5",
+      "not_applicable_codes": [
+        "4"
+      ],
+      "present": 4073675,
+      "absent": 6646949,
+      "not_applicable": 1150476,
+      "missing_or_unreported": 353591,
+      "pct_present": 33.323,
+      "pct_absent": 54.373,
+      "pct_not_applicable": 9.411,
+      "pct_missing": 2.892,
+      "agreement_with_joint_flag": {
+        "field_present_and_flag_joint": 4065391,
+        "field_absent_and_flag_single": 6642449,
+        "field_unreported_and_flag_indeterminate": 1680,
+        "contradicts_the_flag": 0
+      }
+    },
+    "co_applicant_credit_score_type": {
+      "no_co_applicant_code": "10",
+      "not_applicable_codes": [
+        "9",
+        "1111"
+      ],
+      "present": 1547263,
+      "absent": 5013328,
+      "not_applicable": 5178603,
+      "missing_or_unreported": 485497,
+      "pct_present": 12.657,
+      "pct_absent": 41.01,
+      "pct_not_applicable": 42.362,
+      "pct_missing": 3.971,
+      "agreement_with_joint_flag": {
+        "field_present_and_flag_joint": 1546432,
+        "field_absent_and_flag_single": 4998380,
+        "field_unreported_and_flag_indeterminate": 3772,
+        "contradicts_the_flag": 0
+      }
+    },
+    "co_applicant_age": {
+      "no_co_applicant_code": "9999",
+      "not_applicable_codes": [
+        "8888"
+      ],
+      "present": 4407319,
+      "absent": 6645287,
+      "not_applicable": 1172085,
+      "missing_or_unreported": 0,
+      "pct_present": 36.053,
+      "pct_absent": 54.36,
+      "pct_not_applicable": 9.588,
+      "pct_missing": 0.0,
+      "agreement_with_joint_flag": {
+        "field_present_and_flag_joint": 4397332,
+        "field_absent_and_flag_single": 6627708,
+        "field_unreported_and_flag_indeterminate": 0,
+        "contradicts_the_flag": 4872
+      }
+    }
+  },
+  "pairwise": {
+    "co_applicant_ethnicity_1 vs co_applicant_race_1": {
+      "both_present": 4320059,
+      "both_absent": 6633730,
+      "contradiction": 4616,
+      "not_applicable_vs_decided": 24853,
+      "at_least_one_field_unreported": 103584,
+      "pct_contradiction": 0.0378
+    },
+    "co_applicant_ethnicity_1 vs co_applicant_sex": {
+      "both_present": 4025018,
+      "both_absent": 6638142,
+      "contradiction": 988,
+      "not_applicable_vs_decided": 21301,
+      "at_least_one_field_unreported": 401606,
+      "pct_contradiction": 0.0081
+    },
+    "co_applicant_ethnicity_1 vs co_applicant_credit_score_type": {
+      "both_present": 1526815,
+      "both_absent": 5001234,
+      "contradiction": 9674,
+      "not_applicable_vs_decided": 4015316,
+      "at_least_one_field_unreported": 530862,
+      "pct_contradiction": 0.0791
+    },
+    "co_applicant_ethnicity_1 vs co_applicant_age": {
+      "both_present": 4356014,
+      "both_absent": 6624361,
+      "contradiction": 4818,
+      "not_applicable_vs_decided": 62109,
+      "at_least_one_field_unreported": 48637,
+      "pct_contradiction": 0.0394
+    },
+    "co_applicant_race_1 vs co_applicant_sex": {
+      "both_present": 4015821,
+      "both_absent": 6638840,
+      "contradiction": 4411,
+      "not_applicable_vs_decided": 9067,
+      "at_least_one_field_unreported": 410283,
+      "pct_contradiction": 0.0361
+    },
+    "co_applicant_race_1 vs co_applicant_credit_score_type": {
+      "both_present": 1527731,
+      "both_absent": 4997583,
+      "contradiction": 14113,
+      "not_applicable_vs_decided": 3998441,
+      "at_least_one_field_unreported": 539940,
+      "pct_contradiction": 0.1154
+    },
+    "co_applicant_race_1 vs co_applicant_age": {
+      "both_present": 4346599,
+      "both_absent": 6624557,
+      "contradiction": 12467,
+      "not_applicable_vs_decided": 42914,
+      "at_least_one_field_unreported": 57215,
+      "pct_contradiction": 0.102
+    },
+    "co_applicant_sex vs co_applicant_credit_score_type": {
+      "both_present": 1438853,
+      "both_absent": 5001547,
+      "contradiction": 8398,
+      "not_applicable_vs_decided": 3809941,
+      "at_least_one_field_unreported": 821816,
+      "pct_contradiction": 0.0687
+    },
+    "co_applicant_sex vs co_applicant_age": {
+      "both_present": 4056247,
+      "both_absent": 6631164,
+      "contradiction": 4322,
+      "not_applicable_vs_decided": 39001,
+      "at_least_one_field_unreported": 353591,
+      "pct_contradiction": 0.0354
+    },
+    "co_applicant_credit_score_type vs co_applicant_age": {
+      "both_present": 1544625,
+      "both_absent": 5003183,
+      "contradiction": 9415,
+      "not_applicable_vs_decided": 4017768,
+      "at_least_one_field_unreported": 485497,
+      "pct_contradiction": 0.077
+    }
+  },
+  "total_field_level_contradictions": 4872,
+  "total_field_level_contradictions_pct": 0.0399
+}

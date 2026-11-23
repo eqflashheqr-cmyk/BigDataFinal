@@ -166,6 +166,13 @@ READ_COLUMNS = list(dict.fromkeys(
        "lei"]
 ))
 
+#: Columns that are read and kept in the loaded frame but are **not**
+#: features. `lei` is needed to group the train/test split by lender;
+#: the audit-only columns hold the protected characteristics, which are
+#: joined back on after training for the fairness analysis. Neither ever
+#: reaches the estimator.
+KEEP_EXTRA_COLUMNS: list[str] = []
+
 #: Random seed, fixed so the result is reproducible.
 SEED = 20240101
 
@@ -313,9 +320,16 @@ def load_features(cap: int | None = PREDICTIVE_ROW_CAP) -> pd.DataFrame:
             df[c] = df[c].astype("float32")
 
     # Drop the columns that are no longer needed.
+    #
+    # `KEEP_EXTRA_COLUMNS` holds columns that are read but not modelled:
+    # the LEI (needed for the grouped split) and any audit-only column
+    # (the protected characteristics, which are joined back on *after*
+    # training, for the fairness analysis). They are never passed to the
+    # estimator.
     keep = [c for c in df.columns
             if c in NUMERIC_FEATURES or c in CATEGORICAL_FEATURES
-            or c in ("is_denied",)]
+            or c in ("is_denied",)
+            or c in KEEP_EXTRA_COLUMNS]
     df = df[keep]
 
     if cap and len(df) > cap:

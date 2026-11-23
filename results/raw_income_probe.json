@@ -1,0 +1,65 @@
+{
+  "raw_file": "E:\\Projects\\BigDataFinal\\data\\pipe_file\\2024_public_lar_one_year_pipe.txt",
+  "lines_scanned": 12259199,
+  "records_with_a_numeric_income": 10478765,
+  "negative_income_records": 7760,
+  "income_equals_999999999_thousands": 1,
+  "income_equals_999999999_dollars": 0,
+  "max_income_thousands": 999999999,
+  "max_income_line_number": 4640866,
+  "records_with_income_at_least_1e6_thousands": 36,
+  "extreme_record_action_taken": {
+    "2": 2,
+    "4": 4,
+    "3": 17,
+    "1": 9,
+    "5": 3,
+    "8": 1
+  },
+  "sentinel_record_action_taken": {
+    "4": 1
+  },
+  "ten_largest_income_values": [
+    {
+      "income_thousands": 999999999,
+      "count": 1
+    },
+    {
+      "income_thousands": 427431663,
+      "count": 1
+    },
+    {
+      "income_thousands": 100000000,
+      "count": 1
+    },
+    {
+      "income_thousands": 25553583,
+      "count": 1
+    },
+    {
+      "income_thousands": 17399830,
+      "count": 1
+    },
+    {
+      "income_thousands": 14500000,
+      "count": 1
+    },
+    {
+      "income_thousands": 12861885,
+      "count": 1
+    },
+    {
+      "income_thousands": 12000000,
+      "count": 1
+    },
+    {
+      "income_thousands": 11880258,
+      "count": 1
+    },
+    {
+      "income_thousands": 10800364,
+      "count": 1
+    }
+  ],
+  "note": "action_taken codes: 1 originated, 2 approved not accepted, 3 denied, 4 withdrawn, 5 file closed, 6 purchased, 7 preapproval denied, 8 preapproval approved."
+}

@@ -1,0 +1,39 @@
+{
+  "population": {
+    "cleaned_records": 12224691,
+    "records_with_decision": 8643834,
+    "records_joint_flag_known": 8557686,
+    "records_with_both_sexes_known": 3238060
+  },
+  "our_flag_vs_cfpb_style_definition": {
+    "note": "The CFPB's 'Joint' label means the co-applicant's sex differs from the applicant's.  Where both sexes are known, that is a well-defined subset of the joint applications.",
+    "n_compared": 3229978,
+    "n_agree": 2982384,
+    "pct_agree": 92.3345,
+    "n_disagree": 247594,
+    "n_disagree_that_are_same_sex_pairs": 247594,
+    "pct_of_disagreements_explained_by_same_sex": 100.0
+  },
+  "derived_sex_is_not_the_same_thing": {
+    "note": "derived_sex = 'Joint' marks a male/female pair.  It is a subset of the joint applications, not an independent confirmation of them: a joint application between two borrowers of the same sex is recorded as Male or Female.",
+    "n_records_we_call_joint": 3519683,
+    "n_ours_joint_that_hmda_calls_derived_Joint": 2990633,
+    "n_ours_joint_that_are_same_sex_pairs": 247594,
+    "pct_of_our_joint_called_derived_Joint": 84.97,
+    "pct_of_our_joint_that_are_same_sex_pairs": 7.03,
+    "derived_sex_counts": {
+      "Joint": 2999979,
+      "Male": 2928453,
+      "Female": 1949729,
+      "Sex Not Available": 765673
+    }
+  },
+  "independent_age_witness": {
+    "note": "co_applicant_age = 9999 means 'no co-applicant'.  This field is not used by the rule, so it is the only independent witness available.",
+    "n_compared": 3520292,
+    "n_agree": 3517556,
+    "n_disagree": 2736,
+    "pct_agree": 99.9223,
+    "pct_disagree": 0.0777
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "source": "HMDA 2024 national loan-level dataset (cleaned Parquet)",
+  "threshold_pct": 43,
+  "total_records": 12224691,
+  "total_joint": 4424331,
+  "total_originations": 6190908,
+  "bands": [
+    {
+      "band": "<20%",
+      "records": 457116,
+      "share_pct": 3.7393,
+      "joint_records": 202514,
+      "originations": 300294,
+      "origination_share_pct": 4.8506,
+      "above_43": false
+    },
+    {
+      "band": "20%-<30%",
+      "records": 1070534,
+      "share_pct": 8.7571,
+      "joint_records": 520198,
+      "originations": 833198,
+      "origination_share_pct": 13.4584,
+      "above_43": false
+    },
+    {
+      "band": "30%-<36%",
+      "records": 1097426,
+      "share_pct": 8.9771,
+      "joint_records": 506536,
+      "originations": 874353,
+      "origination_share_pct": 14.1232,
+      "above_43": false
+    },
+    {
+      "band": "36",
+      "records": 216656,
+      "share_pct": 1.7723,
+      "joint_records": 96851,
+      "originations": 173417,
+      "origination_share_pct": 2.8012,
+      "above_43": false
+    },
+    {
+      "band": "37",
+      "records": 227970,
+      "share_pct": 1.8648,
+      "joint_records": 100642,
+      "originations": 182846,
+      "origination_share_pct": 2.9535,
+      "above_43": false
+    },
+    {
+      "band": "38",
+      "records": 239476,
+      "share_pct": 1.959,
+      "joint_records": 105328,
+      "originations": 192448,
+      "origination_share_pct": 3.1086,
+      "above_43": false
+    },
+    {
+      "band": "39",
+      "records": 256826,
+      "share_pct": 2.1009,
+      "joint_records": 110699,
+      "originations": 206259,
+      "origination_share_pct": 3.3316,
+      "above_43": false
+    },
+    {
+      "band": "40",
+      "records": 266718,
+      "share_pct": 2.1818,
+      "joint_records": 113877,
+      "originations": 214663,
+      "origination_share_pct": 3.4674,
+      "above_43": false
+    },
+    {
+      "band": "41",
+      "records": 277501,
+      "share_pct": 2.27,
+      "joint_records": 117223,
+      "originations": 222948,
+      "origination_share_pct": 3.6012,
+      "above_43": false
+    },
+    {
+      "band": "42",
+      "records": 315000,
+      "share_pct": 2.5768,
+      "joint_records": 131426,
+      "originations": 252616,
+      "origination_share_pct": 4.0804,
+      "above_43": false
+    },
+    {
+      "band": "43",
+      "records": 283962,
+      "share_pct": 2.3229,
+      "joint_records": 116785,
+      "originations": 226928,
+      "origination_share_pct": 3.6655,
+      "above_43": false
+    },
+    {
+      "band": "44",
+      "records": 331627,
+      "share_pct": 2.7128,
+      "joint_records": 133147,
+      "originations": 265873,
+      "origination_share_pct": 4.2946,
+      "above_43": true
+    },
+    {
+      "band": "45",
+      "records": 251321,
+      "share_pct": 2.0558,
+      "joint_records": 100122,
+      "originations": 196543,
+      "origination_share_pct": 3.1747,
+      "above_43": true
+    },
+    {
+      "band": "46",
+      "records": 244450,
+      "share_pct": 1.9996,
+      "joint_records": 96069,
+      "originations": 188953,
+      "origination_share_pct": 3.0521,
+      "above_43": true
+    },
+    {
+      "band": "47",
+      "records": 251862,
+      "share_pct": 2.0603,
+      "joint_records": 99423,
+      "originations": 193769,
+      "origination_share_pct": 3.1299,
+      "above_43": true
+    },
+    {
+      "band": "48",
+      "records": 268300,
+      "share_pct": 2.1947,
+      "joint_records": 105387,
+      "originations": 208031,
+      "origination_share_pct": 3.3603,
+      "above_43": true
+    },
+    {
+      "band": "49",
+      "records": 399960,
+      "share_pct": 3.2717,
+      "joint_records": 148929,
+      "originations": 317099,
+      "origination_share_pct": 5.122,
+      "above_43": true
+    },
+    {
+      "band": "50%-60%",
+      "records": 825346,
+      "share_pct": 6.7515,
+      "joint_records": 322654,
+      "originations": 466416,
+      "origination_share_pct": 7.5339,
+      "above_43": true
+    },
+    {
+      "band": ">60%",
+      "records": 620921,
+      "share_pct": 5.0792,
+      "joint_records": 188933,
+      "originations": 47473,
+      "origination_share_pct": 0.7668,
+      "above_43": true
+    }
+  ],
+  "summary": {
+    "applications_above_43": 3193787,
+    "applications_at_or_below_43": 4709185,
+    "applications_unclassified": 4321719,
+    "share_applications_above_43_pct": 26.1257,
+    "joint_applications_above_43": 1194664,
+    "originations_above_43": 1884157,
+    "originations_at_or_below_43": 3679970,
+    "originations_unclassified": 626781,
+    "share_originations_above_43_pct": 30.4343
+  },
+  "note": "HMDA reports debt_to_income_ratio as an ordinal band string. A band is counted as 'above 43%' only when its whole range lies strictly above 43% and as 'at or below 43%' only when its whole range lies at or below 43%; the 50%-60% band therefore straddles the threshold and is excluded from both counts. Missing, 'Exempt' and 'Not applicable' records are unclassified."
+}

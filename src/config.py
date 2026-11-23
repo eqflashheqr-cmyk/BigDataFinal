@@ -30,6 +30,9 @@ CLEAN_DIR = ROOT / "data" / "clean"
 RESULTS_DIR = ROOT / "results"
 FIGURES_DIR = ROOT / "figures"
 DOCS_DIR = ROOT / "docs"
+#: Scratch directory for the benchmark's materialised samples.  It is
+#: deleted when the benchmark finishes.
+BENCH_DIR = ROOT / "data" / "bench_tmp"
 
 #: Source file. The official FFIEC "One Year" national LAR, pipe-delimited text.
 RAW_FILE = RAW_DIR / "2024_public_lar_one_year_pipe.txt"
@@ -42,7 +45,7 @@ CLEAN_PARQUET = CLEAN_DIR / "hmda_2024_clean"
 #: Kept separate so the two implementations can be compared independently.
 SPARK_PARQUET = CLEAN_DIR / "hmda_2024_clean_spark"
 
-for _d in (CLEAN_DIR, RESULTS_DIR, FIGURES_DIR):
+for _d in (CLEAN_DIR, RESULTS_DIR, FIGURES_DIR, BENCH_DIR):
     _d.mkdir(parents=True, exist_ok=True)
 
 #: Delimiter of the raw pipe-delimited file.
