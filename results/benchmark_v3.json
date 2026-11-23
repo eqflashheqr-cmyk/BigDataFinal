@@ -1,0 +1,345 @@
+{
+  "config": {
+    "repeats": 5,
+    "fractions": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "workloads": {
+      "light": "group by joint_flag x loan_type x state_code: count and mean",
+      "heavy": "per-LEI median of loan_amount plus an approximate 90th percentile"
+    },
+    "sample_rule": "SHA-256(lei)[0:8] as a base-16 integer, modulo 1000, compared against fraction * 1000. Whole lenders are in or out, so the realised row share differs from the nominal.",
+    "sample_materialised_outside_timed_region": true,
+    "pandas_version": "2.3.3"
+  },
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+    "python": "3.11.9",
+    "logical_cores": 12,
+    "physical_cores": 6,
+    "total_memory_bytes": 16924459008,
+    "total_memory_gb": 15.8,
+    "cpu_model": "12th Gen Intel(R) Core(TM) i5-12400F",
+    "pandas": "2.3.3",
+    "numpy": "2.2.6",
+    "pyarrow": "26.0.1",
+    "scikit_learn": "1.9.1",
+    "spark": "4.0.1",
+    "java": "openjdk version \"17.0.21\" 2026-10-20"
+  },
+  "realised_sample_fractions": [
+    {
+      "nominal_fraction": 0.25,
+      "hash_threshold": 250,
+      "rows_selected": 3367092,
+      "rows_total": 12224691,
+      "realised_row_fraction": 0.2754
+    },
+    {
+      "nominal_fraction": 0.5,
+      "hash_threshold": 500,
+      "rows_selected": 5735393,
+      "rows_total": 12224691,
+      "realised_row_fraction": 0.4692
+    },
+    {
+      "nominal_fraction": 1.0,
+      "hash_threshold": 1000,
+      "rows_selected": 12224691,
+      "rows_total": 12224691,
+      "realised_row_fraction": 1.0,
+      "realised_lender_fraction": 1.0
+    }
+  ],
+  "results": [
+    {
+      "engine": "pandas",
+      "cached": {
+        "light_query_seconds_median": 0.389,
+        "light_query_seconds_all": [
+          0.395,
+          0.387,
+          0.387,
+          0.389,
+          0.391
+        ],
+        "heavy_query_seconds_median": 0.352,
+        "heavy_query_seconds_all": [
+          0.352,
+          0.354,
+          0.35,
+          0.356,
+          0.351
+        ],
+        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.971,
+        "light_query_seconds_all": [
+          0.965,
+          0.97,
+          0.983,
+          0.971,
+          0.995
+        ],
+        "heavy_query_seconds_median": 0.944,
+        "heavy_query_seconds_all": [
+          0.936,
+          0.953,
+          0.944,
+          0.943,
+          0.951
+        ],
+        "read_seconds_median": 0.587,
+        "read_seconds_all": [
+          0.578,
+          0.587,
+          0.588,
+          0.586,
+          0.597
+        ],
+        "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
+      },
+      "fraction": 0.25,
+      "sample_materialise_seconds": 15.216
+    },
+    {
+      "engine": "pyspark",
+      "cached": {
+        "materialise_seconds": 2.063,
+        "light_query_seconds_median": 0.313,
+        "light_query_seconds_all": [
+          0.947,
+          0.325,
+          0.298,
+          0.313,
+          0.303
+        ],
+        "heavy_query_seconds_median": 1.321,
+        "heavy_query_seconds_all": [
+          2.218,
+          1.448,
+          1.317,
+          1.304,
+          1.321
+        ]
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.325,
+        "light_query_seconds_all": [
+          0.476,
+          0.361,
+          0.291,
+          0.325,
+          0.289
+        ],
+        "heavy_query_seconds_median": 1.424,
+        "heavy_query_seconds_all": [
+          1.499,
+          1.492,
+          1.424,
+          1.362,
+          1.361
+        ],
+        "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
+      },
+      "fraction": 0.25,
+      "session_setup_seconds": 4.218,
+      "first_read_seconds": 2.444
+    },
+    {
+      "engine": "pandas",
+      "cached": {
+        "light_query_seconds_median": 0.668,
+        "light_query_seconds_all": [
+          0.668,
+          0.664,
+          0.659,
+          0.67,
+          0.669
+        ],
+        "heavy_query_seconds_median": 0.634,
+        "heavy_query_seconds_all": [
+          0.629,
+          0.637,
+          0.636,
+          0.634,
+          0.621
+        ],
+        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+      },
+      "no_cache": {
+        "light_query_seconds_median": 1.636,
+        "light_query_seconds_all": [
+          1.629,
+          1.662,
+          1.636,
+          1.643,
+          1.628
+        ],
+        "heavy_query_seconds_median": 1.585,
+        "heavy_query_seconds_all": [
+          1.58,
+          1.617,
+          1.594,
+          1.585,
+          1.561
+        ],
+        "read_seconds_median": 0.982,
+        "read_seconds_all": [
+          0.981,
+          1.011,
+          0.984,
+          0.982,
+          0.958
+        ],
+        "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
+      },
+      "fraction": 0.5,
+      "sample_materialise_seconds": 16.022
+    },
+    {
+      "engine": "pyspark",
+      "cached": {
+        "materialise_seconds": 1.64,
+        "light_query_seconds_median": 0.33,
+        "light_query_seconds_all": [
+          0.54,
+          0.35,
+          0.305,
+          0.32,
+          0.33
+        ],
+        "heavy_query_seconds_median": 1.623,
+        "heavy_query_seconds_all": [
+          1.97,
+          1.671,
+          1.495,
+          1.623,
+          1.525
+        ]
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.282,
+        "light_query_seconds_all": [
+          0.451,
+          0.282,
+          0.346,
+          0.241,
+          0.245
+        ],
+        "heavy_query_seconds_median": 1.56,
+        "heavy_query_seconds_all": [
+          1.871,
+          1.603,
+          1.56,
+          1.527,
+          1.499
+        ],
+        "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
+      },
+      "fraction": 0.5,
+      "session_setup_seconds": 0.073,
+      "first_read_seconds": 0.146
+    },
+    {
+      "engine": "pandas",
+      "cached": {
+        "light_query_seconds_median": 1.396,
+        "light_query_seconds_all": [
+          1.395,
+          1.433,
+          1.468,
+          1.371,
+          1.396
+        ],
+        "heavy_query_seconds_median": 1.298,
+        "heavy_query_seconds_all": [
+          1.293,
+          1.294,
+          1.352,
+          1.298,
+          1.301
+        ],
+        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+      },
+      "no_cache": {
+        "light_query_seconds_median": 3.518,
+        "light_query_seconds_all": [
+          3.483,
+          3.547,
+          3.518,
+          3.474,
+          3.542
+        ],
+        "heavy_query_seconds_median": 3.419,
+        "heavy_query_seconds_all": [
+          3.409,
+          3.451,
+          3.419,
+          3.383,
+          3.483
+        ],
+        "read_seconds_median": 2.111,
+        "read_seconds_all": [
+          2.098,
+          2.146,
+          2.139,
+          2.084,
+          2.111
+        ],
+        "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
+      },
+      "fraction": 1.0,
+      "sample_materialise_seconds": 6.607
+    },
+    {
+      "engine": "pyspark",
+      "cached": {
+        "materialise_seconds": 2.291,
+        "light_query_seconds_median": 0.487,
+        "light_query_seconds_all": [
+          0.636,
+          0.489,
+          0.487,
+          0.438,
+          0.444
+        ],
+        "heavy_query_seconds_median": 2.229,
+        "heavy_query_seconds_all": [
+          2.661,
+          2.263,
+          2.228,
+          2.183,
+          2.229
+        ]
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.427,
+        "light_query_seconds_all": [
+          0.519,
+          0.405,
+          0.427,
+          0.398,
+          0.45
+        ],
+        "heavy_query_seconds_median": 2.265,
+        "heavy_query_seconds_all": [
+          2.333,
+          2.348,
+          2.216,
+          2.265,
+          2.228
+        ],
+        "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
+      },
+      "fraction": 1.0,
+      "session_setup_seconds": 0.065,
+      "first_read_seconds": 0.164
+    }
+  ]
+}

@@ -103,9 +103,20 @@ def fig1() -> None:
     ax.set_title("Analysis population", loc="left", fontweight="bold")
     ax.set_xlim(0, df["n_decisions"].max() * 1.55)
 
-    fig.suptitle("Joint applications are denied less often than single applications "
-                 "(HMDA 2024, 8.65M lender decisions)",
-                 fontsize=12, fontweight="bold", y=1.04)
+    # The record count in the title has to agree with the table it is
+    # compared against. Two different populations are involved and the
+    # earlier figure used one number for both:
+    #   * 8,643,834 records reached a lender decision;
+    #   * 8,557,686 of those also have a determinable joint_flag, and
+    #     are the analysis population of Table 1.
+    # The title therefore carries both, labelled.
+    total_decisions = int(df["n_decisions"].sum())
+    fig.suptitle(
+        "Joint applications are denied less often than single applications\n"
+        f"HMDA 2024 \u2014 {total_decisions:,} lender decisions in total; "
+        f"{total_decisions:,} shown here is the analysis population with a "
+        "determinable joint_flag",
+        fontsize=11.5, fontweight="bold", y=1.10)
     _save(fig, "fig1_denial_rate_by_joint.png")
 
 
@@ -154,61 +165,89 @@ def fig2() -> None:
 # Figure 3 — RQ3: stratified denial rates
 # --------------------------------------------------------------------------
 
+def _pooled_rates(sub: pd.DataFrame, group_col: str) -> pd.DataFrame:
+    """Pool the cells of a group into one decision-weighted rate per arm.
+
+    The earlier version took the *unweighted mean* of the cell denial
+    rates, which gives a small cell the same weight as a large one and
+    therefore produces a number that does not match the report's tables.
+    Here every cell contributes in proportion to its number of decisions,
+    which is what "the denial rate in this quartile" means.
+    """
+    rows = []
+    for key, g in sub.groupby(group_col, observed=True):
+        nj = g["n_decisions_joint"].sum()
+        ns = g["n_decisions_single"].sum()
+        if nj + ns < 100:
+            continue
+        rj = (g["denial_rate_joint"] * g["n_decisions_joint"]).sum() / nj
+        rs = (g["denial_rate_single"] * g["n_decisions_single"]).sum() / ns
+        rows.append({
+            group_col: key,
+            "joint_pct": rj * 100,
+            "single_pct": rs * 100,
+            "gap_pp": (rs - rj) * 100,
+            "n_joint": int(nj),
+            "n_single": int(ns),
+            "n_total": int(nj + ns),
+        })
+    return pd.DataFrame(rows)
+
+
 def fig3() -> None:
     df = pd.read_csv(C.RESULTS_DIR / "rq3.csv")
     # keep only cells with enough decisions to be meaningful
     df = df[~df["suppressed_small_cell"].astype(str).str.lower().isin(["true"])]
     df = df[df["n_decisions_total"] >= 100]
 
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5.4))
+    fig, axes = plt.subplots(1, 2, figsize=(12.5, 5.0), sharey=True)
 
-    # -- left: by income quartile
+    # -- left: by income quartile -----------------------------------------
     ax = axes[0]
-    g = df.groupby("income_quartile").agg(
-        j=("denial_rate_joint", "mean"), s=("denial_rate_single", "mean"),
-        n=("n_decisions_total", "sum")).reset_index()
+    g = _pooled_rates(df, "income_quartile")
     order = ["Q1 (lowest)", "Q2", "Q3", "Q4 (highest)", "Not reported"]
-    g = g.set_index("income_quartile").reindex([o for o in order if o in g.index]).reset_index()
+    g = (g.set_index("income_quartile")
+           .reindex([o for o in order if o in g.index])
+           .reset_index())
     x = np.arange(len(g))
-    ax.bar(x - w_ / 2, g["j"] * 100, w_, color=COLORS["Joint"], label="Joint")
-    ax.bar(x + w_ / 2, g["s"] * 100, w_, color=COLORS["Single"], label="Single")
+    ax.bar(x - w_ / 2, g["joint_pct"], w_, color=COLORS["Joint"], label="Joint")
+    ax.bar(x + w_ / 2, g["single_pct"], w_, color=COLORS["Single"], label="Single")
+    # The gap is annotated above the taller bar, with enough head-room
+    # reserved that the text never overlaps a bar.
     for i in range(len(g)):
-        gap = (g.loc[i, "s"] - g.loc[i, "j"]) * 100
-        ax.plot([i - w_ / 2, i + w_ / 2], [g.loc[i, "s"] * 100, g.loc[i, "s"] * 100],
-                color=COLORS["gap"], lw=1.2, zorder=0)
-        ax.text(i, max(g.loc[i, "j"], g.loc[i, "s"]) * 100 + 1.2,
-                f"gap {gap:.1f} pp", ha="center", fontsize=8.5, color=COLORS["gap"],
+        top = max(g.loc[i, "joint_pct"], g.loc[i, "single_pct"])
+        ax.text(i, top + 1.6, f"{g.loc[i, 'gap_pp']:.1f} pp",
+                ha="center", va="bottom", fontsize=9, color=COLORS["gap"],
                 fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(g["income_quartile"], rotation=12)
+    ax.set_xticklabels(g["income_quartile"], rotation=8, ha="center", fontsize=9.5)
     ax.set_ylabel("Denial rate (%)")
     ax.set_title("By income quartile", loc="left", fontweight="bold")
-    ax.legend(frameon=False)
-    ax.margins(y=0.20)
+    ax.legend(frameon=False, loc="upper right")
+    ax.set_ylim(0, 52)
 
-    # -- right: by DTI band
+    # -- right: by DTI band ------------------------------------------------
     ax = axes[1]
-    g2 = df[df["dti_band"] != "Not reported"].groupby("dti_band").agg(
-        j=("denial_rate_joint", "mean"), s=("denial_rate_single", "mean"),
-        n=("n_decisions_total", "sum")).reset_index()
-    g2 = g2[g2["n"] >= 500].sort_values("j")
+    g2 = _pooled_rates(df[df["dti_band"] != "Not reported"], "dti_band")
+    g2 = g2[g2["n_total"] >= 500].sort_values("joint_pct")
     x = np.arange(len(g2))
-    ax.bar(x - w_ / 2, g2["j"] * 100, w_, color=COLORS["Joint"], label="Joint")
-    ax.bar(x + w_ / 2, g2["s"] * 100, w_, color=COLORS["Single"], label="Single")
+    ax.bar(x - w_ / 2, g2["joint_pct"], w_, color=COLORS["Joint"], label="Joint")
+    ax.bar(x + w_ / 2, g2["single_pct"], w_, color=COLORS["Single"], label="Single")
     for i in range(len(g2)):
-        gap = (g2.loc[i, "s"] - g2.loc[i, "j"]) * 100
-        ax.text(i, max(g2.loc[i, "j"], g2.loc[i, "s"]) * 100 + 1.0,
-                f"{gap:.1f}", ha="center", fontsize=8, color=COLORS["gap"],
+        top = max(g2.loc[i, "joint_pct"], g2.loc[i, "single_pct"])
+        ax.text(i, top + 1.6, f"{g2.loc[i, 'gap_pp']:.1f} pp",
+                ha="center", va="bottom", fontsize=8.5, color=COLORS["gap"],
                 fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(g2["dti_band"], rotation=45, ha="right", fontsize=9)
-    ax.set_ylabel("Denial rate (%)")
+    ax.set_xticklabels(g2["dti_band"], rotation=40, ha="right", fontsize=8.5)
     ax.set_title("By debt-to-income band", loc="left", fontweight="bold")
-    ax.legend(frameon=False)
-    ax.margins(y=0.20)
+    ax.legend(frameon=False, loc="upper right")
+    ax.set_ylim(0, 52)
 
-    fig.suptitle("RQ3 — The denial-rate gap persists within income and DTI strata",
-                 fontsize=13, fontweight="bold", y=1.02)
+    fig.suptitle("RQ3 — The denial-rate gap persists within income and DTI strata\n"
+                 "Bars are decision-weighted pooled rates; the shared y-axis makes "
+                 "the two panels directly comparable",
+                 fontsize=11.5, fontweight="bold", y=1.06)
     fig.tight_layout()
     _save(fig, "fig3_denial_by_income_dti.png")
 
@@ -258,53 +297,109 @@ def fig4() -> None:
 # --------------------------------------------------------------------------
 
 def fig5() -> None:
-    p = C.RESULTS_DIR / "benchmark_results.csv"
+    """The performance figure, rebuilt on the v3 benchmark.
+
+    The v2 benchmark had a confound in it: the SHA-256 sample filter sat
+    *inside* the timed region on the Spark side and was skipped entirely
+    at the 100 % fraction, so the largest run looked artificially cheap.
+    v3 materialises the sampled rows to Parquet before any timing, so
+    neither engine pays for the filter during the measurement.
+
+    v3 also adds a heavy workload, because the light one finishes in
+    0.3-1.4 s and therefore mostly measures Spark's scheduling overhead.
+    The figure shows both workloads, and both cache modes, because
+    reporting only the cached arm is what made the old headline look
+    better than the evidence supports:
+
+      left  : query time per workload, cached and no-cache, both engines;
+      right : the speedup (pandas time / spark time) for each workload.
+
+    A speedup above 1 means Spark is faster; below 1 means it is slower.
+    The heavy workload is slower for Spark, and the figure says so.
+    """
+    p = C.RESULTS_DIR / "benchmark_v3.json"
     if not p.exists():
-        print("  skipped: fig5 (no benchmark results)")
+        print("  skipped: fig5 (no benchmark_v3 results)")
         return
-    df = pd.read_csv(p)
+    import json
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8))
+    data = json.loads(p.read_text(encoding="utf-8"))
+    res = data["results"]
+    realised = {r["nominal_fraction"]: r["realised_row_fraction"]
+                for r in data["realised_sample_fractions"]}
 
+    fracs = sorted(realised)
+
+    def _series(engine, mode, workload):
+        out = []
+        for f in fracs:
+            r = next(x for x in res if x["engine"] == engine and x["fraction"] == f)
+            out.append(r[mode][f"{workload}_query_seconds_median"])
+        return out
+
+    fig, axes = plt.subplots(1, 2, figsize=(12.5, 4.8))
+
+    # -- left: the query time, both workloads, both cache modes -------------
     ax = axes[0]
-    df["frac_num"] = df["fraction"].str.rstrip("%").astype(float)
-    for engine, marker in [("pandas", "o"), ("pyspark", "s")]:
-        sub = df[df["engine"] == engine].sort_values("frac_num")
-        ax.plot(sub["rows_cleaned"] / 1e6, sub["total_s"], marker=marker,
-                linewidth=2, label=engine, color=COLORS.get(engine, COLORS["accent"]))
-        for _, r in sub.iterrows():
-            ax.annotate(f"{r['total_s']:.0f}s", (r["rows_cleaned"] / 1e6, r["total_s"]),
-                        textcoords="offset points", xytext=(6, 6), fontsize=8.5)
-    ax.set_xlabel("Rows processed (millions)")
-    ax.set_ylabel("Total pipeline time (seconds)")
-    ax.set_title("End-to-end pipeline time", loc="left", fontweight="bold")
-    ax.legend(frameon=False)
-    ax.margins(x=0.15, y=0.2)
-
-    ax = axes[1]
-    # `fraction` is stored as a percentage string; convert it back to a number
-    # so that the pivot table sorts correctly.
-    df["frac_num"] = df["fraction"].str.rstrip("%").astype(float)
-    piv = df.pivot(index="frac_num", columns="engine", values="rows_per_second")
-    piv = piv.sort_index()
-    x = np.arange(len(piv))
-    w = 0.36
-    ax.bar(x - w / 2, piv["pandas"], w, color="#E07A5F", label="pandas")
-    ax.bar(x + w / 2, piv["pyspark"], w, color="#3D5A80", label="pyspark")
-    for i, fr in enumerate(piv.index):
-        ax.text(i - w / 2, piv["pandas"].iloc[i], f"{piv['pandas'].iloc[i]:,.0f}",
-                ha="center", va="bottom", fontsize=8.5)
-        ax.text(i + w / 2, piv["pyspark"].iloc[i], f"{piv['pyspark'].iloc[i]:,.0f}",
-                ha="center", va="bottom", fontsize=8.5)
+    x = np.arange(len(fracs))
+    w = 0.2
+    for i, (workload, prefix) in enumerate([("light", "Light"),
+                                            ("heavy", "Heavy")]):
+        base = (i - 1.5) * w
+        ax.bar(x + base + 0.5 * w, _series("pandas", "no_cache", workload),
+               w, color="#E07A5F", alpha=0.45,
+               label=f"pandas, {prefix.lower()}, no cache")
+        ax.bar(x + base + 1.5 * w, _series("pandas", "cached", workload),
+               w, color="#E07A5F", label=f"pandas, {prefix.lower()}, cached")
+        ax.bar(x + base + 2.5 * w, _series("pyspark", "no_cache", workload),
+               w, color="#3D5A80", alpha=0.45,
+               label=f"spark, {prefix.lower()}, no cache")
+        ax.bar(x + base + 3.5 * w, _series("pyspark", "cached", workload),
+               w, color="#3D5A80", label=f"spark, {prefix.lower()}, cached")
     ax.set_xticks(x)
-    ax.set_xticklabels([f"{int(f)}%" for f in piv.index])
-    ax.set_ylabel("Throughput (rows / second)")
-    ax.set_title("Throughput", loc="left", fontweight="bold")
-    ax.legend(frameon=False)
-    ax.margins(y=0.22)
+    ax.set_xticklabels([f"{int(f * 100)}%\n({realised[f] * 100:.1f}% of rows)"
+                        for f in fracs], fontsize=9)
+    ax.set_ylabel("Query time, median of 5 (seconds)")
+    ax.set_xlabel("Nominal sample fraction (realised share in brackets)")
+    ax.set_title("Analysis-stage query time", loc="left", fontweight="bold")
+    ax.legend(frameon=False, fontsize=7.2, ncol=2)
+    ax.margins(y=0.25)
 
-    fig.suptitle("Performance benchmark — Spark scales better than Pandas",
-                 fontsize=13, fontweight="bold", y=1.02)
+    # -- right: the speedup, both workloads ---------------------------------
+    ax = axes[1]
+    w = 0.2
+    for i, (workload, prefix) in enumerate([("light", "Light"),
+                                            ("heavy", "Heavy")]):
+        p_c = _series("pandas", "cached", workload)
+        p_n = _series("pandas", "no_cache", workload)
+        s_c = _series("pyspark", "cached", workload)
+        s_n = _series("pyspark", "no_cache", workload)
+        base = (i - 0.5) * w
+        sc = [a / b for a, b in zip(p_c, s_c)]
+        sn = [a / b for a, b in zip(p_n, s_n)]
+        ax.bar(x + base, sn, w, color="#3D5A80", alpha=0.45,
+               label=f"{prefix.lower()}, no cache")
+        ax.bar(x + base + w, sc, w, color="#3D5A80", label=f"{prefix.lower()}, cached")
+        for xi, val in zip(x + base, sn):
+            ax.text(xi, val, f"{val:.2f}x", ha="center", va="bottom",
+                    fontsize=8, color="#555555")
+        for xi, val in zip(x + base + w, sc):
+            ax.text(xi, val, f"{val:.2f}x", ha="center", va="bottom",
+                    fontsize=8.5, fontweight="bold")
+    ax.set_xticks(x)
+    ax.set_xticklabels([f"{int(f * 100)}%" for f in fracs])
+    ax.set_xlabel("Nominal sample fraction")
+    ax.set_ylabel("Speedup (pandas time / spark time)")
+    ax.set_title("Spark wins the light workload, loses the heavy one",
+                 loc="left", fontweight="bold")
+    ax.legend(frameon=False, fontsize=8.5)
+    ax.axhline(1.0, color="#999999", lw=0.8, ls="--")
+    ax.text(len(fracs) - 0.5, 1.02, "parity", fontsize=8, color="#777777",
+            ha="right", va="bottom")
+    ax.margins(y=0.25)
+
+    fig.suptitle("Performance benchmark \u2014 the analysis stage, not the whole pipeline",
+                 fontsize=12.5, fontweight="bold", y=1.02)
     fig.tight_layout()
     _save(fig, "fig5_benchmark_scaling.png")
 
@@ -334,8 +429,12 @@ def fig6() -> None:
         ax.text(v + max(values) * 0.01, i, f"{v:,}", va="center", fontsize=8.5)
     ax.set_yticks(y)
     ax.set_yticklabels(labels, fontsize=9)
+    # The record count is read from the report rather than hard-coded, so
+    # that the title cannot drift away from the dataset it describes.
+    n_total = rep["comparisons"][0]["pandas"].get("records_total")
+
     ax.set_xlabel("Records with a missing value")
-    ax.set_title("Missing values in the cleaned dataset (12,251,439 records)",
+    ax.set_title(f"Missing values in the cleaned dataset ({n_total:,} records)",
                  loc="left", fontweight="bold")
     ax.invert_yaxis()
     ax.margins(x=0.12)

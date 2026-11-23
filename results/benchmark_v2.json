@@ -1,0 +1,224 @@
+{
+  "config": {
+    "repeats": 5,
+    "fractions": [
+      0.25,
+      0.5,
+      1.0
+    ],
+    "workload": "group by joint_flag x loan_type x state, then count and aggregate",
+    "sample_rule": "SHA-256(lei)[0:8] as a base-16 integer, modulo 1000, compared against fraction * 1000. Whole lenders are in or out, so the realised row share differs from the nominal.",
+    "pandas_version": "2.3.3"
+  },
+  "realised_sample_fractions": [
+    {
+      "nominal_fraction": 0.25,
+      "hash_threshold": 250,
+      "rows_selected": 3367092,
+      "rows_total": 12224691,
+      "realised_row_fraction": 0.2754,
+      "realised_lender_fraction": 0.254
+    },
+    {
+      "nominal_fraction": 0.5,
+      "hash_threshold": 500,
+      "rows_selected": 5735393,
+      "rows_total": 12224691,
+      "realised_row_fraction": 0.4692,
+      "realised_lender_fraction": 0.4963
+    },
+    {
+      "nominal_fraction": 1.0,
+      "hash_threshold": 1000,
+      "rows_selected": 12224691,
+      "rows_total": 12224691,
+      "realised_row_fraction": 1.0,
+      "realised_lender_fraction": 1.0
+    }
+  ],
+  "results": [
+    {
+      "engine": "pandas",
+      "fraction": 0.25,
+      "repeats": 5,
+      "no_cache": {
+        "read_seconds_median": 14.134,
+        "query_seconds_median": 0.424,
+        "read_seconds_all": [
+          14.337,
+          15.008,
+          14.013,
+          14.134,
+          13.987
+        ],
+        "query_seconds_all": [
+          0.424,
+          0.509,
+          0.42,
+          0.488,
+          0.401
+        ]
+      },
+      "cached": {
+        "query_seconds_median": 0.41,
+        "query_seconds_all": [
+          0.451,
+          0.413,
+          0.41,
+          0.378,
+          0.386
+        ]
+      }
+    },
+    {
+      "engine": "pyspark",
+      "fraction": 0.25,
+      "repeats": 5,
+      "session_setup_seconds": 3.918,
+      "no_cache": {
+        "query_seconds_median": 2.177,
+        "query_seconds_all": [
+          5.917,
+          2.375,
+          2.177,
+          2.15,
+          2.073
+        ],
+        "note": "each repetition re-reads and re-plans from disk"
+      },
+      "cached": {
+        "materialise_seconds": 2.735,
+        "query_seconds_median": 0.303,
+        "query_seconds_all": [
+          0.528,
+          0.294,
+          0.303,
+          0.314,
+          0.267
+        ]
+      }
+    },
+    {
+      "engine": "pandas",
+      "fraction": 0.5,
+      "repeats": 5,
+      "no_cache": {
+        "read_seconds_median": 14.372,
+        "query_seconds_median": 0.842,
+        "read_seconds_all": [
+          14.354,
+          14.205,
+          14.407,
+          14.572,
+          14.372
+        ],
+        "query_seconds_all": [
+          0.908,
+          0.857,
+          0.777,
+          0.842,
+          0.742
+        ]
+      },
+      "cached": {
+        "query_seconds_median": 0.633,
+        "query_seconds_all": [
+          0.688,
+          0.617,
+          0.63,
+          0.649,
+          0.633
+        ]
+      }
+    },
+    {
+      "engine": "pyspark",
+      "fraction": 0.5,
+      "repeats": 5,
+      "session_setup_seconds": 0.074,
+      "no_cache": {
+        "query_seconds_median": 1.963,
+        "query_seconds_all": [
+          2.229,
+          1.976,
+          1.963,
+          1.937,
+          1.93
+        ],
+        "note": "each repetition re-reads and re-plans from disk"
+      },
+      "cached": {
+        "materialise_seconds": 2.262,
+        "query_seconds_median": 0.302,
+        "query_seconds_all": [
+          0.531,
+          0.337,
+          0.278,
+          0.302,
+          0.294
+        ]
+      }
+    },
+    {
+      "engine": "pandas",
+      "fraction": 1.0,
+      "repeats": 5,
+      "no_cache": {
+        "read_seconds_median": 2.472,
+        "query_seconds_median": 1.513,
+        "read_seconds_all": [
+          2.304,
+          2.475,
+          2.472,
+          2.459,
+          2.479
+        ],
+        "query_seconds_all": [
+          1.461,
+          1.536,
+          1.52,
+          1.502,
+          1.513
+        ]
+      },
+      "cached": {
+        "query_seconds_median": 1.387,
+        "query_seconds_all": [
+          1.506,
+          1.357,
+          1.387,
+          1.45,
+          1.343
+        ]
+      }
+    },
+    {
+      "engine": "pyspark",
+      "fraction": 1.0,
+      "repeats": 5,
+      "session_setup_seconds": 0.073,
+      "no_cache": {
+        "query_seconds_median": 0.468,
+        "query_seconds_all": [
+          0.751,
+          0.519,
+          0.468,
+          0.412,
+          0.431
+        ],
+        "note": "each repetition re-reads and re-plans from disk"
+      },
+      "cached": {
+        "materialise_seconds": 0.968,
+        "query_seconds_median": 0.419,
+        "query_seconds_all": [
+          0.578,
+          0.432,
+          0.419,
+          0.387,
+          0.369
+        ]
+      }
+    }
+  ]
+}

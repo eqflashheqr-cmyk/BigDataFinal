@@ -1,0 +1,249 @@
+{
+  "sample": {
+    "n_decision_records": 3000000,
+    "cap": 3000000,
+    "seed": 20240101
+  },
+  "income_sentinel": {
+    "value_in_raw_units": 999999999,
+    "interpretation": "HMDA reports income in thousands of USD, so this value is about one trillion dollars. It is treated as a special code or data-entry artefact, not as a genuine income.",
+    "n_records_with_this_value_in_cleaned_data": 0,
+    "n_records_with_this_value_in_dollars": 0,
+    "extreme_threshold_thousands": 1000000,
+    "n_extreme_records_in_sample": 9,
+    "pct_of_sample": 0.0003,
+    "most_common_income_values": {
+      "60": 27989,
+      "75": 26163,
+      "80": 25778,
+      "100": 25294,
+      "70": 24803,
+      "90": 24446,
+      "65": 24044,
+      "120": 23315
+    },
+    "raw_file_probe": {
+      "n_records_equals_sentinel_in_raw": 1,
+      "max_income_thousands_in_raw": 999999999,
+      "n_records_at_least_1e9_usd_in_raw": 36,
+      "extreme_records_by_action_taken": {
+        "2": 2,
+        "4": 4,
+        "3": 17,
+        "1": 9,
+        "5": 3,
+        "8": 1
+      },
+      "ten_largest_income_values": [
+        {
+          "income_thousands": 999999999,
+          "count": 1
+        },
+        {
+          "income_thousands": 427431663,
+          "count": 1
+        },
+        {
+          "income_thousands": 100000000,
+          "count": 1
+        },
+        {
+          "income_thousands": 25553583,
+          "count": 1
+        },
+        {
+          "income_thousands": 17399830,
+          "count": 1
+        },
+        {
+          "income_thousands": 14500000,
+          "count": 1
+        },
+        {
+          "income_thousands": 12861885,
+          "count": 1
+        },
+        {
+          "income_thousands": 12000000,
+          "count": 1
+        },
+        {
+          "income_thousands": 11880258,
+          "count": 1
+        },
+        {
+          "income_thousands": 10800364,
+          "count": 1
+        }
+      ]
+    }
+  },
+  "sensitivity_to_the_sentinel": {
+    "A_as_is": {
+      "n": 3000000,
+      "n_joint": 1194133,
+      "n_single": 1805867,
+      "denial_rate_joint": 0.19884552223244814,
+      "denial_rate_single": 0.29006178195847204,
+      "gap_pp": -9.12162597260239,
+      "median_income_joint": 132.0,
+      "median_income_single": 85.0,
+      "median_income_all": 102.0,
+      "median_lti_joint": 1.8421052631578947,
+      "median_lti_single": 1.976705426356589
+    },
+    "B_set_to_missing": {
+      "n": 3000000,
+      "n_joint": 1194133,
+      "n_single": 1805867,
+      "denial_rate_joint": 0.19884552223244814,
+      "denial_rate_single": 0.29006178195847204,
+      "gap_pp": -9.12162597260239,
+      "median_income_joint": 132.0,
+      "median_income_single": 85.0,
+      "median_income_all": 102.0,
+      "median_lti_joint": 1.8421052631578947,
+      "median_lti_single": 1.976705426356589
+    },
+    "C_capped_at_p99_9": {
+      "n": 3000000,
+      "n_joint": 1194133,
+      "n_single": 1805867,
+      "denial_rate_joint": 0.19884552223244814,
+      "denial_rate_single": 0.29006178195847204,
+      "gap_pp": -9.12162597260239,
+      "median_income_joint": 132.0,
+      "median_income_single": 85.0,
+      "median_income_all": 102.0,
+      "median_lti_joint": 1.8421052631578947,
+      "median_lti_single": 1.976705426356589
+    },
+    "p99_9_threshold": 3000.0,
+    "gap_change_B_minus_A_pp": 0.0,
+    "gap_change_C_minus_A_pp": 0.0
+  },
+  "lien_and_equity_by_purpose": [
+    {
+      "loan_purpose": "Cash-out refinancing",
+      "n_decisions": 538047,
+      "lien_counts": {
+        "First lien": 402421,
+        "Subordinate lien": 135626
+      },
+      "pct_first_lien": 74.79,
+      "pct_no_lien_or_other": 25.21,
+      "median_cltv": 69.18,
+      "pct_with_cltv_reported": 97.03,
+      "pct_cltv_below_100": 97.32,
+      "pct_cltv_at_or_above_100": 2.68
+    },
+    {
+      "loan_purpose": "Home improvement",
+      "n_decisions": 326386,
+      "lien_counts": {
+        "Subordinate lien": 247125,
+        "First lien": 79261
+      },
+      "pct_first_lien": 24.28,
+      "pct_no_lien_or_other": 75.72,
+      "median_cltv": 62.059,
+      "pct_with_cltv_reported": 95.97,
+      "pct_cltv_below_100": 97.94,
+      "pct_cltv_at_or_above_100": 2.06
+    },
+    {
+      "loan_purpose": "Home purchase",
+      "n_decisions": 1383147,
+      "lien_counts": {
+        "First lien": 1325231,
+        "Subordinate lien": 57916
+      },
+      "pct_first_lien": 95.81,
+      "pct_no_lien_or_other": 4.19,
+      "median_cltv": 90.0,
+      "pct_with_cltv_reported": 90.25,
+      "pct_cltv_below_100": 86.82,
+      "pct_cltv_at_or_above_100": 13.18
+    },
+    {
+      "loan_purpose": "Not applicable",
+      "n_decisions": 248,
+      "lien_counts": {
+        "First lien": 218,
+        "Subordinate lien": 30
+      },
+      "pct_first_lien": 87.9,
+      "pct_no_lien_or_other": 12.1,
+      "median_cltv": 73.0,
+      "pct_with_cltv_reported": 14.11,
+      "pct_cltv_below_100": 100.0,
+      "pct_cltv_at_or_above_100": 0.0
+    },
+    {
+      "loan_purpose": "Other purpose",
+      "n_decisions": 402746,
+      "lien_counts": {
+        "Subordinate lien": 297686,
+        "First lien": 105060
+      },
+      "pct_first_lien": 26.09,
+      "pct_no_lien_or_other": 73.91,
+      "median_cltv": 65.0,
+      "pct_with_cltv_reported": 96.32,
+      "pct_cltv_below_100": 97.34,
+      "pct_cltv_at_or_above_100": 2.66
+    },
+    {
+      "loan_purpose": "Refinancing",
+      "n_decisions": 349426,
+      "lien_counts": {
+        "First lien": 266747,
+        "Subordinate lien": 82679
+      },
+      "pct_first_lien": 76.34,
+      "pct_no_lien_or_other": 23.66,
+      "median_cltv": 68.818,
+      "pct_with_cltv_reported": 77.65,
+      "pct_cltv_below_100": 95.99,
+      "pct_cltv_at_or_above_100": 4.01
+    }
+  ],
+  "lien_and_equity_key_purposes": [
+    {
+      "loan_purpose": "Home purchase",
+      "n_decisions": 1383147,
+      "joint": {
+        "n": 609781,
+        "pct_first_lien": 96.09,
+        "median_cltv": 87.0,
+        "pct_cltv_below_100": 88.55,
+        "median_property_value": 405000.0
+      },
+      "single": {
+        "n": 773366,
+        "pct_first_lien": 95.59,
+        "median_cltv": 90.0,
+        "pct_cltv_below_100": 85.43,
+        "median_property_value": 305000.0
+      }
+    },
+    {
+      "loan_purpose": "Home improvement",
+      "n_decisions": 326386,
+      "joint": {
+        "n": 117950,
+        "pct_first_lien": 21.54,
+        "median_cltv": 63.287,
+        "pct_cltv_below_100": 98.37,
+        "median_property_value": 465000.0
+      },
+      "single": {
+        "n": 208436,
+        "pct_first_lien": 25.84,
+        "median_cltv": 61.3365,
+        "pct_cltv_below_100": 97.7,
+        "median_property_value": 395000.0
+      }
+    }
+  ]
+}

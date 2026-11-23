@@ -1,0 +1,81 @@
+{
+  "_comment": [
+    "External benchmarks used to validate the HMDA 2024 figures computed in this",
+    "repository. Every value below is taken from a named public source; the",
+    "'our_value' entries are filled in from results/*.json by",
+    "src/external_validation.py, which also records the comparison.",
+    "",
+    "The point of this file is that every headline number in the report can be",
+    "checked against something published by somebody else. Where the two",
+    "disagree, the report says so rather than quietly preferring our number."
+  ],
+  "sources": {
+    "pmms_2024": {
+      "value": 6.72,
+      "unit": "percent",
+      "series": "30-year fixed-rate mortgage average, annual average of 52 weekly observations",
+      "publisher": "Freddie Mac, Primary Mortgage Market Survey (via FRED series MORTGAGE30US)",
+      "url": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "access_note": "Annual average for calendar year 2024.",
+      "caveat": "PMMS covers conventional, conforming, fully amortising home-purchase loans for borrowers with excellent credit and 20 % down. HMDA covers every lender and every loan purpose, so the two populations differ and the rates are not expected to be identical."
+    },
+    "pmms_2024_low": 6.08,
+    "pmms_2024_high": 7.22,
+    "pmms_2024_first_week": 6.62,
+    "pmms_2024_last_week": 6.85,
+    "fhfa_conforming_limit_2024": {
+      "value": 766550,
+      "unit": "USD",
+      "description": "National baseline conforming loan limit for a one-unit property, 2024",
+      "publisher": "Federal Housing Finance Agency (announced 28 November 2023)",
+      "url": "https://www.fhfa.gov/news/news-release/fhfa-announces-conforming-loan-limit-values-for-2024",
+      "high_cost_ceiling": 1149825,
+      "two_unit": 981500,
+      "three_unit": 1186350,
+      "four_unit": 1474400,
+      "prior_year_2023": 726200
+    },
+    "hmda_national_2024": {
+      "denial_rate_pct": 24.3,
+      "applications": 10781992,
+      "originated": 6197085,
+      "decided": 8661779,
+      "denied": 2103462,
+      "publisher": "Consumer Financial Protection Bureau, HMDA public LAR, 2024 One Year release",
+      "url": "https://ffiec.cfpb.gov/data-browser/",
+      "note": "Denial rate is denials divided by applications with a decision, i.e. excluding withdrawals and incomplete applications."
+    },
+    "hmda_national_2024_by_purpose": {
+      "publisher": "CFPB HMDA public LAR, 2024 One Year release",
+      "_note": "Denial rate per 100 applications with a decision.",
+      "Home purchase": {"denial_rate_pct": 14.4, "decided": 4319109},
+      "Refinancing": {"denial_rate_pct": 22.9, "decided": 975958},
+      "Cash-out refinancing": {"denial_rate_pct": 32.7, "decided": 1211684},
+      "Home improvement": {"denial_rate_pct": 37.4, "decided": 1017507}
+    },
+    "hmda_national_2024_by_derived_sex": {
+      "publisher": "CFPB HMDA public LAR, 2024 One Year release",
+      "_note": "HMDA's own 'derived sex' field, which classifies a record as Joint when a co-applicant is present.",
+      "Joint": {"denial_rate_pct": 20.7, "decided": 223383},
+      "Single": {"denial_rate_pct": null, "decided": null}
+    },
+    "hmda_national_2024_by_loan_type": {
+      "publisher": "CFPB HMDA public LAR, 2024 One Year release",
+      "Conventional": {"denial_rate_pct": 25.6, "decided": 6891443},
+      "FHA": {"denial_rate_pct": 21.6, "decided": 1111038},
+      "VA": {"denial_rate_pct": 15.3, "decided": 615701},
+      "USDA (FSA/RHS)": {"denial_rate_pct": 12.1, "decided": 43597}
+    },
+    "cnbc_inside_mortgage_finance_purchase_only": {
+      "value": 9.02,
+      "unit": "percent",
+      "description": "Purchase-mortgage denial rate in 2024",
+      "publisher": "Inside Mortgage Finance, 27 May 2025, analysis of HMDA data",
+      "url": "https://www.insidemortgagefinance.com/articles/234307-mortgage-denial-rates-shrink-in-2024",
+      "caveat": "Purchase mortgages only. Denominator and year-on-year comparison differ from the CFPB release, so this is reported as a secondary reference, not as the headline."
+    }
+  },
+  "our_values": {
+    "_comment": "Filled in by src/external_validation.py from the results/ artefacts."
+  }
+}

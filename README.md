@@ -132,6 +132,8 @@ BigDataFinal/
 │   ├── report.tex
 │   ├── acmart.cls
 │   ├── figures/
+│   ├── build_report.ps1     # compile the report
+│   └── check_table_widths.py# guard against column overflow
 ├── results/
 │   ├── report.md             # the technical report
 │   ├── rq1..rq4.csv          # the four research questions
@@ -383,16 +385,33 @@ latex_report/
 ├── acmart.cls                   # from the ACM template
 ├── ACM-Reference-Format.bst
 ├── figures/                     # copies of the figures above
-└── report.pdf                   # the compiled report (10 pages, in latex_report/)
+├── build_report.ps1             # pdflatex x3 + bibtex, in one command
+├── check_table_widths.py        # measures every table against the column width
+└── report.pdf                   # the compiled report (17 pages, in latex_report/)
 ```
 
 To rebuild it (MiKTeX):
 
 ```powershell
 cd latex_report
-pdflatex report.tex
-pdflatex report.tex
-pdflatex report.tex
+.\build_report.ps1
+```
+
+The script runs `pdflatex`, `bibtex` and `pdflatex` twice more, which is what
+the document needs: the bibliography has to be resolved before the final two
+passes can pick up the cross-references. `build_report.ps1` also sets
+`TEXINPUTS` so the run works without a system-wide MiKTeX install.
+
+`check_table_widths.py` is a guard against the one layout fault that the ACM
+two-column template makes easy to hit: a table that is wider than its column
+and therefore spills into the neighbouring column or over the outer margin. It
+instruments a copy of `report.tex`, measures the natural width of every
+`tabular`, and compares it against the column width (241.14 pt) or the full
+text width (505.87 pt) for a `table*`. Run it after any edit to a table:
+
+```powershell
+cd latex_report
+python check_table_widths.py
 ```
 
 `latexmk` is not used because MiKTeX's `latexmk` wrapper requires Perl, which

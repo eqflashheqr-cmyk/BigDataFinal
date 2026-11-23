@@ -1,0 +1,64 @@
+{
+  "group_split_by_lei": {
+    "without_protected": {
+      "roc_auc": 0.7070126452021286,
+      "n_features": 44
+    },
+    "with_protected": {
+      "roc_auc": 0.7217370545795054,
+      "n_features": 76
+    },
+    "auc_cost_of_removal": 0.014724409377376846,
+    "n_train": 1531382,
+    "n_test": 468618
+  },
+  "random_stratified_split": {
+    "without_protected": {
+      "roc_auc": 0.7637227349099007,
+      "n_features": 44
+    },
+    "with_protected": {
+      "roc_auc": 0.7737935337586852,
+      "n_features": 76
+    },
+    "auc_cost_of_removal": 0.010070798848784479
+  },
+  "summary": {
+    "feature_effect_same_split_grouped": 0.014724409377376846,
+    "feature_effect_same_split_random": 0.010070798848784479,
+    "split_effect_without_protected": 0.05671008970777214,
+    "split_effect_with_protected": 0.05205647917917977,
+    "note": "The first two numbers are the only ones that identify the cost of removing the protected characteristics, because the rows, the split and the hyper-parameters are identical in each comparison. The split effect is reported separately so that the two are not confounded."
+  },
+  "config": {
+    "row_cap": 2000000,
+    "seed": 20240101,
+    "n_rows": 2000000,
+    "protected_columns": [
+      "applicant_sex",
+      "co_applicant_sex",
+      "derived_sex",
+      "applicant_ethnicity_1",
+      "applicant_ethnicity_2",
+      "applicant_ethnicity_3",
+      "applicant_ethnicity_4",
+      "applicant_ethnicity_5",
+      "co_applicant_ethnicity_1",
+      "co_applicant_ethnicity_2",
+      "co_applicant_ethnicity_3",
+      "co_applicant_ethnicity_4",
+      "co_applicant_ethnicity_5",
+      "applicant_race_1",
+      "applicant_race_2",
+      "applicant_race_3",
+      "applicant_race_4",
+      "applicant_race_5",
+      "co_applicant_race_1",
+      "co_applicant_race_2",
+      "co_applicant_race_3",
+      "co_applicant_race_4",
+      "co_applicant_race_5",
+      "tract_minority_population_percent"
+    ]
+  }
+}
