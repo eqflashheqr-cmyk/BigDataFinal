@@ -194,7 +194,7 @@ def fig_importance() -> None:
     ax.margins(x=0.04)
 
     fig.suptitle(
-        "What the model uses \\u2014 no ethnicity, race, sex or tract composition",
+        "What the model uses - no ethnicity, race, sex or tract composition",
         fontweight="bold", x=0.01, ha="left", fontsize=11.5)
     fig.tight_layout(rect=(0, 0, 1, 0.92))
     _save(fig, "fig9_predictive_importance.png")

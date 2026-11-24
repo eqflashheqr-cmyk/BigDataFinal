@@ -1,0 +1,10 @@
+{
+  "cfpb_published_joint_decided": 223383,
+  "cfpb_published_joint_rate_pct": 20.7,
+  "our_derived_sex_joint_decided": 2999979,
+  "our_derived_sex_joint_rate_pct": 18.2661,
+  "decided_count_ratio": 13.4298,
+  "cfpb_share_of_all_decisions_pct": 2.5843,
+  "our_same_sex_pairs_rate_pct": 22.2951,
+  "conclusion": "The published derived-sex figure is over a population an order of magnitude smaller than the derived_sex == 'Joint' population of the 2024 release, so the two cannot be compared without the exact query filter. The report's explanation of the difference is internally inconsistent and is withdrawn."
+}

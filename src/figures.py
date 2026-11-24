@@ -200,9 +200,15 @@ def fig3() -> None:
     df = df[~df["suppressed_small_cell"].astype(str).str.lower().isin(["true"])]
     df = df[df["n_decisions_total"] >= 100]
 
-    fig, axes = plt.subplots(1, 2, figsize=(12.5, 5.0), sharey=True)
+    # The two panels are stacked rather than side by side.  A side-by-side
+    # pair has to be scaled to the column width, at which point the bar
+    # labels and the gap annotations become unreadable; stacking keeps
+    # every panel at full column width, and the y-axis is shared so the
+    # two are still directly comparable.
+    fig, axes = plt.subplots(2, 1, figsize=(5.4, 6.2), sharey=True,
+                             gridspec_kw={"hspace": 0.28})
 
-    # -- left: by income quartile -----------------------------------------
+    # -- top: by income quartile ------------------------------------------
     ax = axes[0]
     g = _pooled_rates(df, "income_quartile")
     order = ["Q1 (lowest)", "Q2", "Q3", "Q4 (highest)", "Not reported"]
@@ -223,10 +229,10 @@ def fig3() -> None:
     ax.set_xticklabels(g["income_quartile"], rotation=8, ha="center", fontsize=9.5)
     ax.set_ylabel("Denial rate (%)")
     ax.set_title("By income quartile", loc="left", fontweight="bold")
-    ax.legend(frameon=False, loc="upper right")
+    ax.legend(frameon=False, loc="upper right", ncols=2, fontsize=9)
     ax.set_ylim(0, 52)
 
-    # -- right: by DTI band ------------------------------------------------
+    # -- bottom: by DTI band -----------------------------------------------
     ax = axes[1]
     g2 = _pooled_rates(df[df["dti_band"] != "Not reported"], "dti_band")
     g2 = g2[g2["n_total"] >= 500].sort_values("joint_pct")
@@ -241,13 +247,12 @@ def fig3() -> None:
     ax.set_xticks(x)
     ax.set_xticklabels(g2["dti_band"], rotation=40, ha="right", fontsize=8.5)
     ax.set_title("By debt-to-income band", loc="left", fontweight="bold")
-    ax.legend(frameon=False, loc="upper right")
     ax.set_ylim(0, 52)
 
     fig.suptitle("RQ3 — The denial-rate gap persists within income and DTI strata\n"
                  "Bars are decision-weighted pooled rates; the shared y-axis makes "
                  "the two panels directly comparable",
-                 fontsize=11.5, fontweight="bold", y=1.06)
+                 fontsize=10.5, fontweight="bold", y=1.02)
     fig.tight_layout()
     _save(fig, "fig3_denial_by_income_dti.png")
 

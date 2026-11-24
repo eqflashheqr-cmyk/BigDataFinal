@@ -51,10 +51,12 @@ What this version measures
 
 Resource use
 ------------
-    The Spark side runs a `local[*]` session with a small driver memory
-and a small shuffle partition count.  Only the aggregation workload is
-measured, so peak memory stays well under 8 GB.  The whole script runs
-in minutes rather than the 1.8 h the original pipeline benchmark took.
+    The Spark side runs a `local[*]` session built by
+    `spark_pipeline.build_session`, so it uses the same configuration as
+    the pipeline itself: 8 GB of driver memory and 16 shuffle partitions.
+    Only the aggregation workload is measured, so peak memory stays well
+    under that limit.  The whole script runs in minutes rather than the
+    1.8 h the original pipeline benchmark took.
 
 Usage
 -----
@@ -82,7 +84,15 @@ REPEATS = 5
 #: Nominal sample fractions.  The realised row share is reported next to
 #: each one, because the sample is drawn by hashing the LEI and whole
 #: lenders are in or out.
-FRACTIONS = [0.25, 0.5, 1.0]
+#:
+#: The 1 % and 5 % fractions are included because the reviewer's point is
+#: that at the smallest volume the original benchmark measured (27.5 %),
+#: Spark is *already* faster on the light workload (1.24x cached, 2.99x
+#: no-cache), so "Spark does not win at small volumes" was not supported by
+#: any measurement taken.  The small fractions are where a Pandas advantage
+#: would show up if it exists, so they have to be measured rather than
+#: asserted.
+FRACTIONS = [0.01, 0.05, 0.25, 0.5, 1.0]
 
 #: Hash parameters for the sample rule.  Unchanged from v2 so the sample
 #: is the same set of rows and the two runs are comparable.
@@ -309,10 +319,28 @@ def _run_spark(spark, sample_dir: Path, fraction: float, repeats: int) -> dict:
             sdf.count()
         return sdf
 
+    # ---- warm-up -------------------------------------------------------
+    # The JVM compiles the generated code for a query the first time it
+    # sees it, and the first execution also populates Spark's internal
+    # broadcast and codegen caches.  That cost belongs to neither the
+    # cached nor the no-cache arm, so each workload is run once untimed
+    # first.  Without this the arm that runs first is charged with the
+    # warm-up, which is why an earlier version of this benchmark had the
+    # cached Spark arm (which ran first) appear *slower* than the
+    # no-cache arm, which is not a physically meaningful result.
+    _spark_light(_make_sdf(cache=False))
+    _spark_heavy(_make_sdf(cache=False))
+
     # ---- cached ---------------------------------------------------------
     t_cache_setup0 = time.perf_counter()
     sdf_cached = _make_sdf(cache=True)
     t_cache_setup = time.perf_counter() - t_cache_setup0
+
+    # Warm the cached path too: the first execution over a persisted
+    # DataFrame still compiles a second variant of the plan, and the
+    # persist itself has to populate the block manager.
+    _spark_light(sdf_cached)
+    _spark_heavy(sdf_cached)
 
     t_cached_light, t_cached_heavy = [], []
     for _ in range(repeats):
@@ -420,6 +448,8 @@ def main() -> None:
         sp["fraction"] = frac
         sp["session_setup_seconds"] = round(t_setup, 3)
         sp["first_read_seconds"] = round(t_first_read, 3)
+        sp["spark_driver_memory"] = C.SPARK_DRIVER_MEMORY
+        sp["spark_shuffle_partitions"] = C.SPARK_SHUFFLE_PARTITIONS
         pd_res["fraction"] = frac
         pd_res["sample_materialise_seconds"] = round(t_materialise, 3)
 
@@ -436,6 +466,40 @@ def main() -> None:
                   f"ratio {p['heavy_query_seconds_median']/max(s['heavy_query_seconds_median'],1e-9):5.2f}x")
 
     # ---- assemble -------------------------------------------------------
+    # The speedups are computed here rather than in the report, so that the
+    # report quotes a number that was produced by the same script that
+    # produced the timings.  A speedup above 1 means Spark is faster.
+    speedups = []
+    for frac in FRACTIONS:
+        pd_row = next((r for r in results
+                       if r["engine"] == "pandas" and r["fraction"] == frac), None)
+        sp_row = next((r for r in results
+                       if r["engine"] == "pyspark" and r["fraction"] == frac), None)
+        if pd_row is None or sp_row is None:
+            continue
+        row = {"fraction": frac}
+        for mode in ("cached", "no_cache"):
+            p = pd_row[mode]
+            s = sp_row[mode]
+            for wl in ("light", "heavy"):
+                key = f"{wl}_query_seconds_median"
+                pt, st = p[key], s[key]
+                row[f"{mode}_{wl}_pandas_seconds"] = pt
+                row[f"{mode}_{wl}_spark_seconds"] = st
+                row[f"{mode}_{wl}_speedup"] = round(pt / st, 3) if st > 0 else None
+        # The cached arm, with the Spark session set-up added in.  This is
+        # the honest "what would I actually wait for" number.
+        setup = sp_row.get("session_setup_seconds") or 0.0
+        row["spark_session_setup_seconds"] = setup
+        for wl in ("light", "heavy"):
+            key = f"{wl}_query_seconds_median"
+            pt = pd_row["cached"][key]
+            st = sp_row["cached"][key]
+            row[f"cached_{wl}_spark_incl_setup_seconds"] = round(st + setup, 3)
+            row[f"cached_{wl}_speedup_incl_setup"] = (
+                round(pt / (st + setup), 3) if (st + setup) > 0 else None)
+        speedups.append(row)
+
     out = {
         "config": {
             "repeats": REPEATS,
@@ -454,6 +518,7 @@ def main() -> None:
         },
         "environment": env,
         "realised_sample_fractions": realised,
+        "speedups": speedups,
         "results": results,
     }
 
@@ -485,6 +550,18 @@ def _run_pandas_with_fraction(sample_dir: Path, fraction: float, repeats: int) -
 
     df = _rebuild()
 
+    # ---- warm-up -------------------------------------------------------
+    # The first execution of a query pays for the interpreter's first
+    # pass over the data, the allocation of the output frame and (on the
+    # Spark side) the JIT compilation of the generated code.  That cost
+    # belongs to neither the cached nor the no-cache arm, so one
+    # untimed execution of each workload is run first and discarded.
+    # Without this, whichever arm happened to run first would be charged
+    # with the warm-up and would look slower than it is -- which is
+    # exactly the artefact that made the cached Spark arm look slower
+    # than the no-cache one at 100 %.
+    _pandas_light(df)
+    _pandas_heavy(df)
     # ---- cached ---------------------------------------------------------
     t_cached_light, t_cached_heavy = [], []
     for _ in range(repeats):

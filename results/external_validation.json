@@ -3,13 +3,19 @@
   "checks": [
     {
       "check": "national_denial_rate",
-      "our_value_pct": 24.33,
-      "external_value_pct": 24.3,
-      "difference_pp": 0.03,
-      "relative_difference_pct": 0.11,
+      "our_value_pct": 24.2059,
+      "our_denied": 2092320,
+      "our_decided": 8643834,
+      "external_value_pct": 24.2844,
+      "external_published_pct": 24.3,
+      "external_denied": 2103462,
+      "external_decided": 8661779,
+      "difference_pp": -0.0785,
+      "relative_difference_pct": -0.3232,
       "external_source": "Consumer Financial Protection Bureau, HMDA public LAR, 2024 One Year release",
       "external_url": "https://ffiec.cfpb.gov/data-browser/",
-      "interpretation": "Our figure is computed over every record in the cleaned file; the CFPB figure is over the same year's national release. The two should agree closely, and a difference of well under one percentage point confirms that the cleaning pipeline did not drop or reclassify decisions."
+      "population": "every application with a lender decision (action_taken 1, 2 or 3), which is the CFPB's denominator",
+      "interpretation": "Our figure is computed over every record with a lender decision in the cleaned file, which is the same population the CFPB publishes over. The two should agree closely, and a difference of well under one percentage point confirms that the cleaning pipeline did not drop or reclassify decisions."
     },
     {
       "check": "denial_rate_by_loan_purpose",
@@ -57,14 +63,6 @@
       ],
       "external_source": "CFPB HMDA public LAR, 2024 One Year release",
       "interpretation": "Loan purpose is the strongest external check available, because the CFPB publishes the same breakdown and the purpose mix is not something a cleaning rule could plausibly distort. A sign difference between our figure and the published one on any purpose would indicate a systematic labelling problem."
-    },
-    {
-      "check": "joint_applicant_denial_rate",
-      "our_value_pct": 18.96,
-      "external_value_pct": 20.7,
-      "difference_pp": -1.74,
-      "external_source": "CFPB HMDA public LAR, 2024 One Year release",
-      "interpretation": "HMDA's own 'derived sex' field classifies a record as Joint when a co-applicant is present. Our joint_flag is inferred independently from the five co-applicant fields, so agreement here is a genuine external corroboration of the inference rule. The difference is small because HMDA applies essentially the same rule."
     },
     {
       "check": "interest_rate_vs_pmms",
@@ -194,7 +192,7 @@
     }
   ],
   "summary": {
-    "n_checks": 7,
-    "checks_that_pass": 7
+    "n_checks": 6,
+    "checks_that_pass": 6
   }
 }
