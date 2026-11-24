@@ -1,0 +1,65 @@
+{
+  "population": "applications with a lender decision (action_taken 1, 2 or 3)",
+  "n_decisions": 8643834,
+  "n_denied": 2092320,
+  "overall_denial_rate_pct": 24.2059,
+  "by_derived_sex": {
+    "Joint": {
+      "n_decisions": 2999979,
+      "n_denied": 547980,
+      "denial_rate_pct": 18.2661
+    },
+    "Male": {
+      "n_decisions": 2928453,
+      "n_denied": 771094,
+      "denial_rate_pct": 26.3311
+    },
+    "Female": {
+      "n_decisions": 1949729,
+      "n_denied": 569887,
+      "denial_rate_pct": 29.229
+    },
+    "Sex Not Available": {
+      "n_decisions": 765673,
+      "n_denied": 203359,
+      "denial_rate_pct": 26.5595
+    }
+  },
+  "derived_sex_joint_vs_rest": {
+    "joint_n": 2999979,
+    "joint_rate_pct": 18.2661,
+    "rest_n": 5643855,
+    "rest_rate_pct": 27.3632,
+    "gap_pp": -9.0971
+  },
+  "within_our_joint_flag": {
+    "Female": {
+      "n_decisions": 146263,
+      "n_denied": 35327,
+      "denial_rate_pct": 24.1531
+    },
+    "Joint": {
+      "n_decisions": 2990633,
+      "n_denied": 546447,
+      "denial_rate_pct": 18.272
+    },
+    "Male": {
+      "n_decisions": 159495,
+      "n_denied": 32842,
+      "denial_rate_pct": 20.5912
+    },
+    "Sex Not Available": {
+      "n_decisions": 223292,
+      "n_denied": 52672,
+      "denial_rate_pct": 23.5888
+    }
+  },
+  "same_sex_pairs": {
+    "definition": "records this report calls joint that HMDA's own derived_sex field calls Male or Female",
+    "n_decisions": 305758,
+    "n_denied": 68169,
+    "denial_rate_pct": 22.2951,
+    "rest_of_joint_arm_n": 3296391,
+    "rest_of_joint_arm_rate_pct": 18.6451
+  }
+}

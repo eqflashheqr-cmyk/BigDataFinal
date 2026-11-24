@@ -30,11 +30,18 @@ What changed and why
 
 4. **A majority-class baseline** is reported, as the proposal promised.
 
-5. **GroupKFold by LEI.** The modelling sample is a *cluster* sample:
-   lenders are selected in or out whole, so a random split puts the same
-   lender on both sides of the train/test boundary and leaks the lender's
-   own policy. The grouped split keeps every lender entirely on one side,
-   which is the honest test of generalisation to a new lender.
+5. **Grouped split by LEI.** A random split would put the same lender on
+   both sides of the train/test boundary and leak the lender's own policy,
+   so the split is by lender: every LEI lies entirely on one side. This is
+   the honest test of generalisation to a new lender.
+
+   Note on what the *sample* is, as distinct from how it is *split*. The
+   2 million rows are drawn by a row-level random rule, not by selecting
+   whole lenders: the earlier version of this script drew them with a hash
+   of the LEI compared against a threshold, but the threshold was never
+   below the hash modulus, so the filter was always true and the sample was
+   in fact a uniform random sample of records. The grouped split is what
+   protects against lender leakage, and it is unaffected.
 
 Resource use
 ------------
@@ -304,7 +311,9 @@ def main() -> None:
     print(f"  X dtype         : {X.dtype}, {X.nbytes / 1e6:.0f} MB")
 
     # ---- grouped split ----------------------------------------------------
-    # The sample is a cluster sample of lenders, so the split is by LEI.
+    # The split is by LEI, so that every lender lies entirely on one side.
+    # (The *sample* itself is drawn at row level; the grouping is what
+    # prevents a lender's own policy from leaking across the boundary.)
     groups = df["lei"].astype("string").to_numpy()
 
     gss = GroupShuffleSplit(n_splits=1, test_size=TEST_FRAC, random_state=SEED)

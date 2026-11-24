@@ -1,0 +1,16 @@
+{
+ "n_strata_total": 1730,
+ "n_strata_ge_100": 1011,
+ "decisions_covered": 8544755,
+ "decisions_total": 8557686,
+ "joint_lower_strata": 849,
+ "unweighted_mean_gap_pp": -3.8434257808022343,
+ "cell_size_weighted_gap_pp": -2.7770432861018177,
+ "median_gap_pp": -3.4219001610306,
+ "pooled_joint_rate_pct": 18.937455270822277,
+ "pooled_single_rate_pct": 28.056693602091222,
+ "pooled_gap_pp": -9.119238331268944,
+ "n_strata_both_arms": 1011,
+ "both_arms_weighted_gap_pp": -2.7770432861018177,
+ "n_strata_joint_higher": 162
+}

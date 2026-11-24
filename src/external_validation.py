@@ -81,38 +81,75 @@ def main() -> None:
     # ==================================================================
     # 1. The national denial rate: our figure against the CFPB release.
     # ==================================================================
+    # The comparison must be made on the *same* population.  The CFPB
+    # publishes denials over applications with a decision, so our
+    # denominator has to be every decision record, not the subset whose
+    # application type could be determined.  Using the latter (as an
+    # earlier version of this script did) compares a numerator from one
+    # population with a denominator from another and makes the agreement
+    # look better than it is.
+    eq = _load_json("equivalence_report.json")
+    n_decisions = None
+    n_denied_all = None
     rq1 = _read_csv("rq1_pandas.csv")
+    for c in (eq or {}).get("comparisons", []):
+        if c["quantity"].startswith("Counts and proportions of application outcomes"):
+            for row in c.get("pandas", []):
+                if row.get("action_taken") == 3:
+                    n_denied_all = int(row["n"])
+        if c["quantity"].startswith("Record counts after each cleaning step"):
+            n_decisions = int(c.get("pandas", {}).get("records_with_decision") or 0) or None
+
     our_overall = None
-    if rq1 is not None and "denial_rate" in rq1.columns:
-        # The overall denial rate is the decision-weighted average across
-        # the joint / single categories.
-        our_overall = float((rq1["denial_rate"] * rq1["n_decisions"]).sum()
-                            / rq1["n_decisions"].sum())
+    if n_decisions and n_denied_all:
+        our_overall = n_denied_all / n_decisions
+    else:
+        if rq1 is not None and "denial_rate" in rq1.columns:
+            # Fall back to the decision-weighted average across the joint /
+            # single categories, which is the known-application-type
+            # population and is therefore NOT comparable to the CFPB figure.
+            our_overall = float((rq1["denial_rate"] * rq1["n_decisions"]).sum()
+                                / rq1["n_decisions"].sum())
 
     ext = src["hmda_national_2024"]
+    # The published rate is rounded to one decimal place.  When the counts
+    # behind it are recorded, the exact rate is computed from them, so that
+    # the difference is not an artefact of the rounding.
+    ext_rate = ext["denial_rate_pct"]
+    if ext.get("denied") and ext.get("decided"):
+        ext_rate = ext["denied"] / ext["decided"] * 100
     if our_overall is not None:
-        diff = our_overall * 100 - ext["denial_rate_pct"]
+        diff = our_overall * 100 - ext_rate
         checks.append({
             "check": "national_denial_rate",
-            "our_value_pct": round(our_overall * 100, 2),
-            "external_value_pct": ext["denial_rate_pct"],
-            "difference_pp": round(diff, 2),
-            "relative_difference_pct": round(diff / ext["denial_rate_pct"] * 100, 2),
+            "our_value_pct": round(our_overall * 100, 4),
+            "our_denied": n_denied_all,
+            "our_decided": n_decisions,
+            "external_value_pct": round(ext_rate, 4),
+            "external_published_pct": ext["denial_rate_pct"],
+            "external_denied": ext.get("denied"),
+            "external_decided": ext.get("decided"),
+            "difference_pp": round(diff, 4),
+            "relative_difference_pct": round(diff / ext_rate * 100, 4),
             "external_source": ext["publisher"],
             "external_url": ext["url"],
+            "population": (
+                "every application with a lender decision (action_taken 1, 2 "
+                "or 3), which is the CFPB's denominator"
+            ),
             "interpretation": (
-                "Our figure is computed over every record in the cleaned "
-                "file; the CFPB figure is over the same year's national "
-                "release. The two should agree closely, and a difference "
-                "of well under one percentage point confirms that the "
-                "cleaning pipeline did not drop or reclassify decisions."
+                "Our figure is computed over every record with a lender "
+                "decision in the cleaned file, which is the same population "
+                "the CFPB publishes over. The two should agree closely, and a "
+                "difference of well under one percentage point confirms that "
+                "the cleaning pipeline did not drop or reclassify decisions."
             ),
         })
 
     # ==================================================================
     # 2. The denial rate by loan purpose, against the CFPB release.
     # ==================================================================
-    rq4 = _read_csv("rq4_pandas.csv")
+    rq4 = _read_csv("rq4.csv")
     if rq4 is not None:
         # `rq4` has one row per (dimension, level), with separate joint and
         # single columns. The overall rate for a level is the
@@ -183,12 +220,36 @@ def main() -> None:
     if rq1_joint is not None:
         ext_joint = ext_sex["Joint"]["denial_rate_pct"]
         diff = rq1_joint * 100 - ext_joint
+        # The published figure is over a filtered subset whose size is
+        # recorded in the benchmark file.  Comparing it with our own
+        # figure over the whole release without noting this would be
+        # comparing different populations.
+        ext_decided = ext_sex["Joint"].get("decided")
+        dsr = _load_json("derived_sex_rates.json")
+        pop_note = None
+        if dsr and ext_decided:
+            ours_joint = dsr.get("by_derived_sex", {}).get("Joint", {})
+            our_decided = ours_joint.get("n_decisions")
+            if our_decided:
+                pop_note = (
+                    f"The published figure is over {ext_decided:,} applications "
+                    f"with a decision, whereas the derived_sex == 'Joint' "
+                    f"population of the release contains {our_decided:,} "
+                    f"decisions -- a factor of "
+                    f"{our_decided / ext_decided:.1f}. The two numbers are "
+                    f"therefore not over the same population, and the "
+                    f"published query filter is not documented, so the "
+                    f"difference cannot be attributed to the definitional "
+                    f"difference alone."
+                )
         checks.append({
             "check": "joint_applicant_denial_rate",
             "our_value_pct": round(rq1_joint * 100, 2),
             "external_value_pct": ext_joint,
+            "external_decided": ext_decided,
             "difference_pp": round(diff, 2),
             "external_source": ext_sex["publisher"],
+            "population_caveat": pop_note,
             "interpretation": (
                 "HMDA's 'derived sex' field is NOT a second copy of the "
                 "application-type rule: its 'Joint' category means a "
@@ -196,10 +257,14 @@ def main() -> None:
                 "applications and cannot independently confirm them (see "
                 "joint_flag_reconstruction.json). Our joint_flag is the "
                 "broader category, adding the same-sex pairs that this "
-                "definition excludes; those pairs are denied more often, "
-                "which is why our joint denial rate is the lower of the "
-                "two. The 1.74 pp difference is therefore a difference of "
-                "definition, not of data."
+                "definition excludes, and those pairs ARE denied more often "
+                "(22.30 % against 18.65 % for the rest of the joint arm), so "
+                "the definitional difference pushes in the observed "
+                "direction. It does not account for the whole gap: the "
+                "published figure is over a filtered population an order of "
+                "magnitude smaller than the release's own "
+                "derived_sex == 'Joint' population, so the residual is "
+                "reported as unexplained rather than attributed."
             ),
         })
 
@@ -214,7 +279,7 @@ def main() -> None:
     # purchase* subset should be ABOVE the PMMS rate, and the size of the
     # gap should be explainable by the composition difference.
     pmms = src["pmms_2024"]
-    rq2 = _read_csv("rq2_pandas.csv")
+    rq2 = _read_csv("rq2.csv")
     if rq2 is not None and "variable" in rq2.columns:
         rate_rows = rq2[rq2["variable"] == "interest_rate"]
         if len(rate_rows):

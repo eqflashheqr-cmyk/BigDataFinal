@@ -249,9 +249,20 @@ CALIBRATION_BINS = 10
 # --------------------------------------------------------------------------
 # Sampling
 # --------------------------------------------------------------------------
+#
+# The modelling sample is drawn at *record* level, by a uniform random
+# subsample of the decision population (see `load_features`).  There is no
+# lender-level cluster sampling: the LEI is used only to *split* the sample,
+# not to draw it.
+
 
 def _hash_bucket(lei: str, modulus: int = 1000) -> int:
     """Deterministic bucket of an LEI.
+
+    Retained for reproducibility of the earlier sampling rule and for any
+    downstream check that needs a stable per-lender hash.  It is no longer
+    used to select the modelling sample: the bucket was compared against
+    the modulus, which made the filter a no-op.
 
     The rule is a plain checksum rather than a cryptographic hash: it only
     has to spread the LEIs uniformly, and the LEI is already a
@@ -268,9 +279,18 @@ def load_features(cap: int | None = PREDICTIVE_ROW_CAP) -> pd.DataFrame:
     """Read the columns needed for modelling from the cleaned Parquet.
 
     Only the needed columns are read, and they are cast to their smallest
-    numeric type immediately. The sample is drawn by a hash rule on the LEI
-    so that it is a genuine random sample of the population rather than the
-    first N rows, which would be ordered by lender.
+    numeric type immediately.  The modelling sample is a **row-level random
+    sample**: the whole decision population is read and then a uniform
+    random subsample of `cap` rows is drawn below.  It is deliberately not
+    the first N rows, which would be ordered by lender and therefore by
+    lender policy.
+
+    An earlier version of this function applied a hash filter on the LEI
+    before the cap was applied, which was described as selecting whole
+    lenders.  The filter compared a hash bucket modulo 1000 against 1000,
+    so it was always true and selected nothing; the sample was a plain
+    random sample of records from the start.  The filter has been removed
+    rather than left in place as a no-op that implies otherwise.
 
     Reading is done row group by row group so the full frame never has to be
     resident in memory.
@@ -290,10 +310,7 @@ def load_features(cap: int | None = PREDICTIVE_ROW_CAP) -> pd.DataFrame:
     for rg in range(pf.num_row_groups):
         df = pf.read_row_group(rg, columns=READ_COLUMNS).to_pandas()
         target_pop += int((df["has_lender_decision"] == 1).sum())
-        buckets = df["lei"].map(_hash_bucket)
-        df = df[buckets < 1000]
-        if len(df):
-            frames.append(df)
+        frames.append(df)
     df = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
     del frames
 

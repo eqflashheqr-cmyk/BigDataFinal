@@ -2,6 +2,8 @@
   "config": {
     "repeats": 5,
     "fractions": [
+      0.01,
+      0.05,
       0.25,
       0.5,
       1.0
@@ -33,6 +35,20 @@
   },
   "realised_sample_fractions": [
     {
+      "nominal_fraction": 0.01,
+      "hash_threshold": 10,
+      "rows_selected": 38048,
+      "rows_total": 12224691,
+      "realised_row_fraction": 0.0031
+    },
+    {
+      "nominal_fraction": 0.05,
+      "hash_threshold": 50,
+      "rows_selected": 264546,
+      "rows_total": 12224691,
+      "realised_row_fraction": 0.0216
+    },
+    {
       "nominal_fraction": 0.25,
       "hash_threshold": 250,
       "rows_selected": 3367092,
@@ -55,291 +71,593 @@
       "realised_lender_fraction": 1.0
     }
   ],
+  "speedups": [
+    {
+      "fraction": 0.01,
+      "cached_light_pandas_seconds": 0.023,
+      "cached_light_spark_seconds": 0.115,
+      "cached_light_speedup": 0.2,
+      "cached_heavy_pandas_seconds": 0.023,
+      "cached_heavy_spark_seconds": 0.157,
+      "cached_heavy_speedup": 0.146,
+      "no_cache_light_pandas_seconds": 0.043,
+      "no_cache_light_spark_seconds": 0.157,
+      "no_cache_light_speedup": 0.274,
+      "no_cache_heavy_pandas_seconds": 0.039,
+      "no_cache_heavy_spark_seconds": 0.231,
+      "no_cache_heavy_speedup": 0.169,
+      "spark_session_setup_seconds": 3.778,
+      "cached_light_spark_incl_setup_seconds": 3.893,
+      "cached_light_speedup_incl_setup": 0.006,
+      "cached_heavy_spark_incl_setup_seconds": 3.935,
+      "cached_heavy_speedup_incl_setup": 0.006
+    },
+    {
+      "fraction": 0.05,
+      "cached_light_pandas_seconds": 0.047,
+      "cached_light_spark_seconds": 0.121,
+      "cached_light_speedup": 0.388,
+      "cached_heavy_pandas_seconds": 0.04,
+      "cached_heavy_spark_seconds": 0.339,
+      "cached_heavy_speedup": 0.118,
+      "no_cache_light_pandas_seconds": 0.12,
+      "no_cache_light_spark_seconds": 0.152,
+      "no_cache_light_speedup": 0.789,
+      "no_cache_heavy_pandas_seconds": 0.111,
+      "no_cache_heavy_spark_seconds": 0.369,
+      "no_cache_heavy_speedup": 0.301,
+      "spark_session_setup_seconds": 0.089,
+      "cached_light_spark_incl_setup_seconds": 0.21,
+      "cached_light_speedup_incl_setup": 0.224,
+      "cached_heavy_spark_incl_setup_seconds": 0.428,
+      "cached_heavy_speedup_incl_setup": 0.093
+    },
+    {
+      "fraction": 0.25,
+      "cached_light_pandas_seconds": 0.613,
+      "cached_light_spark_seconds": 0.4,
+      "cached_light_speedup": 1.532,
+      "cached_heavy_pandas_seconds": 0.541,
+      "cached_heavy_spark_seconds": 1.832,
+      "cached_heavy_speedup": 0.295,
+      "no_cache_light_pandas_seconds": 1.494,
+      "no_cache_light_spark_seconds": 0.387,
+      "no_cache_light_speedup": 3.86,
+      "no_cache_heavy_pandas_seconds": 1.44,
+      "no_cache_heavy_spark_seconds": 1.881,
+      "no_cache_heavy_speedup": 0.766,
+      "spark_session_setup_seconds": 0.101,
+      "cached_light_spark_incl_setup_seconds": 0.501,
+      "cached_light_speedup_incl_setup": 1.224,
+      "cached_heavy_spark_incl_setup_seconds": 1.933,
+      "cached_heavy_speedup_incl_setup": 0.28
+    },
+    {
+      "fraction": 0.5,
+      "cached_light_pandas_seconds": 1.111,
+      "cached_light_spark_seconds": 0.491,
+      "cached_light_speedup": 2.263,
+      "cached_heavy_pandas_seconds": 0.986,
+      "cached_heavy_spark_seconds": 2.314,
+      "cached_heavy_speedup": 0.426,
+      "no_cache_light_pandas_seconds": 2.843,
+      "no_cache_light_spark_seconds": 0.449,
+      "no_cache_light_speedup": 6.332,
+      "no_cache_heavy_pandas_seconds": 2.711,
+      "no_cache_heavy_spark_seconds": 2.513,
+      "no_cache_heavy_speedup": 1.079,
+      "spark_session_setup_seconds": 0.165,
+      "cached_light_spark_incl_setup_seconds": 0.656,
+      "cached_light_speedup_incl_setup": 1.694,
+      "cached_heavy_spark_incl_setup_seconds": 2.479,
+      "cached_heavy_speedup_incl_setup": 0.398
+    },
+    {
+      "fraction": 1.0,
+      "cached_light_pandas_seconds": 2.559,
+      "cached_light_spark_seconds": 0.72,
+      "cached_light_speedup": 3.554,
+      "cached_heavy_pandas_seconds": 2.107,
+      "cached_heavy_spark_seconds": 3.395,
+      "cached_heavy_speedup": 0.621,
+      "no_cache_light_pandas_seconds": 5.542,
+      "no_cache_light_spark_seconds": 0.708,
+      "no_cache_light_speedup": 7.828,
+      "no_cache_heavy_pandas_seconds": 5.059,
+      "no_cache_heavy_spark_seconds": 3.538,
+      "no_cache_heavy_speedup": 1.43,
+      "spark_session_setup_seconds": 0.287,
+      "cached_light_spark_incl_setup_seconds": 1.007,
+      "cached_light_speedup_incl_setup": 2.541,
+      "cached_heavy_spark_incl_setup_seconds": 3.682,
+      "cached_heavy_speedup_incl_setup": 0.572
+    }
+  ],
   "results": [
     {
       "engine": "pandas",
       "cached": {
-        "light_query_seconds_median": 0.389,
+        "light_query_seconds_median": 0.023,
         "light_query_seconds_all": [
-          0.395,
-          0.387,
-          0.387,
-          0.389,
-          0.391
+          0.013,
+          0.03,
+          0.026,
+          0.022,
+          0.023
         ],
-        "heavy_query_seconds_median": 0.352,
+        "heavy_query_seconds_median": 0.023,
         "heavy_query_seconds_all": [
-          0.352,
-          0.354,
-          0.35,
+          0.023,
+          0.029,
+          0.023,
+          0.014,
+          0.022
+        ],
+        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.043,
+        "light_query_seconds_all": [
+          0.067,
+          0.043,
+          0.043,
+          0.033,
+          0.029
+        ],
+        "heavy_query_seconds_median": 0.039,
+        "heavy_query_seconds_all": [
+          0.039,
+          0.065,
+          0.054,
+          0.029,
+          0.027
+        ],
+        "read_seconds_median": 0.02,
+        "read_seconds_all": [
+          0.024,
+          0.02,
+          0.025,
+          0.016,
+          0.012
+        ],
+        "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
+      },
+      "fraction": 0.01,
+      "sample_materialise_seconds": 14.966
+    },
+    {
+      "engine": "pyspark",
+      "cached": {
+        "materialise_seconds": 0.434,
+        "light_query_seconds_median": 0.115,
+        "light_query_seconds_all": [
+          0.127,
+          0.115,
+          0.136,
+          0.087,
+          0.08
+        ],
+        "heavy_query_seconds_median": 0.157,
+        "heavy_query_seconds_all": [
+          0.2,
+          0.156,
+          0.157,
+          0.184,
+          0.136
+        ]
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.157,
+        "light_query_seconds_all": [
+          0.157,
+          0.145,
+          0.144,
+          0.178,
+          0.162
+        ],
+        "heavy_query_seconds_median": 0.231,
+        "heavy_query_seconds_all": [
+          0.222,
+          0.195,
+          0.231,
+          0.234,
+          0.261
+        ],
+        "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
+      },
+      "fraction": 0.01,
+      "session_setup_seconds": 3.778,
+      "first_read_seconds": 2.274,
+      "spark_driver_memory": "8g",
+      "spark_shuffle_partitions": 16
+    },
+    {
+      "engine": "pandas",
+      "cached": {
+        "light_query_seconds_median": 0.047,
+        "light_query_seconds_all": [
+          0.038,
+          0.047,
+          0.053,
+          0.041,
+          0.047
+        ],
+        "heavy_query_seconds_median": 0.04,
+        "heavy_query_seconds_all": [
+          0.037,
+          0.048,
+          0.045,
+          0.04,
+          0.04
+        ],
+        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.12,
+        "light_query_seconds_all": [
+          0.122,
+          0.12,
+          0.12,
+          0.187,
+          0.098
+        ],
+        "heavy_query_seconds_median": 0.111,
+        "heavy_query_seconds_all": [
+          0.111,
+          0.106,
+          0.119,
+          0.173,
+          0.096
+        ],
+        "read_seconds_median": 0.069,
+        "read_seconds_all": [
+          0.069,
+          0.066,
+          0.074,
+          0.124,
+          0.056
+        ],
+        "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
+      },
+      "fraction": 0.05,
+      "sample_materialise_seconds": 15.915
+    },
+    {
+      "engine": "pyspark",
+      "cached": {
+        "materialise_seconds": 0.356,
+        "light_query_seconds_median": 0.121,
+        "light_query_seconds_all": [
+          0.133,
+          0.114,
+          0.16,
+          0.121,
+          0.116
+        ],
+        "heavy_query_seconds_median": 0.339,
+        "heavy_query_seconds_all": [
+          0.412,
+          0.339,
+          0.432,
+          0.302,
+          0.308
+        ]
+      },
+      "no_cache": {
+        "light_query_seconds_median": 0.152,
+        "light_query_seconds_all": [
+          0.139,
+          0.152,
+          0.146,
+          0.173,
+          0.185
+        ],
+        "heavy_query_seconds_median": 0.369,
+        "heavy_query_seconds_all": [
           0.356,
-          0.351
+          0.369,
+          0.365,
+          0.407,
+          0.389
         ],
-        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+        "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
       },
-      "no_cache": {
-        "light_query_seconds_median": 0.971,
+      "fraction": 0.05,
+      "session_setup_seconds": 0.089,
+      "first_read_seconds": 0.148,
+      "spark_driver_memory": "8g",
+      "spark_shuffle_partitions": 16
+    },
+    {
+      "engine": "pandas",
+      "cached": {
+        "light_query_seconds_median": 0.613,
         "light_query_seconds_all": [
-          0.965,
-          0.97,
-          0.983,
-          0.971,
-          0.995
+          0.65,
+          0.652,
+          0.613,
+          0.594,
+          0.591
         ],
-        "heavy_query_seconds_median": 0.944,
+        "heavy_query_seconds_median": 0.541,
         "heavy_query_seconds_all": [
-          0.936,
-          0.953,
-          0.944,
-          0.943,
-          0.951
-        ],
-        "read_seconds_median": 0.587,
-        "read_seconds_all": [
-          0.578,
+          0.541,
           0.587,
-          0.588,
-          0.586,
-          0.597
+          0.578,
+          0.517,
+          0.537
+        ],
+        "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
+      },
+      "no_cache": {
+        "light_query_seconds_median": 1.494,
+        "light_query_seconds_all": [
+          1.467,
+          1.494,
+          1.491,
+          1.732,
+          1.719
+        ],
+        "heavy_query_seconds_median": 1.44,
+        "heavy_query_seconds_all": [
+          1.402,
+          1.419,
+          1.44,
+          1.664,
+          1.618
+        ],
+        "read_seconds_median": 0.95,
+        "read_seconds_all": [
+          0.923,
+          0.95,
+          0.942,
+          1.091,
+          1.048
         ],
         "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
       },
       "fraction": 0.25,
-      "sample_materialise_seconds": 15.216
+      "sample_materialise_seconds": 18.018
     },
     {
       "engine": "pyspark",
       "cached": {
-        "materialise_seconds": 2.063,
-        "light_query_seconds_median": 0.313,
+        "materialise_seconds": 1.658,
+        "light_query_seconds_median": 0.4,
         "light_query_seconds_all": [
-          0.947,
-          0.325,
-          0.298,
-          0.313,
-          0.303
+          0.4,
+          0.335,
+          0.414,
+          0.391,
+          0.435
         ],
-        "heavy_query_seconds_median": 1.321,
+        "heavy_query_seconds_median": 1.832,
         "heavy_query_seconds_all": [
-          2.218,
-          1.448,
-          1.317,
-          1.304,
-          1.321
+          1.581,
+          1.863,
+          1.772,
+          2.08,
+          1.832
         ]
       },
       "no_cache": {
-        "light_query_seconds_median": 0.325,
+        "light_query_seconds_median": 0.387,
         "light_query_seconds_all": [
-          0.476,
+          0.387,
+          0.396,
+          0.368,
           0.361,
-          0.291,
-          0.325,
-          0.289
+          0.429
         ],
-        "heavy_query_seconds_median": 1.424,
+        "heavy_query_seconds_median": 1.881,
         "heavy_query_seconds_all": [
-          1.499,
-          1.492,
-          1.424,
-          1.362,
-          1.361
+          1.958,
+          1.862,
+          1.848,
+          2.018,
+          1.881
         ],
         "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
       },
       "fraction": 0.25,
-      "session_setup_seconds": 4.218,
-      "first_read_seconds": 2.444
+      "session_setup_seconds": 0.101,
+      "first_read_seconds": 0.175,
+      "spark_driver_memory": "8g",
+      "spark_shuffle_partitions": 16
     },
     {
       "engine": "pandas",
       "cached": {
-        "light_query_seconds_median": 0.668,
+        "light_query_seconds_median": 1.111,
         "light_query_seconds_all": [
-          0.668,
-          0.664,
-          0.659,
-          0.67,
-          0.669
+          1.232,
+          1.111,
+          1.122,
+          1.097,
+          0.963
         ],
-        "heavy_query_seconds_median": 0.634,
+        "heavy_query_seconds_median": 0.986,
         "heavy_query_seconds_all": [
-          0.629,
-          0.637,
-          0.636,
-          0.634,
-          0.621
+          0.995,
+          0.986,
+          1.014,
+          0.834,
+          0.834
         ],
         "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
       },
       "no_cache": {
-        "light_query_seconds_median": 1.636,
+        "light_query_seconds_median": 2.843,
         "light_query_seconds_all": [
-          1.629,
-          1.662,
-          1.636,
-          1.643,
-          1.628
+          2.298,
+          2.46,
+          2.843,
+          3.142,
+          2.891
         ],
-        "heavy_query_seconds_median": 1.585,
+        "heavy_query_seconds_median": 2.711,
         "heavy_query_seconds_all": [
-          1.58,
-          1.617,
-          1.594,
-          1.585,
-          1.561
+          2.276,
+          2.359,
+          2.711,
+          2.963,
+          2.742
         ],
-        "read_seconds_median": 0.982,
+        "read_seconds_median": 1.761,
         "read_seconds_all": [
-          0.981,
-          1.011,
-          0.984,
-          0.982,
-          0.958
+          1.417,
+          1.49,
+          1.761,
+          1.966,
+          1.819
         ],
         "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
       },
       "fraction": 0.5,
-      "sample_materialise_seconds": 16.022
+      "sample_materialise_seconds": 22.926
     },
     {
       "engine": "pyspark",
       "cached": {
-        "materialise_seconds": 1.64,
-        "light_query_seconds_median": 0.33,
+        "materialise_seconds": 2.628,
+        "light_query_seconds_median": 0.491,
         "light_query_seconds_all": [
-          0.54,
-          0.35,
-          0.305,
-          0.32,
-          0.33
+          0.651,
+          0.543,
+          0.448,
+          0.432,
+          0.491
         ],
-        "heavy_query_seconds_median": 1.623,
+        "heavy_query_seconds_median": 2.314,
         "heavy_query_seconds_all": [
-          1.97,
-          1.671,
-          1.495,
-          1.623,
-          1.525
+          2.347,
+          2.509,
+          2.153,
+          2.314,
+          2.092
         ]
       },
       "no_cache": {
-        "light_query_seconds_median": 0.282,
+        "light_query_seconds_median": 0.449,
         "light_query_seconds_all": [
-          0.451,
-          0.282,
-          0.346,
-          0.241,
-          0.245
+          0.437,
+          0.529,
+          0.449,
+          0.558,
+          0.411
         ],
-        "heavy_query_seconds_median": 1.56,
+        "heavy_query_seconds_median": 2.513,
         "heavy_query_seconds_all": [
-          1.871,
-          1.603,
-          1.56,
-          1.527,
-          1.499
+          2.513,
+          2.571,
+          2.456,
+          2.686,
+          2.276
         ],
         "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
       },
       "fraction": 0.5,
-      "session_setup_seconds": 0.073,
-      "first_read_seconds": 0.146
+      "session_setup_seconds": 0.165,
+      "first_read_seconds": 0.292,
+      "spark_driver_memory": "8g",
+      "spark_shuffle_partitions": 16
     },
     {
       "engine": "pandas",
       "cached": {
-        "light_query_seconds_median": 1.396,
+        "light_query_seconds_median": 2.559,
         "light_query_seconds_all": [
-          1.395,
-          1.433,
-          1.468,
-          1.371,
-          1.396
+          2.572,
+          2.561,
+          2.559,
+          2.366,
+          2.339
         ],
-        "heavy_query_seconds_median": 1.298,
+        "heavy_query_seconds_median": 2.107,
         "heavy_query_seconds_all": [
-          1.293,
-          1.294,
-          1.352,
-          1.298,
-          1.301
+          2.107,
+          2.051,
+          2.137,
+          2.189,
+          1.982
         ],
         "note": "the sample is already materialised as a Pandas frame; the query touches only the frame"
       },
       "no_cache": {
-        "light_query_seconds_median": 3.518,
+        "light_query_seconds_median": 5.542,
         "light_query_seconds_all": [
-          3.483,
-          3.547,
-          3.518,
-          3.474,
-          3.542
+          10.578,
+          4.952,
+          5.542,
+          5.171,
+          6.156
         ],
-        "heavy_query_seconds_median": 3.419,
+        "heavy_query_seconds_median": 5.059,
         "heavy_query_seconds_all": [
-          3.409,
-          3.451,
-          3.419,
-          3.383,
-          3.483
+          9.625,
+          4.73,
+          4.909,
+          5.059,
+          5.225
         ],
-        "read_seconds_median": 2.111,
+        "read_seconds_median": 3.154,
         "read_seconds_all": [
-          2.098,
-          2.146,
-          2.139,
-          2.084,
-          2.111
+          7.741,
+          3.028,
+          3.03,
+          3.154,
+          3.471
         ],
         "note": "the frame is rebuilt from the Parquet file on every repetition, so the read is inside the timed region; read_seconds_* reports that read on its own"
       },
       "fraction": 1.0,
-      "sample_materialise_seconds": 6.607
+      "sample_materialise_seconds": 9.865
     },
     {
       "engine": "pyspark",
       "cached": {
-        "materialise_seconds": 2.291,
-        "light_query_seconds_median": 0.487,
+        "materialise_seconds": 4.673,
+        "light_query_seconds_median": 0.72,
         "light_query_seconds_all": [
-          0.636,
-          0.489,
-          0.487,
-          0.438,
-          0.444
+          0.78,
+          0.704,
+          0.712,
+          0.72,
+          0.726
         ],
-        "heavy_query_seconds_median": 2.229,
+        "heavy_query_seconds_median": 3.395,
         "heavy_query_seconds_all": [
-          2.661,
-          2.263,
-          2.228,
-          2.183,
-          2.229
+          3.395,
+          3.532,
+          3.307,
+          3.292,
+          3.968
         ]
       },
       "no_cache": {
-        "light_query_seconds_median": 0.427,
+        "light_query_seconds_median": 0.708,
         "light_query_seconds_all": [
-          0.519,
-          0.405,
-          0.427,
-          0.398,
-          0.45
+          0.732,
+          0.739,
+          0.615,
+          0.708,
+          0.654
         ],
-        "heavy_query_seconds_median": 2.265,
+        "heavy_query_seconds_median": 3.538,
         "heavy_query_seconds_all": [
-          2.333,
-          2.348,
-          2.216,
-          2.265,
-          2.228
+          3.538,
+          3.592,
+          3.648,
+          3.462,
+          3.476
         ],
         "note": "the plan is rebuilt and the Parquet files re-read on every repetition"
       },
       "fraction": 1.0,
-      "session_setup_seconds": 0.065,
-      "first_read_seconds": 0.164
+      "session_setup_seconds": 0.287,
+      "first_read_seconds": 0.297,
+      "spark_driver_memory": "8g",
+      "spark_shuffle_partitions": 16
     }
   ]
 }

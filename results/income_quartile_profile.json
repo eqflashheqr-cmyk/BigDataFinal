@@ -1,0 +1,76 @@
+{
+  "population": "applications with a lender decision and a known application type",
+  "n_decisions": 8557686,
+  "n_denied": 2081855,
+  "overall_denial_rate_pct": 24.3273,
+  "quartile_bounds_income_thousands": [
+    67.0,
+    104.0,
+    164.0
+  ],
+  "n_decisions_without_income": 468164,
+  "n_denied_without_income": 79644,
+  "n_denials_in_quartiles": 2002211,
+  "quartiles": [
+    {
+      "quartile": 1,
+      "label": "Q1 (lowest)",
+      "n_decisions": 2035834,
+      "n_denied": 811872,
+      "denial_rate_pct": 39.8791,
+      "share_of_all_denials_pct": 38.9975,
+      "joint_n": 403509,
+      "joint_rate_pct": 38.4083,
+      "single_n": 1632325,
+      "single_rate_pct": 40.2427,
+      "raw_gap_pp": -1.8343,
+      "share_of_quartiled_denials_pct": 40.5488
+    },
+    {
+      "quartile": 2,
+      "label": "Q2",
+      "n_decisions": 2021847,
+      "n_denied": 487108,
+      "denial_rate_pct": 24.0922,
+      "share_of_all_denials_pct": 23.3978,
+      "joint_n": 729260,
+      "joint_rate_pct": 22.1675,
+      "single_n": 1292587,
+      "single_rate_pct": 25.1781,
+      "raw_gap_pp": -3.0106,
+      "share_of_quartiled_denials_pct": 24.3285
+    },
+    {
+      "quartile": 3,
+      "label": "Q3",
+      "n_decisions": 2012545,
+      "n_denied": 384057,
+      "denial_rate_pct": 19.0832,
+      "share_of_all_denials_pct": 18.4478,
+      "joint_n": 1035951,
+      "joint_rate_pct": 16.515,
+      "single_n": 976594,
+      "single_rate_pct": 21.8074,
+      "raw_gap_pp": -5.2925,
+      "share_of_quartiled_denials_pct": 19.1816
+    },
+    {
+      "quartile": 4,
+      "label": "Q4 (highest)",
+      "n_decisions": 2019296,
+      "n_denied": 319174,
+      "denial_rate_pct": 15.8062,
+      "share_of_all_denials_pct": 15.3312,
+      "joint_n": 1222582,
+      "joint_rate_pct": 13.12,
+      "single_n": 796714,
+      "single_rate_pct": 19.9282,
+      "raw_gap_pp": -6.8082,
+      "share_of_quartiled_denials_pct": 15.9411
+    }
+  ],
+  "largest_share_of_denials": "Q1 (lowest)",
+  "largest_share_pct": 38.9975,
+  "smallest_share_pct": 15.3312,
+  "overall_denial_rate_one_in_n": 4.11
+}
