@@ -68,6 +68,7 @@ token*.json
 latex_report/*.aux
 latex_report/*.log
 latex_report/*.out
+latex_report/*.synctex.gz
 latex_report/*.bbl
 latex_report/*.blg
 latex_report/pass*.log
