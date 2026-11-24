@@ -226,12 +226,12 @@ check("the published joint population is an order of magnitude smaller",
       and has_number(ds["our_derived_sex_joint_decided"]),
       "both populations stated")
 check("the 'weakest credit profile' explanation is withdrawn",
-      "No explanation of the gap is offered here" in FLAT
-      and "the opposite" in FLAT,
-      "withdrawn, not reversed")
-check("the joint gap is reported as unexplained",
-      "reported as unexplained rather than attributed" in FLAT,
-      "unexplained rather than attributed")
+      "The data say the opposite" in FLAT
+      and "cannot be it, because it points" in FLAT,
+      "withdrawn: the definitional difference points the other way")
+check("the CFPB 20.7% is not used as a comparison point",
+      "20.7\\,\\%" not in FLAT or "is not used as a comparison point" in FLAT,
+      "the comparison is dropped rather than reported as unexplained")
 
 # --- the same-sex pair rates, which reverse the old explanation ---------
 rates = load("derived_sex_rates.json")
@@ -562,22 +562,163 @@ pdf = os.path.join(ROOT, "latex_report", "report.pdf")
 try:
     from pypdf import PdfReader
     reader = PdfReader(pdf)
+    # `pypdf` reads a two-column heading as "C" and "onclusion" on
+    # separate runs, so the page text is matched with the whitespace
+    # removed.
+    def _squeezed(text):
+        return re.sub(r"\s+", "", text)
+
     concl_page = None
     refs_page = None
     for i, page in enumerate(reader.pages, 1):
-        text = page.extract_text() or ""
-        if concl_page is None and re.search(r"\bConclusion\b", text):
+        text = _squeezed(page.extract_text() or "")
+        if concl_page is None and "Conclusion" in text:
             concl_page = i
-        if refs_page is None and re.search(r"\bReferences\b", text):
+        if refs_page is None and "References" in text:
             refs_page = i
-    check("main body ends on or before page 12",
-          concl_page is not None and concl_page <= 12,
-          "Conclusion is on page %s" % concl_page)
-    check("references start after the main body",
-          refs_page is not None and refs_page > concl_page,
-          "References start on page %s" % refs_page)
+    check("the main body ends on page 8",
+          concl_page == 8, "Conclusion is on page %s" % concl_page)
+    check("the references start on page 9",
+          refs_page == 9, "References start on page %s" % refs_page)
 except Exception as exc:  # pragma: no cover
     check("page budget could not be verified", False, str(exc))
+
+# ---------------------------------------------------------------------------
+# The second-round corrections.  Every check below corresponds to one of
+# the reviewer's points and is derived from a result file, not from the
+# prose.  The same checks are also runnable on their own via
+# src/verify_report_v2.py.
+# ---------------------------------------------------------------------------
+import json as _json
+
+try:
+    with io.open(os.path.join(ROOT, "src", "figures.py"), encoding="utf-8") as _fh:
+        _FIG_SRC = _fh.read()
+
+    def _load(name):
+        with io.open(os.path.join(RESULTS, name), encoding="utf-8") as _fh:
+            return _json.load(_fh)
+
+    # -- Point 2: Figure 7 must agree with Tables 5 and 8 -------------------
+    _bm = _load("benchmark_v3.json")
+    _sp = {x["fraction"]: x for x in _bm["speedups"]}
+    check("light no-cache speedups match Table 5",
+          all(has("$%.2f\\times$" % _sp[f]["no_cache_light_speedup"])
+              for f in _sp if _sp[f]["no_cache_light_speedup"] > 1),
+          "3.86x, 6.33x, 7.83x")
+    check("light cached speedups match Table 5",
+          all(has("$%.2f\\times$" % _sp[f]["cached_light_speedup"])
+              for f in _sp if _sp[f]["cached_light_speedup"] > 1),
+          "1.53x, 2.26x, 3.55x")
+    check("heavy cached speedups match Table 8",
+          all(has("$%.2f\\times$" % _sp[f]["cached_heavy_speedup"])
+              for f in _sp),
+          "0.15x, 0.12x, 0.29x, 0.43x, 0.62x")
+    check("heavy no-cache speedups match Table 8",
+          all(has("$%.2f\\times$" % _sp[f]["no_cache_heavy_speedup"])
+              for f in _sp),
+          "0.17x, 0.30x, 0.77x, 1.08x, 1.43x")
+    for _stale in ("$3.61\\times$", "$5.73\\times$", "$9.28\\times$",
+                   "$1.25\\times$", "$1.88\\times$", "$0.26\\times$",
+                   "$0.28\\times$", "$0.24\\times$"):
+        check("stale speedup %s removed" % _stale, not has(_stale))
+
+    # -- Point 3: the residual is a range, the share is a floor ------------
+    _ca = _load("confounder_analysis.json")
+    _lfe = _load("lender_fixed_effects.json")
+    _rq3w = _load("rq3_weighted.json")
+    _two = abs(_ca["decomposition"]["within_strata_cell_weighted_gap_pp"])
+    _four = abs(_rq3w["cell_size_weighted_gap_pp"])
+    _lpm = abs(_lfe["linear_probability_model_with_lender_dummies"]
+               ["joint_probability_difference_pp"])
+    check("four-variable residual is reported", has("$-%.2f$" % _four),
+          "%.2f pp" % _four)
+    check("lender-FE residual is reported", has("$-%.2f$" % _lpm),
+          "%.2f pp" % _lpm)
+    check("the residual is given as a range",
+          has("2.4 to 4.1 percentage points"),
+          "2.4 to 4.1 percentage points")
+    check("the composition shares are all stated",
+          has("54.8\\,\\%") and has("69.5\\,\\%") and has("73.9\\,\\%"),
+          "54.8%, 69.5%, 73.9%")
+    check("the composition share is described as a floor",
+          has("54.8\\,\\% is a") and has("floor"),
+          "'is a floor'")
+    check("the odds ratio is converted at the base rate",
+          "corresponds to roughly $-3$" in FLAT,
+          "OR 0.843 ~ -3 pp")
+
+    # -- Point 4: the external-validation scope --------------------------
+    check("the CFPB 20.7% is not used as a comparison point",
+          "20.7\\,\\%" not in FLAT or "is not used as a comparison point" in FLAT,
+          "20.7% dropped")
+    check("the scope of external validation is stated",
+          has("Four headline quantities are checked against an external source"),
+          "four quantities, not every number")
+    check("the unvalidated numbers are named",
+          has("are not externally validated"),
+          "the two rates, the share, the gap and the ORs")
+    check("the derived_sex comparison is used instead",
+          has("18.27\\,\\%") and has("27.36\\,\\%") and has("$-9.10$ pp"),
+          "18.27 vs 27.36, gap -9.10 pp")
+    check("the same-sex pairs are not placed in the Joint group",
+          "sit inside a joint arm whose" in FLAT,
+          "same-sex pairs pull the Joint arm up")
+
+    # -- Point 5: quartile 1 is worded the same way everywhere ------------
+    check("Q1 wording: raw advantage is small",
+          has("raw advantage is small ($-1.76$ pp)"), "raw advantage is small")
+    check("Q1 wording: reverses after adjustment",
+          has("reverses after adjustment") and has("1.062"),
+          "reverses after adjustment, OR 1.062")
+    check("the old 'not present on both measures' claim is gone",
+          "the joint advantage is not present there" not in FLAT, "removed")
+
+    # -- Point 6: age is declared as used -------------------------------
+    check("age is excluded from the model and named as ECOA-protected",
+          has("Age is excluded as well")
+          and has("Equal Credit Opportunity Act"), "excluded, and named")
+    check("the age band level count is correct", has("seven-level"),
+          "seven levels, from config.AGE_BANDS")
+    check("the C.2 clustering sentence is gone",
+          "over-represented relative to their share of applications" not in FLAT,
+          "removed")
+
+    # -- Point 7: the performance prose agrees with the tables -----------
+    check("the cached arm is not claimed faster at 27.5%",
+          "the no-cache arm is faster" in FLAT,
+          "0.400 s cached vs 0.387 s no-cache")
+    check("the 1.7% difference is called noise",
+          "within the run-to-run noise" in FLAT, "0.720 vs 0.708 s")
+    check("no unmeasured row-group explanation is offered",
+          "row-group" not in FLAT and "no mechanism was measured, so none is" in FLAT,
+          "the speculation was removed")
+    check("the heavy cached range is 1.6 to 8.5 times slower",
+          has("1.6 and 8.5 times \\emph{slower}"), "1.6 to 8.5 times slower")
+    check("the heavy no-cache reversal is stated",
+          has("$1.08\\times$") and has("$1.43\\times$"), "1.08x and 1.43x")
+    check("the incl.-setup column is called not comparable",
+          "not a like-for-like figure" in FLAT, "cold start mixed with warm ones")
+    check("the cold-start arithmetic is stated",
+          has("\\textbf{4.18\\,s}") and has("0.61\\,s"),
+          "0.40 + 3.78 = 4.18 s against 0.61 s")
+    check("the cross-reference points at Appendix F, not G.1",
+          "Appendix~\\ref{app:validation}, subsection" in FLAT, "F.5")
+    check("the old 'one and seven times slower' claim is gone",
+          "between one and seven times" not in FLAT, "removed")
+
+    # -- Point 8: Figure 3 is fixed -------------------------------------
+    check("Figure 3's caption no longer claims a shared y-axis",
+          "Both panels share a y-axis" not in FLAT,
+          "each panel is scaled to its own data")
+    check("the figure-3 y-limit is computed from the data",
+          "def _ymax(" in _FIG_SRC and "ax.set_ylim(0, _ymax(" in _FIG_SRC,
+          "_ymax helper in src/figures.py")
+    check("the figure-3 quartile lookup uses the labelled index",
+          "reindex([o for o in order if o in g.index]).reset_index()" in _FIG_SRC,
+          "the reindex bug is fixed")
+except Exception as exc:  # pragma: no cover
+    check("the second-round checks could not be run", False, str(exc))
 
 # ---------------------------------------------------------------------------
 # Report

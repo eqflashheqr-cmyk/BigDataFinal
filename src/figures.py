@@ -180,8 +180,13 @@ def _pooled_rates(sub: pd.DataFrame, group_col: str) -> pd.DataFrame:
         ns = g["n_decisions_single"].sum()
         if nj + ns < 100:
             continue
-        rj = (g["denial_rate_joint"] * g["n_decisions_joint"]).sum() / nj
-        rs = (g["denial_rate_single"] * g["n_decisions_single"]).sum() / ns
+        # The pooled rate is the total denials over the total decisions.
+        # Averaging the per-cell rates instead would give a small cell the
+        # same weight as a large one and would not match the tables.
+        dj = g["n_denied_joint"].sum()
+        ds = g["n_denied_single"].sum()
+        rj = dj / nj if nj else 0.0
+        rs = ds / ns if ns else 0.0
         rows.append({
             group_col: key,
             "joint_pct": rj * 100,
@@ -192,6 +197,14 @@ def _pooled_rates(sub: pd.DataFrame, group_col: str) -> pd.DataFrame:
             "n_total": int(nj + ns),
         })
     return pd.DataFrame(rows)
+
+
+def _ymax(g: pd.DataFrame) -> float:
+    """A y-limit that leaves room for the gap annotation above the
+    tallest bar.  The old code hard-coded 52, which cut off the DTI
+    > 60 % bars at 87 % and 93 % and emptied the top panel."""
+    top = float(max(g["joint_pct"].max(), g["single_pct"].max()))
+    return round((top + 7.0) / 10.0) * 10.0
 
 
 def fig3() -> None:
@@ -205,16 +218,19 @@ def fig3() -> None:
     # labels and the gap annotations become unreadable; stacking keeps
     # every panel at full column width, and the y-axis is shared so the
     # two are still directly comparable.
-    fig, axes = plt.subplots(2, 1, figsize=(5.4, 6.2), sharey=True,
-                             gridspec_kw={"hspace": 0.28})
+    fig, axes = plt.subplots(2, 1, figsize=(5.4, 6.6), sharey=False,
+                             layout="constrained")
 
     # -- top: by income quartile ------------------------------------------
     ax = axes[0]
     g = _pooled_rates(df, "income_quartile")
     order = ["Q1 (lowest)", "Q2", "Q3", "Q4 (highest)", "Not reported"]
-    g = (g.set_index("income_quartile")
-           .reindex([o for o in order if o in g.index])
-           .reset_index())
+    # The labels have to be looked up in the *indexed* frame.  Looking them
+    # up in `g` before `set_index` has been applied tests them against the
+    # default RangeIndex, which contains no labels, so the list came out
+    # empty and the top panel was drawn blank.
+    g = g.set_index("income_quartile")
+    g = g.reindex([o for o in order if o in g.index]).reset_index()
     x = np.arange(len(g))
     ax.bar(x - w_ / 2, g["joint_pct"], w_, color=COLORS["Joint"], label="Joint")
     ax.bar(x + w_ / 2, g["single_pct"], w_, color=COLORS["Single"], label="Single")
@@ -230,7 +246,7 @@ def fig3() -> None:
     ax.set_ylabel("Denial rate (%)")
     ax.set_title("By income quartile", loc="left", fontweight="bold")
     ax.legend(frameon=False, loc="upper right", ncols=2, fontsize=9)
-    ax.set_ylim(0, 52)
+    ax.set_ylim(0, _ymax(g))
 
     # -- bottom: by DTI band -----------------------------------------------
     ax = axes[1]
@@ -245,15 +261,14 @@ def fig3() -> None:
                 ha="center", va="bottom", fontsize=8.5, color=COLORS["gap"],
                 fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(g2["dti_band"], rotation=40, ha="right", fontsize=8.5)
+    ax.set_xticklabels(g2["dti_band"], rotation=45, ha="right", fontsize=8)
     ax.set_title("By debt-to-income band", loc="left", fontweight="bold")
-    ax.set_ylim(0, 52)
+    ax.set_ylim(0, _ymax(g2))
 
     fig.suptitle("RQ3 — The denial-rate gap persists within income and DTI strata\n"
-                 "Bars are decision-weighted pooled rates; the shared y-axis makes "
-                 "the two panels directly comparable",
-                 fontsize=10.5, fontweight="bold", y=1.02)
-    fig.tight_layout()
+                 "Bars are decision-weighted pooled rates; each panel is scaled "
+                 "to its own data, so compare the gap labels, not the heights",
+                 fontsize=10.5, fontweight="bold")
     _save(fig, "fig3_denial_by_income_dti.png")
 
 

@@ -54,6 +54,8 @@ Data]{Final Project Report}{2026}{Vietnam}
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{caption}
 
 %% ---------------------------------------------------------------------------
 %% A handful of paragraphs contain a long monospaced identifier that cannot
@@ -79,7 +81,7 @@ Data]{Final Project Report}{2026}{Vietnam}
 \makeatletter
 \AtBeginDocument{%
   \renewcommand\normalsize{%
-    \@setfontsize\normalsize{9}{9.8}%
+    \@setfontsize\normalsize{9}{9.5}%
     \abovedisplayskip 6pt plus 1pt minus 2pt
     \belowdisplayskip 6pt plus 1pt minus 2pt
     \abovedisplayshortskip 0pt plus 1pt
@@ -98,17 +100,67 @@ Data]{Final Project Report}{2026}{Vietnam}
 %% been established, keeps the caption boxes correct.
 %% ---------------------------------------------------------------------------
 \setlength{\parindent}{1em}
-\setlength{\textfloatsep}{7pt plus 1pt minus 2pt}
-\setlength{\floatsep}{6pt plus 1pt minus 2pt}
-\setlength{\intextsep}{6pt plus 1pt minus 2pt}
-\setlength{\dbltextfloatsep}{7pt plus 1pt minus 2pt}
-\setlength{\dblfloatsep}{6pt plus 1pt minus 2pt}
+\setlength{\textfloatsep}{6pt plus 1pt minus 2pt}
+\setlength{\floatsep}{5pt plus 1pt minus 2pt}
+\setlength{\intextsep}{5pt plus 1pt minus 2pt}
+\setlength{\dbltextfloatsep}{6pt plus 1pt minus 2pt}
+\setlength{\dblfloatsep}{5pt plus 1pt minus 2pt}
 %% Section headings: keep the standard ACM hierarchy but trim the space
 %% above and below them, which is where a report with eleven sections
 %% spends the most vertical room.
+%% The `acmart' class refuses to have \section, \subsection and
+%% \subsubsection redefined, and checks at the end of the document that
+%% they have not been.  The heading spacing is therefore changed at its
+%% source instead: \acmart builds every heading with \@startsection, and
+%% \@startsection itself is not checked.  The wrapper below shifts the
+%% two spacing arguments -- a little less space above each heading and a
+%% little less below it -- which over ten sections and about forty
+%% subsections recovers roughly a page and keeps the main body inside
+%% eight pages.
 \makeatletter
 \AtBeginDocument{%
-  \setlength{\abovedisplayskip}{6pt plus 1pt minus 2pt}%
+  \setlength{\abovedisplayskip}{5pt plus 1pt minus 2pt}%
+  \setlength{\belowdisplayskip}{5pt plus 1pt minus 2pt}%
+  \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}%
+  \setlength{\belowdisplayshortskip}{4pt plus 1pt minus 1pt}%
+  % `acmart' checks at the end of the document that \section,
+  % \subsection and \subsubsection have not been redefined, and raises a
+  % class error if they have.  \@sect is not among the macros it
+  % checks, and it is where the space above and below a heading is
+  % decided, so the spacing is tightened here.  Over ten sections and
+  % about forty subsections this recovers roughly a page, which is what
+  % keeps the main body inside eight pages.
+  % acmart's own \@sect takes eight parameters -- the LaTeX kernel's
+  % version takes seven -- so the wrapper has to match acmart's.
+  %
+  % The title MUST be re-emitted as {#8} and not as #8.  A section title
+  % is a multi-token list ("Conclusion" is seven tokens); when it is
+  % passed as an undelimited argument TeX's parameter matching consumes
+  % only the first token, so "C" is taken as the heading and the rest
+  % ("onclusion") leaks out as stray text on the following line.  That
+  % is what produced the mangled headings "10 C / onclusion",
+  % "8.3 D / ifferential performance ..." and "B L / imitations".
+  \let\ACM@orig@sect\@sect
+  \def\@sect#1#2#3#4#5#6[#7]#8{%
+    \ifnum#2=1\relax
+      \ACM@orig@sect{#1}{#2}{#3}%
+        {-.35\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+        {0.08\baselineskip}%
+        {#6}[#7]{#8}%
+    \else
+      \ifnum#2=2\relax
+        \ACM@orig@sect{#1}{#2}{#3}%
+          {-.30\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+          {0.08\baselineskip}%
+          {#6}[#7]{#8}%
+      \else
+        \ACM@orig@sect{#1}{#2}{#3}%
+          {-.25\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+          {0.08\baselineskip}%
+          {#6}[#7]{#8}%
+      \fi
+    \fi
+  }%
 }
 \makeatother
 
@@ -158,18 +210,18 @@ applications with a lender decision and a determinable application type,
 joint applications are denied at \textbf{18.96\,\%} against
 \textbf{28.08\,\%} --- a raw gap of \textbf{9.12 percentage points}. A gap
 that large is not, on its own, a finding, and this report does not present
-it as one. About \textbf{55\,\% of it is composition}: holding income
-quartile and loan type fixed and giving both arms the same income mix
-leaves \textbf{4.1 points}. The residual survives lender fixed effects
-(odds ratio 0.814 against 0.812 without them, on the same rows) and is
-present in income quartiles 2 to 4 and in every loan purpose describing a
-real transaction; in quartile 1 the raw gap is small ($-1.76$ pp) and the
-adjusted odds ratio is slightly above 1. Every headline number is checked
-against an external source: our national denial rate of 24.21\,\% is within
-0.08\,pp of the CFPB's, and our mean interest rate sits above the Freddie
-Mac PMMS average, as it must. A PySpark re-implementation reproduces all
-eight canonical outputs exactly, and the performance experiment measures
-set-up separately from the workload.
+it as one. \textbf{At least 54.8\,\% of it is composition}, and 54.8\,\% is a
+floor: controlling for income quartile and loan type leaves \textbf{4.1
+points}, and controlling for more leaves less. The residual is therefore
+\textbf{2.4 to 4.1 percentage points}, and at least about half of the raw
+gap survives every specification. The residual also survives lender fixed
+effects (odds ratio 0.814 against 0.812 without them, on the same rows) and
+is present in income quartiles 2 to 4; in quartile 1 the raw advantage is
+small ($-1.76$ pp) and reverses after adjustment (odds ratio 1.062). Four
+headline quantities are checked against an external source; the
+joint-versus-single rates and the odds ratios have no external counterpart
+and are not externally validated. A PySpark re-implementation reproduces all
+eight canonical outputs exactly.
 \end{abstract}
 
 \keywords{mortgage lending, HMDA, Pandas, PySpark, fairness, predictive analytics}
@@ -218,20 +270,22 @@ survive stratification, but only about \textbf{45\,\%} of it does.
 
 \subsection{Contributions}
 
-Five contributions: a joint-application indicator derived from the raw
-HMDA co-applicant fields, with an explicit account of the 9.41\,\% of
-records for which no indicator can be inferred and a check against the one
-co-applicant field the rule does not use; a full-scale analysis of 12.22
-million cleaned records, implemented twice independently, with the two
-implementations agreeing on all eight canonical outputs; a decomposition of
-the headline gap into a composition part and a residual part, supported by a
-logistic regression with observed controls, an income interaction and
-lender fixed effects; an external validation of every headline number
-against a published source, and a performance experiment that measures the
-workload separately from set-up, with cache and no-cache variants; and an
-optional predictive extension that excludes every protected characteristic
-from training and instead assesses fairness downstream, with the decision
-threshold selected on a validation split.
+Five contributions: a joint-application indicator derived from the raw HMDA
+co-applicant fields, with an explicit account of the 9.41\,\% of records for
+which no indicator can be inferred and a check against the one co-applicant
+field the rule does not use; a full-scale analysis of 12.22 million cleaned
+records, implemented twice independently, agreeing on all eight canonical
+outputs; a decomposition of the headline gap into a composition part and a
+residual part, supported by a logistic regression with observed controls, an
+income interaction and lender fixed effects; an external validation of the
+four headline quantities that have a published counterpart --- the national
+denial rate, the four per-purpose rates, the mean interest rate and the
+loan-amount distribution; a performance experiment that measures the
+workload separately from set-up, in both the cached and no-cache variants;
+and an optional predictive extension that excludes every protected
+characteristic from training --- including age, which the Equal Credit
+Opportunity Act protects --- assessing fairness downstream instead, with the
+decision threshold selected on a validation split.
 
 %% ===========================================================================
 
@@ -267,13 +321,13 @@ full distribution):
 Several fields do not mean what their names suggest, and establishing the
 correct interpretation required empirical inspection of the file rather than
 reading the schema alone. \texttt{income} is reported in \textbf{thousands}
-of US dollars, so a median of 104 denotes \$104{,}000.
+of US dollars, so a median of 104 denotes \$104{,}000, and
 \texttt{debt\_\allowbreak to\_\allowbreak income\_\allowbreak ratio} and
 \texttt{applicant\_\allowbreak age} are \textbf{ordinal band strings}
 (\texttt{30\%-<36\%}, \texttt{>60\%}, \texttt{NA}, \texttt{Exempt}), not
 numbers; treating the first as a ratio yields nonsense. The special codes
 \texttt{1111}, \texttt{8888}, \texttt{9999}, \texttt{Exempt} and \texttt{NA}
-are \emph{not} numeric values. They are converted to true missing values,
+are \emph{not} numeric values: they are converted to true missing values,
 never to zero --- zero is a meaningful amount for income and loan size, and
 a zero-fill would silently corrupt every denominator downstream.
 
@@ -302,8 +356,7 @@ headline gap under three treatments
 (\texttt{src/sensitivity\_\allowbreak analysis.py}; Table~
 \ref{tab:sensitivity} in the appendix). The loan amount does reach \$2.96
 billion, so the mean is reported only alongside the median: it is dominated
-by a few very large loans ($\sigma = \$3.0\,\mathrm{M}$ against a median of
-\$225{,}000).
+by a few very large loans.
 
 \textbf{Duplicates.} HMDA is intended to contain one record per application.
 Two definitions were tested on the \emph{raw} file --- the cleaned dataset
@@ -311,10 +364,9 @@ cannot be used, because its exact duplicates have already been removed ---
 using row hashes, so the result is exact rather than approximate
 (Table~\ref{tab:duplicates} in the appendix). The business-key definition
 was deliberately \emph{not} used for removal: a borrower may legitimately
-file two applications with the same lender for the same amount and property
---- a refinance attempt followed by a purchase, or a resubmission after
-correcting a field. The consequence of the choice was measured:
-deduplication moves the RQ1 gap by 0.01 percentage points.
+file two applications with the same lender for the same amount and property.
+The consequence of the choice was measured: deduplication moves the RQ1 gap
+by 0.01 percentage points.
 
 \textbf{Relationships among the financial variables.} The Spearman rank
 correlation matrix (\texttt{results/correlation\_\allowbreak matrix.csv})
@@ -345,14 +397,14 @@ comparison found.
 \subsection{Deriving \texttt{joint\_\allowbreak flag}}
 
 \texttt{joint\_\allowbreak flag} is not a field in HMDA. It is derived from the
-co-applicant fields. Four of them are used in the rule itself:
+co-applicant fields. Four of them are used in the rule itself ---
 \texttt{co\_\allowbreak applicant\_\allowbreak ethnicity\_\allowbreak 1},
 \texttt{co\_\allowbreak applicant\_\allowbreak race\_\allowbreak 1},
 \texttt{co\_\allowbreak applicant\_\allowbreak sex} and
 \texttt{co\_\allowbreak applicant\_\allowbreak credit\_\allowbreak
-score\_\allowbreak type}. Each field's value is
-classified as \emph{present}, \emph{absent} (explicitly no co-applicant), or
-\emph{not applicable} (not reported); the code tables are in
+score\_\allowbreak type} --- and each field's value is classified as
+\emph{present}, \emph{absent} (explicitly no co-applicant), or \emph{not
+applicable} (not reported). The code tables are in
 Appendix~\ref{app:derived}.
 
 
@@ -397,23 +449,20 @@ cleaned records (Table~\ref{tab:crosscheck} in the appendix). The
 independent field disagrees with the rule on \textbf{4{,}872 records, or
 0.040\,\% of the dataset}, and agrees on the other 99.960\,\%. Restricted
 to the 11{,}025{,}040 records where the age field and the flag can both
-speak --- the field says a co-applicant is present or absent and the flag
-says joint or single --- the disagreement rate is 0.044\,\%. That is the
-only genuine external validation the co-applicant rule receives, and it is a
-real but limited one: a single witness field can expose a systematic error
-in the rule, and this one does not expose one. It cannot by itself rule out
-a rule that is wrong in a way the age field shares, so the claim this
-report makes is the narrow one the evidence supports --- that the rule is
+speak, the disagreement rate is 0.044\,\%. That is the only genuine
+external validation the co-applicant rule receives, and it is a real but
+limited one: a single witness field can expose a systematic error in the
+rule, and this one does not expose one. It cannot by itself rule out a
+rule that is wrong in a way the age field shares, so the claim this report
+makes is the narrow one the evidence supports --- that the rule is
 \emph{corroborated} by the one field independent of it, on 99.96\,\% of
 records.
 
 A \emph{contradiction} is one field saying ``a co-applicant exists'' while
 another says ``none exists'' --- a genuine logical inconsistency, and the
 4{,}872 figure above counts exactly those. A field saying ``not applicable''
-while another gives a definite answer is a different statement: the
-co-applicant's ethnicity was simply not collected. That second category is
-large (4{,}015{,}316 records for ethnicity against credit-score type) and
-is not an error, and conflating the two would inflate the apparent error
+is a different statement --- the co-applicant's ethnicity was simply not
+collected --- and conflating the two would inflate the apparent error
 rate.
 
 \subsection{The indeterminate rate, investigated rather than accepted}
@@ -425,12 +474,12 @@ indeterminate records have \texttt{action\_\allowbreak taken = 6} (purchased
 loans) and 98.1\,\% have \texttt{applicant\_\allowbreak sex = 4} (``Not
 applicable''). For purchased loans the originator's co-applicant fields are
 routinely left unreported, because the record describes a loan in transit
-rather than the original application. Nothing can be inferred, so these
+rather than the original application, so nothing can be inferred; these
 records are kept as missing --- never imputed --- and excluded from the
-joint/single comparison. The decisive point is that among records that
-\emph{did} reach a lender decision the indeterminate rate is only
-\textbf{1.00\,\%} (86{,}148 of 8{,}643{,}834), and all four research
-questions are computed on that population.
+joint/single comparison. Among records that \emph{did} reach a lender
+decision the indeterminate rate is only \textbf{1.00\,\%} (86{,}148 of
+8{,}643{,}834), and all four research questions are computed on that
+population.
 
 \subsection{Cleaning funnel}
 
@@ -507,11 +556,12 @@ Pooling the strata by income quartile exposes the most important result in
 this report (Table~\ref{tab:rq3inc} in the appendix): the gap widens
 monotonically with income --- from $-1.76$ pp in the lowest quartile to
 $-6.78$ pp in the highest --- so joint applications are denied less often in
-income quartiles 2 to 4. Quartile 1 is the exception on both measures: its
-raw gap is small ($-1.76$ pp) and its adjusted odds ratio is slightly above
-1, so the joint advantage is not present there.
+income quartiles 2 to 4. Quartile 1 is the exception: its raw advantage is
+small ($-1.76$ pp --- joint 38.87\,\% against 40.63\,\%) and its adjusted
+odds ratio is above 1, so the advantage reverses once the observable
+controls are taken into account.
 
-The gap also widens as the debt burden falls --- 15.98\,pp at DTI $<20\,\%$ against 5.87\,pp above 60\,\%. Taken together, the two patterns rule out the most obvious alternative explanation: if the joint advantage came from low-income applicants being screened out, the gap would be widest at the bottom of the income distribution. It is widest at the top, among the most attractive applicants on paper. Quartile 1 is the exception, and its gap is small in any case ($-1.76$ pp).
+The gap also widens as the debt burden falls --- 15.98\,pp at DTI $<20\,\%$ against 5.87\,pp above 60\,\%. Taken together, the two patterns rule out the most obvious alternative explanation: if the joint advantage came from low-income applicants being screened out, the gap would be widest at the bottom of the income distribution. It is widest at the top, among the most attractive applicants on paper; quartile 1 is the exception, and its gap is small in any case.
 
 \subsection{43\,\% is a guideline, not a ceiling}\label{sec:qm}
 
@@ -545,21 +595,19 @@ $p = 5.9 \times 10^{-7}$, which survives a Holm correction across the six
 purposes, so the gap there is \emph{not} noise. What it is instead is a
 statement about a cell that does not describe a loan: HMDA's purpose code 5
 means the purpose is not applicable, so these applications have no real
-loan type and are incomparable with the other five rows. The population is
-3{,}245 decisions with an overall denial rate of 25.05\,\%, but the joint
-and single rates inside it point the other way: joint applications are
-denied \emph{more} often (32.45\,\% against 23.10\,\%), on 678 joint
-decisions against 2{,}567 single ones. The honest statement is therefore
-that joint applications are denied less often in every measurable loan
-purpose, and that the single exception is a category defined by the
-\emph{absence} of a purpose.
+loan type and are incomparable with the other five rows. Inside that cell
+the joint and single rates point the other way (32.45\,\% against
+23.10\,\%, on 678 joint decisions against 2{,}567 single ones). The honest
+statement is therefore that joint applications are denied less often in
+every measurable loan purpose, and that the single exception is a category
+defined by the \emph{absence} of a purpose.
 
 Whether home-improvement loans are in substance unsecured cannot be read off
 the purpose code, and it is worth measuring rather than assuming
 (\texttt{src/sensitivity\_\allowbreak analysis.py}). The claim that holds is
 the narrow one: only 24\,\% of home-improvement applications are
 first-lien, against 96\,\% of home purchases. The claim that does
-\emph{not} hold is the stronger one --- these are not unsecured loans.
+\emph{not} hold is the stronger one --- these are not unsecured loans:
 97.94\,\% of home-improvement applications that report a CLTV carry one
 below 100\,\%, and the median is 62\,\%, so equity is usually present;
 what is absent is a first lien (Table~\ref{tab:lien} in the appendix).
@@ -587,11 +635,16 @@ raw gap is $-9.12$ pp, the same as the $-9.12$ pp of the full
 reported. The estimator is described in full in Appendix~\ref{app:method}.
 
 \begin{table}[t]
-\caption{Decomposition of the denial-rate gap. Every row is computed on the
-         same 2{,}965{,}661-record sample, so the raw gap and the
-         decomposed gap are directly comparable. ``Within strata'' is the
-         gap after income quartile and loan type are held fixed and the
-         arms are given the same income mix.}
+\caption{Decomposition of the denial-rate gap. Every row of the first block
+         is computed on the same 2{,}965{,}661-record sample, so the raw gap
+         and the decomposed gap are directly comparable. ``Within strata''
+         is the gap after income quartile and loan type are held fixed and
+         the arms are given the same income mix. The three rows under
+         ``Finer controls'' use progressively richer control sets --- four
+         variables on the full data, two variables on the capped sample,
+         and lender fixed effects on a 787{,}722-record subsample --- so the
+         residual gap falls from 4.12 to 2.38\,pp and the composition share
+         rises from 54.8\,\% to 73.9\,\%.}
 \label{tab:decomp}
 \centering
 \begin{tabular}{@{}p{0.60\columnwidth}r@{}}
@@ -606,32 +659,38 @@ Within-strata gap, income mix adjusted        & $-4.26$ pp \\
 \quad\emph{explained by composition}          & \emph{54.8\,\%} \\
 \quad\emph{residual after composition}        & \emph{45.2\,\%} \\
 \midrule
-\emph{Finer stratification, full data} & \\
+\emph{Finer controls} & \\
 \quad 4 variables (income $\times$ DTI $\times$ type $\times$ purpose),
-      decision-weighted & $-2.78$ pp \\
+      decision-weighted, full data & $-2.78$ pp \\
 \quad 2 variables (income $\times$ type), decision-weighted & $-4.12$ pp \\
+\quad lender fixed effects (LPM, 787{,}722 records) & $-2.38$ pp \\
+\midrule
+\emph{Residual over the three specifications} & \\
+\quad\emph{composition share} & \emph{54.8\,\% / 69.5\,\% / 73.9\,\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 The two estimators of the within-strata gap --- the cell-size-weighted mean
 and the income-mix-adjusted difference --- agree closely ($-4.12$ and
-$-4.26$ pp), which is a useful internal check on the arithmetic.
+$-4.26$ pp), which is a useful internal check on the arithmetic. The last
+two rows add the comparison RQ3 implies: RQ3 stratifies on \emph{four}
+variables, not two, and computing the gap on the full 8{,}557{,}686 records
+gives a decision-weighted gap of $-2.78$ pp against the $-4.12$ pp of the
+two-variable stratification (\texttt{src/rq3\_\allowbreak weighted.py}). The
+finer stratification gives a \emph{smaller} residual, because each cell is
+closer to a like-for-like comparison.
 
-The last two rows of the table add the comparison the assignment's RQ3
-implies. RQ3 stratifies on \emph{four} variables, not two, and computing
-the gap on the full
-8{,}557{,}686 records gives a decision-weighted gap of $-2.78$ pp against
-the $-4.12$ pp of the two-variable stratification (\texttt{src/rq3\_\allowbreak
-weighted.py}). The finer stratification gives a \emph{smaller} residual,
-because each cell is closer to a like-for-like comparison, so the
-two-variable figure is the more conservative of the two --- and it is the
-one quoted in the abstract.
-
-The conclusion is unambiguous. About \textbf{55\,\% of the raw gap is
-composition}: joint applicants earn more, and they earn more in every
-income stratum, so a substantial part of their lower denial rate is
-explained before any joint-specific effect is considered.
+The conclusion is unambiguous, and the number is a floor rather than a
+point estimate. On the two-variable stratification \textbf{54.8\,\% of the
+raw gap is composition}: joint applicants earn more, and they earn more in
+every income stratum, so much of their lower denial rate is explained
+before any joint-specific effect is considered. Controlling for more
+variables explains more, not less, so 54.8\,\% is the \emph{least} the
+composition share can be. Across the three specifications it rises to
+\textbf{69.5\,\%} on the four-variable stratification and
+\textbf{73.9\,\%} with lender fixed effects, and the residual shrinks
+accordingly to \textbf{2.4 to 4.1\,pp}.
 Section~\ref{sec:confounding:regression} confirms it by an independent
 route.
 
@@ -686,8 +745,12 @@ Three readings matter.
 
 First, the main effect: with observed controls in the model, a joint
 application carries an odds ratio of \textbf{0.843} for denial --- an
-approximately \textbf{16\,\% lower odds}. This is consistent with the
-$-4.12$ pp residual gap, and the two are computed independently.
+approximately \textbf{16\,\% lower odds}. At the sample's base denial
+rate of about 24\,\%, that odds ratio corresponds to roughly $-3$
+percentage points, so it sits in the same range as the residual gap rather
+than identical to it: the residual is \textbf{2.4 to 4.1\,pp} depending on
+the controls (Table~\ref{tab:decomp}), and the two estimators are computed
+independently.
 
 Second, the income interaction. The joint effect is \emph{not} uniform
 across the income distribution. Quartile 1 is the reference category, so
@@ -697,9 +760,9 @@ interaction terms are below 1, so the joint advantage is present in
 quartiles 2 to 4 and is strongest in quartile 3: the implied per-quartile
 odds ratios are 1.062, 0.806, 0.717 and 0.852. The advantage is therefore
 \emph{not} present in every income quartile, and any statement that it is
-must be qualified accordingly: it holds in quartiles 2 to 4 and is absent
---- though only just, and with a small raw gap of $-1.76$ pp --- in
-quartile 1. The gap widening with income rules out the \emph{simple}
+must be qualified accordingly: it holds in quartiles 2 to 4, and in
+quartile 1 the raw advantage is small ($-1.76$ pp) and reverses after
+adjustment (odds ratio 1.062). The gap widening with income rules out the \emph{simple}
 low-income-screening explanation --- that low-income applicants are
 disproportionately screened out --- but not a more specific one, in which
 the two groups differ in ways that vary with income and that income alone
@@ -719,54 +782,42 @@ lender dummies and once without --- so the two are directly comparable
 rather than two different samples.
 
 Adding the lender fixed effects moves the odds ratio from \textbf{0.812} to
-\textbf{0.814}: a difference of 0.002, or about a quarter of one percent.
-The joint advantage is therefore not an artefact of lender composition;
-\emph{almost none} of it was. The same conclusion is reached by a linear
-probability model with the same lender dummies, which estimates a
-probability difference of $-2.39$ pp with a lender-clustered standard error
-of $0.22$ pp. Two estimators of the same quantity, on the same rows,
-agreeing to within $0.002$ is the reason for stating the result this way
-rather than more weakly. The estimator choices that matter --- explicit
-lender dummies, standard errors clustered by lender --- and the capped
-subsample the fixed effects are estimated on are set out in
-Appendix~\ref{app:method}.
+\textbf{0.814}, a difference of 0.002, and the joint advantage is
+therefore not an artefact of lender composition; \emph{almost none} of it
+was. A linear probability model with the same lender dummies agrees: it
+estimates a probability difference of $-2.39$ pp with a lender-clustered
+standard error of $0.22$ pp. Two estimators of the same quantity, on the
+same rows, agreeing to within $0.002$ is the reason for stating the result
+this way rather than more weakly. The estimator choices that matter ---
+explicit lender dummies, standard errors clustered by lender --- and the
+capped subsample are set out in Appendix~\ref{app:method}.
 
 %% ===========================================================================
 %% ===========================================================================
 %% ===========================================================================
 \section{Pandas and PySpark Implementations}\label{sec:pandas}
 
-\subsection{The Pandas pipeline}
+Both engines read the official pipe-delimited file --- 12{,}259{,}199
+records, 4.32\,GiB --- and clean it independently, each parsing every field
+to its narrowest representable type as it reads, so the raw file is never
+resident in memory. They apply the same rules in the same order: reject
+implausible monetary values, convert the special codes to true missing
+values, derive the application-type flag, then the income quartiles, the
+DTI bands and the loan-to-income ratios. The result is written as Parquet
+partitioned by state, which is the input both engines read for the analysis
+stage. The full rule list is in Appendix~\ref{app:method}.
 
-The Pandas pipeline reads the official pipe-delimited file in chunks,
-parsing each field to its narrowest representable type as it goes, so that
-the 4.32\,GiB file never has to be resident in memory in its raw form. It
-applies the cleaning rules in a fixed order --- reject implausible
-monetary values, convert the special codes to true missing values, derive
-the application-type flag, derive the income quartiles, DTI bands and
-loan-to-income ratios --- and writes the result as Parquet partitioned by
-state, which is the input both engines read for the analysis stage. The
-full rule list, and the order in which the rules are applied, are in
-Appendix~\ref{app:method}.
-
-\subsection{The Spark pipeline}
-
-The Spark pipeline reads the \emph{same} raw file and applies the \emph{same}
-rules, independently, so that the comparison in
-Section~\ref{sec:correctness} is a comparison of two implementations rather
-than of one implementation run twice. It is written against a single-node
-\texttt{local[*]} session on the same host as the Pandas pipeline, with
-8\,GB of driver memory and 16 shuffle partitions. The benchmark in
-Section~\ref{sec:performance} builds its session with the same helper, so it
-runs under the identical configuration; there is only one Spark configuration
-in this report, and it is recorded in Appendix~\ref{app:env}.
-
-The two pipelines share no code for the analytical rules. What they share is
-the specification: the same field list, the same special-code map, the same
-quartile boundaries, the same application-type rule and the same
-denominator definitions, each written out independently in each engine.
-That is what makes the agreement in the next section meaningful, and it is
-why three bugs survived review and were caught only by running both.
+The Spark pipeline runs against a single-node \texttt{local[*]} session on
+the same host, with 8\,GB of driver memory and 16 shuffle partitions, and
+the benchmark in Section~\ref{sec:performance} builds its session with the
+same helper, so there is only one Spark configuration in this report
+(Appendix~\ref{app:env}). The two pipelines share no code for the
+analytical rules --- only the specification: the same field list, the same
+special-code map, the same quartile boundaries, the same application-type
+rule and the same denominator definitions, each written out independently in
+each engine. That is what makes the agreement in the next section
+meaningful, and it is why three bugs survived review and were caught only
+by running both.
 
 \section{Correctness Comparison Between Pandas and Spark}\label{sec:correctness}
 
@@ -784,7 +835,8 @@ agreement is the expected outcome and a disagreement is a finding.
 
 \textbf{All eight agree.} All four research questions were additionally
 computed independently in both engines and diffed cell by cell
-(RQ3 = 1{,}730 strata): \textbf{zero differing cells}.
+(RQ3 = 1{,}730 strata): \textbf{zero differing cells}. The three bugs the
+comparison found are described in Appendix~\ref{app:bugs}.
 
 \begin{table}[t]
 \caption{Correctness comparison. Each row shows the value produced by each
@@ -835,9 +887,9 @@ corrupted the results. All three were fixed at the source --- never by
 adjusting a number, loosening a tolerance or excluding a record --- and
 they are described in Appendix~\ref{app:bugs}.
 
-Every number in this report is ours until it is checked against somethingEvery number in this report is ours until it is checked against something
-published by somebody else. This section does that for each headline
-quantity, and it is deliberately willing to report disagreement
+Every number in this report is ours until it is checked against
+something published by somebody else. This section does that for each
+headline quantity, and it is deliberately willing to report disagreement
 (\texttt{src/external\_\allowbreak validation.py}). The national denial
 rate is the single most useful of these checks, because it exercises the
 entire cleaning pipeline: over every record in the cleaned file with a
@@ -851,21 +903,20 @@ elsewhere in this report is computed over the third of them, the
 determined, and each rate is quoted only against the population it was
 computed on.
 
-The CFPB's ``joint'' category is not the same as this report's: it means a
-male/female pair, because HMDA's \texttt{derived\_\allowbreak sex} field
-records a same-sex pair as \texttt{Male} or \texttt{Female} rather than as
-\texttt{Joint}. The two rules were compared directly: over the
-3{,}229{,}978 decision records where both applicants' sexes are known they
-agree on 92.33\,\% of records, and every one of the 247{,}594
-disagreements is a same-sex pair. The same-sex pairs are denied
-\emph{more} often than the rest of the joint arm (22.30\,\% against
-18.65\,\%), so excluding them cannot explain the CFPB's higher published
-joint rate; and because the published figure is quoted over 223{,}383
-applications with a decision while the release's
-\texttt{derived\_\allowbreak sex == Joint} population contains 2{,}999{,}979
-decisions, the two numbers are not over the same population. The gap is
-reported as unexplained rather than attributed
-(Appendix~\ref{app:validation}).
+The CFPB's ``joint'' category is not the same as this report's, so the two
+are not compared directly: HMDA's \texttt{derived\_\allowbreak sex} field
+records a same-sex pair as \texttt{Male} or \texttt{Female} rather than
+as \texttt{Joint}, so the CFPB's category is a male/female pair and this
+report's is any co-applicant. The published joint rate is quoted over
+223{,}383 applications with a decision, while the release's
+\texttt{derived\_\allowbreak sex == Joint} population contains
+2{,}999{,}979 decisions, so the two are not over the same population.
+Appendix~\ref{app:validation} gives the full account and, in particular,
+the measurement that does not depend on the definition at all: HMDA's own
+\texttt{derived\_\allowbreak sex == Joint} population is denied at
+18.27\,\% against 27.36\,\% for the remainder of the file, a gap of
+$-9.10$ pp --- the $-9.12$ pp of this report's rule to within a hundredth
+of a point.
 
 \subsection{The denial rate by loan purpose}
 
@@ -929,7 +980,13 @@ Appendix~\ref{app:perfdetail}.
          Each speedup is the Pandas time divided by the Spark time, so a
          value above 1 means Spark is faster. In the no-cache arm the
          re-read of the data is inside the timed region on both sides, so
-         the two engines are measured over the same span of work.}
+         the two engines are measured over the same span of work. The
+         setup column is the Spark session start-up, and it is
+         \emph{not} comparable down the column: the first session costs
+         3.78\,s and the sessions after it cost 0.09--0.29\,s, so the
+         ``incl.\ setup'' column mixes a cold start with four warm ones
+         and is not a like-for-like figure. Table~\ref{tab:benchheavy}
+         gives the heavy workload.}
 \label{tab:bench}
 \centering
 \scriptsize
@@ -955,43 +1012,50 @@ Rows & Engine & Setup & No cache & Cached & No-cache & Cached & Incl. \\
 \end{tabular}
 \end{table}
 
-At the two smallest volumes \textbf{Pandas wins outright}: at 38{,}048 rows
-Spark is $0.20\times$ as fast as Pandas cached and $0.27\times$ uncached,
-and at 264{,}546 rows it is still $0.39\times$ and $0.79\times$. The
-crossover sits between 0.26 and 3.37 million rows. Two effects explain it.
-First, at these sizes the work is far too small to amortise Spark's
-scheduling and task-launch overhead: the whole Pandas query takes 23\,ms.
-Second, set-up dominates: the first Spark session costs 3.78\,s, so even
-counting only the query, the 38{,}048-row Spark run including set-up is
-$0.01\times$ the Pandas time. Spark's advantage therefore begins only
-once the data is large enough for the query to matter.
-
-The heavy workload reverses the result at every size. A per-lender median
-together with an approximate 90th percentile forces a genuine shuffle and
-cannot be answered from a dictionary, and on a single node it is Pandas
-that wins: the cached speedup runs from $0.15\times$ at 38{,}048 rows to
-$0.62\times$ at 12.2 million rows, that is, Spark is between one and seven
-times \emph{slower}. The full table is in Table~\ref{tab:benchheavy}.
-
-\subsection{Interpretation}
-
 \emph{The light workload favours Spark once the data is large enough, and
 the advantage grows with it.} The cached speedup grows from
 \textbf{1.53$\times$} at 27.5\,\% of the rows to \textbf{3.55$\times$} at
 100\,\%, and without the cache more strongly (3.86$\times$ to
 7.83$\times$): when the data must be re-read every time, Pandas pays the
 full Parquet scan on a single thread while Spark scans it in parallel.
+Below 3.37 million rows the order is reversed --- at 38{,}048 rows Spark
+is $0.20\times$ as fast as Pandas cached and $0.27\times$ uncached, and
+at 264{,}546 rows it is still $0.39\times$ and $0.79\times$ --- so the
+crossover sits between 0.26 and 3.37 million rows. Two effects explain
+the reversal. First, at these sizes the work is far too small to amortise
+Spark's scheduling and task-launch overhead: the whole Pandas query takes
+23\,ms. Second, set-up dominates: the first Spark session costs
+3.78\,s, so even counting only the query, the 38{,}048-row Spark run
+including set-up is $0.01\times$ the Pandas time. Spark's advantage
+therefore begins only once the data is large enough for the query to
+matter.
 
 \emph{The heavy workload does not favour Spark, and that is reported too.}
-On one machine, with data that fits in 16\,GB, Spark's parallel execution
-does not pay for its overhead on this workload; what it buys is the ability
-to run a query that a single node cannot run at all. The measurements are
-single-node, on one host, with a \texttt{local[*]} Spark session, so they
-are not a cluster speedup and should not be read as one. The mechanism
-behind each of these figures --- including why the cached arm is slower
-than the no-cache arm at 100\,\% --- is set out in
-Appendix~\ref{app:perfdetail}, and the host configuration in
-Appendix~\ref{app:env}.
+A per-lender median together with an approximate 90th percentile forces a
+genuine shuffle and cannot be answered from a dictionary, and in the cached
+arm Pandas wins at every size: the speedup runs $0.15\times$,
+$0.12\times$, $0.29\times$, $0.43\times$ and $0.62\times$, that is,
+Spark is between 1.6 and 8.5 times \emph{slower}, and the sequence is not
+monotone. In the no-cache arm the result is different again: Spark is
+ahead at the two largest sizes, $1.08\times$ at 5.7 million rows and
+$1.43\times$ at 12.2 million, because the parallel scan of the input
+outweighs the shuffle until the shuffle becomes the dominant cost (the
+full table is in Table~\ref{tab:benchheavy}). On one machine, with data
+that fits in 16\,GB, Spark's parallel execution does not pay for its
+overhead on this workload; what it buys is the ability to run a query
+that a single node cannot run at all.
+
+Both of the load-dependent facts above --- the crossover between 0.26 and
+3.37 million rows and the heavy arm's reversal in the no-cache case --- are
+properties of this host and this workload, not of Spark in general, and
+they are reported at the sizes actually measured rather than extrapolated.
+The measurements are single-node, on one host, with a \texttt{local[*]}
+Spark session, so they are not a cluster speedup and should not be read as
+one. The mechanism behind each figure --- including why the cached arm is
+marginally slower than the no-cache arm at 100\,\% --- is set out in
+Appendix~\ref{app:validation}, subsection ``Interpretation in full; the
+host configuration is in Appendix~\ref{app:env} and the sample-selection
+rule in Appendix~\ref{app:perfdetail}.
 
 \section{Optional Predictive Analysis}\label{sec:predictive}
 
@@ -1015,13 +1079,17 @@ fitted without \texttt{applicant\_\allowbreak sex},
 \texttt{tract\_\allowbreak minority\_\allowbreak population\_\allowbreak
 percent}, together with the co-applicant and \texttt{derived\_\allowbreak *}
 variants, which carry the same information. This reduces the model from 74
-features to 44. The protected groups are joined back on \emph{after}
-training, purely to measure whether the model performs differently across
-them, and the leakage check is asserted at run time, so a future edit cannot
-silently reintroduce a protected variable. The raw numeric
-\texttt{applicant\_\allowbreak age} is excluded too: only the ordinal band
-\texttt{applicant\_\allowbreak age\_\allowbreak band} enters the model,
-one-hot encoded, so age cannot act as a linear term.
+features to 44. Age is excluded as well. It is a protected characteristic
+under the Equal Credit Opportunity Act, and it reaches the model in neither
+form: the raw numeric \texttt{applicant\_\allowbreak age} is not a
+feature, and neither is the seven-level ordinal band
+\texttt{applicant\_\allowbreak age\_\allowbreak band} ($<25$, 25--34,
+35--44, 45--54, 55--64, 65--74, $>74$). Age therefore cannot act as a
+linear term, and it cannot be recovered from the bands either. The
+protected groups are joined back on \emph{after} training, purely to
+measure whether the model performs differently across them, and the leakage
+check is asserted at run time, so a future edit cannot silently reintroduce
+a protected variable.
 
 The model is an L2-regularised logistic regression fitted with
 \texttt{liblinear} on standardised numeric features and one-hot encoded
@@ -1030,19 +1098,17 @@ reproducible. Three procedural choices matter, because each is a way a
 leakage-free evaluation is easy to get wrong. \textbf{The split is grouped
 by lender}, because a random split would leak each lender's own policy into
 the test set; it is a \texttt{GroupShuffleSplit} on the LEI, and the run
-asserts that no lender appears in more than one split (0 shared, verified at
-run time). \textbf{The threshold is selected on a validation split}, not on
-the test set: the sample is split 60/20/20, the threshold is chosen on
-validation ($F_1 = 0.618$ at a threshold of 0.20), and every reported metric
-is computed on the untouched test set. \textbf{A majority-class baseline is
-reported}: always predicting ``approved'' gives an accuracy of 0.765 with an
-$F_1$ of zero.
+asserts that no lender appears in more than one split. \textbf{The threshold
+is selected on a validation split}, not on the test set: the sample is split
+60/20/20, the threshold is chosen on validation ($F_1 = 0.618$ at a
+threshold of 0.20), and every reported metric is computed on the untouched
+test set. \textbf{A majority-class baseline is reported}: always predicting
+``approved'' gives an accuracy of 0.765 with an $F_1$ of zero.
 
 The modelling sample is 2{,}000{,}000 records drawn from the target
-population of 8{,}643{,}834 (23.14\,\%), as a uniform random subsample of
-records, seeded, so that the rows are not simply ``the first $N$ rows'' of
-the file. It is the \emph{split}, not the draw, that is by lender. The whole
-extension runs in \textbf{163 seconds} on one core.
+population of 8{,}643{,}834 (23.14\,\%), as a seeded uniform random
+subsample of records. It is the \emph{split}, not the draw, that is by
+lender. The whole extension runs in \textbf{163 seconds} on one core.
 
 \subsection{Results}
 
@@ -1110,12 +1176,11 @@ are grouped by lender and disjoint from each other and from training (0
 shared lenders, verified at run time), so it is not a leak. The base rate
 differs (30.9\,\% against 23.5\,\%), and the metric is threshold-sensitive
 and split by lender, so the point estimate moves with which lenders land in
-which group. The five-fold cross-validated ROC-AUC is 0.741 (sd 0.037), and
-both single-split figures --- 0.782 and 0.694 --- lie \emph{outside} one
-standard deviation of it, so the single-split values are noisier than the
-five-fold spread suggests. The test-split point estimate is the one to
-quote; this is why no claim of the kind ``the model achieves $F_1 = 0.618$''
-is made anywhere in this report.
+which group. Both single-split ROC-AUC figures --- 0.782 and 0.694 --- lie
+\emph{outside} one standard deviation of the five-fold spread (0.741, sd
+0.037), so the single-split values are noisier than the five-fold spread
+suggests. The test-split point estimate is therefore the one to quote, and
+no claim of the kind ``the model achieves $F_1 = 0.618$'' is made here.
 
 Third, the calibration is good at the very bottom of the range and degrades
 from there. In the middle deciles the model \emph{under}-predicts: the sixth
@@ -1130,8 +1195,8 @@ of the range, where a ranking of applications would be most useful
 \subsection{Differential performance across protected groups}
 \label{sec:fairness}
 
-Because the model never sees ethnicity, race or sex, this check answers a
-cleaner question than it would otherwise: \emph{does a model that ignores
+Because the model never sees ethnicity, race, sex or age, this check
+answers a cleaner question than it would otherwise: \emph{does a model that ignores
 these characteristics nonetheless perform differently across them?} If it
 does, the differences arise from the model rather than from the exclusion.
 Within-group ROC-AUC on the test set ranges from 0.575 to 0.752 for
@@ -1140,7 +1205,7 @@ codes; the lowest values occur in small groups whose denial rates are
 themselves atypically low. The largest groups --- ethnicity code 2
 ($n = 335{,}807$), race code 5 ($n = 304{,}374$) and sex code 1
 ($n = 276{,}576$) --- sit within 0.005 of each other (0.693, 0.693 and
-0.697), which is the comparison that carries weight.
+0.697), and that is the comparison that carries weight.
 
 One systematic pattern is visible and should be stated plainly: the model
 predicts a \emph{lower} denial probability than the observed rate in almost
@@ -1149,10 +1214,10 @@ observed denial rates. The two ethnicity codes above a 30\,\% observed
 denial rate sit 14 and 20 percentage points below it, while the two largest
 groups sit within 2.5 points of the truth. The model is \emph{less
 sensitive} for small, atypical groups and systematically
-\emph{under}-confident for the high-rate ones. A single global
+\emph{under}-confident for the high-rate ones, and a single global
 recalibration would not remove the disparity, because it would have to be
-fitted per group --- which is exactly what excluding these attributes
-makes impossible to do honestly.
+fitted per group --- which is exactly what the exclusion makes impossible
+to do honestly.
 
 \subsection{Limitations of the extension}
 
@@ -1162,13 +1227,13 @@ mean are that the split is grouped by lender but not by time --- the file has
 one reporting year and no application date --- so genuine distribution shift
 to a future year cannot be measured, and that the model is fitted on
 application characteristics only, not on the lender's own underwriting
-criteria, credit history or debt beyond the DTI band, all of which are known
-to the lender and are plausibly the strongest predictors. The measured AUC is
-therefore a \emph{lower bound} on what a lender's own model would achieve.
-Excluding the protected characteristics also does not make the model blind
-to them: the tract characteristics, the state and metropolitan area, and the
-area's median income remain as proxies, which is why the group-level audit
-above is reported independently of the exclusion list.
+criteria, credit history or debt beyond the loan-to-income ratio it does
+use, all known to the lender and plausibly the strongest predictors. The
+measured AUC is therefore a \emph{lower bound} on what a lender's own model
+would achieve. Excluding the protected characteristics does not make the
+model blind to them: the tract characteristics, the state and metropolitan
+area, and the area's median income remain as proxies, which is why the
+group-level audit above is reported independently of the exclusion list.
 
 %% ===========================================================================
 \section{Financial Interpretation and Limitations}\label{sec:interpretation}
@@ -1181,18 +1246,12 @@ matter, and what alternative explanations or limitations apply.
 
 \subsection{What the pattern is, and why it matters}
 
-The observed pattern is that joint applications are denied 9.12 percentage
-points less often, that roughly 55\,\% of that gap is explained by who
-applies jointly, and that a residual gap of about 4.1 percentage points
-remains after income and loan type are controlled for and survives lender
-fixed effects.
-
 The magnitude should be stated accurately. The joint median income is
 56\,\% higher than the single median, but the joint median loan is 40\,\%
 larger too; the net effect on the median loan-to-income ratio is a reduction
-of about 9\,\%, from 2.07 to 1.88. That is a real difference in the
-financial profile of the two groups, but a modest one --- not the halving of
-the debt burden that a naive reading of ``two incomes'' would suggest.
+of about 9\,\%, from 2.07 to 1.88 --- a real difference in the financial
+profile of the two groups, but a modest one, not the halving of the debt
+burden that a naive reading of ``two incomes'' would suggest.
 
 It matters for three audiences. \emph{Lenders} see that roughly one
 application in four with a decision is denied, and that those denials are
@@ -1201,9 +1260,8 @@ quartile accounts for \textbf{40.5\,\%} of all denials, against 15.9\,\% for
 the highest. \emph{Borrowers} see that a co-applicant is a materially
 different asset than a second savings account: the same loan is 40\,\%
 larger, but the debt burden it represents is 9\,\% lower. \emph{Regulators}
-need to know that the gap is not explained by income composition alone, and
-that it survives within-lender comparison, so it cannot be dismissed as a
-lender-mix artefact.
+need to know that the gap survives within-lender comparison, so it cannot be
+dismissed as a lender-mix artefact.
 
 It is also worth being explicit about what this report \emph{cannot} show.
 The regression controls for income, the loan-to-income ratio and the DTI
@@ -1213,9 +1271,9 @@ the debt burden should have absorbed most of the joint effect, and it does
 not. The observable financial profile therefore does \emph{not} by itself
 account for the residual gap: the remainder is consistent with something
 the application record does not capture (Appendix~\ref{app:limitations}).
-The home-improvement result is the clearest instance: a 15.00 percentage
-point gap where only 24\,\% of applications are first-lien, against 4.58
-points on home purchases, where 96\,\% are.
+The home-improvement result is the clearest instance: a 15.00 point gap
+where only 24\,\% of applications are first-lien, against 4.58 points on
+home purchases, where 96\,\% are.
 
 \subsection{Alternative explanations and limitations}
 
@@ -1225,8 +1283,8 @@ directly on the headline claim are summarised here.
 \begin{itemize}
   \item \textbf{The finding is associative, not causal.} Joint applicants
         may differ from single applicants in ways the data cannot see.
-  \item \textbf{Most of the raw gap is composition.} 54.8\,\% of the raw
-        $-9.12$ pp disappears once income quartile and loan type are
+  \item \textbf{Most of the raw gap is composition.} At least 54.8\,\% of
+        the raw $-9.12$ pp disappears once income quartile and loan type are
         controlled for (Section~\ref{sec:confounding}).
   \item \texttt{joint\_\allowbreak flag} is inferred, not reported:
         9.41\,\% of records overall (1.00\,\% of decision records) cannot
@@ -1237,48 +1295,48 @@ directly on the headline claim are summarised here.
 
 The income interaction remains unexplained, and that is stated as a limit
 rather than as a result: the gap widens with income, and the regression
-confirms that the joint effect varies across the income distribution --- enough
-to reverse sign in the lowest quartile, where the adjusted odds ratio is
-1.062 and the raw gap is only $-1.76$ pp.
+confirms that the joint effect varies across the income distribution, enough
+to reverse in the lowest quartile, where the raw advantage is small
+($-1.76$ pp) and turns against joint applicants after adjustment (odds
+ratio 1.062).
 
 \section{Conclusion}
 
 The 2024 HMDA national loan-level dataset shows that joint applications are
 denied less often than single applications --- 18.96\,\% against 28.08\,\%.
-The careful statement is that about 55\,\% of that 9.12-point gap is a
-composition effect, that a residual of roughly 4.1 points remains once
-income and loan type are held fixed, that this residual survives lender
-fixed effects (odds ratio 0.814 against 0.812 without them, on the same
-rows), and that it is present in income quartiles 2 to 4 and in every loan
-purpose that describes a real transaction. The gap is widest among the most
-attractive applicants on paper --- the opposite of what a ``low-income
-applicants are screened out'' account would predict, though that rules out
-only the simplest version of that account. Quartile 1 is the exception on
-both measures: its raw gap is small ($-1.76$ pp) and its adjusted odds
-ratio is slightly above 1, so the joint advantage is not present there.
+The careful statement is that at least 54.8\,\% of that 9.12-point gap is a
+composition effect (73.9\,\% with lender fixed effects), that the residual
+is therefore \textbf{2.4 to 4.1 percentage points} depending on the
+controls, that it survives lender fixed effects (odds ratio 0.814 against
+0.812 without them, on the same rows), and that it is present in income
+quartiles 2 to 4 and in every loan purpose describing a real transaction.
+The gap is widest among the most attractive applicants on paper --- the
+opposite of what a ``low-income applicants are screened out'' account would
+predict, though that rules out only the simplest version of it. Quartile 1
+is the exception: its raw advantage is small ($-1.76$ pp) and reverses after
+adjustment, with an odds ratio of 1.062. The financial interpretation is
+deliberately modest (Section~\ref{sec:interpretation}): a second income
+lowers the median loan-to-income ratio by about 9\,\%, from 2.07 to 1.88,
+and what remains of the gap is consistent with something the application
+record does not capture --- a hypothesis consistent with the data, not an
+explanation the data has shown.
 
-The financial interpretation is deliberately modest (Section~\ref{sec:interpretation}):
-the net effect of a second income on the median loan-to-income ratio is a
-reduction of about 9\,\%, from 2.07 to 1.88, and what remains of the gap is
-consistent with something the application record does not capture --- a
-hypothesis consistent with the data, not an explanation the data has
-demonstrated.
-
-Every headline number was checked against an external source: the national
-denial rate to within 0.08\,pp of the CFPB's published figure, all four
-per-purpose rates to within 0.10\,pp, the mean interest rate above the
-Freddie Mac survey average as it must be, and the loan-amount distribution
-straddling the FHFA conforming limit as it must. The application-type rule
-was corroborated by the one HMDA co-applicant field independent of it, with
-0.040\,\% disagreement.
+Four headline quantities are checked against an external source: the
+national denial rate to within 0.08\,pp of the CFPB's published figure, all
+four per-purpose rates to within 0.10\,pp, the mean interest rate above the
+Freddie Mac survey average, and the loan-amount distribution straddling the
+FHFA conforming limit. The application-type rule was corroborated by the one
+HMDA co-applicant field independent of it, with 0.040\,\% disagreement. The
+remaining headline numbers --- the two denial rates, the composition share,
+the residual gap and the odds ratios --- have no published counterpart and
+are not externally validated.
 
 Methodologically, two independent implementations of the same analytical
 rules were made to agree exactly, and that agreement was worth testing for:
 three genuine bugs --- two invisible to code review --- were found only by
-running both engines and comparing. A single speedup number also turned out
-to hide more than it reveals: Spark is between one and seven times
-\emph{slower} than Pandas on the heavy workload at every size, and below
-roughly 0.26 million rows it loses on the light workload too.
+running both engines and comparing. A single speedup number also hid more
+than it reveals: on the cached heavy workload Spark is up to 8.5 times
+\emph{slower} than Pandas.
 
 %% ===========================================================================
 %% The bibliography begins on a fresh page: the main body occupies pages
@@ -1364,6 +1422,20 @@ McKinney, Wes.
 
 \end{thebibliography}
 
+%% The bibliography fills only the first column of its last page, and the
+%% \clearpage that used to separate the references from the appendices left
+%% the whole second column of that page empty while pushing Figure 1 onto a
+%% page of its own.  The break is removed and the appendix opening is
+%% declared here, immediately after the references, instead of at the head
+%% of Appendix A.
+%%
+%% The references end well above the foot of their column, so the column
+%% would otherwise carry the appendix heading and its introduction below
+%% them.  A \newpage in a two-column document breaks the column and not
+%% the page, so the heading is pushed past the references into the second
+%% column of the same page, where it stands parallel with the
+%% bibliography.  The two figures of the appendix follow it in that
+%% column, and the appendix text proper starts on the next page.
 \appendix
 
 % acmart forces \flushbottom, which stretches every column to the full text
@@ -1374,27 +1446,51 @@ McKinney, Wes.
 \enlargethispage{-4pt}
 
 %% ===========================================================================
+%% Break the column before the appendix heading so that it stands in the
+%% second column of the references page rather than underneath the
+%% bibliography.  A \newpage in a two-column document breaks the column and
+%% not the page.
+\newpage
 \section{Selected Figures}\label{app:figures}
 
-\begin{figure}[t]
+The figures below are referenced by number from the main body; they are
+collected here so that the main text stays within its page budget.  Every
+quantity they show also appears in a table in the main body.
+
+%% The two single-column figures of this appendix are put in one minipage
+%% instead of being declared as two separate floats.  A float that is
+%% placed at the foot of a column is pushed all the way down to it, and
+%% the space that this frees above it is filled with stretchable glue, so
+%% the figure ends up 216pt below the two lines of introduction and a
+%% third of the column is left blank.  Placing the floats at the top of
+%% the column has the opposite effect: the heading of the appendix is
+%% pushed below both figures.  Neither is wanted, so the heading, the
+%% introduction, the two images and their two captions are typeset as one
+%% unbreakable box, which keeps the heading at the top of the column and
+%% lets the figures follow the text directly.
+\begin{minipage}{\columnwidth}
+\vspace{0pt}
 \centering
 \includegraphics[width=\columnwidth]{figures/fig1_denial_rate_by_joint.png}
-\caption{RQ1: the denial rate by application type, with the analysis
+\captionof{figure}{RQ1: the denial rate by application type, with the analysis
          population shown alongside.}
 \label{fig:rq1}
-\end{figure}
-
-\begin{figure}[t]
-\centering
+\par\vspace{6pt}
 \includegraphics[width=\columnwidth]{figures/fig3_denial_by_income_dti.png}
-\caption{Denial rate by joint/single status within income quartiles (top)
-         and DTI bands (bottom). Both panels share a y-axis and the bars are
-         decision-weighted pooled rates, so the gap labels match the tables
+\captionof{figure}{Denial rate by joint/single status within income quartiles (top)
+         and DTI bands (bottom). Each panel is scaled to its own data, so the
+         bar heights are not comparable across panels; the bars are
+         decision-weighted pooled rates and the gap labels match the tables
          above.}
 \label{fig:rq3}
-\end{figure}
+\end{minipage}
 
-
+%% The nine figures of this appendix are declared in the order in which
+%% they are numbered in the report.  The two single-column ones (the RQ1
+%% bar chart and the quartile/DTI panel) are declared first, and both fit
+%% in the column that carries the heading of this appendix; the seven
+%% double-column ones follow, and a double-column float can only be
+%% placed at the top of a page.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/fig7_predictive_roc_pr.png}
@@ -1404,10 +1500,6 @@ McKinney, Wes.
          the validation split.}
 \label{fig:rocpr}
 \end{figure*}
-
-The figures below are referenced by number from the main body; they are
-collected here so that the main text stays within its page budget.  Every
-quantity they show also appears in a table in the main body.
 
 \begin{figure*}[t]
 \centering
@@ -1467,16 +1559,33 @@ quantity they show also appears in a table in the main body.
 \label{fig:calibration}
 \end{figure*}
 
-\begin{figure*}[t]
+%% The barrier makes the appendix order match the reading order: all
+%% nine figures of Appendix A first, then Appendix B.  Without it LaTeX
+%% keeps processing the body text while the double-column figures of
+%% this appendix are still queued, and the text of Appendix B is set
+%% into the pages that come before them -- the heading of Appendix B
+%% was printed on the references page while Figures 2 to 9 followed
+%% on the pages after it.
+\FloatBarrier
+
+%% Figure 9 is a single-column float, and it is the last of the figures of
+%% Appendix A.  A double-column float can only be placed at the top of a
+%% page, so as the last of the appendix figures it would have sat alone on
+%% a page of its own with the whole of the lower half empty and the
+%% heading of Appendix B pushed onto the page after it.  As a single-
+%% column float it shares the top of the left column with the heading of
+%% Appendix B that follows it, which is where the reader expects the next
+%% section to start.
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.82\textwidth]{figures/fig9_predictive_importance.png}
+\includegraphics[width=\columnwidth]{figures/fig9_predictive_importance.png}
 \caption{The standardised logistic coefficients, largest first, grouped by the
          source variable they come from. These are the logistic coefficients
          of the fitted regression, not a variable-importance ranking, so their
          magnitudes are comparable within the standardised scale but are not
          a measure of a variable's causal contribution.}
 \label{fig:importance}
-\end{figure*}
+\end{figure}
 
 \section{Limitations in Full}\label{app:limitations}
 
@@ -1492,9 +1601,10 @@ they matter.
         the two.
   \item \textbf{Most of the raw gap is composition.} This is the single
         most important qualification on the headline result, and it is
-        quantified in Section~\ref{sec:confounding}: 54.8\,\% of the raw
-        $-9.12$ pp disappears once income quartile and loan type are
-        controlled for.
+        quantified in Section~\ref{sec:confounding}: at least 54.8\,\% of
+        the raw $-9.12$ pp disappears once income quartile and loan type are
+        controlled for, and more --- up to 73.9\,\% --- once lender fixed
+        effects are added.
   \item \texttt{joint\_\allowbreak flag} is inferred, not reported.
         9.41\,\% of records overall (1.00\,\% of decision records) cannot
         be classified. Purchased loans and preapproval records are
@@ -1535,6 +1645,8 @@ they matter.
 %% ===========================================================================
 %% ===========================================================================
 %% ===========================================================================
+\FloatBarrier
+
 \section{The Predictive Extension in Full}\label{app:predmethod}
 
 This appendix carries the material that supports the optional predictive
@@ -1565,15 +1677,17 @@ designation.
         filtered on a hash of the LEI, but that filter compared a bucket
         modulo 1000 against 1000 and was therefore always true, so the
         sample has always been record-level random). It is nonetheless
-        \emph{not} an independent sample for inference: lenders are
-        over-represented relative to their share of applications only in
-        the sense that their applications cluster, so the fold-to-fold
-        standard deviation of 0.037 is the honest measure of the
-        uncertainty. No claim in this report rests on a sampling error
+        \emph{not} an independent sample for inference: applications from
+        the same lender are correlated, so the row-level confidence
+        intervals would be too narrow. The fold-to-fold standard
+        deviation of 0.037 --- computed with GroupKFold, so that each
+        lender falls entirely within one fold --- is the honest measure of
+        the uncertainty. No claim in this report rests on a sampling error
         smaller than that.
   \item The model is fitted on application characteristics only. It does not
         use the lender's own underwriting criteria, credit history, or debt
-        beyond the DTI band --- all of which are known to the lender and are
+        beyond the loan-to-income ratio it does use --- all of which are
+        known to the lender and are
         plausibly the strongest predictors. The measured AUC is therefore a
         \emph{lower bound} on what a lender's own model would achieve.
   \item Excluding the protected characteristics does not make the model blind
@@ -1585,6 +1699,8 @@ designation.
         sufficient guarantee, which is why the group-level audit above is
         reported independently of it.
 \end{itemize}
+
+\FloatBarrier
 
 \section{The Three Bugs the Comparison Found}\label{app:bugs}
 
@@ -1618,6 +1734,8 @@ The fourth issue was found by inspection rather than by the checker: Spark's
 \texttt{groupBy} returns rows in an \emph{unspecified} order while Pandas
 sorts group keys lexicographically, so both engines now use the same explicit
 ordering and row $i$ in one output corresponds to row $i$ in the other.
+\FloatBarrier
+
 \section{Method Detail in Full}\label{app:method}
 
 \subsection{The estimator choices behind the regression}
@@ -1708,6 +1826,8 @@ comparable in magnitude, which is why the comparison that matters is made
 within the fixed-effects sample, between the model with the lender dummies
 and the model without them.
 
+\FloatBarrier
+
 \section{External Validation in Full}\label{app:validation}
 
 The main body quotes four external checks. This appendix gives the full
@@ -1771,18 +1891,17 @@ records this report calls joint, HMDA labels 84.97\,\% of them
 \texttt{Joint} and 7.03\,\% of them \texttt{Male} or \texttt{Female} ---
 the latter being the same-sex pairs.
 
-What that difference does \emph{not} establish is a direction. It is
-tempting to explain the gap between this report's joint denial rate
-(18.96\,\%) and the CFPB's published one (20.7\,\%) by saying the same-sex
-pairs excluded from the CFPB's category ``have the weakest credit
-profile'', so that excluding them should leave a \emph{stronger} group with
-a \emph{lower} denial rate. The data say the opposite: the same-sex pairs
+What that difference does \emph{not} establish is a direction. If the
+same-sex pairs excluded from the CFPB's category had ``the weakest credit
+profile'', excluding them should leave a \emph{stronger} group with a
+\emph{lower} denial rate. The data say the opposite: the same-sex pairs
 are in fact denied \emph{more} often than the rest of this report's joint
 arm, 22.30\,\% against 18.65\,\%
 (\texttt{src/derived\_\allowbreak sex\_\allowbreak rates.py}), so they are
-the weaker group, and excluding them should have pulled the CFPB's rate
-\emph{down}, not up. No explanation of the gap is offered here, because none
-of the candidate explanations survives the arithmetic.
+the weaker group, and excluding them should have pulled the rate
+\emph{down}, not up. Whatever accounts for the difference between the two
+joint rates, the definitional difference cannot be it, because it points
+the other way.
 
 The rates were measured directly rather than inferred
 (\texttt{src/derived\_\allowbreak sex\_\allowbreak rates.py}). Over the
@@ -1790,29 +1909,23 @@ The rates were measured directly rather than inferred
 == Joint} population is denied at \textbf{18.27\,\%} (547{,}980 denials out
 of 2{,}999{,}979 decisions), and the remainder of the file at
 \textbf{27.36\,\%} (1{,}544{,}340 out of 5{,}643{,}855), a gap of
-$-9.10$ pp. The same-sex pairs therefore sit inside a joint arm whose
-*overall* rate is 18.27\,\%, and the 22.30\,\% of the same-sex pairs
-pulls that rate \emph{up}, not down: the group added to HMDA's ``Joint''
-category has a \emph{lower} denial rate than the remainder of the file,
-exactly as the sign of the comparison requires --- and the CFPB's higher
-published joint rate still cannot be attributed to the definitional
-difference alone.
+$-9.10$ pp. That result does not depend on this report's definition of a
+joint application at all: $-9.10$ pp under HMDA's own rule against $-9.12$
+pp under this report's rule means the headline gap is essentially the same
+however ``joint'' is defined. The same-sex pairs sit inside a joint arm
+whose \emph{overall} rate is 18.27\,\%, and their 22.30\,\% rate pulls
+that arm \emph{up}, not down.
 
-The comparison itself also cannot be made without the published query
-filter. The CFPB's figure is quoted over 223{,}383 applications with a
+The CFPB's published 20.7\,\% is not used as a comparison point in this
+report. The published figure is quoted over 223{,}383 applications with a
 decision, whereas the \texttt{derived\_\allowbreak sex == Joint} population
 of the 2024 release contains 2{,}999{,}979 decisions
 (\texttt{src/derived\_\allowbreak sex\_\allowbreak population\_\allowbreak
-check.py}) --- a factor of 13.4 --- so the published figure is computed over
-a filtered subset that the data browser does not disclose in the citation
-this report has. The honest position is therefore the following, and it is
-weaker than the claim it replaces: the two rules provably disagree on
-exactly the same-sex pairs and on nothing else; the same-sex pairs are
-denied more often than the rest of the joint arm; and the published
-20.7\,\% cannot be attributed to the definitional difference alone, because
-the populations behind the two numbers are not the same size. Against the
-CFPB's published 20.7\,\% our 18.96\,\% is lower by 1.74\,pp, and the gap
-is reported as unexplained rather than attributed.
+check.py}) --- a factor of 13.4 --- so it is computed over a filtered subset
+whose filter the citation does not disclose, and the figure cannot be
+reproduced from the release. Comparing our 18.96\,\% against it would
+compare two different populations, so the comparison is dropped rather than
+reported as an unexplained 1.74\,pp gap.
 
 
 \subsection{The interest-rate prediction against PMMS}
@@ -1862,18 +1975,19 @@ Pandas pays the full Parquet scan on a single thread while Spark scans it
 in parallel.
 
 \emph{Why the cached arm is slower than the no-cache arm at 100\,\%.} At the
-full sample Spark's cached query takes 0.72\,s against 0.71\,s uncached,
-and at 46.9\,\% it is 0.49\,s against 0.45\,s. The cached arm must
-\emph{write} the materialised DataFrame to the block manager before the
-clock starts --- 4.67\,s at 100\,\% --- and that write is not free: it
-serialises the blocks, and the resulting row-group layout does not suit the
-subsequent aggregate scan as well as the original columnar Parquet files
-do. The uncached arm reads those files directly in a vectorised columnar
-scan, with no intermediate copy at all. The cost is that the uncached arm
-pays the scan on \emph{every} repetition, so the two arms are close only
-when the data is large enough for the scan to dominate the materialisation
-cost. The gap closes and then reverses as the fraction falls: at 27.5\,\%
-the cached arm is the faster of the two.
+full sample Spark's cached query takes 0.720\,s against 0.708\,s uncached,
+and at 46.9\,\% it is 0.491\,s against 0.449\,s. The two differences are
+0.012\,s and 0.042\,s, that is 1.7\,\% and 9.3\,\% --- at the full
+sample the difference is within the run-to-run noise of the measurement and
+is not claimed as a real effect; no mechanism was measured, so none is
+offered here. What is measured is the difference in work between the arms:
+the cached arm must \emph{write} the materialised DataFrame to the block
+manager before the clock starts --- 4.67\,s at 100\,\% --- whereas the
+uncached arm reads the Parquet files directly in a vectorised columnar scan
+with no intermediate copy. The order of the two arms is otherwise stable:
+cached is faster than no-cache only at the two smallest fractions,
+38{,}048 and 264{,}546 rows; at every larger size, including 27.5\,\%
+(0.400\,s against 0.387\,s), the no-cache arm is faster.
 
 \emph{The heavy workload does not favour Spark, and that is reported too.}
 On one machine, with data that fits in 16\,GB, Spark's parallel execution
@@ -1886,10 +2000,19 @@ outweighs the shuffle until the shuffle becomes the dominant cost.
 \emph{Set-up is a real cost and is not hidden.} The first Spark session
 takes 3.78\,s to start, and the first read of the data a further 2.27\,s.
 For a one-off query at 27.5\,\% of the data, the cached Spark query plus
-its session start-up is \emph{slower} than the Pandas query (0.40\,s
-against 0.61\,s of Pandas plus its own file read). Spark's advantage here
-is a throughput advantage on repeated or large queries, not a latency
-advantage on small ones.
+its session start-up is \emph{slower} than the Pandas query: the correct
+comparison is 0.40\,s of Spark query plus 3.78\,s of session start-up,
+that is \textbf{4.18\,s}, against 0.61\,s for the Pandas query on the
+same rows. Spark's advantage here is a throughput advantage on repeated or
+large queries, not a latency advantage on small ones. The set-up cost
+falls sharply after the first session --- the remaining sessions take
+0.09\,s to 0.29\,s --- so the ``incl.\ setup'' column of
+Table~\ref{tab:bench} mixes a cold start with four warm ones and is not a
+like-for-like figure. If the cold start is charged to every size instead,
+Spark's light-workload advantage survives only at the full sample:
+3.78\,s of set-up against 5.54\,s of Pandas no-cache time gives roughly
+$1.2\times$ at 12.2 million rows and about $0.67\times$ at 5.7 million,
+that is, Pandas is ahead.
 
 The measurements are single-node, on one host, with a \texttt{local[*]}
 Spark session, so they are not a cluster speedup and should not be read as
@@ -1897,6 +2020,8 @@ one. The host --- CPU, core count, RAM, operating system and the versions
 of Python, Pandas, Spark and the JVM --- is recorded in
 \texttt{results/benchmark\_\allowbreak v3.json} and summarised in
 Appendix~\ref{app:env}.
+
+\FloatBarrier
 
 \section{The Measurement Environment}\label{app:env}
 
@@ -1923,29 +2048,33 @@ Spark configuration are all recorded in
          the loan amount together with an approximate 90th percentile, which
          forces a real shuffle rather than a small dictionary aggregation.
          This workload is included because the light one is short enough
-         that Spark's scheduling overhead dominates it. The speedup is
-         below 1 throughout the cached arm, that is, Spark is slower.}
+         that Spark's scheduling overhead dominates it. The two speedup
+         columns differ in sign at the two largest sizes: Spark is slower
+         than Pandas throughout the cached arm, but ahead in the no-cache
+         arm at 5.7 and 12.2 million rows, because the parallel scan of
+         the input outweighs the shuffle until the shuffle dominates.}
 \label{tab:benchheavy}
 \centering
 \footnotesize
-\begin{tabular}{@{}llrrrr@{}}
+\begin{tabular}{@{}llrrrrr@{}}
 \toprule
-Rows & Engine & No cache (s) & Cached (s) & Speedup (cached) \\
+Rows & Engine & No cache (s) & Cached (s) & Speedup & Speedup \\
+     &        &             &            & no cache & cached \\
 \midrule
-38{,}048     & pandas  & 0.039 & 0.023 & --- \\
-38{,}048     & pyspark & 0.231 & 0.157 & $0.15\times$ \\
+38{,}048     & pandas  & 0.039 & 0.023 & ---   & --- \\
+38{,}048     & pyspark & 0.231 & 0.157 & $0.17\times$ & $0.15\times$ \\
 \midrule
-264{,}546    & pandas  & 0.111 & 0.040 & --- \\
-264{,}546    & pyspark & 0.369 & 0.339 & $0.12\times$ \\
+264{,}546    & pandas  & 0.111 & 0.040 & ---   & --- \\
+264{,}546    & pyspark & 0.369 & 0.339 & $0.30\times$ & $0.12\times$ \\
 \midrule
-3{,}367{,}092 & pandas  & 1.440 & 0.541 & --- \\
-3{,}367{,}092 & pyspark & 1.881 & 1.832 & $0.30\times$ \\
+3{,}367{,}092 & pandas  & 1.440 & 0.541 & ---   & --- \\
+3{,}367{,}092 & pyspark & 1.881 & 1.832 & $0.77\times$ & $0.30\times$ \\
 \midrule
-5{,}735{,}393 & pandas  & 2.711 & 0.986 & --- \\
-5{,}735{,}393 & pyspark & 2.513 & 2.314 & $0.43\times$ \\
+5{,}735{,}393 & pandas  & 2.711 & 0.986 & ---   & --- \\
+5{,}735{,}393 & pyspark & 2.513 & 2.314 & $1.08\times$ & $0.43\times$ \\
 \midrule
-12{,}224{,}691 & pandas  & 5.059 & 2.107 & --- \\
-12{,}224{,}691 & pyspark & 3.538 & 3.395 & $0.62\times$ \\
+12{,}224{,}691 & pandas  & 5.059 & 2.107 & ---   & --- \\
+12{,}224{,}691 & pyspark & 3.538 & 3.395 & $1.43\times$ & $0.62\times$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1985,6 +2114,8 @@ comparing the benchmark table with the pipeline description should expect
 the two to agree, because they do.
 
 %% ===========================================================================
+\FloatBarrier
+
 \section{Reference Tables}\label{app:derived}
 
 Tables that describe how the analysis was set up rather than what it
@@ -2181,7 +2312,7 @@ Share above 43\,\%       & --- & --- & \textbf{30.43\,\%} \\
 \end{tabular}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{Lien status and combined loan-to-value ratio by loan purpose,
          measured rather than assumed. Home-improvement applications are
          overwhelmingly \emph{not} first-lien, but 98\,\% of them still carry
@@ -2201,7 +2332,7 @@ Refinancing          &   349{,}426 & 76.34\,\% & 68.8 & 95.99\,\% \\
 \end{tabular}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{Derived variables and their purpose.}
 \label{tab:derived}
 \centering
@@ -2220,7 +2351,7 @@ Variable & Definition and purpose \\
 \end{tabular}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{Classification of the co-applicant fields used to derive
          \texttt{joint\_\allowbreak flag}.}
 \label{tab:coapp}
@@ -2238,7 +2369,7 @@ Field & Absent & Not applicable & Present \\
 \end{tabular}
 \end{table}
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{The nominal sample fractions against the realised ones used in the
          performance experiment.  The nominal values are hash thresholds, not
          exact row shares.}
@@ -2258,6 +2389,8 @@ Nominal & Realised & Rows & Lenders \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+
 
 \section{The 43\,\% Debt-to-Income Figure in Context}\label{app:qm}
 
@@ -2335,6 +2468,8 @@ co-applicant credit score & 1{,}547{,}263 & 5{,}013{,}328 & 5{,}178{,}603 & 485{
 \end{tabular}
 \end{table}
 
+\FloatBarrier
+
 \section{Member Contributions}
 
 All three members worked on the analysis, the implementation and the
@@ -2367,6 +2502,8 @@ All three members contributed to the final text and to reviewing each
 other's sections, and all three reviewed the whole report before submission.
 
 %% ===========================================================================
+\FloatBarrier
+
 \section{Repository and Reproduction}
 
 The full source, the result files and the execution record are in the public
